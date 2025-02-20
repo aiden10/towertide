@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx66d1earu3rb"]
+
+[ext_resource type="Script" path="res://Arena/arena.gd" id="1_5n0be"]
+[ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://Player/Player.tscn" id="1_iy5w2"]
+[ext_resource type="PackedScene" uid="uid://b522nu0e6viam" path="res://Projectile/Projectile.tscn" id="2_8kac3"]
+[ext_resource type="PackedScene" uid="uid://onunwggusljt" path="res://Enemies/Basic/BasicEnemy.tscn" id="4_5ndg3"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_5n0be")
+enemy_scenes = Array[PackedScene]([ExtResource("4_5ndg3")])
+spawn_radius = 350.0
+
+[node name="Player" parent="." instance=ExtResource("1_iy5w2")]
+position = Vector2(550, 257)
+projectile_scene = ExtResource("2_8kac3")

@@ -1,0 +1,7 @@
+extends Node
+
+const PLAYER_SPEED = 300
+const DEFAULT_FIRERATE = 0.5
+const DEFAULT_DAMAGE = 1
+const PROJECTILE_SPEED = 1000
+const PLAYER_HEALTH = 10

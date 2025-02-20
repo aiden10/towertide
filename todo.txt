@@ -1,0 +1,3 @@
+
+
+Have enemies drop or give player gold and xp upon death
