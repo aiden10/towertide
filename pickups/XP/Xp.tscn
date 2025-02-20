@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfh6pmvj5aord"]
+
+[ext_resource type="Texture2D" uid="uid://cf0mmrucjyn38" path="res://sprites/xp.png" id="1_1ge04"]
+[ext_resource type="Script" path="res://pickups/XP/xp.gd" id="1_ijt3n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ps3d"]
+radius = 43.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hsjqc"]
+radius = 9.0
+
+[node name="Xp" type="Area2D" groups=["Pickups"]]
+script = ExtResource("1_ijt3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2ps3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, -2.38419e-07)
+scale = Vector2(0.0328125, 0.0321181)
+texture = ExtResource("1_1ge04")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_hsjqc")

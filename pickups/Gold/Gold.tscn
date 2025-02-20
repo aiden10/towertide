@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://vi24dnj3jij5"]
+
+[ext_resource type="Texture2D" uid="uid://eshbje6sgqao" path="res://sprites/coin.png" id="1_jnxdl"]
+[ext_resource type="Script" path="res://pickups/Gold/gold.gd" id="1_s5mvx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwn5o"]
+radius = 88.1419
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0r2tu"]
+
+[node name="Gold" type="Area2D" groups=["Pickups"]]
+script = ExtResource("1_s5mvx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dwn5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.250001)
+scale = Vector2(0.0527778, 0.0486111)
+texture = ExtResource("1_jnxdl")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_0r2tu")

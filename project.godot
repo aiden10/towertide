@@ -21,12 +21,14 @@ PlayerConstants="*res://Player/player_constants.gd"
 EventBus="*res://globals/event_bus.gd"
 EnemyConstants="*res://Enemy/enemy_constants.gd"
 GameState="*res://states/game_state.gd"
+Utils="*res://globals/utils.gd"
 
 [global_group]
 
 Player=""
 Enemies=""
 Level1="Weak Enemies"
+Pickups=""
 
 [input]
 

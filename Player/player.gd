@@ -35,8 +35,8 @@ func shoot(mouse_position: Vector2):
 		var bullet = projectile_scene.instantiate()
 		bullet.position = position
 		bullet.start(mouse_position, PlayerConstants.PROJECTILE_SPEED, damage, "player")
-		get_tree().current_scene.add_child(bullet)
+		EventBus.arena_spawn.emit(bullet)
 		can_shoot = false
 
-func take_damage(damage: float):
-	health -= damage
+func take_damage(damage_taken: float):
+	health -= damage_taken

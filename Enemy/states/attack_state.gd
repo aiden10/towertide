@@ -29,5 +29,5 @@ func shoot(player_position: Vector2):
 		var bullet = projectile_scene.instantiate()
 		bullet.position = enemy.position
 		bullet.start(player_position, enemy.projectile_speed, enemy.damage, "enemy")
-		get_tree().current_scene.add_child(bullet)
+		EventBus.arena_spawn.emit(bullet)
 		can_shoot = false
