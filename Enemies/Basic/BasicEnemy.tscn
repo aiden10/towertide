@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://onunwggusljt"]
 
-[ext_resource type="Script" path="res://Enemies/Basic/basic_enemy.gd" id="1_ksc35"]
-[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/red.png" id="2_4kpff"]
-[ext_resource type="Script" path="res://Enemy/states/state_machine.gd" id="2_p373m"]
-[ext_resource type="Script" path="res://Enemy/states/attack_state.gd" id="3_4v1vq"]
-[ext_resource type="Script" path="res://Enemy/states/follow_state.gd" id="4_g5fm2"]
+[ext_resource type="Script" path="res://enemies/Basic/basic_enemy.gd" id="1_ksc35"]
+[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4kpff"]
+[ext_resource type="Script" path="res://enemy/states/state_machine.gd" id="2_p373m"]
+[ext_resource type="Script" path="res://enemy/states/attack_state.gd" id="3_4v1vq"]
+[ext_resource type="Script" path="res://enemy/states/follow_state.gd" id="4_g5fm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oooac"]
 

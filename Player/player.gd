@@ -16,7 +16,11 @@ func get_input():
 	if Input.is_action_pressed("click"):
 		clicked.emit(get_global_mouse_position())
 
-func _physics_process(delta):
+func _process(delta: float) -> void:
+	for item in PlayerState.player_items:
+		item.use(delta)
+
+func _physics_process(delta: float) -> void:
 	get_input()
 	look_at(get_global_mouse_position())
 	var collision = move_and_collide(velocity * delta)
@@ -43,6 +47,8 @@ func take_damage(damage_taken: float):
 func level_up():
 	PlayerState.level += 1
 	PlayerState.xp = 0
+	PlayerState.max_health += PlayerState.level * 10
+	PlayerState.damage += PlayerState.level
 	PlayerState.level_up_condition = PlayerConstants.BASE_XP * (PlayerConstants.LEVEL_MULTIPLIER ** PlayerState.level)
 
 func _on_xp_pickup():

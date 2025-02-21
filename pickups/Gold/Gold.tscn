@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://vi24dnj3jij5"]
+[gd_scene load_steps=7 format=3 uid="uid://vi24dnj3jij5"]
 
-[ext_resource type="Texture2D" uid="uid://eshbje6sgqao" path="res://sprites/coin.png" id="1_jnxdl"]
-[ext_resource type="Script" path="res://pickups/Gold/gold.gd" id="1_s5mvx"]
+[ext_resource type="Script" path="res://pickups/gold/gold.gd" id="1_s5mvx"]
+[ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_mj0yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwn5o"]
 radius = 88.1419
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2tu"]
+
+[sub_resource type="Gradient" id="Gradient_7ar6b"]
+colors = PackedColorArray(1, 0.870588, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l4paj"]
+gradient = SubResource("Gradient_7ar6b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Gold" type="Area2D" groups=["Pickups"]]
 script = ExtResource("1_s5mvx")
@@ -15,11 +23,15 @@ script = ExtResource("1_s5mvx")
 shape = SubResource("CircleShape2D_dwn5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -0.250001)
-scale = Vector2(0.0527778, 0.0486111)
-texture = ExtResource("1_jnxdl")
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.38848, 0.4)
+texture = ExtResource("2_mj0yo")
 
 [node name="PickupArea" type="Area2D" parent="."]
 
 [node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_0r2tu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.3
+texture = SubResource("GradientTexture2D_l4paj")

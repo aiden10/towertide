@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c6j20s0418q2g"]
+
+[ext_resource type="FontFile" uid="uid://cfh5cpem6pw0p" path="res://resources/Quicksand-Light.ttf" id="1_6lf60"]
+
+[resource]
+Button/fonts/font = ExtResource("1_6lf60")
+Label/fonts/font = ExtResource("1_6lf60")

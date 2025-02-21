@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cydof6j3pclmi"
-path="res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"
+uid="uid://ckpbb8r7fbs7h"
+path="res://.godot/imported/red_circle.png-0318c1d76ed473c451597306b1d853a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-69bff64251259751f4bcc5909839a008.ctex"]
+source_file="res://sprites/enemies/red_circle.png"
+dest_files=["res://.godot/imported/red_circle.png-0318c1d76ed473c451597306b1d853a2.ctex"]
 
 [params]
 

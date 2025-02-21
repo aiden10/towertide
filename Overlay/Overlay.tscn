@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=6 format=3 uid="uid://cmnf66ocvlno0"]
 
-[ext_resource type="Script" path="res://Overlay/overlay.gd" id="1_r8lhj"]
-[ext_resource type="Texture2D" uid="uid://eshbje6sgqao" path="res://sprites/coin.png" id="1_toj3v"]
-[ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/heart.png" id="2_adl4l"]
-[ext_resource type="Texture2D" uid="uid://cjrsoi8mcp0l0" path="res://sprites/skull.png" id="3_jm3kv"]
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
+[ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
+[ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/overlay/heart.png" id="2_adl4l"]
+[ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="3_84jj3"]
+[ext_resource type="Texture2D" uid="uid://cjrsoi8mcp0l0" path="res://sprites/overlay/skull.png" id="3_jm3kv"]
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_84vjy")
 script = ExtResource("1_r8lhj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -23,6 +25,7 @@ anchor_right = 1.0
 offset_left = -63.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme = ExtResource("1_84vjy")
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 
@@ -31,20 +34,21 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StatsContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 15
 columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("1_toj3v")
-expand_mode = 3
+texture = ExtResource("3_84jj3")
+expand_mode = 5
 
 [node name="GoldLabel" type="Label" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -71,6 +75,7 @@ theme_override_font_sizes/font_size = 32
 [node name="ClearConditionContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_84vjy")
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
@@ -99,6 +104,7 @@ offset_top = -54.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("1_84vjy")
 theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/XPContainer"]
@@ -107,6 +113,7 @@ theme_override_constants/separation = 25
 
 [node name="XPLabel" type="Label" parent="CanvasLayer/XPContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 
 [node name="XPBar" type="ProgressBar" parent="CanvasLayer/XPContainer/VBoxContainer"]

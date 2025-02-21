@@ -11,19 +11,20 @@ config_version=5
 [application]
 
 config/name="untitled"
-run/main_scene="res://Arena/arena.tscn"
+run/main_scene="res://arena/arena.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://globals/event_bus.gd"
-EnemyConstants="*res://Enemy/enemy_constants.gd"
-PlayerConstants="*res://Player/player_constants.gd"
+EventBus="*res://autoloads/event_bus.gd"
+EnemyConstants="*res://enemy/enemy_constants.gd"
+PlayerConstants="*res://player/player_constants.gd"
 PlayerState="*res://states/player_state.gd"
-Utils="*res://globals/utils.gd"
-Scenes="*res://globals/scenes.gd"
+Utils="*res://autoloads/utils.gd"
+Scenes="*res://autoloads/scenes.gd"
 GameState="*res://states/game_state.gd"
+Items="*res://autoloads/items.gd"
 
 [display]
 

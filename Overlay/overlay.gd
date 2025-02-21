@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	gold_label.text = str(PlayerState.gold)
-	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_hp)
+	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_health)
 	kills_label.text = str(PlayerState.enemies_killed)
 	xp_label.text = str(PlayerState.xp) + " / " + str(PlayerState.level_up_condition)
 	xp_bar.max_value = PlayerState.level_up_condition

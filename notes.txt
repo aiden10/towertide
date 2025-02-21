@@ -1,6 +1,4 @@
-Brotato but it plays like diep.io
-Shoot projectiles, move somewhat slowly, basic enemies which are just shapes
-Killing enemies gets you xp and gold, spend gold between levels and xp at any time.
-Entrance to next level will just be some differently colored circle that spawns far away from the player's starting position.
-Basic skill tree to spend your xp on.
-League of legends style movements and abilities?
+Towers, Items, and Abilities
+Basic skill tree to spend your xp on. Each path will correspond to a different type of playstyle.
+    Paths for each tower archetype, one for abilities + stats + items as a "player" centric path.
+

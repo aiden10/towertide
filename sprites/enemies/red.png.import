@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3c827prspt5g"
-path="res://.godot/imported/door.png-e52e668448189bde1c5bf2ddea662f4d.ctex"
+uid="uid://6cqwjw36pqwr"
+path="res://.godot/imported/red.png-32e423d0cd4db7286d46d8c6d06c59ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/door.png"
-dest_files=["res://.godot/imported/door.png-e52e668448189bde1c5bf2ddea662f4d.ctex"]
+source_file="res://sprites/enemies/red.png"
+dest_files=["res://.godot/imported/red.png-32e423d0cd4db7286d46d8c6d06c59ce.ctex"]
 
 [params]
 
