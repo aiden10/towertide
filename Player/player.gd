@@ -31,7 +31,7 @@ func _physics_process(delta):
 func shoot(mouse_position: Vector2):
 	if can_shoot:
 		GameState.player_projectiles = []
-		var bullet = Scenes.projectile_scene.instantiate()
+		var bullet = Scenes.player_projectile_scene.instantiate()
 		bullet.position = position
 		bullet.start(mouse_position, PlayerState.projectile_speed, PlayerState.damage, "player")
 		EventBus.arena_spawn.emit(bullet)

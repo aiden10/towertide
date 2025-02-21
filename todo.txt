@@ -1,5 +1,4 @@
 
-Make the player's projectiles white and the enemies' red
 Make the player a white ball, make it so that the player's projectiles leave a trail
 Way to view other stats
 Finish shop (item cards, reroll)

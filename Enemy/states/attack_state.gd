@@ -25,7 +25,7 @@ func update(delta: float):
 
 func shoot(player_position: Vector2):
 	if can_shoot:
-		var bullet = Scenes.projectile_scene.instantiate()
+		var bullet = Scenes.enemy_projectile_scene.instantiate()
 		bullet.position = enemy.position
 		bullet.start(player_position, enemy.projectile_speed, enemy.damage, "enemy")
 		EventBus.arena_spawn.emit(bullet)

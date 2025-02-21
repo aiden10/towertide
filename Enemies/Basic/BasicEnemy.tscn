@@ -1,21 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://onunwggusljt"]
+[gd_scene load_steps=8 format=3 uid="uid://onunwggusljt"]
 
 [ext_resource type="Script" path="res://Enemies/Basic/basic_enemy.gd" id="1_ksc35"]
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/red.png" id="2_4kpff"]
-[ext_resource type="PackedScene" uid="uid://vi24dnj3jij5" path="res://pickups/Gold/Gold.tscn" id="2_7qu2w"]
 [ext_resource type="Script" path="res://Enemy/states/state_machine.gd" id="2_p373m"]
 [ext_resource type="Script" path="res://Enemy/states/attack_state.gd" id="3_4v1vq"]
-[ext_resource type="PackedScene" uid="uid://bfh6pmvj5aord" path="res://pickups/XP/Xp.tscn" id="3_lquor"]
 [ext_resource type="Script" path="res://Enemy/states/follow_state.gd" id="4_g5fm2"]
-[ext_resource type="PackedScene" uid="uid://b522nu0e6viam" path="res://Projectile/Projectile.tscn" id="5_t153k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oooac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0ff2"]
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["Enemies", "Level1"]]
+scale = Vector2(1.8692, 1.8692)
 script = ExtResource("1_ksc35")
-drop_scenes = Array[PackedScene]([ExtResource("2_7qu2w"), ExtResource("3_lquor")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oooac")
@@ -32,7 +29,6 @@ initial_state = NodePath("Follow")
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_4v1vq")
 enemy = NodePath("../..")
-projectile_scene = ExtResource("5_t153k")
 
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_g5fm2")
