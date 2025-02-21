@@ -10,4 +10,4 @@ func _on_area_entered(area: Area2D) -> void:
 
 func door_entered() -> void:
 	queue_free()
-	EventBus.level_clear.emit()
+	EventBus.level_exited.emit()

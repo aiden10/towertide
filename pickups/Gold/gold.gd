@@ -10,5 +10,5 @@ func _ready() -> void:
 	pickup_area.area_entered.connect(_pickup_range_entered)
 	
 func on_pickup() -> void:
-	GameState.gold += 1
+	EventBus.gold_picked_up.emit()
 	queue_free()

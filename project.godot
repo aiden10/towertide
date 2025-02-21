@@ -17,12 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerConstants="*res://Player/player_constants.gd"
 EventBus="*res://globals/event_bus.gd"
 EnemyConstants="*res://Enemy/enemy_constants.gd"
-GameState="*res://states/game_state.gd"
+PlayerConstants="*res://Player/player_constants.gd"
+PlayerState="*res://states/player_state.gd"
 Utils="*res://globals/utils.gd"
 Scenes="*res://globals/scenes.gd"
+GameState="*res://states/game_state.gd"
 
 [display]
 

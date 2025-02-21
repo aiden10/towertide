@@ -7,8 +7,10 @@ var speed: float
 var projectile_speed: float
 var firerate_cooldown: float
 var distance_threshold: int
-var drops: Array[PackedScene]
-var drop_range: float
+var gold_drop_count: int
+var xp_drop_count: int
+var xp_drop_range: int
+var gold_drop_range: float
 var drop_count: int
 
 func _physics_process(_delta: float) -> void:
@@ -20,13 +22,18 @@ func take_damage(damage_taken: float) -> void:
 		on_death()
 
 func on_death() -> void:
-	for i in range(drop_count):
-		var drop_position = Utils.get_random_position_in_radius(position, drop_range)
-		var drop = drops.pick_random().instantiate()
-		drop.position = drop_position
-		EventBus.arena_spawn.emit(drop)
+	for i in range(gold_drop_count):
+		var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
+		var gold = Scenes.gold_scene.instantiate()
+		gold.position = drop_position
+		EventBus.arena_spawn.emit(gold)
+
+	for i in range(xp_drop_count):
+		var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
+		var xp = Scenes.xp_scene.instantiate()
+		xp.position = drop_position
+		EventBus.arena_spawn.emit(xp)
 	
-	GameState.enemies_killed += 1
-	print("Enemies Killed: ", GameState.enemies_killed)
+	PlayerState.enemies_killed += 1
 	queue_free()
 	

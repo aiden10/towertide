@@ -16,8 +16,8 @@ script = ExtResource("1_8lbho")
 shape = SubResource("CircleShape2D_jwrfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.38419e-06, -2.86102e-06)
-scale = Vector2(0.0496614, 0.0496054)
+position = Vector2(0.500003, 0.499998)
+scale = Vector2(0.139063, 0.139583)
 texture = ExtResource("1_33oy3")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -26,3 +26,7 @@ texture = ExtResource("1_33oy3")
 shape = SubResource("CircleShape2D_l7xpc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+update_rotation = false
+update_scale = false
