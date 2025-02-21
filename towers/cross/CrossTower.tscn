@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://cf274dmdg2p2t"]
+
+[ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="1_av47i"]
+[ext_resource type="Script" path="res://towers/cross/cross_tower.gd" id="1_qcd6w"]
+[ext_resource type="Texture2D" uid="uid://dlolhefv3qih8" path="res://sprites/towers/cross/f2.png" id="2_sc465"]
+[ext_resource type="Texture2D" uid="uid://bo74jpv7fdnwj" path="res://sprites/towers/cross/f3.png" id="3_0rmfl"]
+[ext_resource type="Texture2D" uid="uid://b1l7j4q8owh36" path="res://sprites/towers/cross/f4.png" id="4_nksxs"]
+[ext_resource type="Texture2D" uid="uid://dubu0owmc1kjs" path="res://sprites/towers/cross/f5.png" id="5_ih4g7"]
+[ext_resource type="Texture2D" uid="uid://dt5u0jx7lpn6p" path="res://sprites/towers/cross/f6.png" id="6_sedko"]
+[ext_resource type="Texture2D" uid="uid://cw5f50m8b0q1g" path="res://sprites/towers/cross/f7.png" id="7_qsr50"]
+[ext_resource type="Texture2D" uid="uid://d4c2ii4rp81i" path="res://sprites/towers/cross/f8.png" id="8_n651x"]
+[ext_resource type="Texture2D" uid="uid://cbjt7sr5k6dy6" path="res://sprites/towers/cross/f9.png" id="9_p7kx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcfrt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsmet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_av47i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sc465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0rmfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nksxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ih4g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sedko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsr50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n651x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p7kx7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0uk7"]
+radius = 30.0167
+
+[node name="CrossTower" type="Area2D"]
+script = ExtResource("1_qcd6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kcfrt")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.68434e-14, -1)
+scale = Vector2(0.202918, 0.202918)
+sprite_frames = SubResource("SpriteFrames_hsmet")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_m0uk7")

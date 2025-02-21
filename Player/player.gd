@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var firerate_counter = PlayerState.firerate
+var shot_timer = PlayerState.firerate
 var can_shoot = true
 
 signal clicked
@@ -26,16 +26,16 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		EventBus.collided.emit(collision.get_collider())
-	if firerate_counter > 0:
-		firerate_counter -= delta
-	if firerate_counter <= 0:
+	if shot_timer > 0:
+		shot_timer -= delta
+	if shot_timer <= 0:
 		can_shoot = true
-		firerate_counter = PlayerState.firerate
+		shot_timer = PlayerState.firerate
 
 func shoot(mouse_position: Vector2):
 	if can_shoot:
-		GameState.player_projectiles = []
 		var bullet = Scenes.player_projectile_scene.instantiate()
+		GameState.player_projectiles[bullet] = 1
 		bullet.position = position
 		bullet.start(mouse_position, PlayerState.projectile_speed, PlayerState.damage, "player")
 		EventBus.arena_spawn.emit(bullet)
@@ -60,5 +60,5 @@ func _on_gold_pickup():
 	PlayerState.gold += 1
 
 func apply_player_bullet_effects():
-	for bullet in GameState.player_projectiles:
+	for bullet in GameState.player_projectiles.keys():
 		pass

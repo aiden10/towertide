@@ -14,3 +14,4 @@ var max_health: float = PlayerConstants.STARTING_PLAYER_HEALTH
 var firerate: float = PlayerConstants.DEFAULT_FIRERATE
 var projectile_speed: int = PlayerConstants.DEFAULT_PROJECTILE_SPEED
 var level_up_condition: int = PlayerConstants.DEFAULT_LEVEL_UP_CONDITION
+var knockback: float = PlayerConstants.DEFAULT_KNOCKBACK

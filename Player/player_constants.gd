@@ -8,3 +8,4 @@ const STARTING_PLAYER_HEALTH: float = 100
 const BASE_XP: int = 100
 const LEVEL_MULTIPLIER: float = 1.15
 const DEFAULT_LEVEL_UP_CONDITION: float = 100
+const DEFAULT_KNOCKBACK: float = 100

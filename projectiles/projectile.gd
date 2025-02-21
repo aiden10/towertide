@@ -5,16 +5,13 @@ var velocity: Vector2
 var speed: int 
 var shooter: String
 var damage: float
-var lifetime: float = 2.0
+var lifetime: float = 4.0
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
-func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: String) -> void:
-	if origin == "player":
-		GameState.player_projectiles.append(self)
-	
+func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: String) -> void:	
 	speed = projectile_speed
 	damage = bullet_damage
 	shooter = origin
@@ -23,7 +20,11 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 	
 	var tween = create_tween()
 	tween.tween_interval(lifetime)
-	tween.tween_callback(queue_free)
+	tween.tween_callback(clear)
+
+func clear() -> void:
+	GameState.player_projectiles.erase(self)
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
@@ -39,10 +40,10 @@ func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Enemies") and shooter != "enemy":
 		spawn_hit_effect(Color(255, 255, 255, 100))
-		parent.take_damage(damage)
-		queue_free()
-
+		parent.take_damage(damage, direction)
+		clear()
+		
 	if parent.is_in_group("Player") and shooter != "player":
 		spawn_hit_effect(Color(255, 0, 0, 100))
 		parent.take_damage(damage)
-		queue_free()
+		clear()

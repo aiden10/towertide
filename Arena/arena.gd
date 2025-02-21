@@ -46,6 +46,7 @@ func add_to_arena(child: Node) -> void:
 
 func start_new_level() -> void:
 	PlayerState.level += 1
+	PlayerState.health = PlayerState.max_health
 	PlayerState.enemies_killed = 0
 	PlayerState.clear_condition = PlayerState.level * 100
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx66d1earu3rb"]
+[gd_scene load_steps=8 format=3 uid="uid://bx66d1earu3rb"]
 
 [ext_resource type="Script" path="res://arena/arena.gd" id="1_5n0be"]
 [ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://player/Player.tscn" id="1_iy5w2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://onunwggusljt" path="res://enemies/Basic/BasicEnemy.tscn" id="4_5ndg3"]
 [ext_resource type="Texture2D" uid="uid://dbptxtjcgtb5s" path="res://sprites/arena/background.png" id="4_ttpg6"]
 [ext_resource type="PackedScene" uid="uid://cmnf66ocvlno0" path="res://overlay/Overlay.tscn" id="5_0u82s"]
+[ext_resource type="PackedScene" uid="uid://cf274dmdg2p2t" path="res://towers/cross/CrossTower.tscn" id="7_jm53g"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_5n0be")
@@ -26,3 +27,5 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="CrossTower" parent="." instance=ExtResource("7_jm53g")]

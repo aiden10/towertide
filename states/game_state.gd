@@ -1,3 +1,3 @@
 extends Node
 
-var player_projectiles: Array[Area2D] = []
+var player_projectiles: Dictionary = {}
