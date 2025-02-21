@@ -38,6 +38,7 @@ Player=""
 Enemies=""
 Level1="Weak Enemies"
 Pickups=""
+Sword=""
 
 [input]
 

@@ -1,5 +1,4 @@
 
-Crosshair or some other aiming indicator
 Slightly scale player projectiles with damage
 Item overlay/menu
 How towers will be placed

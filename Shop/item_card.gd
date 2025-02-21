@@ -14,7 +14,7 @@ func _ready() -> void:
 func _purchase_pressed() -> void:
 	if PlayerState.gold >= item.price:
 		PlayerState.gold -= item.price
-		PlayerState.player_items.append(item)
+		PlayerState.player_items.append(item.duplicate())
 		EventBus.purchased.emit()
 		queue_free()
 

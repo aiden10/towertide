@@ -8,3 +8,4 @@ var enemy_projectile_scene: PackedScene = preload("res://projectiles/EnemyProjec
 var gold_scene: PackedScene = preload("res://pickups/gold/Gold.tscn")
 var xp_scene: PackedScene = preload("res://pickups/xp/Xp.tscn")
 var hit_effect_scene: PackedScene = preload("res://effects/HitEffect.tscn")
+var sword_scene: PackedScene = preload("res://items/sword/Sword.tscn")

@@ -13,4 +13,8 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func set_color(color: Color) -> void:
-	particles.process_material.color = color
+	if not is_node_ready():
+		await ready
+	var new_material = particles.process_material.duplicate()
+	new_material.color = color
+	particles.process_material = new_material

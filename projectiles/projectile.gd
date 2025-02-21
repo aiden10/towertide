@@ -30,20 +30,20 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	position += velocity * delta
 
-func spawn_hit_effect(color: Color) -> void:
-	var hit_effect = Scenes.hit_effect_scene.instantiate()
-	get_tree().root.add_child(hit_effect)
-	hit_effect.global_position = position
-	hit_effect.set_color(color)
-
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
+	if parent.is_in_group("Sword") and shooter != "player":
+		direction *= -1
+		shooter = "player"
+		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position)
+		return
+
 	if parent.is_in_group("Enemies") and shooter != "enemy":
-		spawn_hit_effect(Color(255, 255, 255, 100))
+		Utils.spawn_hit_effect(Color(255, 255, 255, 50), position)
 		parent.take_damage(damage, direction)
 		clear()
 		
 	if parent.is_in_group("Player") and shooter != "player":
-		spawn_hit_effect(Color(255, 0, 0, 100))
+		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position)
 		parent.take_damage(damage)
 		clear()

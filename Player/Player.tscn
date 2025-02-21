@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqfbffxeidvhr"]
+[gd_scene load_steps=6 format=3 uid="uid://dqfbffxeidvhr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8lbho"]
 [ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="1_33oy3"]
+[ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="3_glpsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwrfn"]
 radius = 22.0
@@ -26,3 +27,9 @@ texture = ExtResource("1_33oy3")
 shape = SubResource("CircleShape2D_l7xpc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AimIndicator" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(76.4167, -4.76837e-07)
+scale = Vector2(0.154333, 0.0965)
+texture = ExtResource("3_glpsb")

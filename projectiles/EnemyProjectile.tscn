@@ -13,6 +13,7 @@ script = ExtResource("1_koi3p")
 shape = SubResource("CircleShape2D_hptwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(2, 1, 1, 1)
 light_mask = 1023
 position = Vector2(2.68221e-07, -3.57628e-07)
 scale = Vector2(0.137931, 0.137931)

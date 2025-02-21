@@ -13,6 +13,7 @@ var door_spawned = false
 func _ready() -> void:
 	EventBus.arena_spawn.connect(add_to_arena)
 	EventBus.level_exited.connect(start_new_level)
+	EventBus.arena_initialized.emit()
 
 func _process(delta: float) -> void:
 	check_clear_condition()

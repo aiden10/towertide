@@ -22,7 +22,7 @@ func generate_item_cards() -> void:
 	for i in range(item_card_count):
 		var item_card = Scenes.item_card_scene.instantiate()
 		item_container.add_child(item_card)
-		var item: Item = Items.all_items.pick_random()
+		var item: Item = Items.all_items.values().pick_random()
 		item_card.item = item
 		item_card.populate()
 
