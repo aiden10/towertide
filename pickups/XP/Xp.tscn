@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfh6pmvj5aord"]
+[gd_scene load_steps=5 format=3 uid="uid://bfh6pmvj5aord"]
 
 [ext_resource type="Texture2D" uid="uid://d468cmtd10ig" path="res://sprites/xp.png" id="1_1ge04"]
 [ext_resource type="Script" path="res://pickups/xp/xp.gd" id="1_ijt3n"]
@@ -8,14 +8,6 @@ radius = 99.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hsjqc"]
 radius = 13.0384
-
-[sub_resource type="Gradient" id="Gradient_okes6"]
-colors = PackedColorArray(0.391034, 0.00109526, 0.995964, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_286d5"]
-gradient = SubResource("Gradient_okes6")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [node name="Xp" type="Area2D" groups=["Pickups"]]
 script = ExtResource("1_ijt3n")
@@ -29,10 +21,6 @@ shape = SubResource("CircleShape2D_2ps3d")
 shape = SubResource("CircleShape2D_hsjqc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(3, 1, 2.5, 1)
 scale = Vector2(0.178889, 0.178889)
 texture = ExtResource("1_1ge04")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(1.71875, 1.625)
-energy = 1.3
-texture = SubResource("GradientTexture2D_286d5")

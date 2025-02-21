@@ -26,7 +26,3 @@ texture = ExtResource("1_33oy3")
 shape = SubResource("CircleShape2D_l7xpc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-update_rotation = false
-update_scale = false

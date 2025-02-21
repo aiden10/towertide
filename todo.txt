@@ -2,5 +2,5 @@
 Crosshair or some other aiming indicator
 Slightly scale player projectiles with damage
 Item overlay/menu
-Towers
+How towers will be placed
 Add an arrow that points to the door if the player goes away from it

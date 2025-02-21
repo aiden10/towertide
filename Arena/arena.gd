@@ -4,7 +4,6 @@ var spawn_cooldown = 0
 var timer = 0
 
 @onready var player = $Player
-@onready var background: Sprite2D = $Background
 @export var enemy_scenes: Array[PackedScene]
 @export var door_scene: PackedScene
 @export var spawn_radius: float
@@ -14,8 +13,6 @@ var door_spawned = false
 func _ready() -> void:
 	EventBus.arena_spawn.connect(add_to_arena)
 	EventBus.level_exited.connect(start_new_level)
-	var remote = player.get_node("RemoteTransform2D")
-	remote.remote_path = remote.get_path_to(background)
 
 func _process(delta: float) -> void:
 	check_clear_condition()
