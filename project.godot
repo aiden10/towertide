@@ -22,6 +22,12 @@ EventBus="*res://globals/event_bus.gd"
 EnemyConstants="*res://Enemy/enemy_constants.gd"
 GameState="*res://states/game_state.gd"
 Utils="*res://globals/utils.gd"
+Scenes="*res://globals/scenes.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [global_group]
 

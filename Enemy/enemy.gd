@@ -25,6 +25,8 @@ func on_death() -> void:
 		var drop = drops.pick_random().instantiate()
 		drop.position = drop_position
 		EventBus.arena_spawn.emit(drop)
-		
+	
+	GameState.enemies_killed += 1
+	print("Enemies Killed: ", GameState.enemies_killed)
 	queue_free()
 	

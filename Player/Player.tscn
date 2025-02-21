@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player.png" id="1_33oy3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwrfn"]
-radius = 13.0384
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7xpc"]
-radius = 14.0
+radius = 22.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_8lbho")
@@ -16,8 +16,8 @@ script = ExtResource("1_8lbho")
 shape = SubResource("CircleShape2D_jwrfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(0.0299097, 0.0293123)
+position = Vector2(2.38419e-06, -2.86102e-06)
+scale = Vector2(0.0496614, 0.0496054)
 texture = ExtResource("1_33oy3")
 
 [node name="Area2D" type="Area2D" parent="."]

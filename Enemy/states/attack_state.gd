@@ -1,7 +1,6 @@
 extends State
 
 @export var enemy: Enemy
-@export var projectile_scene: PackedScene
 var firerate = 0
 var can_shoot
 var player
@@ -26,7 +25,7 @@ func update(delta: float):
 
 func shoot(player_position: Vector2):
 	if can_shoot:
-		var bullet = projectile_scene.instantiate()
+		var bullet = Scenes.projectile_scene.instantiate()
 		bullet.position = enemy.position
 		bullet.start(player_position, enemy.projectile_speed, enemy.damage, "enemy")
 		EventBus.arena_spawn.emit(bullet)

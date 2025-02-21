@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var projectile_scene: PackedScene
 var firerate_cooldown = PlayerConstants.DEFAULT_FIRERATE
 var firerate = firerate_cooldown
 var can_shoot = true
@@ -29,10 +28,10 @@ func _physics_process(delta):
 	if firerate <= 0:
 		can_shoot = true
 		firerate = firerate_cooldown
-		
+
 func shoot(mouse_position: Vector2):
 	if can_shoot:
-		var bullet = projectile_scene.instantiate()
+		var bullet = Scenes.projectile_scene.instantiate()
 		bullet.position = position
 		bullet.start(mouse_position, PlayerConstants.PROJECTILE_SPEED, damage, "player")
 		EventBus.arena_spawn.emit(bullet)

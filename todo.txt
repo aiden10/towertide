@@ -1,5 +1,3 @@
 
-Door/portal which when entered advances you to the next stage
-    Increments the gamestate.level and will have more difficult enemies spawn
-Shop screen in between levels
 Abilities and items
+Mini map
