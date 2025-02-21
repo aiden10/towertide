@@ -1,5 +1,6 @@
 
-Slightly scale player projectiles with damage
 Item overlay/menu
 How towers will be placed
 Add an arrow that points to the door if the player goes away from it
+More towers
+More items

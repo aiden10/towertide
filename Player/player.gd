@@ -78,7 +78,7 @@ func _on_xp_pickup():
 	PlayerState.xp += 1
 	if PlayerState.xp >= PlayerState.level_up_condition:
 		level_up()
-	
+
 func _on_gold_pickup():
 	PlayerState.gold += 1
 

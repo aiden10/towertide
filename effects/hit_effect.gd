@@ -12,9 +12,10 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	queue_free()
 
-func set_color(color: Color) -> void:
+func set_properties(color: Color, damage: float) -> void:
 	if not is_node_ready():
 		await ready
 	var new_material = particles.process_material.duplicate()
 	new_material.color = color
+	self.scale *= log(damage) / 2
 	particles.process_material = new_material
