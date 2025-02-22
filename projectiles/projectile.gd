@@ -29,7 +29,7 @@ func clear() -> void:
 	GameState.player_projectiles.erase(self)
 	queue_free()
 
-func scale_size(bullet_damage: int) -> void:
+func scale_size(bullet_damage: float) -> void:
 	hitbox.scale *= log(bullet_damage) / 2
 	sprite.scale *= log(bullet_damage) / 2
 

@@ -6,14 +6,18 @@ extends Control
 @onready var clear_condition_label: Label = $CanvasLayer/ClearConditionContainer/PanelContainer/MarginContainer/ClearConditionLabel
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar
+@onready var cross_cost_label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CrossCostLabel
+@onready var key_label1: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/KeyLabel1
 
 ## I either emit a signal each time one of these values changes, or I constantly call _process
 var level_clear = false
 
 func _ready() -> void:
 	EventBus.level_cleared.connect(func(): level_clear = not level_clear)
-
-func _process(delta: float) -> void:
+	cross_cost_label.text = str(Towers.CROSS_COST)
+	key_label1.text = Utils.get_action_key_name("place_tower1")
+	
+func _process(_delta: float) -> void:
 	gold_label.text = str(PlayerState.gold)
 	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_health)
 	kills_label.text = str(PlayerState.enemies_killed)

@@ -1,4 +1,5 @@
-Towers, Items, and Abilities
-Basic skill tree to spend your xp on. Each path will correspond to a different type of playstyle.
-    Paths for each tower archetype, one for abilities + stats + items as a "player" centric path.
-
+4 base kinds of towers:
+    - Sentry: Aims, then shoots
+    - Spray: Just shoots
+    - Spawners: Spawn friendly mobs
+    - Conditional: Towers which don't activate until a certain condition is met

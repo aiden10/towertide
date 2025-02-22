@@ -3,3 +3,10 @@ Bomb item:
 Instead of bullets, you now place bombs where you click
 Bombs auto detonate after a second (represented by a circle closing in)
 If you click on the bomb as the circle closes it does more damage and knockback
+
+Electric item:
+Lighting connects your bullets
+
+Homing item:
+Your bullets automatically move towards enemies
+

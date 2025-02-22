@@ -49,7 +49,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m0uk7"]
-radius = 30.0167
+radius = 79.0569
 
 [node name="CrossTower" type="Area2D"]
 script = ExtResource("1_qcd6w")

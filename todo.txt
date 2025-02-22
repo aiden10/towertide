@@ -1,7 +1,8 @@
 
+Upgrading towers
 Level up stat allocation
-How towers will be placed
-Make item cards scale properly
 Add an arrow that points to the door if the player goes away from it
 More towers
 More items
+More enemies
+Difficulty scaling
