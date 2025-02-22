@@ -8,7 +8,7 @@ func _init() -> void:
 	price = Items.REGEN_PRICE
 	image_path = Items.REGEN_IMAGE_PATH
 	image = load(image_path)
-	PlayerState.regen_cooldown -= 3
+	PlayerState.regen_cooldown -= 5
 
 func use(_delta: float) -> void:
 	pass

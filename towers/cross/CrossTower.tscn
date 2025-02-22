@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d4c2ii4rp81i" path="res://sprites/towers/cross/f8.png" id="8_n651x"]
 [ext_resource type="Texture2D" uid="uid://cbjt7sr5k6dy6" path="res://sprites/towers/cross/f9.png" id="9_p7kx7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcfrt"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtdie"]
+radius = 42.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hsmet"]
 animations = [{
@@ -54,15 +55,15 @@ radius = 79.0569
 [node name="CrossTower" type="Area2D"]
 script = ExtResource("1_qcd6w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_kcfrt")
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rtdie")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(5.68434e-14, -1)
 scale = Vector2(0.202918, 0.202918)
 sprite_frames = SubResource("SpriteFrames_hsmet")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlacementRadius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
 shape = SubResource("CircleShape2D_m0uk7")

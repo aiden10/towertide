@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=14 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="7_f0nbu"]
 [ext_resource type="PackedScene" uid="uid://dv8le20yq355c" path="res://overlay/stat_allocation/StatsAllocation.tscn" id="8_idaox"]
 [ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
+[ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0392157)
@@ -250,3 +251,6 @@ grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(89, 56)
 texture = ExtResource("9_lquxq")
+
+[node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("10_gi2n7")]
+visible = false

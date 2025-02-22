@@ -12,3 +12,5 @@ More enemies
 Have sword scale with its damage
 Optimization (Despawning stuff, enemy limit)
 Sounds/Music
+    Bell chime when extra enemies are spawning
+    

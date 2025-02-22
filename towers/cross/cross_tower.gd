@@ -12,7 +12,8 @@ func _ready() -> void:
 	cooldown = Towers.CROSS_COOLDOWN
 	shot_timer = cooldown
 	damage = PlayerState.damage
-
+	image = Towers.CROSS_IMAGE
+	
 func _process(delta: float) -> void:
 	damage = PlayerState.damage
 	shot_timer -= delta
@@ -48,3 +49,4 @@ func shoot_at_angle(angle: float) -> void:
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
 	bullet.start(target_position, PlayerState.projectile_speed / 2, PlayerState.damage / 2, "player")
 	EventBus.arena_spawn.emit(bullet)
+	

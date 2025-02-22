@@ -87,7 +87,7 @@ func check_door() -> void:
 func process_regen(delta: float) -> void:
 	regen_timer -= delta 
 	if regen_timer <= 0:
-		PlayerState.health += PlayerState.regen
+		PlayerState.health = (PlayerState.health + PlayerState.regen) % PlayerState.max_health
 		regen_timer = PlayerState.regen_cooldown
 
 func _add_item_scene(item_scene: PackedScene) -> void:

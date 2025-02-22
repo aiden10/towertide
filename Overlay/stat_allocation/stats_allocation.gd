@@ -50,11 +50,11 @@ func _ready() -> void:
 	bullet_speed_container.mouse_exited.connect(_bullet_speed_container_exited)
 	pierce_container.mouse_entered.connect(_pierce_container_entered)
 	pierce_container.mouse_exited.connect(_pierce_container_exited)
-	
 	self.visible = false
+	if PlayerState.levels_available > 0:
+		_on_level_up()
 
 func _damage_container_entered() -> void:
-	print("damage container entered")
 	damage_container.modulate = Color8(255, 255, 255, 150)
 func _damage_container_exited() -> void:
 	damage_container.modulate = Color8(255, 255, 255, 255)

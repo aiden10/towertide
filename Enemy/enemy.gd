@@ -13,6 +13,7 @@ var xp_drop_range: int
 var gold_drop_range: float
 var drop_count: int
 var knockback_velocity: Vector2 = Vector2.ZERO
+var died: bool = false
 
 func _physics_process(delta: float) -> void:
 	if knockback_velocity != Vector2.ZERO:
@@ -26,13 +27,14 @@ func reset_modulation() -> void:
 
 func take_damage(damage_taken: float, knockback_direction: Vector2 = Vector2.ZERO) -> void:
 	health -= damage_taken
-	var tween = get_tree().create_tween()
-	tween.tween_property($Sprite, "modulate", Color8(255, 255, 255, 100), 0.02)
-	if health > 0:
-		tween.tween_callback(reset_modulation)
+	var tween = create_tween()
+	tween.tween_property($Sprite, "modulate", Color8(255, 255, 255, 100), 0.1)
 	if health <= 0:
-		tween.tween_property($Sprite, "modulate", Color8(0, 0, 0, 0), 0.01)
-		tween.tween_callback(on_death)
+		if not died:
+			tween.finished.connect(on_death)
+			died = true
+	else:
+		tween.tween_callback(reset_modulation)
 
 	if knockback_direction != Vector2.ZERO:
 		knockback_velocity = knockback_direction * PlayerState.knockback

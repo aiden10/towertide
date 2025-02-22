@@ -24,6 +24,13 @@ func _ready() -> void:
 	EventBus.level_exited.connect(start_new_level)
 	EventBus.arena_initialized.emit()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if GameState.selected_tower:
+				GameState.selected_tower.deselect_tower()
+				GameState.selected_tower = null
+
 func _process(delta: float) -> void:
 	check_clear_condition()
 	if level_cleared:

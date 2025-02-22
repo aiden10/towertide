@@ -15,3 +15,5 @@ signal tower1_deselected
 signal door_visible
 signal door_not_visible
 signal update_spawning_bar(time, enemies_to_spawn, time_scale)
+signal tower_selected
+signal tower_deselected
