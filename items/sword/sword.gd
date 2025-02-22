@@ -6,7 +6,7 @@ var added = false
 var player
 
 func _init() -> void:
-	EventBus.arena_initialized.connect(func(): added = false)
+	EventBus.arena_initialized.connect(func(): added = false; PlayerState.swords_added = 0)
 	item_name = Items.SWORD_NAME
 	description = Items.SWORD_DESCRIPTION
 	price = Items.SWORD_PRICE
