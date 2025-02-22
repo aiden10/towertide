@@ -9,6 +9,7 @@ extends Control
 @onready var cross_cost_label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CrossCostLabel
 @onready var key_label1: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/KeyLabel1
 @onready var tower1_image: TextureRect = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/Tower1Image
+@onready var arrow: TextureRect = $CanvasLayer/Arrow
 
 ## I either emit a signal each time one of these values changes, or I constantly call _process
 var level_clear = false
@@ -17,6 +18,8 @@ func _ready() -> void:
 	EventBus.level_cleared.connect(func(): level_clear = not level_clear)
 	EventBus.tower1_selected.connect(func():tower1_image.modulate = Color8(255, 255, 255, 50))
 	EventBus.tower1_deselected.connect(func():tower1_image.modulate = Color8(255, 255, 255, 150))
+	EventBus.door_visible.connect(func(): arrow.visible = true)
+	EventBus.door_not_visible.connect(func(): arrow.visible = false)
 	cross_cost_label.text = str(Towers.CROSS_COST)
 	key_label1.text = Utils.get_action_key_name("place_tower1")
 	
@@ -31,3 +34,6 @@ func _process(_delta: float) -> void:
 		clear_condition_label.text = "Kill " + str(GameState.clear_condition) + " enemies to proceed"
 	else:
 		clear_condition_label.text = "Enter the door to proceed to the shop"
+	var direction = GameState.door_position - GameState.player_position
+	var angle = atan2(direction.y, direction.x)
+	arrow.rotation_degrees = rad_to_deg(angle) + 180

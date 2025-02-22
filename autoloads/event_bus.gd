@@ -12,3 +12,5 @@ signal arena_spawn(child)
 signal add_item_scene(item_scene)
 signal tower1_selected
 signal tower1_deselected
+signal door_visible
+signal door_not_visible

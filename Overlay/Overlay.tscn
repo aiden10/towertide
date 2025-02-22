@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=13 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://overlay/items_container.gd" id="6_bwdxj"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="7_f0nbu"]
 [ext_resource type="PackedScene" uid="uid://dv8le20yq355c" path="res://overlay/stat_allocation/StatsAllocation.tscn" id="8_idaox"]
+[ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0392157)
@@ -229,3 +230,17 @@ label_settings = SubResource("LabelSettings_u4jm4")
 horizontal_alignment = 1
 
 [node name="StatsAllocation" parent="CanvasLayer" instance=ExtResource("8_idaox")]
+
+[node name="Arrow" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -930.0
+offset_top = 114.0
+offset_right = -757.0
+offset_bottom = 227.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(89, 56)
+texture = ExtResource("9_lquxq")

@@ -45,6 +45,7 @@ func add_to_arena(child: Node) -> void:
 
 func start_new_level() -> void:
 	GameState.stage += 1
+	GameState.door_position = Vector2.ZERO
 	PlayerState.health = PlayerState.max_health
 	PlayerState.enemies_killed = 0
 	GameState.clear_condition = GameState.stage * 100

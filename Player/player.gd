@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var aim_indicator: Sprite2D = $AimIndicator
 @onready var tower_placement_indicator: Sprite2D = $TowerPlacementIndicator
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
+@onready var camera: Camera2D = $Camera2D
 
 var shot_timer = PlayerState.firerate
 var can_shoot = true
@@ -63,6 +64,9 @@ func get_input():
 				placing_tower = true
 
 func _process(delta: float) -> void:
+	GameState.player_position = global_position
+	process_regen(delta)
+	check_door()
 	if placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
 		if valid_placement:
@@ -71,6 +75,14 @@ func _process(delta: float) -> void:
 			tower_placement_indicator.modulate = Color8(510, 0, 0, 75)
 	for item in PlayerState.player_items:
 		item.use(delta)
+
+func check_door() -> void:
+	if GameState.door_position != Vector2.ZERO:
+		var viewport_rect = Rect2(camera.global_position - (get_viewport_rect().size / 2), get_viewport_rect().size)
+		if not viewport_rect.has_point(GameState.door_position):
+			EventBus.door_visible.emit()
+		else:
+			EventBus.door_not_visible.emit()
 
 func process_regen(delta: float) -> void:
 	regen_timer -= delta 
