@@ -8,6 +8,7 @@ var timer = 0
 @export var door_scene: PackedScene
 @export var spawn_radius: float
 @export var door_spawn_radius: float
+@export var min_spawn_time: float = 0.1
 var door_spawned = false
 
 func _ready() -> void:
@@ -18,20 +19,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	check_clear_condition()
 	if timer <= 0:
-		if PlayerState.level >= 1:
+		if GameState.stage >= 1:
 			var enemy_scene = enemy_scenes.pick_random()
 			var enemy_position = Utils.get_random_position_in_radius(player.position, spawn_radius)
 			var enemy = enemy_scene.instantiate()
 			enemy.position = enemy_position
 			add_child(enemy)
 			
-			spawn_cooldown = randf_range(1, 3)
+			spawn_cooldown = max(min_spawn_time, randf_range(1, 3) - GameState.stage / 10)
 			timer = spawn_cooldown
 
 	timer -= delta
 
 func check_clear_condition() -> void:
-	if PlayerState.enemies_killed >= PlayerState.clear_condition and not door_spawned:
+	if PlayerState.enemies_killed >= GameState.clear_condition and not door_spawned:
 		EventBus.level_cleared.emit()
 		door_spawned = true
 		var door = door_scene.instantiate()
@@ -43,8 +44,8 @@ func add_to_arena(child: Node) -> void:
 	call_deferred("add_child", child)
 
 func start_new_level() -> void:
-	PlayerState.level += 1
+	GameState.stage += 1
 	PlayerState.health = PlayerState.max_health
 	PlayerState.enemies_killed = 0
-	PlayerState.clear_condition = PlayerState.level * 100
+	GameState.clear_condition = GameState.stage * 100
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)	

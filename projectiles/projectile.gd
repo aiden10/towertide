@@ -6,6 +6,7 @@ var speed: int
 var shooter: String
 var damage: float
 var lifetime: float = 4.0
+var pierce: int = 0
 
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var sprite: Sprite2D = $Sprite2D
@@ -24,14 +25,21 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 	var tween = create_tween()
 	tween.tween_interval(lifetime)
 	tween.tween_callback(clear)
+	
+	if origin == "player":
+		pierce = PlayerState.pierce
 
 func clear() -> void:
 	GameState.player_projectiles.erase(self)
 	queue_free()
 
 func scale_size(bullet_damage: float) -> void:
-	hitbox.scale *= log(bullet_damage) / 2
-	sprite.scale *= log(bullet_damage) / 2
+	var player_scale: float = 0
+	if shooter == "player":
+		player_scale = PlayerState.bullet_size
+		
+	hitbox.scale *= (log(bullet_damage) / 2) + player_scale
+	sprite.scale *= (log(bullet_damage) / 2) + player_scale
 
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
@@ -48,8 +56,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if parent.is_in_group("Enemies") and shooter != "enemy":
 		Utils.spawn_hit_effect(Color(255, 255, 255, 50), position, damage)
 		parent.take_damage(damage, direction)
-		clear()
-		
+		pierce -= 1
+		if pierce <= 0:
+			clear()
+
 	if parent.is_in_group("Player") and shooter != "player":
 		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 		parent.take_damage(damage)

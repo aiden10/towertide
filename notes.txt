@@ -3,3 +3,14 @@
     - Spray: Just shoots
     - Spawners: Spawn friendly mobs
     - Conditional: Towers which don't activate until a certain condition is met
+
+Stats:
+    Health Regeneration
+    Speed
+    Damage
+    Pierce
+    Bullet Speed
+    Bullet Size
+    Max Health
+    Knockback
+    Firerate

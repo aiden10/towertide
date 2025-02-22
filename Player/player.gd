@@ -10,7 +10,7 @@ var placing_tower = false
 var tower_type = 0
 var valid_placement = true
 var overlapping_areas: Array[Area2D] = []
-
+var regen_timer = PlayerState.regen_cooldown
 signal clicked
 
 func _ready() -> void:
@@ -37,37 +37,47 @@ func get_input():
 				var new_tower = Scenes.cross_tower_scene.instantiate()
 				new_tower.global_position = get_global_mouse_position()
 				EventBus.arena_spawn.emit(new_tower)
-			
+
 			placing_tower = false
 			tower_type = 0
 			aim_indicator.visible = true
 			tower_placement_indicator.visible = false
+			EventBus.tower1_deselected.emit()
+
 		else:
 			clicked.emit(get_global_mouse_position())
-			
+
 	if Input.is_action_just_pressed("place_tower1"):
 		if PlayerState.gold >= Towers.CROSS_COST:
 			if placing_tower:
+				EventBus.tower1_deselected.emit()
 				tower_type = 0
 				aim_indicator.visible = true
 				tower_placement_indicator.visible = false
 				placing_tower = false
 			else:
+				EventBus.tower1_selected.emit()
 				tower_type = 1
 				tower_placement_indicator.visible = true
 				aim_indicator.visible = false
 				placing_tower = true
-				
+
 func _process(delta: float) -> void:
 	if placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
 		if valid_placement:
-			tower_placement_indicator.modulate = Color8(0, 510, 0, 100)
+			tower_placement_indicator.modulate = Color8(0, 510, 0, 75)
 		else:
-			tower_placement_indicator.modulate = Color8(510, 0, 0, 100)
+			tower_placement_indicator.modulate = Color8(510, 0, 0, 75)
 	for item in PlayerState.player_items:
 		item.use(delta)
-		
+
+func process_regen(delta: float) -> void:
+	regen_timer -= delta 
+	if regen_timer <= 0:
+		PlayerState.health += PlayerState.regen
+		regen_timer = PlayerState.regen_cooldown
+
 func _add_item_scene(item_scene: PackedScene) -> void:
 	if item_scene == Scenes.sword_scene:
 		var sword_rotation = 0
@@ -105,7 +115,7 @@ func _update_placement_validity() -> void:
 	for area in overlapping_areas:
 		var parent = area.get_parent()
 		# If we find any invalid area, mark as invalid and break
-		if not parent.is_in_group("Pickups") and not area.is_in_group("Projectiles"):
+		if not parent.is_in_group("Pickups") and not parent.is_in_group("Sword") and not area.is_in_group("Projectiles"):
 			valid_placement = false
 			break
 
@@ -135,11 +145,11 @@ func take_damage(damage_taken: float):
 
 func level_up():
 	PlayerState.level += 1
+	PlayerState.levels_available += 1
 	PlayerState.xp = 0
-	PlayerState.max_health += PlayerState.level * 10
-	PlayerState.damage += PlayerState.level
 	PlayerState.level_up_condition = PlayerConstants.BASE_XP * (PlayerConstants.LEVEL_MULTIPLIER ** PlayerState.level)
-
+	EventBus.level_up.emit()
+	
 func _on_xp_pickup():
 	PlayerState.xp += 1
 	if PlayerState.xp >= PlayerState.level_up_condition:

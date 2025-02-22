@@ -1,0 +1,248 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv8le20yq355c"]
+
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_0si0m"]
+[ext_resource type="Script" path="res://overlay/stat_allocation/stats_allocation.gd" id="2_55o8y"]
+[ext_resource type="Texture2D" uid="uid://c4mkmhs8fqxpb" path="res://sprites/overlay/button.png" id="2_r7akf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfco8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0980392)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 30.0
+expand_margin_top = 10.0
+expand_margin_right = 30.0
+expand_margin_bottom = 10.0
+
+[node name="StatsAllocation" type="MarginContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -580.0
+offset_right = 434.0
+offset_bottom = 124.0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+theme = ExtResource("1_0si0m")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 25
+script = ExtResource("2_55o8y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="LevelUpLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level Up"
+horizontal_alignment = 1
+
+[node name="DamageContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DamageContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="DamageLabel" type="Label" parent="VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Damage"
+
+[node name="DamageButton" type="TextureButton" parent="VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="RegenContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/RegenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RegenContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RegenLabel" type="Label" parent="VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Health Regeneration"
+
+[node name="RegenButton" type="TextureButton" parent="VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="SpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/SpeedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SpeedContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="SpeedLabel" type="Label" parent="VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Speed"
+
+[node name="SpeedButton" type="TextureButton" parent="VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="KnockbackContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/KnockbackContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/KnockbackContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="KnockabackLabel" type="Label" parent="VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Knockback"
+
+[node name="KnockbackButton" type="TextureButton" parent="VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="AttackSpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/AttackSpeedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AttackSpeedContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="AttackSpeedLabel" type="Label" parent="VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Attack Speed"
+
+[node name="ATKSpeedButton" type="TextureButton" parent="VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="MaxHealthContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MaxHealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MaxHealthContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="MaxHealthLabel" type="Label" parent="VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Max Health"
+
+[node name="MaxHealthButton" type="TextureButton" parent="VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="BulletSpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BulletSpeedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BulletSpeedContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BulletSpeedLabel" type="Label" parent="VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Bullet Speed"
+
+[node name="BulletSpeedButton" type="TextureButton" parent="VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="BulletSizeContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BulletSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BulletSizeContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BulletSizeLabel" type="Label" parent="VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Bullet Size"
+
+[node name="BulletSizeButton" type="TextureButton" parent="VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")
+
+[node name="PierceContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PierceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PierceContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="PierceLabel" type="Label" parent="VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Pierce"
+
+[node name="PierceButton" type="TextureButton" parent="VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_r7akf")

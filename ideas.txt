@@ -10,3 +10,6 @@ Lighting connects your bullets
 Homing item:
 Your bullets automatically move towards enemies
 
+Ricochet:
+Your bullets bounce when hitting an enemy
+

@@ -1,8 +1,13 @@
 
-Upgrading towers
-Level up stat allocation
 Add an arrow that points to the door if the player goes away from it
+Start a five second timer when bullets go offscreen, after the timer, despawn it
+Upgrading towers
+    Right click on a tower to select it
+    When you select a tower, an upgrade menu will appear on the right side similar to bloons
+    Selecting an upgrade will upgrade the tower and close the menu
+
 More towers
 More items
 More enemies
 Difficulty scaling
+Have sword scale with its damage

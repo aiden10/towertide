@@ -11,9 +11,10 @@ func _ready() -> void:
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN
 	shot_timer = cooldown
-	damage = Towers.CROSS_DAMAGE
+	damage = PlayerState.damage
 
 func _process(delta: float) -> void:
+	damage = PlayerState.damage
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown
@@ -45,5 +46,5 @@ func shoot_at_angle(angle: float) -> void:
 	
 	# Calculate target position using angle
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed, PlayerState.damage, "player")
+	bullet.start(target_position, PlayerState.projectile_speed / 2, PlayerState.damage / 2, "player")
 	EventBus.arena_spawn.emit(bullet)
