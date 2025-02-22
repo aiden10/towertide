@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://onunwggusljt"]
 
-[ext_resource type="Script" path="res://enemies/Basic/basic_enemy.gd" id="1_ksc35"]
+[ext_resource type="Script" path="res://enemies/stage1/basic_enemy.gd" id="1_ksc35"]
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4kpff"]
 [ext_resource type="Script" path="res://enemy/states/state_machine.gd" id="2_p373m"]
 [ext_resource type="Script" path="res://enemy/states/attack_state.gd" id="3_4v1vq"]
@@ -17,7 +17,7 @@ script = ExtResource("1_ksc35")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oooac")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4kpff")

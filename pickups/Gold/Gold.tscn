@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_mj0yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwn5o"]
-radius = 88.1419
+radius = 142.088
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2tu"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_s5mvx")
 shape = SubResource("CircleShape2D_dwn5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 2, 1.5, 1)
+modulate = Color(1, 1.63529, 1.98039, 1)
 position = Vector2(0, -2.98023e-07)
 scale = Vector2(0.38848, 0.4)
 texture = ExtResource("2_mj0yo")

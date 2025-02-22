@@ -1,7 +1,8 @@
 extends Control
 
 @onready var next_level_button: Button = $CanvasLayer/LevelContainer/NextLevelButton
-@onready var reroll_button: Button = $CanvasLayer/RerollContainer/RerollButton
+@onready var reroll_button: Button = $CanvasLayer/RerollContainer/VBoxContainer/RerollButton
+@onready var reroll_label: Label = $CanvasLayer/RerollContainer/VBoxContainer/HBoxContainer/RerollLabel
 @onready var gold_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/GoldLabel
 @onready var health_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
 @onready var item_container: HBoxContainer = $CanvasLayer/ItemContainer
@@ -11,6 +12,7 @@ extends Control
 func _ready() -> void:
 	next_level_button.pressed.connect(_next_level)
 	reroll_button.pressed.connect(_reroll)
+	reroll_label.text = str(reroll_cost) + " Gold"
 	EventBus.purchased.connect(_update_overlay)
 	generate_item_cards()
 	_update_overlay()

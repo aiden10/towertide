@@ -3,7 +3,7 @@ extends Pickup
 @onready var pickup_area: Area2D = $PickupArea
 
 func _ready() -> void:
-	speed = 150
+	speed = PlayerState.speed * 1.1 ## Always 10% faster
 	type = PickupType.GOLD
 	pickup_distance = 25
 	area_entered.connect(_on_area_entered)

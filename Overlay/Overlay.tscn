@@ -112,19 +112,25 @@ theme = ExtResource("1_84vjy")
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ClearConditionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ClearConditionContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ClearConditionContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
-
-[node name="ClearConditionLabel" type="Label" parent="CanvasLayer/ClearConditionContainer/PanelContainer/MarginContainer"]
+[node name="ClearConditionLabel" type="Label" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+text = "Placeholder"
+
+[node name="SpawnBar" type="ProgressBar" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(250, 1)
+layout_mode = 2
+show_percentage = false
+
+[node name="SpawningLabel" type="Label" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Spawning x extra enemies"
 
 [node name="XPContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7

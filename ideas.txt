@@ -13,3 +13,12 @@ Your bullets automatically move towards enemies
 Ricochet:
 Your bullets bounce when hitting an enemy
 
+Status effect items:
+Burn, Freeze, Charm, Poison
+
+A lot of binding of isaac items can be copied
+
+"Hollow" Enemies:
+Square enemies that are literally hollow, and inside will show the icon of some item.
+These enemies will also use the item that they have. Will probably make enemies and player inherit from entity class
+

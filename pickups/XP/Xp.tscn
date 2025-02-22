@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://pickups/xp/xp.gd" id="1_ijt3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ps3d"]
-radius = 99.0
+radius = 259.017
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hsjqc"]
 radius = 13.0384

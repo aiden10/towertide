@@ -127,7 +127,7 @@ func _update_placement_validity() -> void:
 	for area in overlapping_areas:
 		var parent = area.get_parent()
 		# If we find any invalid area, mark as invalid and break
-		if not parent.is_in_group("Pickups") and not parent.is_in_group("Sword") and not area.is_in_group("Projectiles"):
+		if not area.is_in_group("Pickups") and not parent.is_in_group("Pickups") and not parent.is_in_group("Sword") and not area.is_in_group("Projectiles"):
 			valid_placement = false
 			break
 
@@ -152,7 +152,7 @@ func shoot(mouse_position: Vector2):
 		EventBus.arena_spawn.emit(bullet)
 		can_shoot = false
 
-func take_damage(damage_taken: float):
+func take_damage(damage_taken: int):
 	PlayerState.health -= damage_taken
 
 func level_up():

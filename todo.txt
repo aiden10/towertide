@@ -3,10 +3,12 @@ Upgrading towers
     Right click on a tower to select it
     When you select a tower, an upgrade menu will appear on the right side similar to bloons
     Selecting an upgrade will upgrade the tower and close the menu
+    Upgrade card needs to show: cost, name, and image of the new tower
 
 Fix item card scaling
 More towers
 More items
 More enemies
-Difficulty scaling
 Have sword scale with its damage
+Optimization (Despawning stuff, enemy limit)
+Sounds/Music

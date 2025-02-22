@@ -6,7 +6,7 @@ func _ready() -> void:
 	speed = 100
 	projectile_speed = 300
 	firerate_cooldown = 1.5
-	distance_threshold = 200
+	distance_threshold = randi_range(200, 500)
 	gold_drop_range = 15
 	xp_drop_range = 50
 	gold_drop_count = 1

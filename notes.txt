@@ -4,6 +4,11 @@
     - Spawners: Spawn friendly mobs
     - Conditional: Towers which don't activate until a certain condition is met
 
+Tower defense, but you are the gem/core
+What does skill look like in this game?
+Dodging: able to live longer
+Decision making: knowing what stats to level up depending on what items you have, and knowing what items to buy
+
 Stats:
     Health Regeneration
     Speed

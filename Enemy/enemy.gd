@@ -21,15 +21,24 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func reset_modulation() -> void:
+	$Sprite.modulate = Color8(255, 255, 255, 255)
+
 func take_damage(damage_taken: float, knockback_direction: Vector2 = Vector2.ZERO) -> void:
 	health -= damage_taken
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprite, "modulate", Color8(255, 255, 255, 100), 0.02)
+	if health > 0:
+		tween.tween_callback(reset_modulation)
 	if health <= 0:
-		on_death()
-	
+		tween.tween_property($Sprite, "modulate", Color8(0, 0, 0, 0), 0.01)
+		tween.tween_callback(on_death)
+
 	if knockback_direction != Vector2.ZERO:
 		knockback_velocity = knockback_direction * PlayerState.knockback
-		
+
 func on_death() -> void:
+	Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 	for i in range(gold_drop_count):
 		var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
 		var gold = Scenes.gold_scene.instantiate()
