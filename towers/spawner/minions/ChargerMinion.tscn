@@ -42,7 +42,6 @@ animations = [{
 }]
 
 [node name="ChargerMinion" type="CharacterBody2D" groups=["Minions"]]
-collision_layer = 2
 script = ExtResource("1_qr6fo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

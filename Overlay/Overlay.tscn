@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=17 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://coebofe0kgav3" path="res://sprites/towers/spawner/spawner.png" id="9_8fvnr"]
 [ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
+[ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0392157)
@@ -53,7 +54,7 @@ script = ExtResource("1_r8lhj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatsContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="StatusContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -64,47 +65,47 @@ theme = ExtResource("1_84vjy")
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatsContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatusContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3djtx")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StatsContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StatusContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("3_84jj3")
 expand_mode = 5
 
-[node name="GoldLabel" type="Label" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GoldLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("3_jm3kv")
 expand_mode = 4
 
-[node name="KillsLabel" type="Label" parent="CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="KillsLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
@@ -316,8 +317,6 @@ text = "1"
 label_settings = SubResource("LabelSettings_u4jm4")
 horizontal_alignment = 1
 
-[node name="StatsAllocation" parent="CanvasLayer" instance=ExtResource("8_idaox")]
-
 [node name="Arrow" type="TextureRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 5
@@ -334,3 +333,15 @@ texture = ExtResource("9_lquxq")
 
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("10_gi2n7")]
 visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_h6ufc")
+
+[node name="StatsAllocation" parent="CanvasLayer" instance=ExtResource("8_idaox")]
+process_mode = 3

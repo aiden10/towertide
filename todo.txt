@@ -1,4 +1,5 @@
 
+HP goes over player
 Last base tower
 Tower upgrades/more towers
 More items

@@ -10,5 +10,6 @@ func _process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown
-		spawn_minions(spawn_amount, Towers.CHARGER_MIN_WANDER)
+		if (get_child_count() - 4) < Towers.SPAWNER_LIMIT:
+			spawn_minions(spawn_amount, Towers.CHARGER_MIN_WANDER)
 		

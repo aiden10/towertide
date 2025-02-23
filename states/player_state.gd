@@ -2,8 +2,8 @@ extends Node
 
 ## Stats
 var level: int = 1
-var gold: int = 500
-var xp: int = 1
+var gold: int = 100
+var xp: int = 0
 var damage: int = 10
 var speed: float = 300
 var health: int = 100

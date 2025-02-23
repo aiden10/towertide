@@ -1,8 +1,8 @@
 extends Control
 
-@onready var gold_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/GoldLabel
-@onready var health_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
-@onready var kills_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/KillsLabel
+@onready var gold_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/GoldLabel
+@onready var health_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
+@onready var kills_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/KillsLabel
 @onready var clear_condition_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/ClearConditionLabel
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar

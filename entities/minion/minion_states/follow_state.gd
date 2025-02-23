@@ -3,15 +3,8 @@ extends State
 var minion_attack_range: Area2D
 var destination: Vector2
 var direction: Vector2
-var despawn_timer: Timer
 
 func enter() -> void:
-	despawn_timer = Timer.new()
-	add_child(despawn_timer)
-	despawn_timer.wait_time = Towers.CHARGER_LIFETIME
-	despawn_timer.one_shot = true
-	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
-	
 	minion.speed *= 10 ## Increase speed when enemy detected
 	minion_attack_range = get_attack_range()
 	minion_attack_range.area_entered.connect(detected)
@@ -27,9 +20,7 @@ func on_death() -> void:
 			minion.modulate = Color8(510, 255, 255, 255)
 			Utils.spawn_hit_effect(Color8(255, 255, 255, 255), minion.global_position, PlayerState.damage * minion.damage)
 			minion.queue_free()
-
-func _on_despawn_timer_timeout() -> void:
-	on_death()
+			EventBus.minion_died.emit()
 
 func detected(area: Area2D) -> void:
 	var parent = area.get_parent()

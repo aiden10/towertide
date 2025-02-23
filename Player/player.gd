@@ -26,7 +26,7 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerConstants.DEFAULT_PLAYER_SPEED
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_pressed("click"):
 		if not placing_tower:
 			clicked.emit(get_global_mouse_position())
 		

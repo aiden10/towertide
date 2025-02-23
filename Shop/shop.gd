@@ -7,9 +7,11 @@ extends Control
 @onready var health_label: Label = $CanvasLayer/StatsContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
 @onready var item_container: HBoxContainer = $CanvasLayer/ItemContainer
 @export var item_card_count: int = 3
-@export var reroll_cost: int = 5
+var reroll_cost: int
 
 func _ready() -> void:
+	## Cost a third of your gold to reroll
+	reroll_cost = max(5, PlayerState.gold * 0.33)
 	next_level_button.pressed.connect(_next_level)
 	reroll_button.pressed.connect(_reroll)
 	reroll_label.text = str(reroll_cost)

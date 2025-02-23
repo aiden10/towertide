@@ -1,6 +1,7 @@
 extends Node
 
-signal collided(collider)
+signal pause_game
+signal unpause_game
 
 signal level_exited
 signal level_cleared
@@ -32,3 +33,5 @@ signal tower3_selected
 signal tower3_deselected
 signal tower4_selected
 signal tower4_deselected
+
+signal minion_died

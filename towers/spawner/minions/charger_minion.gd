@@ -7,5 +7,5 @@ func _ready() -> void:
 	speed = Towers.CHARGER_SPEED
 	min_wander = Towers.CHARGER_MIN_WANDER
 	wander_distance = Towers.CHARGER_WANDER_DIST
-	sprite.scale *= log(((PlayerState.damage) / 2) + PlayerState.bullet_size)
+	scale *= max(0.6, log(PlayerState.bullet_size))
 	sprite.play()

@@ -22,6 +22,8 @@ var enemies_to_spawn = 1
 func _ready() -> void:
 	EventBus.arena_spawn.connect(add_to_arena)
 	EventBus.level_exited.connect(start_new_level)
+	EventBus.pause_game.connect(func(): get_tree().paused = true)
+	EventBus.unpause_game.connect(func(): get_tree().paused = false)
 	EventBus.arena_initialized.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 		if time_since_clear >= extra_spawn_time_scale:
 			enemies_to_spawn += 1
 			time_since_clear = 0
-		
+
 	if timer <= 0:
 		for i in range(enemies_to_spawn):
 			spawn_enemy()

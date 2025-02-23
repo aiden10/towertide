@@ -39,12 +39,14 @@ func clear() -> void:
 	queue_free()
 
 func scale_size(bullet_damage: float) -> void:
-	var player_scale: float = 0
+	var extra_scale: float = 0
 	if shooter == "player":
-		player_scale = PlayerState.bullet_size
-
-	scale *= log(bullet_damage / 2) + player_scale
-
+		extra_scale = PlayerState.bullet_size
+	elif shooter == "enemy":
+		extra_scale = -0.5
+		
+	scale *= max(1, log(bullet_damage / 5) + extra_scale)
+	
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	position += velocity * delta

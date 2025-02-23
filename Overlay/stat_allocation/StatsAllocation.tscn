@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv8le20yq355c"]
+[gd_scene load_steps=7 format=3 uid="uid://dv8le20yq355c"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_0si0m"]
 [ext_resource type="Script" path="res://overlay/stat_allocation/stats_allocation.gd" id="2_55o8y"]
 [ext_resource type="Texture2D" uid="uid://c4mkmhs8fqxpb" path="res://sprites/overlay/button.png" id="2_r7akf"]
+[ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/overlay/heart.png" id="4_n2cel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfco8"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0980392)
@@ -15,234 +16,429 @@ expand_margin_top = 10.0
 expand_margin_right = 30.0
 expand_margin_bottom = 10.0
 
-[node name="StatsAllocation" type="MarginContainer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -580.0
-offset_right = 434.0
-offset_bottom = 124.0
-grow_vertical = 0
-scale = Vector2(0.75, 0.75)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f43xa"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 0.588235)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 25.0
+expand_margin_top = 10.0
+expand_margin_right = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.5
+offset_top = -352.0
+offset_right = 445.5
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+script = ExtResource("2_55o8y")
+
+[node name="StatsAllocation" type="MarginContainer" parent="."]
+layout_mode = 2
 theme = ExtResource("1_0si0m")
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_bottom = 25
-script = ExtResource("2_55o8y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsAllocation"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="LevelUpLabel" type="Label" parent="VBoxContainer"]
+[node name="LevelUpLabel" type="Label" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level Up"
 horizontal_alignment = 1
 
-[node name="DamageContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="DamageContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DamageContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/DamageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DamageContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/DamageContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="DamageLabel" type="Label" parent="VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
+[node name="DamageLabel" type="Label" parent="StatsAllocation/VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Damage"
 
-[node name="DamageButton" type="TextureButton" parent="VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
+[node name="DamageButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/DamageContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="RegenContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="RegenContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/RegenContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/RegenContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RegenContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/RegenContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="RegenLabel" type="Label" parent="VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
+[node name="RegenLabel" type="Label" parent="StatsAllocation/VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
-text = "Health Regeneration"
+text = "Regeneration"
 
-[node name="RegenButton" type="TextureButton" parent="VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
+[node name="RegenButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/RegenContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="SpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SpeedContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/SpeedContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/SpeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SpeedContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/SpeedContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="SpeedLabel" type="Label" parent="VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
+[node name="SpeedLabel" type="Label" parent="StatsAllocation/VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Speed"
 
-[node name="SpeedButton" type="TextureButton" parent="VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
+[node name="SpeedButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/SpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="KnockbackContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="KnockbackContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/KnockbackContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/KnockbackContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/KnockbackContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/KnockbackContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="KnockabackLabel" type="Label" parent="VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
+[node name="KnockabackLabel" type="Label" parent="StatsAllocation/VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Knockback"
 
-[node name="KnockbackButton" type="TextureButton" parent="VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
+[node name="KnockbackButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/KnockbackContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="AttackSpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AttackSpeedContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/AttackSpeedContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/AttackSpeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AttackSpeedContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/AttackSpeedContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="AttackSpeedLabel" type="Label" parent="VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
+[node name="AttackSpeedLabel" type="Label" parent="StatsAllocation/VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
-text = "Attack Speed"
+text = "Firerate"
 
-[node name="ATKSpeedButton" type="TextureButton" parent="VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
+[node name="ATKSpeedButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/AttackSpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="MaxHealthContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MaxHealthContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MaxHealthContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/MaxHealthContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MaxHealthContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/MaxHealthContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="MaxHealthLabel" type="Label" parent="VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
+[node name="MaxHealthLabel" type="Label" parent="StatsAllocation/VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Max Health"
 
-[node name="MaxHealthButton" type="TextureButton" parent="VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
+[node name="MaxHealthButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/MaxHealthContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="BulletSpeedContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="BulletSpeedContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BulletSpeedContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/BulletSpeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BulletSpeedContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/BulletSpeedContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="BulletSpeedLabel" type="Label" parent="VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
+[node name="BulletSpeedLabel" type="Label" parent="StatsAllocation/VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Bullet Speed"
 
-[node name="BulletSpeedButton" type="TextureButton" parent="VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
+[node name="BulletSpeedButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/BulletSpeedContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="BulletSizeContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="BulletSizeContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/BulletSizeContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/BulletSizeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BulletSizeContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/BulletSizeContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="BulletSizeLabel" type="Label" parent="VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
+[node name="BulletSizeLabel" type="Label" parent="StatsAllocation/VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Bullet Size"
 
-[node name="BulletSizeButton" type="TextureButton" parent="VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
+[node name="BulletSizeButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/BulletSizeContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
 
-[node name="PierceContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="PierceContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PierceContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StatsAllocation/VBoxContainer/PierceContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfco8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PierceContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsAllocation/VBoxContainer/PierceContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="PierceLabel" type="Label" parent="VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
+[node name="PierceLabel" type="Label" parent="StatsAllocation/VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 text = "Pierce"
 
-[node name="PierceButton" type="TextureButton" parent="VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
+[node name="PierceButton" type="TextureButton" parent="StatsAllocation/VBoxContainer/PierceContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_r7akf")
+
+[node name="StatsDisplay" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_0si0m")
+
+[node name="PanelContainer" type="PanelContainer" parent="StatsDisplay"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f43xa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsDisplay/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="LevelLabel" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 0"
+horizontal_alignment = 1
+
+[node name="Damage" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DamageIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Damage"
+
+[node name="DamageQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Regen" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RegenIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Regeneration"
+
+[node name="RegenQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Speed" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SpeedIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Speed"
+
+[node name="SpeedQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Knockback" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="KnockbackIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Knockback"
+
+[node name="KnockbackQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="ATKSpeed" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ATKSpeedIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Firerate"
+
+[node name="ATKSpeedQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="MaxHP" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MaxHPIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Max Health"
+
+[node name="MaxHPQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="BulletSize" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BulletSizeIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Bullet Size"
+
+[node name="BulletSizeQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Pierce" type="HBoxContainer" parent="StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PierceIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+texture = ExtResource("4_n2cel")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Pierce"
+
+[node name="PierceQuantity" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
