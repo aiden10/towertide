@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
 @onready var camera: Camera2D = $Camera2D
 
+var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
 var can_shoot = true
 var placing_tower = false
@@ -33,16 +34,20 @@ func get_input():
 		if placing_tower:
 			if not valid_placement:
 				return
+				
+			var new_tower: Tower
 			if tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
-				var new_tower = Scenes.cross_tower_scene.instantiate()
-				new_tower.global_position = get_global_mouse_position()
-				EventBus.arena_spawn.emit(new_tower)
+				new_tower = Scenes.cross_tower_scene.instantiate()
 			elif tower_type == 2:
 				PlayerState.gold -= Towers.SENTRY_COST
-				var new_tower = Scenes.sentry_tower_scene.instantiate()
-				new_tower.global_position = get_global_mouse_position()
-				EventBus.arena_spawn.emit(new_tower)
+				new_tower = Scenes.sentry_tower_scene.instantiate()
+			elif tower_type == 3:
+				PlayerState.gold -= Towers.SPAWNER_COST
+				new_tower = Scenes.spawner_tower_scene.instantiate()
+			
+			new_tower.global_position = get_global_mouse_position()
+			EventBus.arena_spawn.emit(new_tower)
 
 			placing_tower = false
 			tower_type = 0
@@ -60,6 +65,8 @@ func get_input():
 		toggle_tower_placement(1, Towers.CROSS_COST, EventBus.tower1_selected, EventBus.tower1_deselected)
 	elif Input.is_action_just_pressed("place_tower2"):
 		toggle_tower_placement(2, Towers.SENTRY_COST, EventBus.tower2_selected, EventBus.tower2_deselected)
+	elif Input.is_action_just_pressed("place_tower3"):
+		toggle_tower_placement(3, Towers.SPAWNER_COST, EventBus.tower3_selected, EventBus.tower3_deselected)
 
 func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_event):
 	if PlayerState.gold >= cost:
@@ -75,7 +82,26 @@ func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_eve
 			tower_placement_indicator.visible = true
 			aim_indicator.visible = false
 			placing_tower = true
-			
+
+func _physics_process(delta: float) -> void:
+	get_input()
+	look_at(get_global_mouse_position())
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is Entity:  # Or check for specific groups
+			# Push the entity away from player's center
+			var push_direction = (collider.global_position - global_position).normalized()
+			collider.velocity += push_direction * push_force * delta
+	move_and_slide()
+
+	if shot_timer > 0:
+		shot_timer -= delta
+	if shot_timer <= 0:
+		can_shoot = true
+		shot_timer = PlayerState.firerate
+		
 func _process(delta: float) -> void:
 	GameState.player_position = global_position
 	process_regen(delta)
@@ -150,17 +176,6 @@ func _update_placement_validity() -> void:
 			valid_placement = false
 			break
 
-func _physics_process(delta: float) -> void:
-	get_input()
-	look_at(get_global_mouse_position())
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		EventBus.collided.emit(collision.get_collider())
-	if shot_timer > 0:
-		shot_timer -= delta
-	if shot_timer <= 0:
-		can_shoot = true
-		shot_timer = PlayerState.firerate
 
 func shoot(mouse_position: Vector2):
 	if can_shoot and not placing_tower:

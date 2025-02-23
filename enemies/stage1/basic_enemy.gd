@@ -11,4 +11,3 @@ func _ready() -> void:
 	xp_drop_range = 50
 	gold_drop_count = 1
 	xp_drop_count = 5
-	

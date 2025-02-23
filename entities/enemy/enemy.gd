@@ -1,26 +1,12 @@
-extends CharacterBody2D
+extends Entity
 class_name Enemy
 
-var health: float
-var damage: float
-var speed: float
-var projectile_speed: float
-var firerate_cooldown: float
-var distance_threshold: int
 var gold_drop_count: int
 var xp_drop_count: int
 var xp_drop_range: int
 var gold_drop_range: float
 var drop_count: int
-var knockback_velocity: Vector2 = Vector2.ZERO
 var died: bool = false
-
-func _physics_process(delta: float) -> void:
-	if knockback_velocity != Vector2.ZERO:
-		velocity = knockback_velocity
-		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, delta * 1000)
-	
-	move_and_slide()
 
 func reset_modulation() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)

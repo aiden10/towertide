@@ -17,11 +17,16 @@ var SENTRY_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
 const SPAWNER_COST: int = 20
 const SPAWNER_SPAWN_AMOUNT: int = 1
 const SPAWNER_NAME: String = "Sentry"
-const SPAWNER_COOLDOWN: float = 0.5
+const SPAWNER_COOLDOWN: float = 3
 const SPAWNER_SPEED_PERCENTAGE: float = 0.5 
 const SPAWNER_DAMAGE_PERCENTAGE: float = 0.25 
-var SPAWNER_MINION_SCENE: PackedScene
 var SPAWNER_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
+
+var CHARGER_MINION_SCENE: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
+const CHARGER_SPEED: float = 100
+const CHARGER_DAMAGE: float = 0.8
+const CHARGER_WANDER_DIST: float = 200
+const CHARGER_MIN_WANDER: float = 50
 
 const end_of_path_name: String = "End of path"
 var end_of_path_image: Texture = load("res://sprites/towers/lock.png")

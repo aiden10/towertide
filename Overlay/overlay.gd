@@ -15,6 +15,10 @@ extends Control
 @onready var key_label2: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/KeyLabel2
 @onready var sentry_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/SentryImage
 
+@onready var spawner_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/HBoxContainer/SpawnerCostLabel
+@onready var key_label3: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/KeyLabel3
+@onready var spawner_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer/SpawnerImage
+
 @onready var arrow: TextureRect = $CanvasLayer/Arrow
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
 @onready var spawning_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawningLabel
@@ -29,6 +33,8 @@ func _ready() -> void:
 	EventBus.tower1_deselected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 150))
 	EventBus.tower2_selected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 50))
 	EventBus.tower2_deselected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 150))
+	EventBus.tower3_selected.connect(func(): reset_modulation(); spawner_image.modulate = Color8(255, 255, 255, 50))
+	EventBus.tower3_deselected.connect(func(): reset_modulation(); spawner_image.modulate = Color8(255, 255, 255, 150))
 	
 	EventBus.door_visible.connect(func(): arrow.visible = true)
 	EventBus.door_not_visible.connect(func(): arrow.visible = false)
@@ -40,10 +46,14 @@ func _ready() -> void:
 	sentry_cost_label.text = str(Towers.SENTRY_COST)
 	key_label2.text = Utils.get_action_key_name("place_tower2")
 
+	spawner_cost_label.text = str(Towers.SPAWNER_COST)
+	key_label3.text = Utils.get_action_key_name("place_tower3")
+
 func reset_modulation() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)
 	cross_image.modulate = Color8(255, 255, 255, 150)
-
+	spawner_image.modulate = Color8(255, 255, 255, 150)
+	
 func _update_spawn_progress(progress: float, enemies_to_spawn: int, time_scale: float) -> void:
 	if level_clear:
 		spawn_bar.visible = true

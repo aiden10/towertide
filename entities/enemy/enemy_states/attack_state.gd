@@ -1,11 +1,10 @@
 extends State
 
-@export var enemy: Enemy
 var firerate = 0
 var can_shoot
 var player
 
-func _ready() -> void:
+func enter() -> void:
 	can_shoot = true
 	player = get_tree().get_first_node_in_group("Player")
 

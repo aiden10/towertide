@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj7686p2lc663"]
+
+[ext_resource type="Script" path="res://towers/spawner/minions/charger_minion.gd" id="1_qr6fo"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_25j0x"]
+[ext_resource type="Script" path="res://entities/minion/minion_states/follow_state.gd" id="3_tg1uj"]
+[ext_resource type="Script" path="res://entities/minion/minion_states/idle_state.gd" id="4_076l5"]
+[ext_resource type="Texture2D" uid="uid://b0vp382hft5ma" path="res://sprites/towers/minions/charger/1.png" id="5_cwms2"]
+[ext_resource type="Texture2D" uid="uid://x7llecigcmit" path="res://sprites/towers/minions/charger/2.png" id="6_yqmav"]
+[ext_resource type="Texture2D" uid="uid://ty0vfk27r6va" path="res://sprites/towers/minions/charger/3.png" id="7_mq5lf"]
+[ext_resource type="Texture2D" uid="uid://c6n5f1eco2ofp" path="res://sprites/towers/minions/charger/4.png" id="8_id840"]
+[ext_resource type="Texture2D" uid="uid://cfqterik2oenx" path="res://sprites/towers/minions/charger/5.png" id="9_aj3e7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3nso5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_geqyn"]
+radius = 86.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vcnk"]
+radius = 292.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qvj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cwms2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yqmav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mq5lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_id840")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_aj3e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ChargerMinion" type="CharacterBody2D" groups=["Minions"]]
+collision_layer = 2
+script = ExtResource("1_qr6fo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3nso5")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_geqyn")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_4vcnk")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_25j0x")
+initial_state = NodePath("Idle")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("3_tg1uj")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_076l5")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+sprite_frames = SubResource("SpriteFrames_2qvj2")
+frame = 1
+frame_progress = 0.17304

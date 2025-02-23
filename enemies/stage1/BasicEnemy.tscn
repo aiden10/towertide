@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://enemies/stage1/basic_enemy.gd" id="1_ksc35"]
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4kpff"]
-[ext_resource type="Script" path="res://enemy/states/state_machine.gd" id="2_p373m"]
-[ext_resource type="Script" path="res://enemy/states/attack_state.gd" id="3_4v1vq"]
-[ext_resource type="Script" path="res://enemy/states/follow_state.gd" id="4_g5fm2"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_p373m"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/attack_state.gd" id="3_4v1vq"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/follow_state.gd" id="4_g5fm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oooac"]
 
@@ -26,15 +26,13 @@ texture = ExtResource("2_4kpff")
 script = ExtResource("2_p373m")
 initial_state = NodePath("Follow")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("3_4v1vq")
-enemy = NodePath("../..")
 
-[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Follow" type="Node" parent="StateMachine"]
 script = ExtResource("4_g5fm2")
-enemy = NodePath("../..")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_i0ff2")

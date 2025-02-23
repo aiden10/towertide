@@ -1,6 +1,5 @@
 extends State
 
-@export var enemy: Enemy
 var player
 
 func _ready():

@@ -2,7 +2,7 @@
     - Sentry: Aims, then shoots
     - Spray: Just shoots
     - Spawners: Spawn friendly mobs
-    - Conditional: Towers which don't activate until a certain condition is met
+    - Special: Towers that have certain conditions (i.e mines), towers that buff others, towers that generate money, wall, etc. 
 
 Tower defense, but you are the gem/core
 What does skill look like in this game?
@@ -20,4 +20,3 @@ Stats:
     Knockback
     Firerate
 
-    
