@@ -125,7 +125,7 @@ func attack_speed_up() -> void:
 
 func max_health_up() -> void:
 	PlayerState.max_health += 10
-	PlayerState.health = (PlayerState.health + 10) % PlayerState.max_health
+	PlayerState.health = min(PlayerState.health + 10, PlayerState.max_health)
 	level_down()
 
 func bullet_size_up() -> void:

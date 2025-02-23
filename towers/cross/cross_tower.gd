@@ -2,7 +2,6 @@ extends Tower
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 
-var shot_timer: float
 var is_cross_pattern: bool = true  
 var current_frame: int = 0
 
@@ -11,11 +10,10 @@ func _ready() -> void:
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN
 	shot_timer = cooldown
-	damage = PlayerState.damage
 	image = Towers.CROSS_IMAGE
+	## Add upgrades here
 	
 func _process(delta: float) -> void:
-	damage = PlayerState.damage
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown
@@ -47,6 +45,6 @@ func shoot_at_angle(angle: float) -> void:
 	
 	# Calculate target position using angle
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed / 2, PlayerState.damage / 2, "player")
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * Towers.CROSS_DAMAGE_PERCENTAGE, "player")
 	EventBus.arena_spawn.emit(bullet)
 	

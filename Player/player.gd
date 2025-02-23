@@ -25,7 +25,7 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerConstants.DEFAULT_PLAYER_SPEED
-	if Input.is_action_pressed("click"):
+	if Input.is_action_just_pressed("click"):
 		if not placing_tower:
 			clicked.emit(get_global_mouse_position())
 		
@@ -38,35 +38,49 @@ func get_input():
 				var new_tower = Scenes.cross_tower_scene.instantiate()
 				new_tower.global_position = get_global_mouse_position()
 				EventBus.arena_spawn.emit(new_tower)
+			elif tower_type == 2:
+				PlayerState.gold -= Towers.SENTRY_COST
+				var new_tower = Scenes.sentry_tower_scene.instantiate()
+				new_tower.global_position = get_global_mouse_position()
+				EventBus.arena_spawn.emit(new_tower)
 
 			placing_tower = false
 			tower_type = 0
 			aim_indicator.visible = true
 			tower_placement_indicator.visible = false
 			EventBus.tower1_deselected.emit()
+			EventBus.tower2_deselected.emit()
+			EventBus.tower3_deselected.emit()
+			EventBus.tower4_deselected.emit()
 
 		else:
 			clicked.emit(get_global_mouse_position())
 
 	if Input.is_action_just_pressed("place_tower1"):
-		if PlayerState.gold >= Towers.CROSS_COST:
-			if placing_tower:
-				EventBus.tower1_deselected.emit()
-				tower_type = 0
-				aim_indicator.visible = true
-				tower_placement_indicator.visible = false
-				placing_tower = false
-			else:
-				EventBus.tower1_selected.emit()
-				tower_type = 1
-				tower_placement_indicator.visible = true
-				aim_indicator.visible = false
-				placing_tower = true
+		toggle_tower_placement(1, Towers.CROSS_COST, EventBus.tower1_selected, EventBus.tower1_deselected)
+	elif Input.is_action_just_pressed("place_tower2"):
+		toggle_tower_placement(2, Towers.SENTRY_COST, EventBus.tower2_selected, EventBus.tower2_deselected)
 
+func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_event):
+	if PlayerState.gold >= cost:
+		if tower_type == tower_id:
+			deselect_event.emit()
+			tower_type = 0
+			aim_indicator.visible = true
+			tower_placement_indicator.visible = false
+			placing_tower = false
+		else:
+			select_event.emit()
+			tower_type = tower_id
+			tower_placement_indicator.visible = true
+			aim_indicator.visible = false
+			placing_tower = true
+			
 func _process(delta: float) -> void:
 	GameState.player_position = global_position
 	process_regen(delta)
 	check_door()
+
 	if placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
 		if valid_placement:
@@ -87,7 +101,7 @@ func check_door() -> void:
 func process_regen(delta: float) -> void:
 	regen_timer -= delta 
 	if regen_timer <= 0:
-		PlayerState.health = (PlayerState.health + PlayerState.regen) % PlayerState.max_health
+		PlayerState.health = min(PlayerState.health + PlayerState.regen, PlayerState.max_health)
 		regen_timer = PlayerState.regen_cooldown
 
 func _add_item_scene(item_scene: PackedScene) -> void:
@@ -122,12 +136,17 @@ func _on_area_exit(area: Area2D) -> void:
 func _update_placement_validity() -> void:
 	# Start with assumption that placement is valid
 	valid_placement = true
-	
+		 
 	# Check all currently overlapping areas
 	for area in overlapping_areas:
 		var parent = area.get_parent()
-		# If we find any invalid area, mark as invalid and break
-		if not area.is_in_group("Pickups") and not parent.is_in_group("Pickups") and not parent.is_in_group("Sword") and not area.is_in_group("Projectiles"):
+		# Groups that don't count as invalid areas
+		if (not area.is_in_group("Pickups")
+	 	and not parent.is_in_group("Pickups")
+		and not parent.is_in_group("Sword")
+		and not area.is_in_group("Projectiles")
+		and not area.is_in_group("DetectionRadius")
+		):
 			valid_placement = false
 			break
 
@@ -159,7 +178,7 @@ func level_up():
 	PlayerState.level += 1
 	PlayerState.levels_available += 1
 	PlayerState.xp = 0
-	PlayerState.level_up_condition = PlayerConstants.BASE_XP * (PlayerConstants.LEVEL_MULTIPLIER ** PlayerState.level)
+	PlayerState.level_up_condition = round(PlayerConstants.BASE_XP * (PlayerConstants.LEVEL_MULTIPLIER ** PlayerState.level) / 5) * 5
 	EventBus.level_up.emit()
 	
 func _on_xp_pickup():

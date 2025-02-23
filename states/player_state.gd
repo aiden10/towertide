@@ -14,7 +14,7 @@ var knockback: float = 100
 var pierce: int = 1
 var bullet_size: float = 0.01
 var regen: int = 1
-var regen_cooldown: int = 50
+var regen_cooldown: int = 25
 
 ## Misc
 var levels_available: int = 0

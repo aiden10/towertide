@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4mpw7p42iika"]
+
+[ext_resource type="Script" path="res://towers/sentry/sentry_tower.gd" id="1_686p5"]
+[ext_resource type="Texture2D" uid="uid://14y0pys87b3l" path="res://sprites/towers/sentry/sentry.png" id="2_ytsb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s8ijh"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgqjs"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_786c4"]
+radius = 456.01
+
+[node name="SentryTower" type="Area2D"]
+script = ExtResource("1_686p5")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s8ijh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ytsb8")
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_fgqjs")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_786c4")

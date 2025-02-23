@@ -42,7 +42,9 @@ theme_override_constants/separation = 10
 
 [node name="TowerName" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Cross Tower"
+horizontal_alignment = 1
 
 [node name="TowerImage" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -62,6 +64,7 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade1Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Upgrade1"
 
 [node name="Upgrade1Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
@@ -80,6 +83,7 @@ expand_mode = 3
 
 [node name="Upgrade1Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade1/PriceContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "200"
 
 [node name="Upgrade2" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -92,6 +96,7 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade2Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Upgrade2"
 
 [node name="Upgrade2Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
@@ -110,6 +115,7 @@ expand_mode = 3
 
 [node name="Upgrade2Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade2/PriceContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "200"
 
 [node name="Upgrade3" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -122,7 +128,8 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade3Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
 layout_mode = 2
-text = "Upgrade1"
+theme_override_font_sizes/font_size = 20
+text = "Upgrade3"
 
 [node name="Upgrade3Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
 layout_mode = 2
@@ -140,4 +147,5 @@ expand_mode = 3
 
 [node name="Upgrade3Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade3/PriceContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "200"

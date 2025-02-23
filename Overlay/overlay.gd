@@ -6,9 +6,15 @@ extends Control
 @onready var clear_condition_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/ClearConditionLabel
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar
-@onready var cross_cost_label: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CrossCostLabel
-@onready var key_label1: Label = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/KeyLabel1
-@onready var tower1_image: TextureRect = $CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/Tower1Image
+
+@onready var cross_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/HBoxContainer/CrossCostLabel
+@onready var key_label1: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/KeyLabel1
+@onready var cross_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer/CrossImage
+
+@onready var sentry_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/HBoxContainer/SentryCostLabel
+@onready var key_label2: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/KeyLabel2
+@onready var sentry_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/SentryImage
+
 @onready var arrow: TextureRect = $CanvasLayer/Arrow
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
 @onready var spawning_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawningLabel
@@ -18,13 +24,25 @@ var level_clear = false
 
 func _ready() -> void:
 	EventBus.level_cleared.connect(func(): level_clear = not level_clear)
-	EventBus.tower1_selected.connect(func():tower1_image.modulate = Color8(255, 255, 255, 50))
-	EventBus.tower1_deselected.connect(func():tower1_image.modulate = Color8(255, 255, 255, 150))
+	
+	EventBus.tower1_selected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 50))
+	EventBus.tower1_deselected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 150))
+	EventBus.tower2_selected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 50))
+	EventBus.tower2_deselected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 150))
+	
 	EventBus.door_visible.connect(func(): arrow.visible = true)
 	EventBus.door_not_visible.connect(func(): arrow.visible = false)
 	EventBus.update_spawning_bar.connect(_update_spawn_progress)
+	
 	cross_cost_label.text = str(Towers.CROSS_COST)
 	key_label1.text = Utils.get_action_key_name("place_tower1")
+	
+	sentry_cost_label.text = str(Towers.SENTRY_COST)
+	key_label2.text = Utils.get_action_key_name("place_tower2")
+
+func reset_modulation() -> void:
+	sentry_image.modulate = Color8(255, 255, 255, 150)
+	cross_image.modulate = Color8(255, 255, 255, 150)
 
 func _update_spawn_progress(progress: float, enemies_to_spawn: int, time_scale: float) -> void:
 	if level_clear:

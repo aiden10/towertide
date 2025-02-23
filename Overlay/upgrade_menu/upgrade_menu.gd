@@ -23,14 +23,47 @@ func _ready() -> void:
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
 		return
-	## Replace GameState.selected_tower with tower.upgrade1_scene
-	
+		
+	if PlayerState.gold < tower.upgrade1_price:
+		return
+		
+	PlayerState.gold -= tower.upgrade1_price
+	var new_tower = tower.upgrade1_scene.instantiate()
+	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	new_tower.position = tower.global_position
+	GameState.selected_tower = new_tower
+	tower.queue_free()
+	_show_upgrades()
+
 func _upgrade2() -> void:
 	if upgrade2_button.text == Towers.end_of_path_name:
 		return
+		
+	if PlayerState.gold < tower.upgrade2_price:
+		return
+		
+	PlayerState.gold -= tower.upgrade2_price
+	var new_tower = tower.upgrade2_scene.instantiate()
+	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	new_tower.position = tower.global_position
+	GameState.selected_tower = new_tower
+	tower.queue_free()
+	_show_upgrades()
+	
 func _upgrade3() -> void:
 	if upgrade3_button.text == Towers.end_of_path_name:
 		return
+		
+	if PlayerState.gold < tower.upgrade3_price:
+		return
+
+	PlayerState.gold -= tower.upgrade3_price
+	var new_tower = tower.upgrade3_scene.instantiate()
+	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	new_tower.position = tower.global_position
+	GameState.selected_tower = new_tower
+	tower.queue_free()
+	_show_upgrades()
 
 func _show_upgrades() -> void:
 	self.visible = true

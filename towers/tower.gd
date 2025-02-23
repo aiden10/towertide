@@ -5,7 +5,7 @@ class_name Tower
 var cooldown: float
 var tower_name: String
 var cost: int
-var damage: float
+var shot_timer: float
 var kills: int
 var image: Texture
 
