@@ -12,7 +12,7 @@ extends Control
 func _ready() -> void:
 	next_level_button.pressed.connect(_next_level)
 	reroll_button.pressed.connect(_reroll)
-	reroll_label.text = str(reroll_cost) + " Gold"
+	reroll_label.text = str(reroll_cost)
 	EventBus.purchased.connect(_update_overlay)
 	generate_item_cards()
 	_update_overlay()

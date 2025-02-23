@@ -26,6 +26,7 @@ Scenes="*res://autoloads/scenes.gd"
 GameState="*res://states/game_state.gd"
 Items="*res://autoloads/items.gd"
 Towers="*res://autoloads/towers.gd"
+SoundManager="*res://autoloads/sound_manager.gd"
 
 [display]
 

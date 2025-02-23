@@ -42,9 +42,8 @@ func scale_size(bullet_damage: float) -> void:
 	var player_scale: float = 0
 	if shooter == "player":
 		player_scale = PlayerState.bullet_size
-		
-	hitbox.scale *= (log(bullet_damage) / 2) + player_scale
-	sprite.scale *= (log(bullet_damage) / 2) + player_scale
+
+	scale *= log(bullet_damage / 2) + player_scale
 
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed

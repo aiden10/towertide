@@ -1,8 +1,8 @@
 extends Control
 
-@onready var purchase_button: Button = $VBoxContainer/PurchaseButton
+@onready var purchase_button: Button = $VBoxContainer/PanelContainer/PurchaseButton
 @onready var item_image: TextureRect = $PanelContainer/MarginContainer/ItemImage
-@onready var price_label: Label = $VBoxContainer/PriceLabel
+@onready var price_label: Label = $VBoxContainer/CenterContainer/HBoxContainer/PriceLabel
 @onready var name_label: Label = $Name
 @onready var description_label: Label = $VBoxContainer/Description
 
@@ -20,7 +20,7 @@ func _purchase_pressed() -> void:
 
 func populate() -> void:
 	item_image.texture = item.image
-	price_label.text = str(item.price) + " Gold"
+	price_label.text = str(item.price)
 	name_label.text = item.name
 	description_label.text = item.description
 	

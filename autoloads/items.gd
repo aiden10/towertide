@@ -9,7 +9,7 @@ const REGEN_PRICE: int = 5
 
 const SWORD_IMAGE_PATH: String = "res://sprites/items/sword.png"
 const SWORD_NAME: String = "Sword"
-const SWORD_DESCRIPTION: String = "Deflect enemy bullets"
+const SWORD_DESCRIPTION: String = "Deflect enemy bullets and deal melee damage"
 const SWORD_PRICE: int = 5
 const SWORD_DAMAGE: int = 5
 

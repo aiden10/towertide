@@ -27,6 +27,7 @@ const CHARGER_SPEED: float = 100
 const CHARGER_DAMAGE: float = 0.8
 const CHARGER_WANDER_DIST: float = 200
 const CHARGER_MIN_WANDER: float = 50
+const CHARGER_LIFETIME: float = 1.5
 
 const end_of_path_name: String = "End of path"
 var end_of_path_image: Texture = load("res://sprites/towers/lock.png")
