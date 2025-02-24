@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=19 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://coebofe0kgav3" path="res://sprites/towers/spawner/spawner.png" id="9_8fvnr"]
 [ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
+[ext_resource type="Texture2D" uid="uid://c1xeap2ne4w78" path="res://sprites/player/white.png" id="10_xgaln"]
 [ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
@@ -279,6 +280,45 @@ texture = ExtResource("8_1vq2h")
 expand_mode = 1
 
 [node name="KeyLabel2" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_font_sizes/font_size = 24
+text = "1"
+label_settings = SubResource("LabelSettings_u4jm4")
+horizontal_alignment = 1
+
+[node name="BlankContainer" type="VBoxContainer" parent="CanvasLayer/TowersContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("3_84jj3")
+expand_mode = 3
+
+[node name="BlankCostLabel" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
+
+[node name="BlankImage" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("10_xgaln")
+expand_mode = 1
+
+[node name="KeyLabel4" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
 layout_mode = 2
 theme = ExtResource("1_84vjy")
 theme_override_font_sizes/font_size = 24

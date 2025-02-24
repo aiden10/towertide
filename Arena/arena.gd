@@ -62,7 +62,7 @@ func spawn_enemy() -> void:
 		add_child(enemy)
 
 func check_clear_condition() -> void:
-	if PlayerState.enemies_killed >= GameState.clear_condition and not door_spawned:
+	if GameState.enemies_killed_this_stage >= GameState.clear_condition and not door_spawned:
 		EventBus.level_cleared.emit()
 		GameState.level_cleared = true
 		door_spawned = true

@@ -1,5 +1,3 @@
-Last base tower
-    Cheap blank "node" tower that does nothing and leads into economy, defense, and debuffs/buffs paths? 
 Stat icons
 Tower upgrades/more towers
 More items

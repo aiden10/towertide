@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlliwg7hxe7l"]
+
+[ext_resource type="Script" path="res://towers/blank/blank_tower.gd" id="1_lou8c"]
+[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="2_i3fyu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6a161"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8jxe"]
+radius = 79.0569
+
+[node name="BlankTower" type="Area2D"]
+script = ExtResource("1_lou8c")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6a161")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.222292, 0.222292)
+texture = ExtResource("2_i3fyu")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_a8jxe")

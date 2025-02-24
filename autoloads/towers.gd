@@ -26,6 +26,11 @@ const SPAWNER_LIMIT: int = 3
 var SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/spawner.png")
 const SPAWNER_SCENE_PATH: String = "res://towers/spawner/SpawnerTower.tscn"
 
+const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
+const BLANK_COST: int = 10
+const BLANK_NAME: String = "Blank"
+var BLANK_IMAGE: Texture = load("res://sprites/player/white.png")
+
 var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
 const CHARGER_SPEED: float = 100
 const CHARGER_DAMAGE: float = 0.8

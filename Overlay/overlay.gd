@@ -20,6 +20,10 @@ extends Control
 @onready var key_label3: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/KeyLabel3
 @onready var spawner_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer/SpawnerImage
 
+@onready var blank_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer/BlankCostLabel
+@onready var key_label4: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/KeyLabel4
+@onready var blank_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer/BlankImage
+
 @onready var arrow: TextureRect = $CanvasLayer/Arrow
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
 @onready var spawning_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawningLabel
@@ -36,6 +40,8 @@ func _ready() -> void:
 	EventBus.tower2_deselected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 150))
 	EventBus.tower3_selected.connect(func(): reset_modulation(); spawner_image.modulate = Color8(255, 255, 255, 50))
 	EventBus.tower3_deselected.connect(func(): reset_modulation(); spawner_image.modulate = Color8(255, 255, 255, 150))
+	EventBus.tower4_selected.connect(func(): reset_modulation(); blank_image.modulate = Color8(255, 255, 255, 50))
+	EventBus.tower4_deselected.connect(func(): reset_modulation(); blank_image.modulate = Color8(255, 255, 255, 150))
 	
 	EventBus.door_visible.connect(func(): arrow.visible = true)
 	EventBus.door_not_visible.connect(func(): arrow.visible = false)
@@ -49,6 +55,9 @@ func _ready() -> void:
 
 	spawner_cost_label.text = str(Towers.SPAWNER_COST)
 	key_label3.text = Utils.get_action_key_name("place_tower3")
+
+	blank_cost_label.text = str(Towers.BLANK_COST)
+	key_label4.text = Utils.get_action_key_name("place_tower4")
 	
 	stage_label.text = "Stage " + str(GameState.stage)
 

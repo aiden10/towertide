@@ -54,6 +54,9 @@ func get_input():
 			elif tower_type == 3:
 				PlayerState.gold -= Towers.SPAWNER_COST
 				new_tower = Scenes.spawner_tower_scene.instantiate()
+			elif tower_type == 4:
+				PlayerState.gold -= Towers.BLANK_COST
+				new_tower = Scenes.blank_tower_scene.instantiate()
 			
 			new_tower.global_position = get_global_mouse_position()
 			EventBus.arena_spawn.emit(new_tower)
@@ -77,6 +80,8 @@ func get_input():
 		toggle_tower_placement(2, Towers.SENTRY_COST, EventBus.tower2_selected, EventBus.tower2_deselected)
 	elif Input.is_action_just_pressed("place_tower3"):
 		toggle_tower_placement(3, Towers.SPAWNER_COST, EventBus.tower3_selected, EventBus.tower3_deselected)
+	elif Input.is_action_just_pressed("place_tower4"):
+		toggle_tower_placement(4, Towers.BLANK_COST, EventBus.tower4_selected, EventBus.tower4_deselected)
 
 func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_event):
 	if PlayerState.gold >= cost:
@@ -154,13 +159,13 @@ func add_item_scenes() -> void:
 		for i in range(sword_count):
 			var sword_rotation = 0
 			var sword_position = Vector2(100, 0)
-			if i == 2:
+			if i == 1:
 				sword_rotation = 180
 				sword_position = Vector2(-100, 2)
-			elif i == 3:
+			elif i == 2:
 				sword_rotation = 90
 				sword_position = Vector2(0, 100)
-			elif i == 4:
+			elif i == 3:
 				sword_rotation = 270
 				sword_position = Vector2(0, -100)
 
