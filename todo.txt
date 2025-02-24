@@ -1,7 +1,6 @@
-
-Last base tower: The wall
+Last base tower
+    Cheap blank "node" tower that does nothing and leads into economy, defense, and debuffs/buffs paths? 
 Stat icons
-Character selection?
 Tower upgrades/more towers
 More items
 More enemies, bosses

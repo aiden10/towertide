@@ -25,10 +25,10 @@ func _ready() -> void:
 	placement_hitbox.area_exited.connect(_on_area_exit)
 	EventBus.xp_picked_up.connect(_on_xp_pickup)
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
-	EventBus.add_item_scene.connect(_add_item_scene)
 	regen_timer.wait_time = PlayerState.regen_cooldown
 	regen_timer.timeout.connect(_on_regen_timer_timeout)
 	regen_timer.start()
+	add_item_scenes()
 	
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
@@ -113,7 +113,7 @@ func _physics_process(delta: float) -> void:
 	if shot_timer <= 0:
 		can_shoot = true
 		shot_timer = PlayerState.firerate
-		
+
 func _process(delta: float) -> void:
 	GameState.player_position = position
 	health_bar.max_value = PlayerState.max_health
@@ -148,26 +148,26 @@ func _on_regen_timer_timeout() -> void:
 	regen_tween.tween_property(health_bar, "modulate", Color(1, 1, 1, 1), 0.3)
 	Utils.spawn_hit_effect(Color8(0, 510, 0, 255), global_position, max(PlayerState.regen * 5, 5))
 
-func _add_item_scene(item_scene: PackedScene) -> void:
-	if item_scene == Scenes.sword_scene:
-		var sword_rotation = 0
-		var sword_position = Vector2(100, 0)
+func add_item_scenes() -> void:
+	if Items.SWORD_NAME in PlayerState.item_counts:
+		var sword_count = PlayerState.item_counts[Items.SWORD_NAME]
+		for i in range(sword_count):
+			var sword_rotation = 0
+			var sword_position = Vector2(100, 0)
+			if i == 2:
+				sword_rotation = 180
+				sword_position = Vector2(-100, 2)
+			elif i == 3:
+				sword_rotation = 90
+				sword_position = Vector2(0, 100)
+			elif i == 4:
+				sword_rotation = 270
+				sword_position = Vector2(0, -100)
 
-		PlayerState.swords_added += 1
-		if PlayerState.swords_added == 2:
-			sword_rotation = 180
-			sword_position = Vector2(-100, 2)
-		elif PlayerState.swords_added == 3:
-			sword_rotation = 90
-			sword_position = Vector2(0, 100)
-		elif PlayerState.swords_added == 4:
-			sword_rotation = 270
-			sword_position = Vector2(0, -100)
-
-		var sword_instance = item_scene.instantiate()
-		sword_instance.position = sword_position
-		sword_instance.rotation_degrees = sword_rotation
-		add_child(sword_instance)
+			var sword_instance = Items.all_items[Items.SWORD_NAME].scene.instantiate()
+			sword_instance.position = sword_position
+			sword_instance.rotation_degrees = sword_rotation
+			add_child(sword_instance)
 
 func _check_placement(area: Area2D) -> void:
 	overlapping_areas.append(area)
@@ -207,6 +207,8 @@ func shoot(mouse_position: Vector2):
 func take_damage(damage_taken: int, shooter: Node):
 	EventBus.player_hit.emit()
 	PlayerState.health -= damage_taken
+	if PlayerState.health <= 0:
+		EventBus.player_died.emit()
 
 func level_up():
 	PlayerState.level += 1

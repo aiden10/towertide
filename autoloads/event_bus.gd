@@ -16,7 +16,6 @@ signal purchased
 signal rerolled
 
 signal level_up
-signal add_item_scene(item_scene)
 
 signal update_spawning_bar(time, enemies_to_spawn, time_scale)
 signal extra_spawn
@@ -42,6 +41,7 @@ signal enemy_dead
 
 signal player_hit
 signal player_regenerated
+signal player_died
 signal enemy_hit
 signal player_shot
 signal enemy_shot

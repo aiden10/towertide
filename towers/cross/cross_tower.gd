@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown
+		shot_timer = cooldown * PlayerState.firerate
 		shoot_pattern()
 		is_cross_pattern = !is_cross_pattern  # Toggle pattern for next shot
 		current_frame = (current_frame + 1) % sprite.sprite_frames.get_frame_count("default")

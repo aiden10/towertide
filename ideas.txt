@@ -4,21 +4,6 @@ Instead of bullets, you now place bombs where you click
 Bombs auto detonate after a second (represented by a circle closing in)
 If you click on the bomb as the circle closes it does more damage and knockback
 
-Electric item:
-Lighting connects your bullets
-
-Homing item:
-Your bullets automatically move towards enemies
-
-Ricochet:
-Your bullets bounce when hitting an enemy
-
-Status effect items:
-Burn, Freeze, Charm, Poison
-
-Extra shot:
-Shoot an additional bullet
-
 Knight minions which have swords
 Hollow knight spawner
     When you upgrade to this tower, you can select an item to give to all the knights it spawns (knights will always have one sword) 

@@ -28,4 +28,5 @@ func resume() -> void:
 func exit() -> void:
 	EventBus.unpause_game.emit()
 	Utils.save_game()
+	Utils.reset_states()
 	SceneManager.load_main_menu()

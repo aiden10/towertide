@@ -12,7 +12,7 @@ func _init() -> void:
 	EventBus.minion_spawned.emit()
 	despawn_timer = Timer.new()
 	add_child(despawn_timer)
-	despawn_timer.wait_time = Towers.MINION_LIFETIME
+	despawn_timer.wait_time = randf_range(Towers.MINION_LIFETIME / 1, Towers.MINION_LIFETIME * 1)
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(_on_death)
 	despawn_timer.autostart = true

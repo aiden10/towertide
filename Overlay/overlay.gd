@@ -4,6 +4,7 @@ extends Control
 @onready var health_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
 @onready var kills_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/KillsLabel
 @onready var clear_condition_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/ClearConditionLabel
+@onready var stage_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/StageLabel
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar
 
@@ -48,6 +49,8 @@ func _ready() -> void:
 
 	spawner_cost_label.text = str(Towers.SPAWNER_COST)
 	key_label3.text = Utils.get_action_key_name("place_tower3")
+	
+	stage_label.text = "Stage " + str(GameState.stage)
 
 func reset_modulation() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)

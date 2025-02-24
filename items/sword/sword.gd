@@ -6,16 +6,12 @@ var added = false
 var player
 
 func _init() -> void:
-	EventBus.arena_initialized.connect(func(): added = false; PlayerState.swords_added = 0)
 	item_name = Items.SWORD_NAME
 	description = Items.SWORD_DESCRIPTION
 	price = Items.SWORD_PRICE
 	image_path = Items.SWORD_IMAGE_PATH
 	image = load(image_path)
+	scene = Scenes.sword_scene
 
 func use(_delta: float) -> void:
-	if added:
-		return
-	
-	EventBus.add_item_scene.emit(Scenes.sword_scene)
-	added = true
+	pass

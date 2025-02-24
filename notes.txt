@@ -1,27 +1,29 @@
 4 base kinds of towers:
     - Sentry: Aims, then shoots
+        - Status effect inflicting towers
+        - Rapid fire tower
+        - 
     - Spray: Just shoots
-    - Spawners: Spawn friendly mobs
-    - Aura: Towers whose effects span a certain area (Support, money generation, status effects, etc.)
-        - Traps
-        - Defense
-        - Support
+        - Homing shots
+        - Ring emission
 
-Tower defense, but you are the gem/core
-What does skill look like in this game?
-Dodging: able to live longer
-Decision making: knowing what stats to level up depending on what items you have, and knowing what items to buy
+    - Spawners: Spawn friendly minions
+        - Shooting minions
+        - "Swarm" minions
+            - Necromancer tower that resurrects nearby killed enemies
+        - Melee minions
 
-Different characters will have different abilities
+    - Aura: Base tower does nothing
+        - Mine tower
+            - Tower like the spike factory from btd6
+        - Farm tower, generates gold
+        - Buffs towers in range
+            - Debuffs enemies while still buffing friendly towers  
 
-Stats:
-    Health Regeneration
-    Speed
-    Damage
-    Pierce
-    Bullet Speed
-    Bullet Size
-    Max Health
-    Knockback
-    Firerate
+How to handle tower upgrades if pretty much all tower variations could just be item effects? If towers will inherit player item effects then the
+tower upgrades need to be more focused on changing the way that they attack instead of adding additional effects. Or I more clearly define what
+items will do, i.e, no bullet modification items. 
 
+Different characters with have different abilities
+
+Bosses every n stages, basically leading to prep/farm stages and boss stages

@@ -5,3 +5,4 @@ func load_main_menu() -> void:
 
 func load_arena() -> void:
 	get_tree().change_scene_to_file("res://arena/arena.tscn")
+	get_tree().paused = false

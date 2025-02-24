@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx66d1earu3rb"]
+[gd_scene load_steps=9 format=3 uid="uid://bx66d1earu3rb"]
 
 [ext_resource type="Script" path="res://arena/arena.gd" id="1_5n0be"]
 [ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://player/Player.tscn" id="1_iy5w2"]
 [ext_resource type="PackedScene" uid="uid://l2perbaghgnm" path="res://door/Door.tscn" id="3_cuvm2"]
 [ext_resource type="PackedScene" uid="uid://onunwggusljt" path="res://enemies/stage1/BasicEnemy.tscn" id="4_5ndg3"]
 [ext_resource type="PackedScene" uid="uid://cmnf66ocvlno0" path="res://overlay/Overlay.tscn" id="5_0u82s"]
+[ext_resource type="PackedScene" uid="uid://b5nu37o7682ap" path="res://overlay/death_screen/DeathScreen.tscn" id="5_ffmsy"]
 [ext_resource type="PackedScene" uid="uid://b2anud6ey34mu" path="res://menus/pause/PauseMenu.tscn" id="6_fq2qc"]
 
 [sub_resource type="Environment" id="Environment_akft8"]
@@ -20,10 +21,6 @@ glow_hdr_threshold = 0.5
 script = ExtResource("1_5n0be")
 enemy_scenes = Array[PackedScene]([ExtResource("4_5ndg3")])
 door_scene = ExtResource("3_cuvm2")
-spawn_radius = 1000.0
-minimum_spawn_distance = 500.0
-minimum_door_spawn_distance = 550.0
-door_spawn_radius = 450.0
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akft8")
@@ -38,3 +35,5 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_fq2qc")]
+
+[node name="DeathScreen" parent="." instance=ExtResource("5_ffmsy")]

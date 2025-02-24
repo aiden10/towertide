@@ -7,6 +7,7 @@ var image_path: String
 var item_name: String
 var description: String
 var image: Texture2D
+var scene: PackedScene
 
 ## Called in player _process function
 ## for item in PlayerState.items:

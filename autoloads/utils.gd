@@ -1,7 +1,7 @@
 extends Node
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:            # Windows close button
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_game()
 		get_tree().quit()
 
@@ -28,6 +28,45 @@ func get_action_key_name(action_name: String) -> String:
 			return OS.get_keycode_string(event.physical_keycode)
 
 	return "None"
+
+func reset_states() -> void:
+	TowerManager.clear_towers()
+	GameState.stage = GameConstants.DEFAULT_STAGE
+	GameState.clear_condition = GameConstants.DEFAULT_CLEAR_CONDITION
+	GameState.door_position = GameConstants.DEFAULT_DOOR_POSITION
+	GameState.player_position = GameConstants.DEFAULT_PLAYER_POSITION
+	GameState.xp_count = GameConstants.DEFAULT_XP_COUNT
+	GameState.gold_count = GameConstants.DEFAULT_GOLD_COUNT
+	GameState.enemies_killed_this_stage = GameConstants.DEFAULT_ENEMIES_KILLED_THIS_STAGE
+	GameState.allocate_menu_up = GameConstants.DEFAULT_ALLOCATE_MENU_UP
+	GameState.enemies_spawning = GameConstants.DEFAULT_ENEMIES_SPAWNING
+	GameState.level_cleared = GameConstants.DEFAULT_LEVEL_CLEARED
+	GameState.player_projectiles.clear()
+	GameState.selected_tower = null
+
+	PlayerState.level = PlayerConstants.DEFAULT_LEVEL
+	PlayerState.gold = PlayerConstants.DEFAULT_GOLD
+	PlayerState.xp = PlayerConstants.DEFAULT_XP
+	PlayerState.damage = PlayerConstants.DEFAULT_DAMAGE
+	PlayerState.speed = PlayerConstants.DEFAULT_SPEED
+	PlayerState.health = PlayerConstants.DEFAULT_HEALTH
+	PlayerState.max_health = PlayerConstants.DEFAULT_MAX_HEALTH
+	PlayerState.firerate = PlayerConstants.DEFAULT_FIRERATE
+	PlayerState.projectile_speed = PlayerConstants.DEFAULT_PROJECTILE_SPEED
+	PlayerState.knockback = PlayerConstants.DEFAULT_KNOCKBACK
+	PlayerState.pierce = PlayerConstants.DEFAULT_PIERCE
+	PlayerState.bullet_size = PlayerConstants.DEFAULT_BULLET_SIZE
+	PlayerState.regen = PlayerConstants.DEFAULT_REGEN
+	PlayerState.regen_cooldown = PlayerConstants.DEFAULT_REGEN_COOLDOWN
+	PlayerState.levels_available = PlayerConstants.DEFAULT_LEVELS_AVAILABLE
+	PlayerState.player_items.clear()
+	PlayerState.item_counts.clear()
+	PlayerState.level_up_condition = PlayerConstants.DEFAULT_LEVEL_UP_CONDITION
+	PlayerState.enemies_killed = PlayerConstants.DEFAULT_ENEMIES_KILLED
+	
+func wipe_saved_game() -> void:
+	if FileAccess.file_exists("user://save/save.json"):
+		DirAccess.remove_absolute("user://save/save.json")
 
 func save_game() -> void:
 	DirAccess.make_dir_recursive_absolute("res://save")
@@ -57,7 +96,6 @@ func save_game() -> void:
 		"item_counts": PlayerState.item_counts,
 		"level_up_condition": PlayerState.level_up_condition,
 		"enemies_killed": PlayerState.enemies_killed,
-		"swords_added": PlayerState.swords_added,
 		"towers": [],
 		
 		# Game State
@@ -130,7 +168,6 @@ func load_game() -> void:
 	PlayerState.item_counts = save_data["item_counts"]
 	PlayerState.level_up_condition = save_data["level_up_condition"]
 	PlayerState.enemies_killed = save_data["enemies_killed"]
-	PlayerState.swords_added = save_data["swords_added"]
 
 	for item_name in PlayerState.item_counts.keys():
 		var quantity = PlayerState.item_counts[item_name]

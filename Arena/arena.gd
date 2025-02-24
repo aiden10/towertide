@@ -3,15 +3,14 @@ extends Node
 @onready var player = $Player
 @export var enemy_scenes: Array[PackedScene]
 @export var door_scene: PackedScene
-@export var spawn_radius: float
-@export var minimum_spawn_distance: float
-@export var minimum_door_spawn_distance: float
-@export var door_spawn_radius: float
-@export var min_spawn_time: float = 0.1
-
 ## Every x seconds after clearing the stage, an extra enemy will spawn each time
 @export var extra_spawn_time_scale: float = 30
 
+var spawn_radius: int = 800
+var minimum_spawn_distance: int = 500
+var minimum_door_spawn_distance: int = 100
+var door_spawn_radius: int = 250
+var min_spawn_time: float = 0.1
 var door_spawned = false
 var spawn_cooldown = 0
 var timer = 0
