@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		EventBus.update_spawning_bar.emit(time_since_clear, enemies_to_spawn, extra_spawn_time_scale)
 		if time_since_clear >= extra_spawn_time_scale:
 			enemies_to_spawn += 1
+			EventBus.extra_spawn.emit()
 			time_since_clear = 0
 
 	if timer <= 0:

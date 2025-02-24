@@ -9,6 +9,7 @@ var despawn_timer: Timer
 var death_tween: Tween
 
 func _init() -> void:
+	EventBus.minion_spawned.emit()
 	despawn_timer = Timer.new()
 	add_child(despawn_timer)
 	despawn_timer.wait_time = Towers.MINION_LIFETIME

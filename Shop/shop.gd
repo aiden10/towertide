@@ -32,11 +32,14 @@ func generate_item_cards() -> void:
 
 func _reroll() -> void:
 	if PlayerState.gold < reroll_cost:
+		EventBus.invalid_action.emit()
 		return
+
 	PlayerState.gold -= reroll_cost
+	EventBus.rerolled.emit()
 	generate_item_cards()
 	_update_overlay()
-	
+
 func _update_overlay() -> void:
 	gold_label.text = str(PlayerState.gold)
 	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_health)

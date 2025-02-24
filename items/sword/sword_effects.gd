@@ -12,5 +12,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 	if parent.is_in_group("Enemies"):
 		Utils.spawn_hit_effect(Color(255, 255, 255, 50), parent.global_position, damage)
+		EventBus.sword_hit.emit()
 		parent.take_damage(damage, self)
 		

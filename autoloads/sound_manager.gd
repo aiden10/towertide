@@ -1,14 +1,78 @@
 extends Node
 
-const SOUNDS = {}
+const xp1 = preload("res://resources/sounds/xp2.wav")
+const xp2 = preload("res://resources/sounds/xp1.wav")
+const gold1 = preload("res://resources/sounds/gold1.wav")
+const death1 = preload("res://resources/sounds/death1.wav")
+const shoot = preload("res://resources/sounds/shoot.wav")
+const hit = preload("res://resources/sounds/hit.wav")
+const minion1 = preload("res://resources/sounds/minion1.wav")
+
+const SOUNDS = {
+	"purchase": preload("res://resources/sounds/purchase.wav"),
+	"bell_toll": preload("res://resources/sounds/bell.wav"),
+	"placed_tower": preload("res://resources/sounds/placed.wav"),
+	"invalid": preload("res://resources/sounds/invalid.wav"),
+	"player_hit": preload("res://resources/sounds/player_hit.wav"),
+	"deflect": preload("res://resources/sounds/deflect.wav"),
+	"sword_purchased": preload("res://resources/sounds/sword_purchased.wav"),
+	"level_up": preload("res://resources/sounds/level_up.wav"),
+	"reroll": preload("res://resources/sounds/reroll.wav"),
+	"sword": preload("res://resources/sounds/sword.wav"),
+	"enter": preload("res://resources/sounds/enter.wav"),
+	"thud": preload("res://resources/sounds/thud.wav"),
+	"heal": preload("res://resources/sounds/heal.wav")
+}
+
+const XP_SOUNDS = [xp1, xp2]
+const GOLD_SOUNDS = [gold1]
+const DEATH_SOUNDS = [death1]
+const SHOOT_SOUNDS = [shoot]
+const ENEMY_HIT_SOUNDS = [hit]
+const MINION_SOUNDS = [minion1]
+
 var audio_players: Array[AudioStreamPlayer] = []
+const POOL_SIZE = 16
 
 func _ready() -> void:
+	for i in POOL_SIZE:
+		var player = AudioStreamPlayer.new()
+		add_child(player)
+		audio_players.append(player)
+		
 	EventBus.purchased.connect(func(): play_sound("purchase"))
+	EventBus.extra_spawn.connect(func(): play_sound("bell_toll"))
+	EventBus.tower_placed.connect(func(): play_sound("placed_tower"))
+	EventBus.player_hit.connect(func(): play_sound("player_hit"))
+	EventBus.deflect.connect(func(): play_sound("deflect"))
+	EventBus.sword_purchased.connect(func(): play_sound("sword_purchased"))
+	EventBus.level_up.connect(func(): play_sound("level_up"))
+	EventBus.invalid_action.connect(func(): play_sound("invalid"))
+	EventBus.rerolled.connect(func(): play_sound("reroll"))
+	EventBus.sword_hit.connect(func(): play_sound("sword"))
+	EventBus.level_exited.connect(func(): play_sound("enter"))
+	EventBus.level_cleared.connect(func(): play_sound("thud"))
+	EventBus.player_regenerated.connect(func(): play_sound("heal"))
+	
+	EventBus.xp_picked_up.connect(func(): play_random(XP_SOUNDS))
+	EventBus.gold_picked_up.connect(func(): play_random(GOLD_SOUNDS))
+	EventBus.enemy_dead.connect(func(): play_random(DEATH_SOUNDS))
+	EventBus.enemy_hit.connect(func(): play_random(ENEMY_HIT_SOUNDS))
+	EventBus.player_shot.connect(func(): play_random(SHOOT_SOUNDS))
+	EventBus.enemy_shot.connect(func(): play_random(SHOOT_SOUNDS))
+	EventBus.tower_shot.connect(func(): play_random(SHOOT_SOUNDS))
+	EventBus.minion_spawned.connect(func(): play_random(MINION_SOUNDS))
+	
+func play_random(sounds: Array) -> void:
+	var player = _get_available_player()
+	if player:
+		player.stream = sounds.pick_random()
+		player.play()
 
 func play_sound(sound_name: String) -> void:
 	var player = _get_available_player()
 	if player:
+		player.process_mode = Node.PROCESS_MODE_ALWAYS
 		player.stream = SOUNDS[sound_name]
 		player.play()
 

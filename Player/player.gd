@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var health_bar: TextureProgressBar = $HealthBar
+@onready var regen_bar: TextureProgressBar = $RegenBar
 
 var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
@@ -13,7 +14,8 @@ var placing_tower = false
 var tower_type = 0
 var valid_placement = true
 var overlapping_areas: Array[Area2D] = []
-var regen_timer = PlayerState.regen_cooldown
+var regen_timer = 0
+
 signal clicked
 
 func _ready() -> void:
@@ -26,7 +28,7 @@ func _ready() -> void:
 
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-	velocity = input_dir * PlayerConstants.DEFAULT_PLAYER_SPEED
+	velocity = input_dir * PlayerState.speed
 	if Input.is_action_pressed("click"):
 		if not placing_tower:
 			clicked.emit(get_global_mouse_position())
@@ -34,6 +36,7 @@ func get_input():
 	if Input.is_action_just_pressed("click"):
 		if placing_tower:
 			if not valid_placement:
+				EventBus.invalid_action.emit()
 				return
 				
 			var new_tower: Tower
@@ -54,6 +57,7 @@ func get_input():
 			tower_type = 0
 			aim_indicator.visible = true
 			tower_placement_indicator.visible = false
+			EventBus.tower_placed.emit()
 			EventBus.tower1_deselected.emit()
 			EventBus.tower2_deselected.emit()
 			EventBus.tower3_deselected.emit()
@@ -83,16 +87,19 @@ func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_eve
 			tower_placement_indicator.visible = true
 			aim_indicator.visible = false
 			placing_tower = true
+	else:
+		EventBus.invalid_action.emit()
 
 func _physics_process(delta: float) -> void:
 	get_input()
+	process_regen(delta)
+
 	look_at(get_global_mouse_position())
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
-		if collider is Entity:  # Or check for specific groups
-			# Push the entity away from player's center
+		if collider is Enemy:
 			var push_direction = (collider.global_position - global_position).normalized()
 			collider.velocity += push_direction * push_force * delta
 	move_and_slide()
@@ -107,15 +114,14 @@ func _process(delta: float) -> void:
 	GameState.player_position = global_position
 	health_bar.max_value = PlayerState.max_health
 	health_bar.value = PlayerState.health
-	process_regen(delta)
 	check_door()
 
 	if placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
 		if valid_placement:
-			tower_placement_indicator.modulate = Color8(0, 510, 0, 75)
+			tower_placement_indicator.modulate = Color(0, 2, 0, 0.3)
 		else:
-			tower_placement_indicator.modulate = Color8(510, 0, 0, 75)
+			tower_placement_indicator.modulate = Color(2, 0, 0, 0.3)
 	for item in PlayerState.player_items:
 		item.use(delta)
 
@@ -128,10 +134,17 @@ func check_door() -> void:
 			EventBus.door_not_visible.emit()
 
 func process_regen(delta: float) -> void:
-	regen_timer -= delta 
-	if regen_timer <= 0:
+	regen_timer += delta
+	regen_bar.max_value = PlayerState.regen_cooldown
+	regen_bar.value = regen_timer
+	if regen_timer >= PlayerState.regen_cooldown:
+		EventBus.player_regenerated.emit()
+		var regen_tween = create_tween()
 		PlayerState.health = min(PlayerState.health + PlayerState.regen, PlayerState.max_health)
-		regen_timer = PlayerState.regen_cooldown
+		regen_tween.tween_property(health_bar, "modulate", Color8(0, 510, 0, 255), 0.5).set_ease(Tween.EASE_IN)
+		regen_tween.tween_property(health_bar, "modulate", Color(1, 1, 1, 1), 0.3)
+		Utils.spawn_hit_effect(Color8(0, 510, 0, 255), global_position, max(PlayerState.regen * 5, 5))
+		regen_timer = 0
 
 func _add_item_scene(item_scene: PackedScene) -> void:
 	if item_scene == Scenes.sword_scene:
@@ -186,16 +199,18 @@ func shoot(mouse_position: Vector2):
 		bullet.position = position
 		bullet.start(mouse_position, PlayerState.projectile_speed, PlayerState.damage, self)
 		EventBus.arena_spawn.emit(bullet)
+		EventBus.player_shot.emit()
 		can_shoot = false
 
 func take_damage(damage_taken: int, shooter: Node):
+	EventBus.player_hit.emit()
 	PlayerState.health -= damage_taken
 
 func level_up():
 	PlayerState.level += 1
 	PlayerState.levels_available += 1
 	PlayerState.xp = 0
-	PlayerState.level_up_condition = round(PlayerConstants.BASE_XP * (PlayerConstants.LEVEL_MULTIPLIER ** PlayerState.level) / 5) * 5
+	PlayerState.level_up_condition = round(100 * (1.1 ** PlayerState.level) / 5) * 5
 	EventBus.level_up.emit()
 	
 func _on_xp_pickup():

@@ -15,8 +15,16 @@ func _purchase_pressed() -> void:
 	if PlayerState.gold >= item.price:
 		PlayerState.gold -= item.price
 		PlayerState.player_items.append(item.duplicate())
+		if item.item_name in PlayerState.item_counts:
+			PlayerState.item_counts[item.item_name] += 1
+		else:
+			PlayerState.item_counts[item.item_name] = 1
 		EventBus.purchased.emit()
+		if item.item_name == "Sword":
+			EventBus.sword_purchased.emit()
 		queue_free()
+	else:
+		EventBus.invalid_action.emit()
 
 func populate() -> void:
 	item_image.texture = item.image

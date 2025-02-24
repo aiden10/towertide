@@ -23,9 +23,11 @@ func _ready() -> void:
 	
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
+		EventBus.invalid_action.emit()
 		return
 		
 	if PlayerState.gold < tower.upgrade1_price:
+		EventBus.invalid_action.emit()
 		return
 		
 	PlayerState.gold -= tower.upgrade1_price
@@ -38,9 +40,11 @@ func _upgrade1() -> void:
 
 func _upgrade2() -> void:
 	if upgrade2_button.text == Towers.end_of_path_name:
+		EventBus.invalid_action.emit()
 		return
 		
 	if PlayerState.gold < tower.upgrade2_price:
+		EventBus.invalid_action.emit()
 		return
 		
 	PlayerState.gold -= tower.upgrade2_price
@@ -53,9 +57,11 @@ func _upgrade2() -> void:
 	
 func _upgrade3() -> void:
 	if upgrade3_button.text == Towers.end_of_path_name:
+		EventBus.invalid_action.emit()
 		return
 		
 	if PlayerState.gold < tower.upgrade3_price:
+		EventBus.invalid_action.emit()
 		return
 
 	PlayerState.gold -= tower.upgrade3_price

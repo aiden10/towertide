@@ -10,6 +10,7 @@ func enemy_detected(area: Area2D) -> void:
 			shoot(parent.global_position, angle_offset)
 
 func shoot(enemy_position: Vector2, angle: float) -> void:
+	EventBus.tower_shot.emit()
 	look_at(enemy_position)
 	rotation_degrees += angle
 
@@ -20,3 +21,4 @@ func shoot(enemy_position: Vector2, angle: float) -> void:
 
 	bullet.start(enemy_position, PlayerState.projectile_speed * Towers.SENTRY_SPEED_PERCENTAGE, PlayerState.damage * Towers.SENTRY_DAMAGE_PERCENTAGE, self)
 	EventBus.arena_spawn.emit(bullet)
+	

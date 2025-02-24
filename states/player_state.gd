@@ -13,12 +13,13 @@ var projectile_speed: int = 1000
 var knockback: float = 100
 var pierce: int = 1
 var bullet_size: float = 0.01
-var regen: int = 1
-var regen_cooldown: int = 25
+var regen: int = 5
+var regen_cooldown: int = 15
 
 ## Misc
 var levels_available: int = 0
 var player_items: Array = []
-var level_up_condition: int = PlayerConstants.DEFAULT_LEVEL_UP_CONDITION
+var item_counts: Dictionary = {}
+var level_up_condition: int = 100
 var enemies_killed: int = 0
 var swords_added: int = 0

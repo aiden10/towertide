@@ -22,6 +22,7 @@ script = ExtResource("1_8lbho")
 shape = SubResource("CircleShape2D_jwrfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0392157)
 position = Vector2(0.500003, 0.499998)
 scale = Vector2(0.139063, 0.139583)
 texture = ExtResource("1_33oy3")
@@ -50,7 +51,7 @@ texture = ExtResource("4_ylbmg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerPlacementIndicator/PlacementHitbox"]
 shape = SubResource("CircleShape2D_jpci5")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
+[node name="RegenBar" type="TextureProgressBar" parent="."]
 offset_left = -211.0
 offset_top = -214.0
 offset_right = -11.0
@@ -58,8 +59,21 @@ offset_bottom = -14.0
 scale = Vector2(0.267891, 0.267891)
 pivot_offset = Vector2(252, 256)
 value = 100.0
-texture_under = ExtResource("5_nvaor")
 texture_progress = ExtResource("5_nvaor")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.294118, 0.882353, 0.054902, 1)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -261.0
+offset_top = -253.0
+offset_right = 379.0
+offset_bottom = 227.0
+scale = Vector2(0.139, 0.14)
+pivot_offset = Vector2(252, 256)
+value = 100.0
+texture_under = ExtResource("1_33oy3")
+texture_progress = ExtResource("1_33oy3")
 tint_under = Color(1, 1, 1, 0)
 tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(0.5, 1, 0.5, 1)

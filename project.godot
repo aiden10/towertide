@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoloads/event_bus.gd"
 EnemyConstants="*res://entities/enemy/enemy_constants.gd"
-PlayerConstants="*res://player/player_constants.gd"
 PlayerState="*res://states/player_state.gd"
 Utils="*res://autoloads/utils.gd"
 Scenes="*res://autoloads/scenes.gd"

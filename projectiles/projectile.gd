@@ -22,7 +22,6 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 	speed = projectile_speed
 	damage = bullet_damage
 	
-	# Store the instance ID and group instead of duplicating the node
 	shooter_id = origin.get_instance_id()
 	shooter_groups = origin.get_groups()
 	
@@ -40,7 +39,6 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 		pierce = PlayerState.pierce
 
 func get_shooter() -> Node:
-	# Get the actual shooter node from the instance ID
 	return instance_from_id(shooter_id) if shooter_id else null
 
 func clear() -> void:
@@ -80,8 +78,10 @@ func _on_area_entered(area: Area2D) -> void:
 	# Enemy bullet entered sword
 	if parent.is_in_group("Sword") and "Enemies" in shooter_groups:
 		direction *= -1
-		add_to_group("Player")
+		shooter_groups.append("Player")
+		shooter_groups.remove_at(shooter_groups.find("Enemies"))
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
+		EventBus.deflect.emit()
 		return
 		
 	# Player bullet entered enemy

@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 
 func shoot_pattern() -> void:
 	var angles: Array
+	EventBus.tower_shot.emit()
 	if is_cross_pattern:
 		# Cross pattern: up, right, down, left (0°, 90°, 180°, 270°)
 		angles = [0, PI/2, PI, 3*PI/2]
