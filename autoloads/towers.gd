@@ -31,6 +31,13 @@ const BLANK_COST: int = 10
 const BLANK_NAME: String = "Blank"
 var BLANK_IMAGE: Texture = load("res://sprites/player/white.png")
 
+const PYLON_SCENE_PATH: String = "res://towers/blank/defense/PylonTower.tscn"
+const PYLON_COST: int = 10
+const PYLON_COOLDOWN: float = 0.25
+const PYLON_DAMAGE: float = 0.1
+const PYLON_NAME: String = "Pylon"
+var PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
+
 var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
 const CHARGER_SPEED: float = 100
 const CHARGER_DAMAGE: float = 0.8

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://eabqppdmmy1q"]
+
+[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="1_ed8nh"]
+[ext_resource type="Script" path="res://towers/blank/defense/pylon_tower.gd" id="1_kiltx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7188"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x10ol"]
+radius = 156.208
+
+[node name="PylonTower" type="Area2D" groups=["Pylons"]]
+script = ExtResource("1_kiltx")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s7188")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.222292, 0.222292)
+texture = ExtResource("1_ed8nh")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.75, 0.75)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_x10ol")
+
+[node name="ConnectRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(3, 3)
+
+[node name="ConnectHitbox" type="CollisionShape2D" parent="ConnectRadius"]
+shape = SubResource("CircleShape2D_x10ol")

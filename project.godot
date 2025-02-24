@@ -47,6 +47,7 @@ Projectiles=""
 DetectionRadius=""
 Minions=""
 Towers=""
+Pylons=""
 
 [input]
 

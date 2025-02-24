@@ -27,7 +27,7 @@ func _ready() -> void:
 	if GameState.door_position != Vector2.ZERO:
 		player.global_position = GameState.door_position
 	GameState.door_position = Vector2.ZERO
-
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

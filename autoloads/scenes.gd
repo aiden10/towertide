@@ -14,3 +14,4 @@ var cross_tower_scene: PackedScene = preload("res://towers/cross/CrossTower.tscn
 var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.tscn")
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn")
+var pylon_tower_scene: PackedScene = preload("res://towers/blank/defense/PylonTower.tscn")

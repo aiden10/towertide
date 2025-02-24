@@ -3,6 +3,7 @@ class_name Sentry
 
 var can_shoot: bool = false
 var angle_offset: float = 0
+
 func enemy_detected(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Enemies"):
