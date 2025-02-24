@@ -3,7 +3,8 @@ extends Area2D
 var direction: Vector2
 var velocity: Vector2
 var speed: int 
-var shooter: String
+var shooter_id: int  # Store just the instance ID instead of duplicating
+var shooter_groups: Array[StringName]
 var damage: float
 var lifetime: float = 4.0
 var pierce: int = 0
@@ -17,22 +18,30 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	scale_size(damage)
 
-func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: String) -> void:	
+func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node) -> void:    
 	speed = projectile_speed
 	damage = bullet_damage
-	shooter = origin
+	
+	# Store the instance ID and group instead of duplicating the node
+	shooter_id = origin.get_instance_id()
+	shooter_groups = origin.get_groups()
+	
 	direction = (mouse_position - position).normalized()
 	rotation = direction.angle()
-
+	
 	# Initialize the despawn timer
 	despawn_timer = Timer.new()
 	add_child(despawn_timer)
 	despawn_timer.wait_time = lifetime
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
-
-	if origin == "player":
+	
+	if "Enemies" not in shooter_groups:
 		pierce = PlayerState.pierce
+
+func get_shooter() -> Node:
+	# Get the actual shooter node from the instance ID
+	return instance_from_id(shooter_id) if shooter_id else null
 
 func clear() -> void:
 	GameState.player_projectiles.erase(self)
@@ -40,17 +49,17 @@ func clear() -> void:
 
 func scale_size(bullet_damage: float) -> void:
 	var extra_scale: float = 0
-	if shooter == "player":
+	if "Player" in shooter_groups:
 		extra_scale = PlayerState.bullet_size
-	elif shooter == "enemy":
+	elif "Enemies" in shooter_groups:
 		extra_scale = -0.5
 		
 	scale *= max(1, log(bullet_damage / 5) + extra_scale)
-	
+
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	position += velocity * delta
-
+	
 	# Check if offscreen
 	var viewport_rect = get_viewport_rect()
 	if not viewport_rect.has_point(position):
@@ -67,20 +76,24 @@ func _on_despawn_timer_timeout() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent.is_in_group("Sword") and shooter != "player":
+	
+	# Enemy bullet entered sword
+	if parent.is_in_group("Sword") and "Enemies" in shooter_groups:
 		direction *= -1
-		shooter = "player"
+		add_to_group("Player")
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
 		return
+		
+	# Player bullet entered enemy
+	if parent.is_in_group("Player") and "Enemies" in shooter_groups:
+		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
+		parent.take_damage(damage, get_shooter())
+		clear()
 
-	if parent.is_in_group("Enemies") and shooter != "enemy":
+	# Non enemy bullet entered enemy
+	if parent.is_in_group("Enemies") and not "Enemies" in shooter_groups:
 		Utils.spawn_hit_effect(Color(255, 255, 255, 50), position, damage)
-		parent.take_damage(damage, direction)
+		parent.take_damage(damage, get_shooter(), direction)
 		pierce -= 1
 		if pierce <= 0:
 			clear()
-
-	if parent.is_in_group("Player") and shooter != "player":
-		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
-		parent.take_damage(damage)
-		clear()

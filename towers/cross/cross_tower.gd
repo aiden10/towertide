@@ -11,6 +11,7 @@ func _ready() -> void:
 	cooldown = Towers.CROSS_COOLDOWN
 	shot_timer = cooldown
 	image = Towers.CROSS_IMAGE
+	scene_path = Towers.CROSS_SCENE_PATH
 	## Add upgrades here
 	
 func _process(delta: float) -> void:
@@ -45,6 +46,5 @@ func shoot_at_angle(angle: float) -> void:
 	
 	# Calculate target position using angle
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * Towers.CROSS_DAMAGE_PERCENTAGE, "player")
-	EventBus.arena_spawn.emit(bullet)
-	
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * Towers.CROSS_DAMAGE_PERCENTAGE, self)
+	EventBus.arena_spawn.emit(bullet)	

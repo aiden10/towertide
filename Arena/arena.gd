@@ -25,6 +25,7 @@ func _ready() -> void:
 	EventBus.pause_game.connect(func(): get_tree().paused = true)
 	EventBus.unpause_game.connect(func(): get_tree().paused = false)
 	EventBus.arena_initialized.emit()
+	TowerManager.spawn_saved_towers(self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -72,9 +73,12 @@ func add_to_arena(child: Node) -> void:
 	call_deferred("add_child", child)
 
 func start_new_level() -> void:
+	var towers = get_tree().get_nodes_in_group("Towers")
+	for tower in towers:
+		TowerManager.save_tower(tower)
 	GameState.stage += 1
 	GameState.door_position = Vector2.ZERO
 	PlayerState.health = PlayerState.max_health
 	PlayerState.enemies_killed = 0
 	GameState.clear_condition = GameState.stage * 100
-	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)	
+	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)

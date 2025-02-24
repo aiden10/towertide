@@ -16,7 +16,7 @@ func update(delta: float):
 
 	if firerate > 0:
 		firerate -= delta
-		
+
 	if firerate <= 0:
 		can_shoot = true
 		firerate = enemy.firerate_cooldown
@@ -26,6 +26,6 @@ func shoot(player_position: Vector2):
 	if can_shoot:
 		var bullet = Scenes.enemy_projectile_scene.instantiate()
 		bullet.position = enemy.position
-		bullet.start(player_position, enemy.projectile_speed, enemy.damage, "enemy")
-		EventBus.arena_spawn.emit(bullet)
+		bullet.start(player_position, enemy.projectile_speed, enemy.damage, get_parent())
 		can_shoot = false
+		EventBus.arena_spawn.emit(bullet)

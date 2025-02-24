@@ -10,6 +10,7 @@ func _ready() -> void:
 	shot_timer = cooldown
 	image = Towers.SENTRY_IMAGE
 	angle_offset = 90.0
+	scene_path = Towers.SENTRY_SCENE_PATH
 	## Add upgrades here
 
 func enemy_detected(area: Area2D) -> void:

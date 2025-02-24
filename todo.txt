@@ -1,6 +1,6 @@
 
-HP goes over player
 Last base tower
+Stat icons
 Tower upgrades/more towers
 More items
 More enemies, bosses

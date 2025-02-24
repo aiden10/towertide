@@ -38,13 +38,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_f8jxe")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="TowerName" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Cross Tower"
 horizontal_alignment = 1
+
+[node name="Kills" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Kills: 0"
 
 [node name="TowerImage" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)

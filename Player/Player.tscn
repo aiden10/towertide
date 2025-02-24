@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqfbffxeidvhr"]
+[gd_scene load_steps=9 format=3 uid="uid://dqfbffxeidvhr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8lbho"]
 [ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="1_33oy3"]
 [ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="3_glpsb"]
 [ext_resource type="Texture2D" uid="uid://w6h71u00o7hd" path="res://sprites/player/tower_placement.png" id="4_ylbmg"]
+[ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="5_nvaor"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwrfn"]
 radius = 22.0
@@ -48,3 +49,17 @@ texture = ExtResource("4_ylbmg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerPlacementIndicator/PlacementHitbox"]
 shape = SubResource("CircleShape2D_jpci5")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -211.0
+offset_top = -214.0
+offset_right = -11.0
+offset_bottom = -14.0
+scale = Vector2(0.267891, 0.267891)
+pivot_offset = Vector2(252, 256)
+value = 100.0
+texture_under = ExtResource("5_nvaor")
+texture_progress = ExtResource("5_nvaor")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.5, 1, 0.5, 1)

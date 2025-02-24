@@ -6,13 +6,15 @@ const CROSS_COOLDOWN: float = 2
 const CROSS_SPEED_PERCENTAGE: float = 0.5 
 const CROSS_DAMAGE_PERCENTAGE: float = 0.5 
 var CROSS_IMAGE: Texture = load("res://sprites/towers/cross/f1.png")
+const CROSS_SCENE_PATH: String = "res://towers/cross/CrossTower.tscn"
 
 const SENTRY_COST: int = 10
 const SENTRY_NAME: String = "Sentry"
 const SENTRY_COOLDOWN: float = 0.5
-const SENTRY_SPEED_PERCENTAGE: float = 0.5 
+const SENTRY_SPEED_PERCENTAGE: float = 0.8 
 const SENTRY_DAMAGE_PERCENTAGE: float = 0.4
 var SENTRY_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
+const SENTRY_SCENE_PATH: String = "res://towers/sentry/SentryTower.tscn"
 
 const SPAWNER_COST: int = 15
 const SPAWNER_SPAWN_AMOUNT: int = 2
@@ -21,9 +23,10 @@ const SPAWNER_COOLDOWN: float = 1
 const SPAWNER_SPEED_PERCENTAGE: float = 0.5 
 const SPAWNER_DAMAGE_PERCENTAGE: float = 0.15
 const SPAWNER_LIMIT: int = 3
-var SPAWNER_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
+var SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/spawner.png")
+const SPAWNER_SCENE_PATH: String = "res://towers/spawner/SpawnerTower.tscn"
 
-var CHARGER_MINION_SCENE: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
+var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
 const CHARGER_SPEED: float = 100
 const CHARGER_DAMAGE: float = 0.8
 const CHARGER_WANDER_DIST: float = 300

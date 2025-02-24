@@ -18,5 +18,5 @@ func shoot(enemy_position: Vector2, angle: float) -> void:
 	GameState.player_projectiles[bullet] = 1
 	bullet.position = position
 
-	bullet.start(enemy_position, PlayerState.projectile_speed * Towers.SENTRY_SPEED_PERCENTAGE, PlayerState.damage * Towers.SENTRY_DAMAGE_PERCENTAGE, "player")
+	bullet.start(enemy_position, PlayerState.projectile_speed * Towers.SENTRY_SPEED_PERCENTAGE, PlayerState.damage * Towers.SENTRY_DAMAGE_PERCENTAGE, self)
 	EventBus.arena_spawn.emit(bullet)

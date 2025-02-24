@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var tower_placement_indicator: Sprite2D = $TowerPlacementIndicator
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
 @onready var camera: Camera2D = $Camera2D
+@onready var health_bar: TextureProgressBar = $HealthBar
 
 var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
@@ -29,7 +30,7 @@ func get_input():
 	if Input.is_action_pressed("click"):
 		if not placing_tower:
 			clicked.emit(get_global_mouse_position())
-		
+
 	if Input.is_action_just_pressed("click"):
 		if placing_tower:
 			if not valid_placement:
@@ -104,6 +105,8 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	GameState.player_position = global_position
+	health_bar.max_value = PlayerState.max_health
+	health_bar.value = PlayerState.health
 	process_regen(delta)
 	check_door()
 
@@ -176,17 +179,16 @@ func _update_placement_validity() -> void:
 			valid_placement = false
 			break
 
-
 func shoot(mouse_position: Vector2):
 	if can_shoot and not placing_tower:
 		var bullet = Scenes.player_projectile_scene.instantiate()
 		GameState.player_projectiles[bullet] = 1
 		bullet.position = position
-		bullet.start(mouse_position, PlayerState.projectile_speed, PlayerState.damage, "player")
+		bullet.start(mouse_position, PlayerState.projectile_speed, PlayerState.damage, self)
 		EventBus.arena_spawn.emit(bullet)
 		can_shoot = false
 
-func take_damage(damage_taken: int):
+func take_damage(damage_taken: int, shooter: Node):
 	PlayerState.health -= damage_taken
 
 func level_up():

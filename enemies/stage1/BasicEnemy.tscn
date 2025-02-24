@@ -22,7 +22,7 @@ position = Vector2(0, 9.53674e-07)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4kpff")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
 script = ExtResource("2_p373m")
 initial_state = NodePath("Follow")
 

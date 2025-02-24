@@ -2,6 +2,7 @@ extends MarginContainer
 
 var tower: Tower
 @onready var tower_name: Label = $PanelContainer/VBoxContainer/TowerName
+@onready var kills_label: Label = $PanelContainer/VBoxContainer/Kills
 @onready var tower_image: TextureRect = $PanelContainer/VBoxContainer/TowerImage
 @onready var upgrade1_button: Button = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Button
 @onready var upgrade1_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Image
@@ -70,7 +71,9 @@ func _show_upgrades() -> void:
 	tower = GameState.selected_tower
 	tower_name.text = tower.tower_name
 	tower_image.texture = tower.image
-
+	tower.killed_enemy.connect(func(): kills_label.text = "Kills: " + str(tower.kills))
+	kills_label.text = "Kills: " + str(tower.kills)
+	
 	# Upgrade 1
 	if not tower.upgrade1_price:
 		upgrade1_price.text = Towers.end_of_path_cost

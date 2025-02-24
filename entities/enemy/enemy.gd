@@ -11,13 +11,15 @@ var died: bool = false
 func reset_modulation() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)
 
-func take_damage(damage_taken: float, knockback_direction: Vector2 = Vector2.ZERO) -> void:
+func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector2 = Vector2.ZERO) -> void:
 	health -= damage_taken
 	var tween = create_tween()
 	tween.tween_property($Sprite, "modulate", Color8(255, 255, 255, 100), 0.1)
 	if health <= 0:
 		if not died:
 			tween.finished.connect(on_death)
+			if shooter is Tower:
+				shooter.killed_enemy.emit()
 			died = true
 	else:
 		tween.tween_callback(reset_modulation)

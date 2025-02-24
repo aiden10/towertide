@@ -3,8 +3,12 @@ extends Spawner
 var spawn_amount = Towers.SPAWNER_SPAWN_AMOUNT
 
 func _ready() -> void:
-	minion_scene = Towers.CHARGER_MINION_SCENE
+	tower_name = Towers.SPAWNER_NAME
+	cost = Towers.SPAWNER_COST
+	image = Towers.SPAWNER_IMAGE
+	minion_scene = Towers.charger_minion_scene
 	cooldown = Towers.SPAWNER_COOLDOWN
+	scene_path = Towers.SPAWNER_SCENE_PATH
 
 func _process(delta: float) -> void:
 	shot_timer -= delta

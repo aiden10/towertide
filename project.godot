@@ -27,6 +27,7 @@ GameState="*res://states/game_state.gd"
 Items="*res://autoloads/items.gd"
 Towers="*res://autoloads/towers.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
+TowerManager="*res://autoloads/tower_manager.gd"
 
 [display]
 
@@ -43,6 +44,7 @@ Sword=""
 Projectiles=""
 DetectionRadius=""
 Minions=""
+Towers=""
 
 [input]
 

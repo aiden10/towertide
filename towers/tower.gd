@@ -8,6 +8,7 @@ var cost: int
 var shot_timer: float
 var kills: int
 var image: Texture
+var scene_path: String
 
 ## Tower upgrades
 var upgrade1_name: String
@@ -26,10 +27,13 @@ var upgrade1_scene: PackedScene
 var upgrade2_scene: PackedScene
 var upgrade3_scene: PackedScene
 
+signal killed_enemy
+
 func _init() -> void:
 	mouse_entered.connect(_on_mouse_enter)
 	mouse_exited.connect(_on_mouse_exit)
 	input_event.connect(_on_input_event)
+	killed_enemy.connect(func(): kills += 1)
 	EventBus.tower_selected.connect(_on_mouse_exit)
 
 func upgrade(new_tower_scene: PackedScene) -> void:

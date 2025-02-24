@@ -16,7 +16,7 @@ func on_death() -> void:
 	for attackable_area in minion_attack_range.get_overlapping_areas():
 		if attackable_area.get_parent().is_in_group("Enemies"):
 			var attackable_enemy: Enemy = attackable_area.get_parent()
-			attackable_enemy.take_damage(PlayerState.damage * minion.damage)
+			attackable_enemy.take_damage(PlayerState.damage * minion.damage, minion.tower)
 			minion.modulate = Color8(510, 255, 255, 255)
 			Utils.spawn_hit_effect(Color8(255, 255, 255, 255), minion.global_position, PlayerState.damage * minion.damage)
 			minion.queue_free()
