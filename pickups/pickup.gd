@@ -4,12 +4,11 @@ class_name Pickup
 enum PickupType {
 	GOLD,
 	XP,
-	ITEM,
-	ABILITY
+	ITEM
 }
 
 var type: PickupType
-var pickup_range: float = 5  # Distance at which item is collected
+var pickup_range: float = 5
 var current_speed: float
 var speed: int
 var direction: Vector2

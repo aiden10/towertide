@@ -2,12 +2,17 @@
     - Sentry: Aims, then shoots
     - Spray: Just shoots
     - Spawners: Spawn friendly mobs
-    - Special: Towers that have certain conditions (i.e mines), towers that buff others, towers that generate money, wall, etc. 
+    - Aura: Towers whose effects span a certain area (Support, money generation, status effects, etc.)
+        - Traps
+        - Defense
+        - Support
 
 Tower defense, but you are the gem/core
 What does skill look like in this game?
 Dodging: able to live longer
 Decision making: knowing what stats to level up depending on what items you have, and knowing what items to buy
+
+Different characters will have different abilities
 
 Stats:
     Health Regeneration

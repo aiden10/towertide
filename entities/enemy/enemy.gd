@@ -32,17 +32,22 @@ func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector
 func on_death() -> void:
 	Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 	for i in range(gold_drop_count):
-		var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
-		var gold = Scenes.gold_scene.instantiate()
-		gold.position = drop_position
-		EventBus.arena_spawn.emit(gold)
+		if GameState.gold_count < GameState.FLOOR_MAX_GOLD:
+			GameState.gold_count += 1
+			var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
+			var gold = Scenes.gold_scene.instantiate()
+			gold.position = drop_position
+			EventBus.arena_spawn.emit(gold)
 
 	for i in range(xp_drop_count):
-		var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
-		var xp = Scenes.xp_scene.instantiate()
-		xp.position = drop_position
-		EventBus.arena_spawn.emit(xp)
+		if GameState.xp_count < GameState.FLOOR_MAX_XP:
+			GameState.xp_count += 1
+			var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
+			var xp = Scenes.xp_scene.instantiate()
+			xp.position = drop_position
+			EventBus.arena_spawn.emit(xp)
 	
 	PlayerState.enemies_killed += 1
+	GameState.enemies_killed_this_stage += 1
 	queue_free()
 	

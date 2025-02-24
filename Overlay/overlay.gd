@@ -53,10 +53,9 @@ func reset_modulation() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)
 	cross_image.modulate = Color8(255, 255, 255, 150)
 	spawner_image.modulate = Color8(255, 255, 255, 150)
-	
+
 func _update_spawn_progress(progress: float, enemies_to_spawn: int, time_scale: float) -> void:
 	if level_clear:
-		spawn_bar.visible = true
 		spawning_label.visible = true
 		spawn_bar.max_value = time_scale
 		spawn_bar.value = progress
@@ -73,6 +72,8 @@ func _process(_delta: float) -> void:
 	xp_bar.value = PlayerState.xp
 	if not level_clear:
 		clear_condition_label.text = "Kill " + str(GameState.clear_condition) + " enemies to proceed"
+		spawn_bar.max_value = GameState.clear_condition
+		spawn_bar.value = GameState.enemies_killed_this_stage
 	else:
 		clear_condition_label.text = "Enter the door to proceed to the shop"
 		

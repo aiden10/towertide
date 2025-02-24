@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var regen_bar: TextureProgressBar = $RegenBar
+@onready var regen_timer: Timer = $RegenTimer
 
 var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
@@ -14,21 +15,25 @@ var placing_tower = false
 var tower_type = 0
 var valid_placement = true
 var overlapping_areas: Array[Area2D] = []
-var regen_timer = 0
 
 signal clicked
 
 func _ready() -> void:
+	position = GameState.player_position
 	clicked.connect(shoot)
 	placement_hitbox.area_entered.connect(_check_placement)
 	placement_hitbox.area_exited.connect(_on_area_exit)
 	EventBus.xp_picked_up.connect(_on_xp_pickup)
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
 	EventBus.add_item_scene.connect(_add_item_scene)
-
+	regen_timer.wait_time = PlayerState.regen_cooldown
+	regen_timer.timeout.connect(_on_regen_timer_timeout)
+	regen_timer.start()
+	
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
+		
 	if Input.is_action_pressed("click"):
 		if not placing_tower:
 			clicked.emit(get_global_mouse_position())
@@ -92,7 +97,6 @@ func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_eve
 
 func _physics_process(delta: float) -> void:
 	get_input()
-	process_regen(delta)
 
 	look_at(get_global_mouse_position())
 	for i in get_slide_collision_count():
@@ -111,9 +115,12 @@ func _physics_process(delta: float) -> void:
 		shot_timer = PlayerState.firerate
 		
 func _process(delta: float) -> void:
-	GameState.player_position = global_position
+	GameState.player_position = position
 	health_bar.max_value = PlayerState.max_health
 	health_bar.value = PlayerState.health
+	regen_bar.max_value = PlayerState.regen_cooldown
+	regen_bar.value = PlayerState.regen_cooldown - regen_timer.time_left
+
 	check_door()
 
 	if placing_tower:
@@ -133,18 +140,13 @@ func check_door() -> void:
 		else:
 			EventBus.door_not_visible.emit()
 
-func process_regen(delta: float) -> void:
-	regen_timer += delta
-	regen_bar.max_value = PlayerState.regen_cooldown
-	regen_bar.value = regen_timer
-	if regen_timer >= PlayerState.regen_cooldown:
-		EventBus.player_regenerated.emit()
-		var regen_tween = create_tween()
-		PlayerState.health = min(PlayerState.health + PlayerState.regen, PlayerState.max_health)
-		regen_tween.tween_property(health_bar, "modulate", Color8(0, 510, 0, 255), 0.5).set_ease(Tween.EASE_IN)
-		regen_tween.tween_property(health_bar, "modulate", Color(1, 1, 1, 1), 0.3)
-		Utils.spawn_hit_effect(Color8(0, 510, 0, 255), global_position, max(PlayerState.regen * 5, 5))
-		regen_timer = 0
+func _on_regen_timer_timeout() -> void:
+	EventBus.player_regenerated.emit()
+	var regen_tween = create_tween()
+	PlayerState.health = min(PlayerState.health + PlayerState.regen, PlayerState.max_health)
+	regen_tween.tween_property(health_bar, "modulate", Color8(0, 510, 0, 255), 0.5).set_ease(Tween.EASE_IN)
+	regen_tween.tween_property(health_bar, "modulate", Color(1, 1, 1, 1), 0.3)
+	Utils.spawn_hit_effect(Color8(0, 510, 0, 255), global_position, max(PlayerState.regen * 5, 5))
 
 func _add_item_scene(item_scene: PackedScene) -> void:
 	if item_scene == Scenes.sword_scene:
@@ -210,7 +212,7 @@ func level_up():
 	PlayerState.level += 1
 	PlayerState.levels_available += 1
 	PlayerState.xp = 0
-	PlayerState.level_up_condition = round(100 * (1.1 ** PlayerState.level) / 5) * 5
+	PlayerState.level_up_condition = round(100 * (1.2 ** PlayerState.level) / 5) * 5
 	EventBus.level_up.emit()
 	
 func _on_xp_pickup():

@@ -122,6 +122,7 @@ func _on_level_up() -> void:
 	bullet_size_quantity.text = str(PlayerState.bullet_size)
 	pierce_quantity.text = str(PlayerState.pierce)
 	self.visible = true
+	GameState.allocate_menu_up = true
 	EventBus.pause_game.emit()
 
 func damage_up() -> void:
@@ -165,5 +166,6 @@ func level_down() -> void:
 	PlayerState.levels_available -= 1
 	_on_level_up()
 	if PlayerState.levels_available < 1:
+		GameState.allocate_menu_up = false
 		self.visible = false
 		EventBus.unpause_game.emit()

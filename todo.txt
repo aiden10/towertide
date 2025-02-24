@@ -1,10 +1,8 @@
 
 Last base tower: The wall
 Stat icons
+Character selection?
 Tower upgrades/more towers
 More items
 More enemies, bosses
-Have sword scale with its damage
 Optimization (Despawning stuff, enemy limit)
-Sounds/Music
-    Bell chime when extra enemies are spawning

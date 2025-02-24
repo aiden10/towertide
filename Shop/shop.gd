@@ -45,4 +45,4 @@ func _update_overlay() -> void:
 	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_health)
 
 func _next_level() -> void:
-	get_tree().change_scene_to_packed(Scenes.arena_scene)
+	SceneManager.load_arena()

@@ -16,9 +16,12 @@ Your bullets bounce when hitting an enemy
 Status effect items:
 Burn, Freeze, Charm, Poison
 
-A lot of binding of isaac items can be copied
+Extra shot:
+Shoot an additional bullet
 
 Knight minions which have swords
+Hollow knight spawner
+    When you upgrade to this tower, you can select an item to give to all the knights it spawns (knights will always have one sword) 
 
 "Hollow" Enemies:
 Square enemies that are literally hollow, and inside will show the icon of some item.

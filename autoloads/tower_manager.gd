@@ -1,15 +1,5 @@
 extends Node
 
-class TowerData:
-	var scene_path: String
-	var position: Vector2
-	var kills: int
-	
-	func _init(tower: Tower) -> void:
-		scene_path = tower.scene_path
-		position = tower.position
-		kills = tower.kills
-
 var active_towers: Array[TowerData] = []
 
 func save_tower(tower: Node2D) -> void:

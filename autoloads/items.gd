@@ -12,6 +12,7 @@ const SWORD_NAME: String = "Sword"
 const SWORD_DESCRIPTION: String = "Deflect enemy bullets and deal melee damage"
 const SWORD_PRICE: int = 5
 const SWORD_DAMAGE: int = 5
+const SWORD_LIMIT: int = 4
 
 func _init() -> void:
 	all_items[REGEN_NAME] = RegenPotion.new()
