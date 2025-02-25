@@ -8,6 +8,10 @@ var gold_drop_range: float
 var drop_count: int
 var died: bool = false
 var enemy_name: String
+var bullet_scale: float = 1.0
+var gold_drop_chance: float = 1.0
+var min_spawn_dist: float
+var spawn_radius: float
 
 func reset_modulation() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)
@@ -33,6 +37,8 @@ func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector
 func on_death() -> void:
 	Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 	for i in range(gold_drop_count):
+		if randf() > gold_drop_chance:
+			continue
 		if GameState.gold_count < GameState.FLOOR_MAX_GOLD:
 			GameState.gold_count += 1
 			var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)

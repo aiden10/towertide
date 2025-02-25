@@ -17,6 +17,10 @@ func _init() -> void:
 	xp_drop_range = Enemies.SNIPER_XP_DROP_RANGE
 	gold_drop_count = Enemies.SNIPER_GOLD_DROP_COUNT
 	xp_drop_count = Enemies.SNIPER_XP_DROP_COUNT
+	bullet_scale = Enemies.SNIPER_BULLET_SIZE
+	spawn_radius = Enemies.SNIPER_SPAWN_RADIUS
+	min_spawn_dist = Enemies.SNIPER_MIN_SPAWN_DIST
+	
 
 func _ready() -> void:
 	state_machine.state_changed.connect(func(state_name): current_state = state_name)

@@ -5,6 +5,7 @@ var spawn_amount = Towers.SPAWNER_SPAWN_AMOUNT
 func _init() -> void:
 	super()
 	tower_name = Towers.SPAWNER_NAME
+	description = Towers.SPAWNER_DESCRIPTION
 	cost = Towers.SPAWNER_COST
 	image = Towers.SPAWNER_IMAGE
 	minion_scene = Towers.charger_minion_scene

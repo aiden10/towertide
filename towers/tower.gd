@@ -2,9 +2,10 @@ extends Area2D
 
 class_name Tower
 
-var cooldown: float
 var tower_name: String
+var description: String
 var cost: int
+var cooldown: float
 var shot_timer: float
 var kills: int
 var image: Texture

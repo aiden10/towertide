@@ -10,5 +10,9 @@ func _init() -> void:
 	enemy_name = Enemies.BASIC_SHOOTER_ENEMY_NAME
 	gold_drop_range = Enemies.BASIC_SHOOTER_GOLD_DROP_RANGE
 	xp_drop_range = Enemies.BASIC_SHOOTER_XP_DROP_RANGE
+	gold_drop_chance = Enemies.BASIC_SHOOTER_GOLD_DROP_CHANCE
 	gold_drop_count = Enemies.BASIC_SHOOTER_GOLD_DROP_COUNT
 	xp_drop_count = Enemies.BASIC_SHOOTER_XP_DROP_COUNT
+	bullet_scale = Enemies.BASIC_SHOOTER_BULLET_SCALE
+	min_spawn_dist = Enemies.BASIC_SHOOTER_MIN_SPAWN_DIST
+	spawn_radius = Enemies.BASIC_SHOOTER_SPAWN_RADIUS

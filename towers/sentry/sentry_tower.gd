@@ -6,6 +6,7 @@ extends Sentry
 func _init() -> void:
 	super()
 	tower_name = Towers.SENTRY_NAME
+	description = Towers.SENTRY_DESCRIPTION
 	cost = Towers.SENTRY_COST
 	cooldown = Towers.SENTRY_COOLDOWN
 	shot_timer = cooldown

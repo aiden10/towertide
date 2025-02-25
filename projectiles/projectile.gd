@@ -9,6 +9,7 @@ var damage: float
 var lifetime: float = 4.0
 var pierce: int = 0
 var is_offscreen: bool = false
+var projectile_scale: float = 1.0
 
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var sprite: Sprite2D = $Sprite2D
@@ -18,9 +19,10 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	scale_size(damage)
 
-func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node) -> void:    
+func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node, bullet_scale: float = 1.0) -> void:    
 	speed = projectile_speed
 	damage = bullet_damage
+	projectile_scale = bullet_scale
 	
 	shooter_id = origin.get_instance_id()
 	shooter_groups = origin.get_groups()
@@ -51,7 +53,7 @@ func scale_size(bullet_damage: float) -> void:
 		extra_scale = PlayerState.bullet_size
 	elif "Enemies" in shooter_groups:
 		extra_scale = -0.5
-		
+	scale *= projectile_scale
 	scale *= max(1, log(bullet_damage / 5) + extra_scale)
 
 func _physics_process(delta: float) -> void:

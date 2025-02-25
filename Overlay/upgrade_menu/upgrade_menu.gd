@@ -4,6 +4,7 @@ var tower: Tower
 @onready var tower_name: Label = $PanelContainer/VBoxContainer/TowerName
 @onready var kills_label: Label = $PanelContainer/VBoxContainer/Kills
 @onready var tower_image: TextureRect = $PanelContainer/VBoxContainer/TowerImage
+@onready var tower_description: Label = $PanelContainer/VBoxContainer/TowerDescription
 @onready var close_button: TextureButton = $PanelContainer/VBoxContainer/CloseButton
 @onready var upgrade1_button: Button = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Button
 @onready var upgrade1_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Image
@@ -78,6 +79,7 @@ func _show_upgrades() -> void:
 	self.visible = true
 	tower = GameState.selected_tower
 	tower_name.text = tower.tower_name
+	tower_description.text = tower.description
 	tower_image.texture = tower.image
 	tower.killed_enemy.connect(func(): kills_label.text = "Kills: " + str(tower.kills))
 	kills_label.text = "Kills: " + str(tower.kills)

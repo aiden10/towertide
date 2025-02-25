@@ -8,6 +8,7 @@ var current_frame: int = 0
 func _init() -> void:
 	super()
 	tower_name = Towers.CROSS_NAME
+	description = Towers.CROSS_DESCRIPTION
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN
 	shot_timer = cooldown

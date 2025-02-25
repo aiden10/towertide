@@ -54,6 +54,12 @@ theme_override_font_sizes/font_size = 32
 text = "Cross Tower"
 horizontal_alignment = 1
 
+[node name="TowerDescription" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Description here"
+autowrap_mode = 3
+
 [node name="Kills" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24

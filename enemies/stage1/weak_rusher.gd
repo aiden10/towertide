@@ -10,7 +10,10 @@ func _init() -> void:
 	gold_drop_range = Enemies.WEAK_RUSHER_GOLD_DROP_RANGE
 	xp_drop_range = Enemies.WEAK_RUSHER_XP_DROP_RANGE
 	gold_drop_count = Enemies.WEAK_RUSHER_GOLD_DROP_COUNT
+	gold_drop_chance = Enemies.WEAK_RUSHER_GOLD_DROP_CHANCE
 	xp_drop_count = Enemies.WEAK_RUSHER_XP_DROP_COUNT
+	min_spawn_dist = Enemies.WEAK_RUSHER_MIN_SPAWN_DIST
+	spawn_radius = Enemies.WEAK_RUSHER_SPAWN_RADIUS
 
 func _ready() -> void:
 	hurtbox.area_entered.connect(_on_area_entered)

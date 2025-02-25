@@ -3,6 +3,7 @@ extends Pylon
 func _init() -> void:
 	super()
 	tower_name = Towers.PYLON_NAME
+	description = Towers.PYLON_DESCRIPTION
 	cost = Towers.PYLON_COST
 	cooldown = Towers.PYLON_COOLDOWN
 	shot_timer = cooldown

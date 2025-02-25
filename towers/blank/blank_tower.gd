@@ -2,6 +2,7 @@ extends Tower
 
 func _ready() -> void:
 	tower_name = Towers.BLANK_NAME
+	description = Towers.BLANK_DESCRIPTION
 	cost = Towers.BLANK_COST
 	image = Towers.BLANK_IMAGE
 	scene_path = Towers.BLANK_SCENE_PATH
