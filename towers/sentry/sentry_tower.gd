@@ -3,7 +3,8 @@ extends Sentry
 @onready var sprite: Sprite2D = $Sprite
 @onready var attack_radius: Area2D = $AttackRadius
 
-func _ready() -> void:
+func _init() -> void:
+	super()
 	tower_name = Towers.SENTRY_NAME
 	cost = Towers.SENTRY_COST
 	cooldown = Towers.SENTRY_COOLDOWN

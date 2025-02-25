@@ -19,18 +19,19 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoloads/event_bus.gd"
 EnemyConstants="*res://entities/enemy/enemy_constants.gd"
-GameConstants="*res://autoloads/game_constants.gd"
-PlayerConstants="*res://autoloads/player_constants.gd"
+GameConstants="*res://autoloads/constants/game_constants.gd"
+PlayerConstants="*res://autoloads/constants/player_constants.gd"
 GameState="*res://states/game_state.gd"
 PlayerState="*res://states/player_state.gd"
 Utils="*res://autoloads/utils.gd"
 Scenes="*res://autoloads/scenes.gd"
-Items="*res://autoloads/items.gd"
-Towers="*res://autoloads/towers.gd"
+Items="*res://autoloads/constants/items.gd"
+Towers="*res://autoloads/constants/towers.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 TowerManager="*res://autoloads/tower_manager.gd"
 SceneManager="*res://autoloads/scene_manager.gd"
 InputHandler="*res://autoloads/input_handler.gd"
+Enemies="*res://autoloads/constants/enemies.gd"
 
 [display]
 
@@ -41,7 +42,6 @@ window/size/viewport_height=1080
 
 Player=""
 Enemies=""
-Level1="Weak Enemies"
 Pickups=""
 Sword=""
 Projectiles=""

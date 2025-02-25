@@ -5,7 +5,8 @@ extends Tower
 var is_cross_pattern: bool = true  
 var current_frame: int = 0
 
-func _ready() -> void:
+func _init() -> void:
+	super()
 	tower_name = Towers.CROSS_NAME
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN

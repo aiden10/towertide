@@ -84,10 +84,10 @@ func _on_area_entered(area: Area2D) -> void:
 		EventBus.deflect.emit()
 		return
 		
-	# Player bullet entered enemy
+	# Enemy bullet entered player
 	if parent.is_in_group("Player") and "Enemies" in shooter_groups:
 		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
-		parent.take_damage(damage, get_shooter())
+		parent.take_damage(damage)
 		clear()
 
 	# Non enemy bullet entered enemy

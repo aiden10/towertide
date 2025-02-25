@@ -31,7 +31,7 @@ const BLANK_COST: int = 10
 const BLANK_NAME: String = "Blank"
 var BLANK_IMAGE: Texture = load("res://sprites/player/white.png")
 
-const PYLON_SCENE_PATH: String = "res://towers/blank/defense/PylonTower.tscn"
+const PYLON_SCENE_PATH: String = "res://towers/blank/pylon/PylonTower.tscn"
 const PYLON_COST: int = 10
 const PYLON_COOLDOWN: float = 0.25
 const PYLON_DAMAGE: float = 0.1

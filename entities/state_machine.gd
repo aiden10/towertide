@@ -1,6 +1,7 @@
 extends Node
 
 @export var initial_state: State
+signal state_changed(state_name)
 var current_state: State
 var states: Dictionary = {}
 
@@ -35,7 +36,8 @@ func _on_child_transition(state: State, new_state_name: String) -> void:
 	var new_state = states[new_state_name.to_lower()]
 	if not new_state:
 		return
-		
+
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
+	state_changed.emit(current_state.name.to_lower())

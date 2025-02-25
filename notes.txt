@@ -14,16 +14,14 @@
         - Melee minions
 
     - Aura: Base tower does nothing
-        - Mine tower
-            - Tower like the spike factory from btd6
-        - Farm tower, generates gold
+        - Pylon tower with electric fence
+        - Economy
         - Buffs towers in range
             - Debuffs enemies while still buffing friendly towers  
-
-How to handle tower upgrades if pretty much all tower variations could just be item effects? If towers will inherit player item effects then the
-tower upgrades need to be more focused on changing the way that they attack instead of adding additional effects. Or I more clearly define what
-items will do, i.e, no bullet modification items. 
 
 Different characters with have different abilities
 
 Bosses every n stages, basically leading to prep/farm stages and boss stages
+
+Spend gold in the shop for stat buffs?
+

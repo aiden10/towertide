@@ -15,6 +15,7 @@ var level_cleared: bool = GameConstants.DEFAULT_LEVEL_CLEARED
 var placing_tower: bool = false
 var valid_placement: bool = false
 var tower_type: int = 0
+var enemy_counts: Dictionary = {}
 
 ## Floor Max Values
 const FLOOR_MAX_XP: int = GameConstants.FLOOR_MAX_XP

@@ -43,6 +43,8 @@ func reset_states() -> void:
 	GameState.level_cleared = GameConstants.DEFAULT_LEVEL_CLEARED
 	GameState.player_projectiles.clear()
 	GameState.selected_tower = null
+	GameState.enemy_counts = {}
+	GameState.tower_type = 0
 
 	PlayerState.level = PlayerConstants.DEFAULT_LEVEL
 	PlayerState.gold = PlayerConstants.DEFAULT_GOLD

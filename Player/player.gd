@@ -143,7 +143,7 @@ func add_item_scenes() -> void:
 		var sword_count = PlayerState.item_counts[Items.SWORD_NAME]
 		for i in range(sword_count):
 			var sword_rotation = 0
-			var sword_position = Vector2(100, 0)
+			var sword_position = Vector2(101, 0)
 			if i == 1:
 				sword_rotation = 180
 				sword_position = Vector2(-100, 2)
@@ -194,7 +194,7 @@ func shoot(mouse_position: Vector2):
 		EventBus.player_shot.emit()
 		can_shoot = false
 
-func take_damage(damage_taken: int, shooter: Node):
+func take_damage(damage_taken: int):
 	EventBus.player_hit.emit()
 	PlayerState.health -= damage_taken
 	if PlayerState.health <= 0:

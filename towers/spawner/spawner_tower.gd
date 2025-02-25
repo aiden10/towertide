@@ -2,7 +2,8 @@ extends Spawner
 
 var spawn_amount = Towers.SPAWNER_SPAWN_AMOUNT
 
-func _ready() -> void:
+func _init() -> void:
+	super()
 	tower_name = Towers.SPAWNER_NAME
 	cost = Towers.SPAWNER_COST
 	image = Towers.SPAWNER_IMAGE

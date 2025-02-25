@@ -7,6 +7,7 @@ var xp_drop_range: int
 var gold_drop_range: float
 var drop_count: int
 var died: bool = false
+var enemy_name: String
 
 func reset_modulation() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)
@@ -47,6 +48,7 @@ func on_death() -> void:
 			xp.position = drop_position
 			EventBus.arena_spawn.emit(xp)
 	
+	GameState.enemy_counts[enemy_name] -= 1
 	PlayerState.enemies_killed += 1
 	GameState.enemies_killed_this_stage += 1
 	queue_free()

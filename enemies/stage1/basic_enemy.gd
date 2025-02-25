@@ -1,13 +1,14 @@
 extends Enemy
 
-func _ready() -> void:
-	health = 30
-	damage = 10
-	speed = 100
-	projectile_speed = 300
-	firerate_cooldown = 1.5
-	distance_threshold = randi_range(200, 500)
-	gold_drop_range = 15
-	xp_drop_range = 50
-	gold_drop_count = 1
-	xp_drop_count = 5
+func _init() -> void:
+	health = Enemies.BASIC_SHOOTER_HEALTH
+	damage = Enemies.BASIC_SHOOTER_DAMAGE
+	speed = Enemies.BASIC_SHOOTER_SPEED
+	projectile_speed = Enemies.BASIC_SHOOTER_PROJECTILE_SPEED
+	firerate_cooldown = Enemies.BASIC_SHOOTER_FIRERATE_COOLDOWN
+	distance_threshold = randi_range(Enemies.BASIC_SHOOTER_MIN_DISTANCE_THRESHOLD, Enemies.BASIC_SHOOTER_MAX_DISTANCE_THRESHOLD)
+	enemy_name = Enemies.BASIC_SHOOTER_ENEMY_NAME
+	gold_drop_range = Enemies.BASIC_SHOOTER_GOLD_DROP_RANGE
+	xp_drop_range = Enemies.BASIC_SHOOTER_XP_DROP_RANGE
+	gold_drop_count = Enemies.BASIC_SHOOTER_GOLD_DROP_COUNT
+	xp_drop_count = Enemies.BASIC_SHOOTER_XP_DROP_COUNT

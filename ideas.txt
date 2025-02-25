@@ -1,3 +1,5 @@
+Items won't have any bullet effects.
+Items will either affect stats or be more unique like the sword. 
 
 Bomb item:
 Instead of bullets, you now place bombs where you click

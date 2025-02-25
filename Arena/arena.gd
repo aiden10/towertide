@@ -1,8 +1,7 @@
 extends Node
 
-@onready var player = $Player
-@export var enemy_scenes: Array[PackedScene]
-@export var door_scene: PackedScene
+@onready var player: CharacterBody2D = $Player
+
 ## Every x seconds after clearing the stage, an extra enemy will spawn each time
 @export var extra_spawn_time_scale: float = 30
 
@@ -41,25 +40,51 @@ func _process(delta: float) -> void:
 	if timer <= 0:
 		for i in range(GameState.enemies_spawning):
 			spawn_enemy()
-		spawn_cooldown = max(min_spawn_time, randf_range(1, 3) - GameState.stage / 10)
+		spawn_cooldown = max(min_spawn_time, randf_range(3, 5) - GameState.stage / 10)
 		timer = spawn_cooldown
 
 	timer -= delta
 
 func spawn_enemy() -> void:
+	var enemy_scenes = []
+	if GameState.stage >= 2:
+		enemy_scenes.append_array(Scenes.stage_two_enemy_scenes)
 	if GameState.stage >= 1:
-		var enemy_scene = enemy_scenes.pick_random()
-		var enemy_position = Utils.get_random_position_in_radius(player.position, spawn_radius, minimum_spawn_distance)
-		var enemy = enemy_scene.instantiate()
-		enemy.position = enemy_position
-		add_child(enemy)
+		enemy_scenes.append_array(Scenes.stage_one_enemy_scenes)
+	
+	if enemy_scenes.is_empty():
+		return
+	
+	var enemy_scene = enemy_scenes.pick_random()
+	
+	if enemy_scene == Scenes.weak_rusher_scene:
+		spawn_enemy()
+		return
+	
+	var enemy = enemy_scene.instantiate()
+	
+	if enemy.enemy_name in Enemies.ENEMY_LIMITS:
+		var current_count = GameState.enemy_counts.get(enemy.enemy_name, 0)
+		if current_count >= Enemies.ENEMY_LIMITS[enemy.enemy_name]:
+			spawn_enemy()
+			return
+	
+	GameState.enemy_counts[enemy.enemy_name] = GameState.enemy_counts.get(enemy.enemy_name, 0) + 1
+	
+	var enemy_position = Utils.get_random_position_in_radius(
+		player.position, 
+		spawn_radius, 
+		minimum_spawn_distance
+	)
+	enemy.position = enemy_position
+	add_child(enemy)
 
 func check_clear_condition() -> void:
 	if GameState.enemies_killed_this_stage >= GameState.clear_condition and not door_spawned:
 		EventBus.level_cleared.emit()
 		GameState.level_cleared = true
 		door_spawned = true
-		var door = door_scene.instantiate()
+		var door = Scenes.door_scene.instantiate()
 		var door_position = Utils.get_random_position_in_radius(player.position, door_spawn_radius, minimum_door_spawn_distance)
 		door.position = door_position
 		add_child(door)

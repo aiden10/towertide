@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://2g105c2j65jw"]
+
+[ext_resource type="Script" path="res://enemies/stage2/tanky_enemy.gd" id="1_3qrwe"]
+[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="1_x4njw"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_qka2l"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/rush_state.gd" id="3_mdjjg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx2hr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esxsp"]
+size = Vector2(16.6667, 24.122)
+
+[node name="TankyEnemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_3qrwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_jx2hr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-9, 0)
+rotation = -1.07687
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_x4njw")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(17, 5)
+scale = Vector2(0.1, 0.07)
+texture = ExtResource("1_x4njw")
+
+[node name="Sprite3" type="Sprite2D" parent="."]
+position = Vector2(6, -18)
+scale = Vector2(0.075, 0.1)
+texture = ExtResource("1_x4njw")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
+script = ExtResource("2_qka2l")
+initial_state = NodePath("Rush")
+
+[node name="Rush" type="Node" parent="StateMachine"]
+script = ExtResource("3_mdjjg")
+
+[node name="Hitbox" type="Area2D" parent="."]
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(5.83333, -15.8333)
+shape = SubResource("RectangleShape2D_esxsp")
+
+[node name="Hitbox2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
+position = Vector2(17.939, 6)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_esxsp")
+
+[node name="Hitbox3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox3"]
+position = Vector2(-9.63229, 0.926902)
+rotation = 0.598648
+scale = Vector2(1.4, 1)
+shape = SubResource("RectangleShape2D_esxsp")
