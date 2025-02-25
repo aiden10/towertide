@@ -56,7 +56,7 @@ horizontal_alignment = 1
 
 [node name="TowerDescription" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 text = "Description here"
 autowrap_mode = 3
 

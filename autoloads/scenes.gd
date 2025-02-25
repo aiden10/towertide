@@ -16,6 +16,7 @@ var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.t
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn")
 var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTower.tscn")
+var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
 
 ## Stage one enemies
 var basic_shooter_scene: PackedScene = preload("res://enemies/stage1/BasicEnemy.tscn")

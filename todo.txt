@@ -1,3 +1,6 @@
+Magnet item which increases pickup range
+Shotgun enemy
+Rapid fire enemy
 Tower upgrades/more towers
 More items
 More enemies, bosses

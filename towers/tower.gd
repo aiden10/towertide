@@ -16,6 +16,10 @@ var upgrade1_name: String
 var upgrade2_name: String
 var upgrade3_name: String
 
+var upgrade1_description: String
+var upgrade2_description: String
+var upgrade3_description: String
+
 var upgrade1_price: int
 var upgrade2_price: int
 var upgrade3_price: int

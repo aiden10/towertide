@@ -8,6 +8,7 @@ extends Control
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar
 
+@onready var cross_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer
 @onready var cross_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/HBoxContainer/CrossCostLabel
 @onready var key_label1: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/KeyLabel1
 @onready var cross_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer/CrossImage
@@ -16,10 +17,12 @@ extends Control
 @onready var key_label2: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/KeyLabel2
 @onready var sentry_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/SentryImage
 
+@onready var spawner_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer
 @onready var spawner_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/HBoxContainer/SpawnerCostLabel
 @onready var key_label3: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/KeyLabel3
 @onready var spawner_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer/SpawnerImage
 
+@onready var blank_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer
 @onready var blank_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer/BlankCostLabel
 @onready var key_label4: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/KeyLabel4
 @onready var blank_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer/BlankImage
@@ -46,7 +49,7 @@ func _ready() -> void:
 	EventBus.door_visible.connect(func(): arrow.visible = true)
 	EventBus.door_not_visible.connect(func(): arrow.visible = false)
 	EventBus.update_spawning_bar.connect(_update_spawn_progress)
-	
+		
 	cross_cost_label.text = str(Towers.CROSS_COST)
 	key_label1.text = Utils.get_action_key_name("place_tower1")
 	
