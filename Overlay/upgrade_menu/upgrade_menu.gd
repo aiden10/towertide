@@ -4,6 +4,7 @@ var tower: Tower
 @onready var tower_name: Label = $PanelContainer/VBoxContainer/TowerName
 @onready var kills_label: Label = $PanelContainer/VBoxContainer/Kills
 @onready var tower_image: TextureRect = $PanelContainer/VBoxContainer/TowerImage
+@onready var close_button: TextureButton = $PanelContainer/VBoxContainer/CloseButton
 @onready var upgrade1_button: Button = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Button
 @onready var upgrade1_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Image
 @onready var upgrade1_price: Label = $PanelContainer/VBoxContainer/Upgrade1/PriceContainer/Upgrade1Price
@@ -16,7 +17,8 @@ var tower: Tower
 
 func _ready() -> void:
 	EventBus.tower_selected.connect(_show_upgrades)
-	EventBus.tower_deselected.connect(_hide_upgrades)
+	EventBus.unselect_pressed.connect(_hide_upgrades)
+	close_button.pressed.connect(_hide_upgrades)
 	upgrade1_button.pressed.connect(_upgrade1)
 	upgrade2_button.pressed.connect(_upgrade2)
 	upgrade3_button.pressed.connect(_upgrade3)
@@ -46,7 +48,7 @@ func _upgrade2() -> void:
 	if PlayerState.gold < tower.upgrade2_price:
 		EventBus.invalid_action.emit()
 		return
-		
+
 	PlayerState.gold -= tower.upgrade2_price
 	var new_tower = tower.upgrade2_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
@@ -129,6 +131,8 @@ func _show_upgrades() -> void:
 		upgrade3_image.texture = tower.upgrade3_image
 
 func _hide_upgrades() -> void:
+	if GameState.selected_tower:
+		GameState.selected_tower.deselect_tower()
 	self.visible = false
 	
 	

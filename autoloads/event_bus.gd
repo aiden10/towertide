@@ -1,5 +1,7 @@
 extends Node
 
+signal clicked(mouse_position)
+
 signal pause_game
 signal unpause_game
 
@@ -35,6 +37,8 @@ signal tower3_selected
 signal tower3_deselected
 signal tower4_selected
 signal tower4_deselected
+signal toggle_tower_selection(tower_id: int, cost: int, select_event, deselect_event)
+signal unselect_pressed
 
 signal minion_died
 signal enemy_dead

@@ -66,6 +66,5 @@ func _on_tower_clicked() -> void:
 	$Sprite.modulate = Color8(255, 500, 255, 100)
 
 func deselect_tower() -> void:
-	EventBus.tower_deselected.emit()
 	$Sprite.modulate = Color8(255, 255, 255, 255)
 	GameState.selected_tower = null

@@ -92,3 +92,4 @@ func _process(_delta: float) -> void:
 	var direction = GameState.door_position - GameState.player_position
 	var angle = atan2(direction.y, direction.x)
 	arrow.rotation_degrees = rad_to_deg(angle) + 180
+	

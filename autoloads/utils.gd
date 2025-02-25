@@ -38,7 +38,7 @@ func reset_states() -> void:
 	GameState.xp_count = GameConstants.DEFAULT_XP_COUNT
 	GameState.gold_count = GameConstants.DEFAULT_GOLD_COUNT
 	GameState.enemies_killed_this_stage = GameConstants.DEFAULT_ENEMIES_KILLED_THIS_STAGE
-	GameState.allocate_menu_up = GameConstants.DEFAULT_ALLOCATE_MENU_UP
+	GameState.allocate_menu_up = false
 	GameState.enemies_spawning = GameConstants.DEFAULT_ENEMIES_SPAWNING
 	GameState.level_cleared = GameConstants.DEFAULT_LEVEL_CLEARED
 	GameState.player_projectiles.clear()

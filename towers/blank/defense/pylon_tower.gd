@@ -4,13 +4,15 @@ extends Tower
 var can_hit: bool = true
 var connections = []
 
-func _ready() -> void:
+func _init() -> void:
 	tower_name = Towers.PYLON_NAME
 	cost = Towers.PYLON_COST
 	cooldown = Towers.PYLON_COOLDOWN
 	shot_timer = cooldown
 	image = Towers.PYLON_IMAGE
 	scene_path = Towers.PYLON_SCENE_PATH
+	
+func _ready() -> void:
 	connect_radius.area_entered.connect(connect_radius_entered)
 
 func connect_radius_entered(area: Area2D) -> void:

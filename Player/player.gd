@@ -11,20 +11,17 @@ extends CharacterBody2D
 var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
 var can_shoot = true
-var placing_tower = false
-var tower_type = 0
-var valid_placement = true
 var overlapping_areas: Array[Area2D] = []
-
-signal clicked
 
 func _ready() -> void:
 	position = GameState.player_position
-	clicked.connect(shoot)
+	EventBus.clicked.connect(shoot)
 	placement_hitbox.area_entered.connect(_check_placement)
 	placement_hitbox.area_exited.connect(_on_area_exit)
 	EventBus.xp_picked_up.connect(_on_xp_pickup)
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
+	EventBus.toggle_tower_selection.connect(toggle_tower_placement)
+	EventBus.unselect_pressed.connect(cancel_tower_placement)
 	regen_timer.wait_time = PlayerState.regen_cooldown
 	regen_timer.timeout.connect(_on_regen_timer_timeout)
 	regen_timer.start()
@@ -33,70 +30,58 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
-		
+	
 	if Input.is_action_pressed("click"):
-		if not placing_tower:
-			clicked.emit(get_global_mouse_position())
-
+		if not GameState.placing_tower:
+			EventBus.clicked.emit(get_global_mouse_position())
+			
 	if Input.is_action_just_pressed("click"):
-		if placing_tower:
-			if not valid_placement:
+		if GameState.placing_tower:
+			if not GameState.valid_placement:
 				EventBus.invalid_action.emit()
 				return
 				
 			var new_tower: Tower
-			if tower_type == 1:
+			if GameState.tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
 				new_tower = Scenes.cross_tower_scene.instantiate()
-			elif tower_type == 2:
+			elif GameState.tower_type == 2:
 				PlayerState.gold -= Towers.SENTRY_COST
 				new_tower = Scenes.sentry_tower_scene.instantiate()
-			elif tower_type == 3:
+			elif GameState.tower_type == 3:
 				PlayerState.gold -= Towers.SPAWNER_COST
 				new_tower = Scenes.spawner_tower_scene.instantiate()
-			elif tower_type == 4:
+			elif GameState.tower_type == 4:
 				PlayerState.gold -= Towers.BLANK_COST
 				new_tower = Scenes.blank_tower_scene.instantiate()
 			
 			new_tower.global_position = get_global_mouse_position()
 			EventBus.arena_spawn.emit(new_tower)
-
-			placing_tower = false
-			tower_type = 0
-			aim_indicator.visible = true
-			tower_placement_indicator.visible = false
-			EventBus.tower_placed.emit()
-			EventBus.tower1_deselected.emit()
-			EventBus.tower2_deselected.emit()
-			EventBus.tower3_deselected.emit()
-			EventBus.tower4_deselected.emit()
-
+			
+			EventBus.unselect_pressed.emit()
 		else:
-			clicked.emit(get_global_mouse_position())
-
-	if Input.is_action_just_pressed("place_tower1"):
-		toggle_tower_placement(1, Towers.CROSS_COST, EventBus.tower1_selected, EventBus.tower1_deselected)
-	elif Input.is_action_just_pressed("place_tower2"):
-		toggle_tower_placement(2, Towers.SENTRY_COST, EventBus.tower2_selected, EventBus.tower2_deselected)
-	elif Input.is_action_just_pressed("place_tower3"):
-		toggle_tower_placement(3, Towers.SPAWNER_COST, EventBus.tower3_selected, EventBus.tower3_deselected)
-	elif Input.is_action_just_pressed("place_tower4"):
-		toggle_tower_placement(4, Towers.BLANK_COST, EventBus.tower4_selected, EventBus.tower4_deselected)
-
+			EventBus.clicked.emit(get_global_mouse_position())
+			
+func cancel_tower_placement() -> void:
+	EventBus.tower1_deselected.emit()
+	EventBus.tower2_deselected.emit()
+	EventBus.tower3_deselected.emit()
+	EventBus.tower4_deselected.emit()
+	GameState.tower_type = 0
+	aim_indicator.visible = true
+	tower_placement_indicator.visible = false
+	GameState.placing_tower = false
+	
 func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_event):
 	if PlayerState.gold >= cost:
-		if tower_type == tower_id:
-			deselect_event.emit()
-			tower_type = 0
-			aim_indicator.visible = true
-			tower_placement_indicator.visible = false
-			placing_tower = false
+		if GameState.tower_type == tower_id:
+			cancel_tower_placement()
 		else:
 			select_event.emit()
-			tower_type = tower_id
+			GameState.tower_type = tower_id
 			tower_placement_indicator.visible = true
 			aim_indicator.visible = false
-			placing_tower = true
+			GameState.placing_tower = true
 	else:
 		EventBus.invalid_action.emit()
 
@@ -128,9 +113,9 @@ func _process(delta: float) -> void:
 
 	check_door()
 
-	if placing_tower:
+	if GameState.placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
-		if valid_placement:
+		if GameState.valid_placement:
 			tower_placement_indicator.modulate = Color(0, 2, 0, 0.3)
 		else:
 			tower_placement_indicator.modulate = Color(2, 0, 0, 0.3)
@@ -184,7 +169,7 @@ func _on_area_exit(area: Area2D) -> void:
 
 func _update_placement_validity() -> void:
 	# Start with assumption that placement is valid
-	valid_placement = true
+	GameState.valid_placement = true
 		 
 	# Check all currently overlapping areas
 	for area in overlapping_areas:
@@ -196,11 +181,11 @@ func _update_placement_validity() -> void:
 		and not area.is_in_group("Projectiles")
 		and not area.is_in_group("DetectionRadius")
 		):
-			valid_placement = false
+			GameState.valid_placement = false
 			break
 
 func shoot(mouse_position: Vector2):
-	if can_shoot and not placing_tower:
+	if can_shoot and not GameState.placing_tower:
 		var bullet = Scenes.player_projectile_scene.instantiate()
 		GameState.player_projectiles[bullet] = 1
 		bullet.position = position

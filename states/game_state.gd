@@ -9,9 +9,12 @@ var selected_tower: Tower
 var xp_count: int = GameConstants.DEFAULT_XP_COUNT
 var gold_count: int = GameConstants.DEFAULT_GOLD_COUNT
 var enemies_killed_this_stage: int = GameConstants.DEFAULT_ENEMIES_KILLED_THIS_STAGE
-var allocate_menu_up: bool = GameConstants.DEFAULT_ALLOCATE_MENU_UP
+var allocate_menu_up: bool = false
 var enemies_spawning: int = GameConstants.DEFAULT_ENEMIES_SPAWNING
 var level_cleared: bool = GameConstants.DEFAULT_LEVEL_CLEARED
+var placing_tower: bool = false
+var valid_placement: bool = false
+var tower_type: int = 0
 
 ## Floor Max Values
 const FLOOR_MAX_XP: int = GameConstants.FLOOR_MAX_XP

@@ -28,13 +28,6 @@ func _ready() -> void:
 		player.global_position = GameState.door_position
 	GameState.door_position = Vector2.ZERO
 	
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if GameState.selected_tower:
-				GameState.selected_tower.deselect_tower()
-				GameState.selected_tower = null
-
 func _process(delta: float) -> void:
 	check_clear_condition()
 	if GameState.level_cleared:

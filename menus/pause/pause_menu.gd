@@ -17,7 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_on_pause_pressed()
 
 func _on_pause_pressed() -> void:
-	if not GameState.allocate_menu_up:
+	if not GameState.allocate_menu_up and not GameState.selected_tower and not GameState.placing_tower:
 		canvas.visible = true
 		EventBus.pause_game.emit()
 

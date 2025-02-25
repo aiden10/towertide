@@ -9,7 +9,7 @@ radius = 42.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_x10ol"]
 radius = 156.208
 
-[node name="PylonTower" type="Area2D" groups=["Pylons"]]
+[node name="PylonTower" type="Area2D" groups=["Pylons", "Towers"]]
 script = ExtResource("1_kiltx")
 
 [node name="SelectHitbox" type="CollisionShape2D" parent="."]
