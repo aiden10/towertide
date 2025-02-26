@@ -24,9 +24,14 @@ var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/econom
 ## Stage one enemies
 var basic_shooter_scene: PackedScene = preload("res://enemies/stage1/BasicEnemy.tscn")
 var weak_rusher_scene: PackedScene = preload("res://enemies/stage1/WeakRusher.tscn")
-var stage_one_enemy_scenes: Array[PackedScene] = [basic_shooter_scene, weak_rusher_scene]
 
 ## Stage two enemies
 var tanky_enemy_scene: PackedScene = preload("res://enemies/stage2/TankyEnemy.tscn")
 var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.tscn")
+
+## Stage three enemies
+var shotgun_enemy_scene: PackedScene = preload("res://enemies/stage3/ShotgunEnemy.tscn")
+
+var stage_one_enemy_scenes: Array[PackedScene] = [basic_shooter_scene, weak_rusher_scene]
 var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene, sniper_enemy_scene]
+var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene]

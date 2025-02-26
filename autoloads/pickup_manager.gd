@@ -27,7 +27,7 @@ func spawn_gold(spawn_position: Vector2) -> void:
 	var gold = Scenes.gold_scene.instantiate()
 	gold.position = spawn_position
 	gold_pool.push_back(gold)
-	add_child(gold)
+	call_deferred("add_child", gold)
 
 func spawn_xp(spawn_position: Vector2) -> void:
 	if xp_pool.size() >= max_xp_pool_size:
@@ -38,4 +38,4 @@ func spawn_xp(spawn_position: Vector2) -> void:
 	var xp = Scenes.xp_scene.instantiate()
 	xp.position = spawn_position
 	xp_pool.push_back(xp)
-	add_child(xp)
+	call_deferred("add_child", xp)

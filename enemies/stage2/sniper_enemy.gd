@@ -2,7 +2,6 @@ extends Enemy
 
 @onready var state_machine: Node = $StateMachine
 @onready var aim_laser: Line2D = $AimLaser
-var player
 var current_state: String
 
 func _init() -> void:
@@ -25,13 +24,12 @@ func _init() -> void:
 
 func _ready() -> void:
 	state_machine.state_changed.connect(func(state_name): current_state = state_name)
-	player = get_tree().get_first_node_in_group("Player")
 
 func _process(_delta: float) -> void:
 	if current_state == "attack":
 		aim_laser.clear_points()
 		aim_laser.visible = true
 		aim_laser.add_point(Vector2.ZERO)
-		aim_laser.add_point(to_local(player.global_position))
+		aim_laser.add_point(to_local(GameState.player_position))
 	else:
 		aim_laser.visible = false

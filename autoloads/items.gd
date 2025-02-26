@@ -17,6 +17,12 @@ const SWORD_DESCRIPTION: String = "Deflect enemy bullets and deal melee damage"
 const SWORD_PRICE: int = 5
 const SWORD_DAMAGE: float = 5
 
+const MAGNET_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
+const MAGNET_NAME: String = "Magnet"
+const MAGNET_DESCRIPTION: String = "Pulls xp and gold towards you"
+const MAGNET_PRICE: int = 5
+const MAGNET_ATTRACT_SPEED: int = 80
+
 ## Shop items
 const STEROIDS_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
 const STEROIDS_NAME: String = "Steroids"
@@ -28,6 +34,8 @@ const STEROIDS_HEALTH_DECREASE: int = 5
 func _init() -> void:
 	unique_items[REGEN_NAME] = RegenPotion.new()
 	unique_items[SWORD_NAME] = Sword.new()
+	unique_items[MAGNET_NAME] = Magnet.new()
 	shop_items[STEROIDS_NAME] = Steroids.new()
+
 	for item in unique_items.values() + shop_items.values():
 		all_items[item.item_name] = item

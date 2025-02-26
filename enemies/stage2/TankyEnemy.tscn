@@ -11,6 +11,7 @@
 size = Vector2(16.6667, 24.122)
 
 [node name="TankyEnemy" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_3qrwe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -43,21 +44,18 @@ script = ExtResource("3_mdjjg")
 [node name="Hitbox" type="Area2D" parent="."]
 scale = Vector2(1.2, 1.2)
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-8.02691, 0.772418)
+rotation = 0.598648
+scale = Vector2(1.16667, 0.833333)
+shape = SubResource("RectangleShape2D_esxsp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(14.9492, 5)
+rotation = 1.5708
+scale = Vector2(0.833333, 0.833333)
+shape = SubResource("RectangleShape2D_esxsp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(5.83333, -15.8333)
-shape = SubResource("RectangleShape2D_esxsp")
-
-[node name="Hitbox2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
-position = Vector2(17.939, 6)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_esxsp")
-
-[node name="Hitbox3" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox3"]
-position = Vector2(-9.63229, 0.926902)
-rotation = 0.598648
-scale = Vector2(1.4, 1)
 shape = SubResource("RectangleShape2D_esxsp")

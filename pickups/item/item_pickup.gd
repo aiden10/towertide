@@ -23,3 +23,4 @@ func on_pickup() -> void:
 	PlayerState.player_items.append(item)
 	PlayerState.item_counts[item.item_name] = PlayerState.item_counts.get(item.item_name, 0) + 1
 	item.on_aquire()
+	queue_free()

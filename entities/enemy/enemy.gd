@@ -13,24 +13,29 @@ var gold_drop_chance: float = 1.0
 var item_drop_chance: float = 0
 var min_spawn_dist: float
 var spawn_radius: float
+var shot_count: int = 1
 
 func reset_modulation() -> void:
-	$Sprite.modulate = Color8(255, 255, 255, 255)
+	for child in get_children():
+		if child is Sprite2D:
+			child.modulate = Color8(255, 255, 255, 255)
 
 func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector2 = Vector2.ZERO) -> void:
 	EventBus.enemy_hit.emit()
 	health -= damage_taken
-	var tween = create_tween()
-	tween.tween_property($Sprite, "modulate", Color8(255, 255, 255, 100), 0.1)
+	for child in get_children():
+		if child is Sprite2D:
+			var tween = create_tween()
+			tween.tween_property(child, "modulate", Color8(255, 255, 255, 100), 0.1)
+			tween.tween_callback(reset_modulation)
+			
 	if health <= 0:
 		if not died:
-			tween.finished.connect(on_death)
 			EventBus.enemy_dead.emit()
 			if shooter is Tower:
 				shooter.killed_enemy.emit()
 			died = true
-	else:
-		tween.tween_callback(reset_modulation)
+			on_death()
 
 	if knockback_direction != Vector2.ZERO:
 		knockback_velocity = knockback_direction * PlayerState.knockback

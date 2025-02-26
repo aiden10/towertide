@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7mxm0t0ik2r1"]
+
+[ext_resource type="Script" path="res://enemies/stage3/shotgun_enemy.gd" id="1_02bby"]
+[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="1_54wk1"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_7kknk"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/attack_state.gd" id="3_67pu1"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/follow_state.gd" id="4_7562i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftu3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11ao1"]
+
+[node name="ShotgunEnemy" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_02bby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ftu3e")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_54wk1")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(95, 0)
+rotation = 1.5708
+scale = Vector2(0.2, 0.475)
+texture = ExtResource("1_54wk1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
+script = ExtResource("2_7kknk")
+initial_state = NodePath("Follow")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("3_67pu1")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("4_7562i")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_11ao1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(100, 0)
+scale = Vector2(5, 2.53)
+shape = SubResource("RectangleShape2D_11ao1")
