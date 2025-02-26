@@ -35,13 +35,13 @@ func get_input():
 	if Input.is_action_pressed("click"):
 		if not GameState.placing_tower:
 			EventBus.clicked.emit(get_global_mouse_position())
-			
+
 	if Input.is_action_just_pressed("click"):
 		if GameState.placing_tower:
 			if not GameState.valid_placement:
 				EventBus.invalid_action.emit()
 				return
-				
+
 			var new_tower: Tower
 			if GameState.tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
@@ -166,7 +166,8 @@ func _update_placement_validity() -> void:
 		if (not area.is_in_group("Pickups")
 	 	and not parent.is_in_group("Pickups")
 		and not parent.is_in_group("Sword")
-		and not area.is_in_group("Projectiles")
+		and not area.is_in_group("EnemyProjectiles")
+		and not area.is_in_group("FriendlyProjectiles")
 		and not area.is_in_group("DetectionRadius")
 		):
 			GameState.valid_placement = false

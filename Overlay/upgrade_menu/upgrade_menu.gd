@@ -17,6 +17,8 @@ var tower: Tower
 @onready var upgrade3_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer/Upgrade3Image
 @onready var upgrade3_price: Label = $PanelContainer/VBoxContainer/Upgrade3/PriceContainer/Upgrade3Price
 
+var kill_text: String
+
 func _ready() -> void:
 	EventBus.tower_selected.connect(_show_upgrades)
 	EventBus.unselect_pressed.connect(_hide_upgrades)
@@ -30,7 +32,7 @@ func _sell_tower() -> void:
 	EventBus.unselect_pressed.emit()
 	PlayerState.gold += int(tower.cost / 2)
 	EventBus.tower_sold.emit()
-	tower.queue_free()
+	tower.call_deferred("queue_free")
 
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
@@ -40,7 +42,7 @@ func _upgrade1() -> void:
 	if PlayerState.gold < tower.upgrade1_price:
 		EventBus.invalid_action.emit()
 		return
-		
+
 	PlayerState.gold -= tower.upgrade1_price
 	var new_tower = tower.upgrade1_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
@@ -83,14 +85,22 @@ func _upgrade3() -> void:
 	tower.queue_free()
 	_show_upgrades()
 
+func update_kills() -> void:
+	if is_instance_valid(tower):
+		kills_label.text = kill_text + str(tower.kills)
+
 func _show_upgrades() -> void:
 	self.visible = true
 	tower = GameState.selected_tower
 	tower_name.text = tower.tower_name
 	tower_description.text = tower.description
 	tower_image.texture = tower.image
-	tower.killed_enemy.connect(func(): kills_label.text = "Kills: " + str(tower.kills))
-	kills_label.text = "Kills: " + str(tower.kills)
+	kill_text = "Kills: "
+	if not tower.killed_enemy.is_connected(update_kills):
+		tower.killed_enemy.connect(update_kills)
+	if tower.is_in_group("EconomyTowers"):
+		kill_text = "Gold Produced: "
+	kills_label.text = kill_text + str(tower.kills)
 	
 	# Upgrade 1
 	if not tower.upgrade1_price:
@@ -141,8 +151,11 @@ func _show_upgrades() -> void:
 		upgrade3_image.texture = tower.upgrade3_image
 
 func _hide_upgrades() -> void:
+	if is_instance_valid(tower):
+		if tower.killed_enemy.is_connected(update_kills):
+			tower.killed_enemy.disconnect(update_kills)
+
 	if GameState.selected_tower:
-		GameState.selected_tower.deselect_tower()
+		if is_instance_valid(GameState.selected_tower):
+			GameState.selected_tower.deselect_tower()
 	self.visible = false
-	
-	

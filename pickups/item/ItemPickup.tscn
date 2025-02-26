@@ -26,6 +26,8 @@ scale = Vector2(0.2, 0.206)
 texture = ExtResource("1_ffqaa")
 
 [node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_iilja")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cf274dmdg2p2t"]
 
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="1_av47i"]
-[ext_resource type="Script" path="res://towers/cross/cross_tower.gd" id="1_qcd6w"]
+[ext_resource type="Script" path="res://towers/sprayer/cross_tower.gd" id="1_qcd6w"]
 [ext_resource type="Texture2D" uid="uid://dlolhefv3qih8" path="res://sprites/towers/cross/f2.png" id="2_sc465"]
 [ext_resource type="Texture2D" uid="uid://bo74jpv7fdnwj" path="res://sprites/towers/cross/f3.png" id="3_0rmfl"]
 [ext_resource type="Texture2D" uid="uid://b1l7j4q8owh36" path="res://sprites/towers/cross/f4.png" id="4_nksxs"]

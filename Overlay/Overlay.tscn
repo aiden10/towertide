@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=21 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
 [ext_resource type="Texture2D" uid="uid://c1xeap2ne4w78" path="res://sprites/player/white.png" id="10_xgaln"]
 [ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
+[ext_resource type="Script" path="res://overlay/stats_display.gd" id="15_5owfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0392157)
@@ -45,6 +46,17 @@ shadow_color = Color(1.68458e-06, 0.481861, 0.487894, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne2i5"]
 bg_color = Color(0.129412, 0.129412, 0.129412, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxe6u"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 0.588235)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 25.0
+expand_margin_top = 25.0
+expand_margin_right = 25.0
+expand_margin_bottom = 25.0
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -394,3 +406,213 @@ script = ExtResource("12_h6ufc")
 
 [node name="StatsAllocation" parent="CanvasLayer" instance=ExtResource("8_idaox")]
 process_mode = 3
+
+[node name="StatsDisplay" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -335.0
+offset_right = 108.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_84vjy")
+script = ExtResource("15_5owfj")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatsDisplay"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gxe6u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 0"
+horizontal_alignment = 1
+
+[node name="Damage" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DamageIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Damage"
+
+[node name="DamageQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Regen" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RegenIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Regeneration"
+
+[node name="RegenQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Speed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Speed"
+
+[node name="SpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Knockback" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="KnockbackIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Knockback"
+
+[node name="KnockbackQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="ATKSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ATKSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Firerate"
+
+[node name="ATKSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="MaxHP" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MaxHPIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Max Health"
+
+[node name="MaxHPQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="BulletSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BulletSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Bullet Speed"
+
+[node name="BulletSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="BulletSize" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BulletSizeIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Bullet Size"
+
+[node name="BulletSizeQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Pierce" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PierceIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+texture = ExtResource("2_adl4l")
+expand_mode = 3
+
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Pierce"
+
+[node name="PierceQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"

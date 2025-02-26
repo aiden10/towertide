@@ -14,7 +14,11 @@ func _init() -> void:
 	shot_timer = cooldown
 	image = Towers.CROSS_IMAGE
 	scene_path = Towers.CROSS_SCENE_PATH
-	## Add upgrades here
+	
+	upgrade1_name = Towers.CARDINAL_NAME
+	upgrade1_description = Towers.CARDINAL_DESCRIPTION
+	upgrade1_price = Towers.CARDINAL_COST
+	upgrade1_scene = Scenes.cardinal_tower_scene
 	
 func _process(delta: float) -> void:
 	shot_timer -= delta

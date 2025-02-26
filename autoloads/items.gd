@@ -31,11 +31,19 @@ const STEROIDS_PRICE: int = 5
 const STEROIDS_DAMAGE_INCREASE: int = 2
 const STEROIDS_HEALTH_DECREASE: int = 5
 
+const LIGHT_ROUNDS_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
+const LIGHT_ROUNDS_NAME: String = "Light Rounds"
+const LIGHT_ROUNDS_DESCRIPTION: String = "-2 Damage, +100 Bullet Speed"
+const LIGHT_ROUNDS_PRICE: int = 5
+const LIGHT_ROUNDS_DAMAGE_DECREASE: int = 2
+const LIGHT_ROUNDS_SPEED_INCREASE: int = 100
+
 func _init() -> void:
 	unique_items[REGEN_NAME] = RegenPotion.new()
 	unique_items[SWORD_NAME] = Sword.new()
 	unique_items[MAGNET_NAME] = Magnet.new()
 	shop_items[STEROIDS_NAME] = Steroids.new()
+	shop_items[LIGHT_ROUNDS_NAME] = LightRounds.new()
 
 	for item in unique_items.values() + shop_items.values():
 		all_items[item.item_name] = item

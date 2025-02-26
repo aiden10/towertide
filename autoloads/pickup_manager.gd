@@ -6,6 +6,17 @@ var xp_pool = []
 var max_gold_pool_size = 100
 var max_xp_pool_size = 100
 
+func _ready() -> void:
+	EventBus.level_exited.connect(clear_pools)
+
+func clear_pools() -> void:
+	for pickup in gold_pool + xp_pool:
+		if is_instance_valid(pickup):
+			pickup.queue_free()
+		
+	gold_pool = []
+	xp_pool = []
+	
 func spawn_item(spawn_position: Vector2) -> Pickup:
 	var item
 	item = Scenes.item_pickup_scene.instantiate()
@@ -13,7 +24,7 @@ func spawn_item(spawn_position: Vector2) -> Pickup:
 	if not item.item:
 		item.queue_free()
 		return
-	add_child(item)
+	call_deferred("add_child", item)
 	item.position = spawn_position
 	
 	return item

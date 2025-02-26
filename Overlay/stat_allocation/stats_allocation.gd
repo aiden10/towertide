@@ -29,6 +29,7 @@ extends HBoxContainer
 @onready var atk_speed_quantity: Label = $StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed/ATKSpeedQuantity
 @onready var max_hp_quantity: Label = $StatsDisplay/PanelContainer/VBoxContainer/MaxHP/MaxHPQuantity
 @onready var bullet_size_quantity: Label = $StatsDisplay/PanelContainer/VBoxContainer/BulletSize/BulletSizeQuantity
+@onready var bullet_speed_quantity: Label = $StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed/BulletSpeedQuantity
 @onready var pierce_quantity: Label = $StatsDisplay/PanelContainer/VBoxContainer/Pierce/PierceQuantity
 
 func _ready() -> void:
@@ -119,6 +120,7 @@ func _on_level_up() -> void:
 	knockback_quantity.text = str(PlayerState.knockback)
 	atk_speed_quantity.text = str(PlayerState.firerate)
 	max_hp_quantity.text = str(PlayerState.max_health)
+	bullet_speed_quantity.text = str(PlayerState.projectile_speed)
 	bullet_size_quantity.text = str(PlayerState.bullet_size)
 	pierce_quantity.text = str(PlayerState.pierce)
 	self.visible = true

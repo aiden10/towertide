@@ -28,7 +28,7 @@ func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector
 			var tween = create_tween()
 			tween.tween_property(child, "modulate", Color8(255, 255, 255, 100), 0.1)
 			tween.tween_callback(reset_modulation)
-			
+
 	if health <= 0:
 		if not died:
 			EventBus.enemy_dead.emit()
@@ -41,7 +41,6 @@ func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector
 		knockback_velocity = knockback_direction * PlayerState.knockback
 
 func on_death() -> void:
-	Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 	for i in range(gold_drop_count):
 		if randf() > gold_drop_chance:
 			continue

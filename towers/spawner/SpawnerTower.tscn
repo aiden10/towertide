@@ -13,6 +13,7 @@ radius = 153.013
 radius = 456.01
 
 [node name="SpawnerTower" type="Area2D" groups=["Towers"]]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_6f68t")
 
 [node name="SelectHitbox" type="CollisionShape2D" parent="."]

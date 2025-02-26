@@ -23,9 +23,7 @@ func on_death() -> void:
 			EventBus.minion_died.emit()
 
 func detected(area: Area2D) -> void:
-	var parent = area.get_parent()
-	
-	## Close enough to the detected enemy
+	var parent = area.get_parent()	
 	if parent.is_in_group("Enemies"):
 		on_death()
 

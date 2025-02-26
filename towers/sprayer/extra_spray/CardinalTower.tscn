@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3t2i58ws7on"]
+
+[ext_resource type="Texture2D" uid="uid://lvnhbw6j4hij" path="res://sprites/towers/cardinal/cardinal.png" id="1_4b6ej"]
+[ext_resource type="Script" path="res://towers/sprayer/extra_spray/cardinal_tower.gd" id="1_30mov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kk6st"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7mrd"]
+radius = 79.0569
+
+[node name="CardinalTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_30mov")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kk6st")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(5.68434e-14, -1)
+scale = Vector2(0.202918, 0.202918)
+texture = ExtResource("1_4b6ej")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_a7mrd")

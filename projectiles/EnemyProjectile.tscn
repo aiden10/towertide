@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hptwc"]
 radius = 14.0
 
-[node name="Projectile" type="Area2D" groups=["Projectiles"]]
+[node name="Projectile" type="Area2D" groups=["EnemyProjectiles"]]
 script = ExtResource("1_koi3p")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

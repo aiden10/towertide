@@ -64,6 +64,8 @@ func reset_states() -> void:
 	PlayerState.level_up_condition = PlayerConstants.DEFAULT_LEVEL_UP_CONDITION
 	PlayerState.enemies_killed = PlayerConstants.DEFAULT_ENEMIES_KILLED
 	
+	PickupManager.clear_pools()
+
 func wipe_saved_game() -> void:
 	if FileAccess.file_exists("user://save/save.json"):
 		DirAccess.remove_absolute("user://save/save.json")

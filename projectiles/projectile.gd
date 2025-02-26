@@ -30,7 +30,6 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 	direction = (mouse_position - position).normalized()
 	rotation = direction.angle()
 	
-	# Initialize the despawn timer
 	despawn_timer = Timer.new()
 	add_child(despawn_timer)
 	despawn_timer.wait_time = lifetime
@@ -49,7 +48,7 @@ func clear() -> void:
 
 func scale_size(bullet_damage: float) -> void:
 	var extra_scale: float = 0
-	if "Player" in shooter_groups:
+	if "Player" in shooter_groups or "Towers" in shooter_groups:
 		extra_scale = PlayerState.bullet_size
 	elif "Enemies" in shooter_groups:
 		extra_scale = -0.5
@@ -60,17 +59,19 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	position += velocity * delta
 	
-	# Check if offscreen
-	var viewport_rect = get_viewport_rect()
-	if not viewport_rect.has_point(position):
-		if not is_offscreen:
-			is_offscreen = true
-			despawn_timer.start()
-	else:
-		if is_offscreen:
-			is_offscreen = false
-			despawn_timer.stop()
-
+	var camera = get_viewport().get_camera_2d()
+	if camera:
+		var viewport_rect = get_viewport_rect() 
+		var world_rect = Rect2(camera.position - (viewport_rect.size / 2), viewport_rect.size)
+		if not world_rect.has_point(position):
+			if not is_offscreen:
+				is_offscreen = true
+				despawn_timer.start()
+		else:
+			if is_offscreen:
+				is_offscreen = false
+				despawn_timer.stop()
+				
 func _on_despawn_timer_timeout() -> void:
 	clear()
 
@@ -80,7 +81,7 @@ func _on_area_entered(area: Area2D) -> void:
 	# Enemy bullet entered sword
 	if parent.is_in_group("Sword") and "Enemies" in shooter_groups:
 		direction *= -1
-		velocity *= 1.5
+		speed *= 1.5
 		shooter_groups.append("Player")
 		shooter_groups.remove_at(shooter_groups.find("Enemies"))
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)

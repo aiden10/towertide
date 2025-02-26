@@ -37,10 +37,11 @@ func _process(delta: float) -> void:
 	ring_sprite.position.y = original_ring_position.y + sin(angle) * rotation_radius
 	
 	ring_sprite.rotation = angle
-	
+
 func dispense() -> void:
 	PickupManager.spawn_gold(ring_sprite.global_position)
 	var core_tween = create_tween()
 	core_tween.tween_property(ring_sprite, "modulate", Color8(510, 510, 0, 200), 0.25)
 	core_tween.tween_property(ring_sprite, "modulate", Color8(255, 255, 255, 255), 0.25)
 	Utils.spawn_hit_effect(Color8(510, 255, 0, 255), core_sprite.global_position, 5)
+	killed_enemy.emit()

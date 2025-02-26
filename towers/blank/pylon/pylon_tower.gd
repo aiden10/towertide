@@ -7,8 +7,14 @@ func _init() -> void:
 	cost = Towers.PYLON_COST
 	cooldown = Towers.PYLON_COOLDOWN
 	shot_timer = cooldown
+	damage = Towers.PYLON_DAMAGE
 	image = Towers.PYLON_IMAGE
 	scene_path = Towers.PYLON_SCENE_PATH
+	
+	upgrade1_name = Towers.SLOWING_PYLON_NAME
+	upgrade1_description = Towers.SLOWING_PYLON_DESCRIPTION
+	upgrade1_price = Towers.SLOWING_PYLON_COST
+	upgrade1_scene = Scenes.slowing_pylon_tower_scene
 
 func _ready() -> void:
 	connect_radius.area_entered.connect(connect_radius_entered)

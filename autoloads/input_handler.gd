@@ -4,9 +4,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cancel"):
 		EventBus.unselect_pressed.emit()
 		if GameState.selected_tower:
-			GameState.selected_tower.deselect_tower()
-			GameState.selected_tower = null
-
+			if is_instance_valid(GameState.selected_tower):
+				GameState.selected_tower.deselect_tower()
+				GameState.selected_tower = null
+	
 	if Input.is_action_just_pressed("place_tower1"):
 		EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
 	elif Input.is_action_just_pressed("place_tower2"):

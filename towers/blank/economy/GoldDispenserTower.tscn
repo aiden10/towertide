@@ -11,7 +11,7 @@ radius = 42.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ijbr4"]
 radius = 79.0569
 
-[node name="GoldDispenser" type="Area2D" groups=["Towers"]]
+[node name="GoldDispenser" type="Area2D" groups=["EconomyTowers", "Towers"]]
 script = ExtResource("1_qigi6")
 
 [node name="SelectHitbox" type="CollisionShape2D" parent="."]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnhbaky4c0sag"]
+
+[ext_resource type="Script" path="res://towers/spawner/minions/shooter_minion.gd" id="1_88htc"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_suenm"]
+[ext_resource type="Script" path="res://entities/minion/minion_states/idle_state.gd" id="3_5ibaw"]
+[ext_resource type="Script" path="res://entities/minion/minion_states/shoot_state.gd" id="3_uysl2"]
+[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="4_8j6sr"]
+[ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="5_0e4xu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2xmq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mb0m"]
+radius = 292.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86ykv"]
+radius = 292.0
+
+[node name="ShooterMinion" type="CharacterBody2D" groups=["Minions"]]
+script = ExtResource("1_88htc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f2xmq")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_7mb0m")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_suenm")
+initial_state = NodePath("Idle")
+
+[node name="Shoot" type="Node" parent="StateMachine"]
+script = ExtResource("3_uysl2")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_5ibaw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_8j6sr")
+
+[node name="AimLine" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(125, -2)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_0e4xu")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_86ykv")

@@ -10,8 +10,7 @@ extends Control
 var reroll_cost: int
 
 func _ready() -> void:
-	## Cost a third of your gold to reroll
-	reroll_cost = max(5, PlayerState.gold * 0.33)
+	reroll_cost = 5
 	next_level_button.pressed.connect(_next_level)
 	reroll_button.pressed.connect(_reroll)
 	reroll_label.text = str(reroll_cost)

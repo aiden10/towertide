@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgukqtgqy5t2c"]
+
+[ext_resource type="Texture2D" uid="uid://cwspigkb36u2s" path="res://sprites/towers/sentry/machine_gun/f1.png" id="1_1tkl4"]
+[ext_resource type="Script" path="res://towers/sentry/rapid/machine_gun_tower.gd" id="1_mmiyp"]
+[ext_resource type="Texture2D" uid="uid://bg33fmj5hywc7" path="res://sprites/towers/sentry/machine_gun/f2.png" id="2_p54ln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76dql"]
+radius = 42.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bqn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1tkl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p54ln")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilp45"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2rht7"]
+radius = 456.01
+
+[node name="MachineGunTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_mmiyp")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_76dql")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4bqn6")
+frame_progress = 0.125104
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_ilp45")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_2rht7")

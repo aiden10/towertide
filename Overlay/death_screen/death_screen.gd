@@ -11,12 +11,12 @@ func _ready() -> void:
 	exit_button.pressed.connect(exit)
 
 func restart() -> void:
-	Utils.wipe_saved_game()
-	Utils.reset_states()
 	SceneManager.load_arena()
+	Utils.reset_states()
+	Utils.wipe_saved_game()
 
 func exit() -> void:
 	EventBus.unpause_game.emit()
-	Utils.wipe_saved_game()
-	Utils.reset_states()
 	SceneManager.load_main_menu()
+	Utils.reset_states()
+	Utils.wipe_saved_game()

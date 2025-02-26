@@ -18,14 +18,10 @@ func update(delta: float):
 
 	if firerate <= 0:
 		firerate = enemy.firerate_cooldown
-		# Calculate a symmetric offset for each shot
 		var shot_count = enemy.shot_count
-		# Define the angle step (adjust as needed)
 		var angle_step = 30
-		# For odd shot counts, the middle shot is index floor(shot_count/2)
 		var middle_index = shot_count / 2
 		for i in range(shot_count):
-			# Calculate offset: middle shot gets 0, others are symmetric.
 			var offset = (i - middle_index) * angle_step
 			shoot(GameState.player_position, offset)
 		can_shoot = false
