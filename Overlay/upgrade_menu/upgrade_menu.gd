@@ -5,7 +5,8 @@ var tower: Tower
 @onready var kills_label: Label = $PanelContainer/VBoxContainer/Kills
 @onready var tower_image: TextureRect = $PanelContainer/VBoxContainer/TowerImage
 @onready var tower_description: Label = $PanelContainer/VBoxContainer/TowerDescription
-@onready var close_button: TextureButton = $PanelContainer/VBoxContainer/CloseButton
+@onready var close_button: TextureButton = $PanelContainer/VBoxContainer/HBoxContainer/CloseButton
+@onready var sell_button: Button = $PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/SellButton
 @onready var upgrade1_button: Button = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Button
 @onready var upgrade1_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer/Upgrade1Image
 @onready var upgrade1_price: Label = $PanelContainer/VBoxContainer/Upgrade1/PriceContainer/Upgrade1Price
@@ -20,10 +21,17 @@ func _ready() -> void:
 	EventBus.tower_selected.connect(_show_upgrades)
 	EventBus.unselect_pressed.connect(_hide_upgrades)
 	close_button.pressed.connect(_hide_upgrades)
+	sell_button.pressed.connect(_sell_tower)
 	upgrade1_button.pressed.connect(_upgrade1)
 	upgrade2_button.pressed.connect(_upgrade2)
 	upgrade3_button.pressed.connect(_upgrade3)
-	
+
+func _sell_tower() -> void:
+	EventBus.unselect_pressed.emit()
+	PlayerState.gold += int(tower.cost / 2)
+	EventBus.tower_sold.emit()
+	tower.queue_free()
+
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
 		EventBus.invalid_action.emit()

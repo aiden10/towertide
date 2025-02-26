@@ -80,12 +80,13 @@ func _on_area_entered(area: Area2D) -> void:
 	# Enemy bullet entered sword
 	if parent.is_in_group("Sword") and "Enemies" in shooter_groups:
 		direction *= -1
+		velocity *= 1.5
 		shooter_groups.append("Player")
 		shooter_groups.remove_at(shooter_groups.find("Enemies"))
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
 		EventBus.deflect.emit()
 		return
-		
+
 	# Enemy bullet entered player
 	if parent.is_in_group("Player") and "Enemies" in shooter_groups:
 		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)

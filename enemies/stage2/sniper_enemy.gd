@@ -20,13 +20,14 @@ func _init() -> void:
 	bullet_scale = Enemies.SNIPER_BULLET_SIZE
 	spawn_radius = Enemies.SNIPER_SPAWN_RADIUS
 	min_spawn_dist = Enemies.SNIPER_MIN_SPAWN_DIST
-	
+	item_drop_chance = Enemies.SNIPER_ITEM_DROP_CHANCE
+	item_drop_count = Enemies.SNIPER_ITEM_DROP_COUNT
 
 func _ready() -> void:
 	state_machine.state_changed.connect(func(state_name): current_state = state_name)
 	player = get_tree().get_first_node_in_group("Player")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_state == "attack":
 		aim_laser.clear_points()
 		aim_laser.visible = true

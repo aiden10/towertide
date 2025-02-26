@@ -126,40 +126,40 @@ func _on_level_up() -> void:
 	EventBus.pause_game.emit()
 
 func damage_up() -> void:
-	PlayerState.damage += 5
+	PlayerState.damage += AllocationIncrements.DAMAGE_INCREMENT
 	level_down()
 
 func regen_up() -> void:
-	PlayerState.regen += 1
+	PlayerState.regen += AllocationIncrements.REGEN_INCREMENT
 	level_down()
 
 func speed_up() -> void:
-	PlayerState.speed += 25
+	PlayerState.speed += AllocationIncrements.SPEED_INCREMENT
 	level_down()
 
 func knockback_up() -> void:
-	PlayerState.knockback += 1
+	PlayerState.knockback += AllocationIncrements.KNOCKBACK_INCREMENT
 	level_down()
 
 func attack_speed_up() -> void:
-	PlayerState.firerate -= 0.05
+	PlayerState.firerate -= AllocationIncrements.FIRERATE_INCREMENT
 	level_down()
 
 func max_health_up() -> void:
-	PlayerState.max_health += 10
-	PlayerState.health = min(PlayerState.health + 10, PlayerState.max_health)
+	PlayerState.max_health += AllocationIncrements.MAX_HEALTH_INCREMENT
+	PlayerState.health = min(PlayerState.health * 1.1, PlayerState.max_health) ## Heal 10%
 	level_down()
 
 func bullet_size_up() -> void:
-	PlayerState.bullet_size += 0.25
+	PlayerState.bullet_size += AllocationIncrements.BULLET_SIZE_INCREMENT
 	level_down()
 
 func bullet_speed_up() -> void:
-	PlayerState.projectile_speed += 50
+	PlayerState.projectile_speed += AllocationIncrements.BULLET_SPEED_INCREMENT
 	level_down()
 
 func pierce_up() -> void:
-	PlayerState.pierce += 1
+	PlayerState.pierce += AllocationIncrements.PIERCE_INCREMENT
 	level_down()
 
 func level_down() -> void:

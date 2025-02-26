@@ -14,6 +14,7 @@ func _init() -> void:
 	xp_drop_count = Enemies.WEAK_RUSHER_XP_DROP_COUNT
 	min_spawn_dist = Enemies.WEAK_RUSHER_MIN_SPAWN_DIST
 	spawn_radius = Enemies.WEAK_RUSHER_SPAWN_RADIUS
+	item_drop_count = 1
 
 func _ready() -> void:
 	hurtbox.area_entered.connect(_on_area_entered)

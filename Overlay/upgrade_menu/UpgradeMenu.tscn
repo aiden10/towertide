@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4w1hmsky4dxm"]
+[gd_scene load_steps=13 format=3 uid="uid://4w1hmsky4dxm"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_vdpxo"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="2_678dg"]
@@ -17,6 +17,27 @@ expand_margin_left = 25.0
 expand_margin_top = 25.0
 expand_margin_right = 25.0
 expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwk5v"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_togqd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxpgt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc5hb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tna30"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="UpgradeMenu" type="MarginContainer"]
 anchors_preset = 6
@@ -41,12 +62,30 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_f8jxe")
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_o5ejc")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwk5v")
+
+[node name="SellButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_togqd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxpgt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lc5hb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tna30")
+text = "Sell"
 
 [node name="TowerName" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

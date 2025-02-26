@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx66d1earu3rb"]
+[gd_scene load_steps=8 format=3 uid="uid://bx66d1earu3rb"]
 
 [ext_resource type="Script" path="res://arena/arena.gd" id="1_5n0be"]
 [ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://player/Player.tscn" id="1_iy5w2"]
+[ext_resource type="Script" path="res://autoloads/pickup_manager.gd" id="2_iswvx"]
 [ext_resource type="PackedScene" uid="uid://cmnf66ocvlno0" path="res://overlay/Overlay.tscn" id="5_0u82s"]
 [ext_resource type="PackedScene" uid="uid://b5nu37o7682ap" path="res://overlay/death_screen/DeathScreen.tscn" id="5_ffmsy"]
 [ext_resource type="PackedScene" uid="uid://b2anud6ey34mu" path="res://menus/pause/PauseMenu.tscn" id="6_fq2qc"]
@@ -20,6 +21,9 @@ script = ExtResource("1_5n0be")
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akft8")
+
+[node name="Pickups" type="Node" parent="."]
+script = ExtResource("2_iswvx")
 
 [node name="Player" parent="." instance=ExtResource("1_iy5w2")]
 

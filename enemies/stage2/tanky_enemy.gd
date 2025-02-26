@@ -15,6 +15,8 @@ func _init() -> void:
 	xp_drop_count = Enemies.TANKY_XP_DROP_COUNT
 	min_spawn_dist = Enemies.TANKY_MIN_SPAWN_DIST
 	spawn_radius = Enemies.TANKY_SPAWN_RADIUS
+	item_drop_chance = Enemies.TANKY_ITEM_DROP_CHANCE
+	item_drop_count = Enemies.TANKY_ITEM_DROP_COUNT
 
 func _ready() -> void:
 	hitbox1.area_entered.connect(_on_area_entered)

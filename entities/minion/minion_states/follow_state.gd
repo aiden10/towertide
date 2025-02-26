@@ -29,7 +29,7 @@ func detected(area: Area2D) -> void:
 	if parent.is_in_group("Enemies"):
 		on_death()
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if not minion.detected_enemy:
 		transitioned.emit(self, "idle")
 		return

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://xl88hvrqixpm"]
+
+[ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="1_ffqaa"]
+[ext_resource type="Script" path="res://pickups/item/item_pickup.gd" id="1_niui7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjdgy"]
+radius = 142.088
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iilja"]
+
+[node name="ItemPickup" type="Area2D"]
+script = ExtResource("1_niui7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qjdgy")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1.63529, 1.98039, 1)
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.38848, 0.4)
+
+[node name="ItemHalo" type="Sprite2D" parent="."]
+modulate = Color(3, 2, 1, 1)
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.2, 0.206)
+texture = ExtResource("1_ffqaa")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_iilja")

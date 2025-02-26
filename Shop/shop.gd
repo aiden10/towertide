@@ -22,13 +22,14 @@ func _ready() -> void:
 func generate_item_cards() -> void:
 	for child in item_container.get_children():
 		child.queue_free()
-		
+
 	for i in range(item_card_count):
-		var item_card = Scenes.item_card_scene.instantiate()
-		item_container.add_child(item_card)
-		var item: Item = Items.all_items.values().pick_random()
-		item_card.item = item
-		item_card.populate()
+		if Items.shop_items.values().size() > 0:
+			var item_card = Scenes.item_card_scene.instantiate()
+			var item: Item = Items.shop_items.values().pick_random()
+			item_container.add_child(item_card)
+			item_card.item = item
+			item_card.populate()
 
 func _reroll() -> void:
 	if PlayerState.gold < reroll_cost:

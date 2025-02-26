@@ -20,7 +20,7 @@ func detected(area: Area2D) -> void:
 		minion.detected_enemy = parent
 		transitioned.emit(self, "follow")
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if minion.global_position.distance_to(destination) < 15:
 		destination = Utils.get_random_position_in_radius(tower_position, minion.wander_distance, minion.min_wander)
 	

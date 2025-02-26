@@ -25,13 +25,15 @@ GameState="*res://states/game_state.gd"
 PlayerState="*res://states/player_state.gd"
 Utils="*res://autoloads/utils.gd"
 Scenes="*res://autoloads/scenes.gd"
-Items="*res://autoloads/constants/items.gd"
+Items="*res://autoloads/items.gd"
 Towers="*res://autoloads/constants/towers.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
 TowerManager="*res://autoloads/tower_manager.gd"
 SceneManager="*res://autoloads/scene_manager.gd"
 InputHandler="*res://autoloads/input_handler.gd"
 Enemies="*res://autoloads/constants/enemies.gd"
+PickupManager="*res://autoloads/pickup_manager.gd"
+AllocationIncrements="*res://autoloads/constants/allocation_increments.gd"
 
 [display]
 

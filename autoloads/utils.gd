@@ -35,8 +35,6 @@ func reset_states() -> void:
 	GameState.clear_condition = GameConstants.DEFAULT_CLEAR_CONDITION
 	GameState.door_position = GameConstants.DEFAULT_DOOR_POSITION
 	GameState.player_position = GameConstants.DEFAULT_PLAYER_POSITION
-	GameState.xp_count = GameConstants.DEFAULT_XP_COUNT
-	GameState.gold_count = GameConstants.DEFAULT_GOLD_COUNT
 	GameState.enemies_killed_this_stage = GameConstants.DEFAULT_ENEMIES_KILLED_THIS_STAGE
 	GameState.allocate_menu_up = false
 	GameState.enemies_spawning = GameConstants.DEFAULT_ENEMIES_SPAWNING
@@ -130,10 +128,7 @@ func save_game() -> void:
 	var json_string = JSON.stringify(save_dict)
 	save_file.store_string(json_string)
 	save_file.close()
-	
-	## Call reset_player_state and reset_game_state functions here so that 
-	## pausing, exiting, and then clicking "new game" will actually start a new game
-	
+		
 func load_game() -> void:
 	if not FileAccess.file_exists("res://save/save.json"):
 		push_error("No save file found!")
@@ -175,7 +170,12 @@ func load_game() -> void:
 		var quantity = PlayerState.item_counts[item_name]
 		for i in range(quantity):
 			PlayerState.player_items.append(Items.all_items[item_name].duplicate())
-
+	
+	## Set the unique item pool back to how it should be 
+	for item in PlayerState.player_items:
+		if item in Items.unique_items:
+			Items.unique_items.erase(item.item_name)
+	
 	# Load Game State
 	GameState.stage = save_data["stage"]
 	GameState.clear_condition = save_data["clear_condition"]

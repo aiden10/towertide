@@ -1,15 +1,16 @@
 extends Pickup
 
-@onready var pickup_area: Area2D = $PickupArea
-
 func _ready() -> void:
-	speed = PlayerState.speed * 1.1 ## Always 10% faster
-	type = PickupType.GOLD
-	pickup_distance = 25
-	area_entered.connect(_on_area_entered)
-	pickup_area.area_entered.connect(_pickup_range_entered)
+	super._ready()
 	
+	speed = PlayerState.speed * 1.1 # Always 10% faster  
+	type = PickupType.GOLD
+	pickup_distance = 5
+	
+	if has_node("PickupArea"):
+		var pickup_area = $PickupArea
+		pickup_area.area_entered.connect(_on_area_entered)
+
 func on_pickup() -> void:
-	GameState.gold_count -= 1
 	EventBus.gold_picked_up.emit()
 	queue_free()

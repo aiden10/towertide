@@ -16,3 +16,5 @@ func _init() -> void:
 	bullet_scale = Enemies.BASIC_SHOOTER_BULLET_SCALE
 	min_spawn_dist = Enemies.BASIC_SHOOTER_MIN_SPAWN_DIST
 	spawn_radius = Enemies.BASIC_SHOOTER_SPAWN_RADIUS
+	item_drop_chance = Enemies.BASIC_SHOOTER_ITEM_DROP_CHANCE
+	item_drop_count = Enemies.BASIC_SHOOTER_ITEM_DROP_COUNT

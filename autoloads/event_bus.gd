@@ -28,6 +28,7 @@ signal door_not_visible
 signal tower_selected
 signal tower_deselected
 signal tower_placed
+signal tower_sold
 
 signal tower1_selected
 signal tower1_deselected
@@ -57,3 +58,4 @@ signal sword_hit
 signal sword_purchased
 
 signal invalid_action
+signal _item_aquired

@@ -21,12 +21,6 @@ script = ExtResource("1_8lbho")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jwrfn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.0392157)
-position = Vector2(0.500003, 0.499998)
-scale = Vector2(0.139063, 0.139583)
-texture = ExtResource("1_33oy3")
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]

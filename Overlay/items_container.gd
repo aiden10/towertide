@@ -5,7 +5,8 @@ extends MarginContainer
 @export var max_row_length: int = 8
 
 func _ready() -> void:
-	EventBus.arena_initialized.connect(update_overlay)
+	EventBus._item_aquired.connect(update_overlay)
+	update_overlay()
 
 func update_overlay() -> void:
 	for child_node in row1.get_children() + row2.get_children():

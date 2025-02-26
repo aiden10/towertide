@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var sword_area: Area2D = $SwordArea
-var damage: int = Items.SWORD_DAMAGE
+var damage: float = Items.SWORD_DAMAGE
 
 func _ready() -> void:
 	sword_area.area_entered.connect(_on_area_entered)

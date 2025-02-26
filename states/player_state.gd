@@ -4,7 +4,7 @@ extends Node
 var level: int = PlayerConstants.DEFAULT_LEVEL
 var gold: int = PlayerConstants.DEFAULT_GOLD
 var xp: int = PlayerConstants.DEFAULT_XP
-var damage: int = PlayerConstants.DEFAULT_DAMAGE
+var damage: float = PlayerConstants.DEFAULT_DAMAGE
 var speed: float = PlayerConstants.DEFAULT_SPEED
 var health: int = PlayerConstants.DEFAULT_HEALTH
 var max_health: int = PlayerConstants.DEFAULT_MAX_HEALTH

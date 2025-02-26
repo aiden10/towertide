@@ -19,7 +19,7 @@ func _init() -> void:
 	collision_layer = 0
 	collision_mask = 0
 
-func use_item(delta: float) -> void:
+func use_item(_delta: float) -> void:
 	pass
 
 func _on_death() -> void:

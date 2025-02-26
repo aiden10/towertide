@@ -1,15 +1,16 @@
 extends Entity
 class_name Enemy
 
+var item_drop_count: int = 0
 var gold_drop_count: int
 var xp_drop_count: int
 var xp_drop_range: int
 var gold_drop_range: float
-var drop_count: int
 var died: bool = false
 var enemy_name: String
 var bullet_scale: float = 1.0
 var gold_drop_chance: float = 1.0
+var item_drop_chance: float = 0
 var min_spawn_dist: float
 var spawn_radius: float
 
@@ -39,20 +40,18 @@ func on_death() -> void:
 	for i in range(gold_drop_count):
 		if randf() > gold_drop_chance:
 			continue
-		if GameState.gold_count < GameState.FLOOR_MAX_GOLD:
-			GameState.gold_count += 1
-			var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
-			var gold = Scenes.gold_scene.instantiate()
-			gold.position = drop_position
-			EventBus.arena_spawn.emit(gold)
+		var drop_position = Utils.get_random_position_in_radius(position, gold_drop_range)
+		PickupManager.spawn_gold(drop_position)
 
 	for i in range(xp_drop_count):
-		if GameState.xp_count < GameState.FLOOR_MAX_XP:
-			GameState.xp_count += 1
-			var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
-			var xp = Scenes.xp_scene.instantiate()
-			xp.position = drop_position
-			EventBus.arena_spawn.emit(xp)
+		var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
+		PickupManager.spawn_xp(drop_position)
+	
+	for i in range(item_drop_count):
+		if randf() > item_drop_chance:
+			continue
+		var drop_position = Utils.get_random_position_in_radius(position, 50)
+		PickupManager.spawn_item(drop_position)
 	
 	GameState.enemy_counts[enemy_name] -= 1
 	PlayerState.enemies_killed += 1

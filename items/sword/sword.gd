@@ -13,5 +13,9 @@ func _init() -> void:
 	image = load(image_path)
 	scene = Scenes.sword_scene
 
+func on_aquire() -> void:
+	EventBus._item_aquired.emit()
+	EventBus.sword_purchased.emit()
+
 func use(_delta: float) -> void:
 	pass

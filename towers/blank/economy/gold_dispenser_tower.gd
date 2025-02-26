@@ -6,7 +6,6 @@ extends Tower
 var gold_scene: PackedScene = Scenes.gold_scene
 var rotation_radius: float = 55
 var original_ring_position: Vector2
-var core_alpha = 0
 
 func _init() -> void:
 	super()
@@ -40,9 +39,7 @@ func _process(delta: float) -> void:
 	ring_sprite.rotation = angle
 	
 func dispense() -> void:
-	var gold = gold_scene.instantiate()
-	EventBus.arena_spawn.emit(gold)
-	gold.position = ring_sprite.global_position
+	PickupManager.spawn_gold(ring_sprite.global_position)
 	var core_tween = create_tween()
 	core_tween.tween_property(ring_sprite, "modulate", Color8(510, 510, 0, 200), 0.25)
 	core_tween.tween_property(ring_sprite, "modulate", Color8(255, 255, 255, 255), 0.25)

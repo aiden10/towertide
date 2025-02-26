@@ -12,6 +12,7 @@ var push_force: float = 150.0
 var shot_timer = PlayerState.firerate
 var can_shoot = true
 var overlapping_areas: Array[Area2D] = []
+var added_items: Dictionary = {}
 
 func _ready() -> void:
 	position = GameState.player_position
@@ -22,10 +23,10 @@ func _ready() -> void:
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
 	EventBus.toggle_tower_selection.connect(toggle_tower_placement)
 	EventBus.unselect_pressed.connect(cancel_tower_placement)
+	EventBus._item_aquired.connect(_add_item_scenes)
 	regen_timer.wait_time = PlayerState.regen_cooldown
 	regen_timer.timeout.connect(_on_regen_timer_timeout)
 	regen_timer.start()
-	add_item_scenes()
 	
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
@@ -72,7 +73,7 @@ func cancel_tower_placement() -> void:
 	tower_placement_indicator.visible = false
 	GameState.placing_tower = false
 	
-func toggle_tower_placement(tower_id: int, cost: int, select_event, deselect_event):
+func toggle_tower_placement(tower_id: int, cost: int, select_event):
 	if PlayerState.gold >= cost:
 		if GameState.tower_type == tower_id:
 			cancel_tower_placement()
@@ -119,6 +120,7 @@ func _process(delta: float) -> void:
 			tower_placement_indicator.modulate = Color(0, 2, 0, 0.3)
 		else:
 			tower_placement_indicator.modulate = Color(2, 0, 0, 0.3)
+
 	for item in PlayerState.player_items:
 		item.use(delta)
 
@@ -138,26 +140,12 @@ func _on_regen_timer_timeout() -> void:
 	regen_tween.tween_property(health_bar, "modulate", Color(1, 1, 1, 1), 0.3)
 	Utils.spawn_hit_effect(Color8(0, 510, 0, 255), global_position, max(PlayerState.regen * 5, 5))
 
-func add_item_scenes() -> void:
-	if Items.SWORD_NAME in PlayerState.item_counts:
-		var sword_count = PlayerState.item_counts[Items.SWORD_NAME]
-		for i in range(sword_count):
-			var sword_rotation = 0
-			var sword_position = Vector2(101, 0)
-			if i == 1:
-				sword_rotation = 180
-				sword_position = Vector2(-100, 2)
-			elif i == 2:
-				sword_rotation = 90
-				sword_position = Vector2(0, 100)
-			elif i == 3:
-				sword_rotation = 270
-				sword_position = Vector2(0, -100)
-
-			var sword_instance = Items.all_items[Items.SWORD_NAME].scene.instantiate()
-			sword_instance.position = sword_position
-			sword_instance.rotation_degrees = sword_rotation
-			add_child(sword_instance)
+func _add_item_scenes() -> void:
+	for item in PlayerState.player_items:
+		## Not yet added and has a scene
+		if item not in added_items.values() and item.scene:
+			var item_scene = item.scene.instantiate()
+			add_child(item_scene)
 
 func _check_placement(area: Area2D) -> void:
 	overlapping_areas.append(area)
