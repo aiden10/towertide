@@ -9,6 +9,7 @@ bg_color = Color(1, 1, 1, 0.0196078)
 expand_margin_left = 15.0
 expand_margin_top = 10.0
 expand_margin_right = 15.0
+expand_margin_bottom = 15.0
 
 [node name="ItemCell" type="Control"]
 layout_mode = 3
@@ -43,6 +44,7 @@ expand_mode = 5
 
 [node name="QuantityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "4"
 
 [node name="InfoContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -63,6 +65,8 @@ layout_mode = 2
 
 [node name="ItemName" type="Label" parent="InfoContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "item name"
 
 [node name="ItemDescription" type="Label" parent="InfoContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "description"

@@ -2,16 +2,24 @@
     - Sentry: Aims, then shoots
         - Status effect inflicting towers
         - Rapid fire tower
-        - 
+        - Shotgun/Cannon tower
     - Spray: Just shoots
-        - Homing shots
+        - More bullets
         - Ring emission
-
+        - Special tree
+            - Freezing enemies that enter its radius
+            - 
     - Spawners: Spawn friendly minions
         - Shooting minions
-        - "Swarm" minions
-            - Necromancer tower that resurrects nearby killed enemies
+            - Same as the sentry paths
         - Melee minions
+            - People
+                - Kidnapper: goes out, finds an enemy, brings it back to the tower
+                - Knight: has a sword
+        - Status effect minions
+            - Buffs
+            - Debuffs
+            - Aoe attacks
 
     - Aura: Base tower does nothing
         - Pylon tower with electric fence

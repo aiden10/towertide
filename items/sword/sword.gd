@@ -2,9 +2,6 @@ extends Item
 
 class_name Sword
 
-var added = false
-var player
-
 func _init() -> void:
 	item_name = Items.SWORD_NAME
 	description = Items.SWORD_DESCRIPTION

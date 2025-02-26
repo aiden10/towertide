@@ -7,6 +7,7 @@ signal unpause_game
 
 signal level_exited
 signal level_cleared
+signal _wave_started
 
 signal gold_picked_up
 signal xp_picked_up

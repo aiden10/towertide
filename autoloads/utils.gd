@@ -43,6 +43,7 @@ func reset_states() -> void:
 	GameState.selected_tower = null
 	GameState.enemy_counts = {}
 	GameState.tower_type = 0
+	GameState.wave_started = false
 
 	PlayerState.level = PlayerConstants.DEFAULT_LEVEL
 	PlayerState.gold = PlayerConstants.DEFAULT_GOLD
@@ -67,8 +68,8 @@ func reset_states() -> void:
 	PickupManager.clear_pools()
 
 func wipe_saved_game() -> void:
-	if FileAccess.file_exists("user://save/save.json"):
-		DirAccess.remove_absolute("user://save/save.json")
+	if FileAccess.file_exists("res://save/save.json"):
+		DirAccess.remove_absolute("res://save/save.json")
 
 func save_game() -> void:
 	DirAccess.make_dir_recursive_absolute("res://save")
@@ -113,7 +114,8 @@ func save_game() -> void:
 		},
 		"enemies_killed_this_stage": GameState.enemies_killed_this_stage,
 		"enemies_spawning": GameState.enemies_spawning,
-		"level_cleared": GameState.level_cleared
+		"level_cleared": GameState.level_cleared,
+		"wave_started": GameState.wave_started
 	}
 	for tower in TowerManager.active_towers:
 		var tower_data = {
@@ -186,6 +188,7 @@ func load_game() -> void:
 	GameState.enemies_killed_this_stage = save_data["enemies_killed_this_stage"]
 	GameState.level_cleared = save_data["level_cleared"]
 	GameState.enemies_spawning = save_data["enemies_spawning"]
+	GameState.wave_started = save_data["wave_started"]
 	SceneManager.load_arena()
 	
 	

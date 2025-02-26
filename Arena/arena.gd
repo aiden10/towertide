@@ -25,6 +25,9 @@ func _ready() -> void:
 	GameState.door_position = Vector2.ZERO
 
 func _process(delta: float) -> void:
+	if not GameState.wave_started:
+		return
+		
 	check_clear_condition()
 	if GameState.level_cleared:
 		time_since_clear += delta
@@ -102,4 +105,5 @@ func start_new_level() -> void:
 	GameState.clear_condition = GameState.stage * 100
 	GameState.enemies_spawning = 1
 	GameState.level_cleared = false
+	GameState.wave_started = false
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)

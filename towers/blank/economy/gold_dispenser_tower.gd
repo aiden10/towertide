@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 	ring_sprite.rotation = angle
 
 func dispense() -> void:
+	if not GameState.wave_started:
+		return
 	PickupManager.spawn_gold(ring_sprite.global_position)
 	var core_tween = create_tween()
 	core_tween.tween_property(ring_sprite, "modulate", Color8(510, 510, 0, 200), 0.25)

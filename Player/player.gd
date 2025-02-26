@@ -27,7 +27,8 @@ func _ready() -> void:
 	regen_timer.wait_time = PlayerState.regen_cooldown
 	regen_timer.timeout.connect(_on_regen_timer_timeout)
 	regen_timer.start()
-	
+	_add_item_scenes()
+
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
@@ -156,10 +157,7 @@ func _on_area_exit(area: Area2D) -> void:
 	_update_placement_validity()
 
 func _update_placement_validity() -> void:
-	# Start with assumption that placement is valid
 	GameState.valid_placement = true
-		 
-	# Check all currently overlapping areas
 	for area in overlapping_areas:
 		var parent = area.get_parent()
 		# Groups that don't count as invalid areas

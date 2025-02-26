@@ -14,3 +14,4 @@ var placing_tower: bool = false
 var valid_placement: bool = false
 var tower_type: int = 0
 var enemy_counts: Dictionary = {}
+var wave_started: bool = false

@@ -52,6 +52,7 @@ func _ready() -> void:
 	EventBus.sword_hit.connect(func(): play_sound("sword"))
 	EventBus.level_exited.connect(func(): play_sound("enter"))
 	EventBus.level_cleared.connect(func(): play_sound("thud"))
+	EventBus._wave_started.connect(func(): play_sound("bell_toll"))
 	EventBus.player_regenerated.connect(func(): play_sound("heal"))
 	
 	EventBus.xp_picked_up.connect(func(): play_random(XP_SOUNDS))
