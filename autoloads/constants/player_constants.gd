@@ -13,7 +13,7 @@ const DEFAULT_PROJECTILE_SPEED: int = 500
 const DEFAULT_KNOCKBACK: float = 100
 const DEFAULT_PIERCE: int = 1
 const DEFAULT_BULLET_SIZE: float = 1
-const DEFAULT_REGEN: int = 3
+const DEFAULT_REGEN: int = 10
 const DEFAULT_REGEN_COOLDOWN: float = 15
 
 ## Misc

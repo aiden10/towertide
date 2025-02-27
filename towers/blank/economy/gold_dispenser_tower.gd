@@ -21,8 +21,8 @@ func _ready() -> void:
 	original_ring_position = ring_sprite.position
 	
 func _process(delta: float) -> void:
-	var effective_cooldown = cooldown * PlayerState.firerate
 	
+	var effective_cooldown = cooldown * PlayerState.firerate
 	var progress = 1.0 - (shot_timer / effective_cooldown)
 	var core_alpha = int(progress * 255)
 	core_sprite.modulate = Color8(255, 255, 255, core_alpha)

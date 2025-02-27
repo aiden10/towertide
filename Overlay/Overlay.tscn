@@ -1,27 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=20 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
 [ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/overlay/heart.png" id="2_adl4l"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="3_84jj3"]
-[ext_resource type="Texture2D" uid="uid://cjrsoi8mcp0l0" path="res://sprites/overlay/skull.png" id="3_jm3kv"]
 [ext_resource type="Script" path="res://overlay/items_container.gd" id="6_bwdxj"]
+[ext_resource type="Texture2D" uid="uid://ykkysmfqi48i" path="res://sprites/towers/sentry/sentry_icon.png" id="6_nf5u0"]
+[ext_resource type="Texture2D" uid="uid://bsrka1xiqcegi" path="res://sprites/towers/blank/blank.png" id="7_cgnsd"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="7_f0nbu"]
-[ext_resource type="Texture2D" uid="uid://14y0pys87b3l" path="res://sprites/towers/sentry/sentry.png" id="8_1vq2h"]
+[ext_resource type="Texture2D" uid="uid://b5exvuf2l1wdc" path="res://sprites/towers/spawner/spawner_icon.png" id="8_2e1x5"]
 [ext_resource type="PackedScene" uid="uid://dv8le20yq355c" path="res://overlay/stat_allocation/StatsAllocation.tscn" id="8_idaox"]
-[ext_resource type="Texture2D" uid="uid://coebofe0kgav3" path="res://sprites/towers/spawner/spawner.png" id="9_8fvnr"]
 [ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
-[ext_resource type="Texture2D" uid="uid://c1xeap2ne4w78" path="res://sprites/player/white.png" id="10_xgaln"]
 [ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
 [ext_resource type="Script" path="res://overlay/stats_display.gd" id="15_5owfj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djtx"]
-bg_color = Color(0.6, 0.6, 0.6, 0.0392157)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ibja"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -58,6 +50,17 @@ expand_margin_top = 25.0
 expand_margin_right = 25.0
 expand_margin_bottom = 25.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c0ah"]
+bg_color = Color(0.233925, 0.233925, 0.233925, 0.501961)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [node name="Overlay" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -81,47 +84,16 @@ theme = ExtResource("1_84vjy")
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatusContainer"]
+[node name="GoldContainer" type="HBoxContainer" parent="CanvasLayer/StatusContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3djtx")
+theme_override_constants/separation = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StatusContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusContainer/GoldContainer"]
 layout_mode = 2
 texture = ExtResource("3_84jj3")
-expand_mode = 5
-
-[node name="GoldLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("3_jm3kv")
-expand_mode = 4
-
-[node name="KillsLabel" type="Label" parent="CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GoldLabel" type="Label" parent="CanvasLayer/StatusContainer/GoldContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
@@ -252,6 +224,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture = ExtResource("7_f0nbu")
 expand_mode = 2
 
@@ -291,8 +264,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture = ExtResource("8_1vq2h")
-expand_mode = 1
+mouse_default_cursor_shape = 2
+texture = ExtResource("6_nf5u0")
+expand_mode = 2
 
 [node name="KeyLabel2" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
 layout_mode = 2
@@ -330,7 +304,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture = ExtResource("10_xgaln")
+mouse_default_cursor_shape = 2
+texture = ExtResource("7_cgnsd")
 expand_mode = 1
 
 [node name="KeyLabel4" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
@@ -369,7 +344,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture = ExtResource("9_8fvnr")
+mouse_default_cursor_shape = 2
+texture = ExtResource("8_2e1x5")
 expand_mode = 1
 
 [node name="KeyLabel3" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer"]
@@ -382,14 +358,14 @@ horizontal_alignment = 1
 
 [node name="Arrow" type="TextureRect" parent="CanvasLayer"]
 visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -945.0
-offset_top = 175.0
-offset_right = -772.0
-offset_bottom = 288.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 117.0
+offset_right = 13.0
+offset_bottom = 230.0
+grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(89, 56)
 texture = ExtResource("9_lquxq")
@@ -640,3 +616,104 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Stages Until Boss: 2"
+
+[node name="Descriptions" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1364.0
+offset_top = 930.0
+offset_right = 1364.0
+offset_bottom = 930.0
+theme = ExtResource("1_84vjy")
+
+[node name="Cross" type="PanelContainer" parent="CanvasLayer/Descriptions"]
+visible = false
+layout_mode = 2
+offset_top = -250.0
+offset_right = 175.0
+offset_bottom = -137.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8c0ah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Descriptions/Cross"]
+layout_mode = 2
+
+[node name="CrossNameInfo" type="Label" parent="CanvasLayer/Descriptions/Cross/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cross"
+
+[node name="CrossDescriptionInfo" type="Label" parent="CanvasLayer/Descriptions/Cross/VBoxContainer"]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+text = "Cross Description"
+autowrap_mode = 3
+
+[node name="Sentry" type="PanelContainer" parent="CanvasLayer/Descriptions"]
+visible = false
+layout_mode = 2
+offset_left = 124.0
+offset_top = -250.0
+offset_right = 299.0
+offset_bottom = -137.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8c0ah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Descriptions/Sentry"]
+layout_mode = 2
+
+[node name="SentryNameInfo" type="Label" parent="CanvasLayer/Descriptions/Sentry/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sentry"
+
+[node name="SentryDescriptionInfo" type="Label" parent="CanvasLayer/Descriptions/Sentry/VBoxContainer"]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+text = "Sentry Description"
+autowrap_mode = 3
+
+[node name="Blank" type="PanelContainer" parent="CanvasLayer/Descriptions"]
+visible = false
+layout_mode = 2
+offset_left = 249.0
+offset_top = -250.0
+offset_right = 424.0
+offset_bottom = -137.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8c0ah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Descriptions/Blank"]
+layout_mode = 2
+
+[node name="BlankNameInfo" type="Label" parent="CanvasLayer/Descriptions/Blank/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Blank"
+
+[node name="BlankDescriptionInfo" type="Label" parent="CanvasLayer/Descriptions/Blank/VBoxContainer"]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+text = "Blank Description"
+autowrap_mode = 3
+
+[node name="Spawner" type="PanelContainer" parent="CanvasLayer/Descriptions"]
+visible = false
+layout_mode = 2
+offset_left = 374.0
+offset_top = -250.0
+offset_right = 549.0
+offset_bottom = -137.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8c0ah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Descriptions/Spawner"]
+layout_mode = 2
+
+[node name="SpawnerNameInfo" type="Label" parent="CanvasLayer/Descriptions/Spawner/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Spawner"
+
+[node name="SpawnerDescriptionInfo" type="Label" parent="CanvasLayer/Descriptions/Spawner/VBoxContainer"]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+text = "Spawner Description"
+autowrap_mode = 3

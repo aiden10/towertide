@@ -1,6 +1,7 @@
 extends Node
 
 func _unhandled_input(_event: InputEvent) -> void:
+
 	if Input.is_action_just_pressed("cancel"):
 		EventBus.unselect_pressed.emit()
 		if GameState.selected_tower:
@@ -13,7 +14,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if current_scene.name == "Arena":
 			EventBus._wave_started.emit()
 			GameState.wave_started = true
-	
+
 	if Input.is_action_just_pressed("place_tower1"):
 		EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
 	elif Input.is_action_just_pressed("place_tower2"):

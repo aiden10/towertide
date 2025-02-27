@@ -62,8 +62,9 @@ func on_death() -> void:
 	if is_boss:
 		GameState.boss_dead = true
 		EventBus._boss_dead.emit()
-		
-	GameState.enemy_counts[enemy_name] -= 1
+	## Should always be in enemy_counts but if it happens to die as you leave the stage it'd cause a crash
+	if enemy_name in GameState.enemy_counts:
+		GameState.enemy_counts[enemy_name] -= 1
 	PlayerState.enemies_killed += 1
 	GameState.enemies_killed_this_stage += 1
 	queue_free()

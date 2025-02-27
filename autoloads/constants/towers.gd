@@ -52,7 +52,7 @@ const SHOOTER_SPAWNER_DESCRIPTION: String = "Spawns minions that shoot enemies"
 const SHOOTER_SPAWNER_COOLDOWN: float = 1
 
 const SHOOTER_SPAWNER_SPAWN_LIMIT: int = 5
-var SHOOTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/spawner.png")
+var SHOOTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/shooter/shooter_spawner.png")
 const SHOOTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/ShooterSpawnerTower.tscn"
 
 const BLANK_COST: int = 10

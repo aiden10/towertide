@@ -8,10 +8,12 @@ extends CharacterBody2D
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var regen_bar: TextureProgressBar = $RegenBar
 @onready var regen_timer: Timer = $RegenTimer
+@onready var placement_timer: Timer = $PlacementTimer
 
 var push_force: float = 150.0
-var shot_timer = PlayerState.firerate
-var can_shoot = true
+var shot_timer: float = PlayerState.firerate
+var can_shoot: bool = true
+var placement_timer_up: bool = false
 var overlapping_areas: Array[Area2D] = []
 var added_items: Dictionary = {}
 
@@ -25,6 +27,10 @@ func _ready() -> void:
 	EventBus.xp_picked_up.connect(_on_xp_pickup)
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
 	EventBus.toggle_tower_selection.connect(toggle_tower_placement)
+	EventBus.tower1_selected.connect(_reset_tower_placement_timer)
+	EventBus.tower2_selected.connect(_reset_tower_placement_timer)
+	EventBus.tower3_selected.connect(_reset_tower_placement_timer)
+	EventBus.tower4_selected.connect(_reset_tower_placement_timer)
 	EventBus.unselect_pressed.connect(cancel_tower_placement)
 	EventBus._item_aquired.connect(_add_item_scenes)
 	regen_timer.wait_time = PlayerState.regen_cooldown
@@ -35,17 +41,23 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
-	
+	var focus_owner = get_viewport().gui_get_focus_owner()
+	if focus_owner and focus_owner is not Button:
+		return
+		
 	if Input.is_action_pressed("click"):
 		if not GameState.placing_tower:
 			EventBus.clicked.emit(get_global_mouse_position())
 
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_released("click"):
 		if GameState.placing_tower:
 			if not GameState.valid_placement:
 				EventBus.invalid_action.emit()
 				return
-
+				
+			if not placement_timer_up:
+				return
+			
 			var new_tower: Tower
 			if GameState.tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
@@ -66,7 +78,12 @@ func get_input():
 			EventBus.unselect_pressed.emit()
 		else:
 			EventBus.clicked.emit(get_global_mouse_position())
-			
+
+func _reset_tower_placement_timer() -> void:
+	placement_timer_up = false
+	placement_timer.start()
+	placement_timer.timeout.connect(func(): placement_timer_up = true)
+
 func cancel_tower_placement() -> void:
 	EventBus.tower1_deselected.emit()
 	EventBus.tower2_deselected.emit()
@@ -76,7 +93,7 @@ func cancel_tower_placement() -> void:
 	aim_indicator.visible = true
 	tower_placement_indicator.visible = false
 	GameState.placing_tower = false
-	
+
 func toggle_tower_placement(tower_id: int, cost: int, select_event):
 	EventBus.tower1_deselected.emit()
 	EventBus.tower2_deselected.emit()
@@ -125,6 +142,7 @@ func _process(delta: float) -> void:
 
 	if GameState.placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
+			
 		if GameState.valid_placement:
 			tower_placement_indicator.modulate = Color(0, 2, 0, 0.3)
 		else:
@@ -174,7 +192,7 @@ func _on_area_exit(area: Area2D) -> void:
 	overlapping_areas.erase(area)
 	_update_placement_validity()
 
-func _update_placement_validity() -> void:
+func _update_placement_validity() -> void:		
 	GameState.valid_placement = true
 	for area in overlapping_areas:
 		var parent = area.get_parent()

@@ -89,7 +89,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	## Friendly bullet enters enemy deflector
-	if parent.is_in_group("EnemyDeflectors") and "Player" in shooter_groups:
+	if parent.is_in_group("EnemyDeflectors") and ("Player" in shooter_groups or "Towers" in shooter_groups):
 		direction *= -1
 		shooter_groups.append("Enemies")
 		shooter_groups.remove_at(shooter_groups.find("Player"))

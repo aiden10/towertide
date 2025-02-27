@@ -1,31 +1,42 @@
 extends Control
 
-@onready var gold_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/GoldLabel
-@onready var health_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/HealthLabel
-@onready var kills_label: Label = $CanvasLayer/StatusContainer/PanelContainer/MarginContainer/GridContainer/KillsLabel
+@onready var gold_label: Label = $CanvasLayer/StatusContainer/GoldContainer/GoldLabel
 @onready var clear_condition_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/ClearConditionLabel
 @onready var stage_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/StageLabel
 @onready var xp_label: Label = $CanvasLayer/XPContainer/VBoxContainer/XPLabel
 @onready var xp_bar: ProgressBar = $CanvasLayer/XPContainer/VBoxContainer/XPBar
 
-@onready var cross_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer
+@onready var cross_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer
 @onready var cross_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/HBoxContainer/CrossCostLabel
 @onready var key_label1: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/KeyLabel1
 @onready var cross_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer/CrossImage
+@onready var cross_name_info: Label = $CanvasLayer/Descriptions/Cross/VBoxContainer/CrossNameInfo
+@onready var cross_description_info: Label = $CanvasLayer/Descriptions/Cross/VBoxContainer/CrossDescriptionInfo
+@onready var cross_info_panel: PanelContainer = $CanvasLayer/Descriptions/Cross
 
+@onready var sentry_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer
 @onready var sentry_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/HBoxContainer/SentryCostLabel
 @onready var key_label2: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/KeyLabel2
 @onready var sentry_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/SentryImage
+@onready var sentry_name_info: Label = $CanvasLayer/Descriptions/Sentry/VBoxContainer/SentryNameInfo
+@onready var sentry_description_info: Label = $CanvasLayer/Descriptions/Sentry/VBoxContainer/SentryDescriptionInfo
+@onready var sentry_info_panel: PanelContainer = $CanvasLayer/Descriptions/Sentry
 
-@onready var spawner_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer
+@onready var spawner_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer
 @onready var spawner_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/HBoxContainer/SpawnerCostLabel
 @onready var key_label3: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/KeyLabel3
 @onready var spawner_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer/SpawnerImage
+@onready var spawner_name_info: Label = $CanvasLayer/Descriptions/Spawner/VBoxContainer/SpawnerNameInfo
+@onready var spawner_description_info: Label = $CanvasLayer/Descriptions/Spawner/VBoxContainer/SpawnerDescriptionInfo
+@onready var spawner_info_panel: PanelContainer = $CanvasLayer/Descriptions/Spawner
 
-@onready var blank_container: VBoxContainer = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer
+@onready var blank_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer
 @onready var blank_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer/BlankCostLabel
 @onready var key_label4: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/KeyLabel4
 @onready var blank_image: TextureRect = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer/BlankImage
+@onready var blank_name_info: Label = $CanvasLayer/Descriptions/Blank/VBoxContainer/BlankNameInfo
+@onready var blank_description_info: Label = $CanvasLayer/Descriptions/Blank/VBoxContainer/BlankDescriptionInfo
+@onready var blank_info_panel: PanelContainer = $CanvasLayer/Descriptions/Blank
 
 @onready var arrow: TextureRect = $CanvasLayer/Arrow
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
@@ -53,17 +64,42 @@ func _ready() -> void:
 		
 	cross_cost_label.text = str(Towers.CROSS_COST)
 	key_label1.text = Utils.get_action_key_name("place_tower1")
+	cross_name_info.text = Towers.CROSS_NAME
+	cross_description_info.text = Towers.CROSS_DESCRIPTION
 	
 	sentry_cost_label.text = str(Towers.SENTRY_COST)
 	key_label2.text = Utils.get_action_key_name("place_tower2")
+	sentry_name_info.text = Towers.SENTRY_NAME
+	sentry_description_info.text = Towers.SENTRY_DESCRIPTION
 
 	spawner_cost_label.text = str(Towers.SPAWNER_COST)
 	key_label3.text = Utils.get_action_key_name("place_tower3")
+	spawner_name_info.text = Towers.SPAWNER_NAME
+	spawner_description_info.text = Towers.SPAWNER_DESCRIPTION
 
 	blank_cost_label.text = str(Towers.BLANK_COST)
 	key_label4.text = Utils.get_action_key_name("place_tower4")
+	blank_name_info.text = Towers.BLANK_NAME
+	blank_description_info.text = Towers.BLANK_DESCRIPTION
 	
 	stage_label.text = "Stage " + str(GameState.stage)
+	
+	cross_container.mouse_entered.connect(_on_cross_container_mouse_entered)
+	cross_container.mouse_exited.connect(_on_cross_container_mouse_exited)
+	
+	sentry_container.mouse_entered.connect(_on_sentry_container_mouse_entered)
+	sentry_container.mouse_exited.connect(_on_sentry_container_mouse_exited)
+	
+	spawner_container.mouse_entered.connect(_on_spawner_container_mouse_entered)
+	spawner_container.mouse_exited.connect(_on_spawner_container_mouse_exited)
+	
+	blank_container.mouse_entered.connect(_on_blank_container_mouse_entered)
+	blank_container.mouse_exited.connect(_on_blank_container_mouse_exited)
+
+	cross_container.gui_input.connect(_on_cross_container_gui_input)
+	sentry_container.gui_input.connect(_on_sentry_container_gui_input)
+	spawner_container.gui_input.connect(_on_spawner_container_gui_input)
+	blank_container.gui_input.connect(_on_blank_container_gui_input)
 	
 	if not GameState.is_boss_stage:
 		boss_stage_indicator.visible = true
@@ -71,6 +107,66 @@ func _ready() -> void:
 		stages_until_boss = GameState.boss_stage_increment - (GameState.stage % GameState.boss_stage_increment)
 		boss_label.text = "Stages Until Boss: " + str(stages_until_boss)
 		
+func _on_cross_container_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
+		accept_event()
+		
+func _on_sentry_container_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
+		accept_event()
+
+func _on_spawner_container_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
+		accept_event()
+
+func _on_blank_container_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
+		accept_event()
+
+func _on_cross_container_mouse_entered() -> void:
+	cross_info_panel.visible = true
+	reset_modulation()
+	cross_image.modulate = Color8(255, 255, 255, 50)
+	
+func _on_cross_container_mouse_exited() -> void:
+	cross_info_panel.visible = false
+	reset_modulation()
+	cross_image.modulate = Color8(255, 255, 255, 150)
+
+func _on_sentry_container_mouse_entered() -> void:
+	sentry_info_panel.visible = true
+	reset_modulation()
+	sentry_image.modulate = Color8(255, 255, 255, 50)
+	
+func _on_sentry_container_mouse_exited() -> void:
+	sentry_info_panel.visible = false
+	reset_modulation()
+	sentry_image.modulate = Color8(255, 255, 255, 150)
+
+func _on_spawner_container_mouse_entered() -> void:
+	spawner_info_panel.visible = true
+	reset_modulation()
+	spawner_image.modulate = Color8(255, 255, 255, 50)
+	
+func _on_spawner_container_mouse_exited() -> void:
+	spawner_info_panel.visible = false
+	reset_modulation()
+	spawner_image.modulate = Color8(255, 255, 255, 150)
+
+func _on_blank_container_mouse_entered() -> void:
+	blank_info_panel.visible = true
+	reset_modulation()
+	blank_image.modulate = Color8(255, 255, 255, 50)
+	
+func _on_blank_container_mouse_exited() -> void:
+	blank_info_panel.visible = false
+	reset_modulation()
+	blank_image.modulate = Color8(255, 255, 255, 150)
+	
 func reset_modulation() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)
 	cross_image.modulate = Color8(255, 255, 255, 150)
@@ -87,8 +183,6 @@ func _update_spawn_progress(progress: float, enemies_to_spawn: int, time_scale: 
 
 func _process(delta: float) -> void:
 	gold_label.text = str(PlayerState.gold)
-	health_label.text = str(PlayerState.health) + " / " + str(PlayerState.max_health)
-	kills_label.text = str(PlayerState.enemies_killed)
 	xp_label.text = str(PlayerState.xp) + " / " + str(PlayerState.level_up_condition)
 	xp_bar.max_value = PlayerState.level_up_condition
 	xp_bar.value = PlayerState.xp
