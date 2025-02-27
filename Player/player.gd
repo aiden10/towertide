@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var aim_indicator: Sprite2D = $AimIndicator
 @onready var tower_placement_indicator: Sprite2D = $TowerPlacementIndicator
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
+@onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var regen_bar: TextureProgressBar = $RegenBar
@@ -19,6 +20,8 @@ func _ready() -> void:
 	EventBus.clicked.connect(shoot)
 	placement_hitbox.area_entered.connect(_check_placement)
 	placement_hitbox.area_exited.connect(_on_area_exit)
+	hitbox.area_entered.connect(_on_hitbox_enter)
+	hitbox.area_exited.connect(_on_hitbox_exit)
 	EventBus.xp_picked_up.connect(_on_xp_pickup)
 	EventBus.gold_picked_up.connect(_on_gold_pickup)
 	EventBus.toggle_tower_selection.connect(toggle_tower_placement)
@@ -59,7 +62,7 @@ func get_input():
 			
 			new_tower.global_position = get_global_mouse_position()
 			EventBus.arena_spawn.emit(new_tower)
-			
+			EventBus.tower_placed.emit()
 			EventBus.unselect_pressed.emit()
 		else:
 			EventBus.clicked.emit(get_global_mouse_position())
@@ -75,6 +78,11 @@ func cancel_tower_placement() -> void:
 	GameState.placing_tower = false
 	
 func toggle_tower_placement(tower_id: int, cost: int, select_event):
+	EventBus.tower1_deselected.emit()
+	EventBus.tower2_deselected.emit()
+	EventBus.tower3_deselected.emit()
+	EventBus.tower4_deselected.emit()
+
 	if PlayerState.gold >= cost:
 		if GameState.tower_type == tower_id:
 			cancel_tower_placement()
@@ -147,6 +155,16 @@ func _add_item_scenes() -> void:
 		if item not in added_items.values() and item.scene:
 			var item_scene = item.scene.instantiate()
 			add_child(item_scene)
+
+func _on_hitbox_enter(area: Area2D) -> void:
+	if area.is_in_group("Pickups"):
+		area.player = self
+		area.in_attract_range = true
+
+func _on_hitbox_exit(area: Area2D) -> void:
+	if area.is_in_group("Pickups"):
+		area.player = null
+		area.in_attract_range = false
 
 func _check_placement(area: Area2D) -> void:
 	overlapping_areas.append(area)

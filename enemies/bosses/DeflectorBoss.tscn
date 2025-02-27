@@ -1,0 +1,123 @@
+[gd_scene load_steps=15 format=3 uid="uid://dp3c0ctmykxmb"]
+
+[ext_resource type="Script" path="res://enemies/bosses/deflector_boss.gd" id="1_5r11w"]
+[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4jtba"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="3_21f6b"]
+[ext_resource type="Script" path="res://enemies/bosses/deflector_states/attack_state.gd" id="4_0enwr"]
+[ext_resource type="Script" path="res://enemies/bosses/deflector_states/follow_state.gd" id="4_3gy1h"]
+[ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="6_asweh"]
+[ext_resource type="Script" path="res://enemies/bosses/deflector_states/spiral_attack_state.gd" id="6_ut4yt"]
+[ext_resource type="Script" path="res://enemies/bosses/deflector_states/burst_attack_state.gd" id="7_epni4"]
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="7_nnxx1"]
+[ext_resource type="Script" path="res://enemies/bosses/deflector_states/shield_charge_state.gd" id="8_vmv7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2or07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvpnq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icjpa"]
+size = Vector2(63.875, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g1m"]
+bg_color = Color(0.745829, 0.1422, 0.140524, 1)
+
+[node name="DeflectorBoss" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_5r11w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(11, 11)
+shape = SubResource("RectangleShape2D_2or07")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
+texture = ExtResource("2_4jtba")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
+script = ExtResource("3_21f6b")
+initial_state = NodePath("Follow")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("4_0enwr")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("4_3gy1h")
+
+[node name="Spiral" type="Node" parent="StateMachine"]
+script = ExtResource("6_ut4yt")
+
+[node name="Burst" type="Node" parent="StateMachine"]
+script = ExtResource("7_epni4")
+
+[node name="Charge" type="Node" parent="StateMachine"]
+script = ExtResource("8_vmv7g")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+scale = Vector2(11, 11)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hvpnq")
+
+[node name="Shield1" type="Node2D" parent="." groups=["EnemyDeflectors"]]
+position = Vector2(50, 0)
+
+[node name="ShieldArea" type="Area2D" parent="Shield1"]
+rotation = 1.5708
+scale = Vector2(2.4, 0.7)
+collision_layer = 4
+collision_mask = 4
+
+[node name="ShieldHitbox" type="CollisionShape2D" parent="Shield1/ShieldArea"]
+shape = SubResource("RectangleShape2D_icjpa")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield1"]
+rotation = 1.5708
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("6_asweh")
+
+[node name="Shield2" type="Node2D" parent="." groups=["EnemyDeflectors"]]
+
+[node name="ShieldArea" type="Area2D" parent="Shield2"]
+rotation = 1.5708
+scale = Vector2(2.4, 0.7)
+collision_layer = 4
+collision_mask = 4
+
+[node name="ShieldHitbox" type="CollisionShape2D" parent="Shield2/ShieldArea"]
+shape = SubResource("RectangleShape2D_icjpa")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield2"]
+rotation = 1.5708
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("6_asweh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("7_nnxx1")
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Boss Name"
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5g1m")
+value = 30.0
+show_percentage = false

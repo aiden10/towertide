@@ -30,6 +30,7 @@ signal tower_selected
 signal tower_deselected
 signal tower_placed
 signal tower_sold
+signal _tower_upgraded
 
 signal tower1_selected
 signal tower1_deselected
@@ -44,6 +45,7 @@ signal unselect_pressed
 
 signal minion_died
 signal enemy_dead
+signal _boss_dead
 
 signal player_hit
 signal player_regenerated

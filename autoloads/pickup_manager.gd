@@ -3,8 +3,12 @@ extends Node
 var gold_pool = []
 var xp_pool = []
 
-var max_gold_pool_size = 100
-var max_xp_pool_size = 100
+var max_gold_pool_size = 250
+var max_xp_pool_size = 250
+
+var xp_scenes = {
+	1: Scenes.xp_scene
+}
 
 func _ready() -> void:
 	EventBus.level_exited.connect(clear_pools)
@@ -40,13 +44,14 @@ func spawn_gold(spawn_position: Vector2) -> void:
 	gold_pool.push_back(gold)
 	call_deferred("add_child", gold)
 
-func spawn_xp(spawn_position: Vector2) -> void:
+func spawn_xp(spawn_position: Vector2, xp_type: int) -> void:
 	if xp_pool.size() >= max_xp_pool_size:
 		var oldest_xp = xp_pool.pop_front()
 		if is_instance_valid(oldest_xp):
 			oldest_xp.queue_free()
-
-	var xp = Scenes.xp_scene.instantiate()
+	
+	var xp_scene = xp_scenes[xp_type]
+	var xp = xp_scene.instantiate()
 	xp.position = spawn_position
 	xp_pool.push_back(xp)
 	call_deferred("add_child", xp)

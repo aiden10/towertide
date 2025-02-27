@@ -43,6 +43,8 @@ script = ExtResource("3_mdjjg")
 
 [node name="Hitbox" type="Area2D" parent="."]
 scale = Vector2(1.2, 1.2)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-8.02691, 0.772418)

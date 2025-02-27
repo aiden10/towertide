@@ -36,14 +36,17 @@ func reset_states() -> void:
 	GameState.door_position = GameConstants.DEFAULT_DOOR_POSITION
 	GameState.player_position = GameConstants.DEFAULT_PLAYER_POSITION
 	GameState.enemies_killed_this_stage = GameConstants.DEFAULT_ENEMIES_KILLED_THIS_STAGE
-	GameState.allocate_menu_up = false
 	GameState.enemies_spawning = GameConstants.DEFAULT_ENEMIES_SPAWNING
 	GameState.level_cleared = GameConstants.DEFAULT_LEVEL_CLEARED
+	GameState.boss_stage_increment = GameConstants.DEFAULT_BOSS_STAGE_INCREMENT
 	GameState.player_projectiles.clear()
 	GameState.selected_tower = null
 	GameState.enemy_counts = {}
 	GameState.tower_type = 0
+	GameState.allocate_menu_up = false
 	GameState.wave_started = false
+	GameState.is_boss_stage = false
+	GameState.boss_dead = false
 
 	PlayerState.level = PlayerConstants.DEFAULT_LEVEL
 	PlayerState.gold = PlayerConstants.DEFAULT_GOLD
@@ -115,7 +118,8 @@ func save_game() -> void:
 		"enemies_killed_this_stage": GameState.enemies_killed_this_stage,
 		"enemies_spawning": GameState.enemies_spawning,
 		"level_cleared": GameState.level_cleared,
-		"wave_started": GameState.wave_started
+		"wave_started": GameState.wave_started,
+		"is_boss_stage": GameState.is_boss_stage
 	}
 	for tower in TowerManager.active_towers:
 		var tower_data = {

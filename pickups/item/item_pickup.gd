@@ -14,10 +14,10 @@ func _ready() -> void:
 	pickup_distance = 5
 	Items.unique_items.erase(item.item_name)
 	item_sprite.texture = item.image
-
-	if has_node("PickupArea"):
-		var pickup_area = $PickupArea
-		pickup_area.area_entered.connect(_on_area_entered)
+	var pulse_tween = create_tween()
+	pulse_tween.set_loops(-1)
+	pulse_tween.tween_property(self, "modulate", Color(1, 1, 1, 0.5), 2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	pulse_tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
 func on_pickup() -> void:
 	PlayerState.player_items.append(item)

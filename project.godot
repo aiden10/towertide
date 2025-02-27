@@ -45,7 +45,6 @@ window/size/viewport_height=1080
 Player=""
 Enemies=""
 Pickups=""
-Sword=""
 DetectionRadius=""
 Minions=""
 Towers=""
@@ -53,6 +52,8 @@ Pylons=""
 EconomyTowers=""
 EnemyProjectiles=""
 FriendlyProjectiles=""
+EnemyDeflectors=""
+FriendlyDeflectors=""
 
 [input]
 

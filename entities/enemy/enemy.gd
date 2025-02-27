@@ -3,6 +3,7 @@ class_name Enemy
 
 var item_drop_count: int = 0
 var gold_drop_count: int
+var xp_type: int = 1
 var xp_drop_count: int
 var xp_drop_range: int
 var gold_drop_range: float
@@ -14,6 +15,7 @@ var item_drop_chance: float = 0
 var min_spawn_dist: float
 var spawn_radius: float
 var shot_count: int = 1
+var is_boss: bool = false
 
 func reset_modulation() -> void:
 	for child in get_children():
@@ -49,7 +51,7 @@ func on_death() -> void:
 
 	for i in range(xp_drop_count):
 		var drop_position = Utils.get_random_position_in_radius(position, xp_drop_range)
-		PickupManager.spawn_xp(drop_position)
+		PickupManager.spawn_xp(drop_position, xp_type)
 	
 	for i in range(item_drop_count):
 		if randf() > item_drop_chance:
@@ -57,6 +59,10 @@ func on_death() -> void:
 		var drop_position = Utils.get_random_position_in_radius(position, 50)
 		PickupManager.spawn_item(drop_position)
 	
+	if is_boss:
+		GameState.boss_dead = true
+		EventBus._boss_dead.emit()
+		
 	GameState.enemy_counts[enemy_name] -= 1
 	PlayerState.enemies_killed += 1
 	GameState.enemies_killed_this_stage += 1

@@ -8,7 +8,10 @@ radius = 142.088
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iilja"]
 
-[node name="ItemPickup" type="Area2D"]
+[node name="ItemPickup" type="Area2D" groups=["Pickups"]]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
 script = ExtResource("1_niui7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

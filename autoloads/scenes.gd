@@ -25,6 +25,9 @@ var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTowe
 var slowing_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/slowing/SlowingPylonTower.tscn")
 var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
 
+## Boss scenes
+var deflector_boss_scene: PackedScene = preload("res://enemies/bosses/DeflectorBoss.tscn")
+
 ## Stage one enemies
 var basic_shooter_scene: PackedScene = preload("res://enemies/stage1/BasicEnemy.tscn")
 var weak_rusher_scene: PackedScene = preload("res://enemies/stage1/WeakRusher.tscn")
@@ -36,6 +39,7 @@ var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.
 ## Stage three enemies
 var shotgun_enemy_scene: PackedScene = preload("res://enemies/stage3/ShotgunEnemy.tscn")
 
+var boss_scenes: Array[PackedScene] = [deflector_boss_scene]
 var stage_one_enemy_scenes: Array[PackedScene] = [basic_shooter_scene, weak_rusher_scene]
 var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene, sniper_enemy_scene]
 var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene]

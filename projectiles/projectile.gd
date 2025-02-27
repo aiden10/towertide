@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			if is_offscreen:
 				is_offscreen = false
 				despawn_timer.stop()
-				
+
 func _on_despawn_timer_timeout() -> void:
 	clear()
 
@@ -79,11 +79,21 @@ func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	
 	# Enemy bullet entered sword
-	if parent.is_in_group("Sword") and "Enemies" in shooter_groups:
+	if parent.is_in_group("FriendlyDeflectors") and "Enemies" in shooter_groups:
 		direction *= -1
 		speed *= 1.5
 		shooter_groups.append("Player")
 		shooter_groups.remove_at(shooter_groups.find("Enemies"))
+		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
+		EventBus.deflect.emit()
+		return
+
+	## Friendly bullet enters enemy deflector
+	if parent.is_in_group("EnemyDeflectors") and "Player" in shooter_groups:
+		direction *= -1
+		shooter_groups.append("Enemies")
+		shooter_groups.remove_at(shooter_groups.find("Player"))
+		self.modulate = Color(2, 1, 1, 0.5)
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
 		EventBus.deflect.emit()
 		return
@@ -94,7 +104,7 @@ func _on_area_entered(area: Area2D) -> void:
 		parent.take_damage(damage)
 		clear()
 
-	# Non enemy bullet entered enemy
+	# Friendly bullet entered enemy
 	if parent.is_in_group("Enemies") and not "Enemies" in shooter_groups:
 		Utils.spawn_hit_effect(Color(255, 255, 255, 50), position, damage)
 		parent.take_damage(damage, get_shooter(), direction)

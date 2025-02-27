@@ -31,7 +31,11 @@ extends Control
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
 @onready var spawning_label: Label = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawningLabel
 
+@onready var boss_stage_indicator: MarginContainer = $CanvasLayer/BossStageIndicator
+@onready var boss_label: Label = $CanvasLayer/BossStageIndicator/StagesUntilBossLabel
+
 var pulse_tween: Tween = null
+var stages_until_boss: int
 
 func _ready() -> void:	
 	EventBus.tower1_selected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 50))
@@ -60,7 +64,13 @@ func _ready() -> void:
 	key_label4.text = Utils.get_action_key_name("place_tower4")
 	
 	stage_label.text = "Stage " + str(GameState.stage)
-
+	
+	if not GameState.is_boss_stage:
+		boss_stage_indicator.visible = true
+		boss_label.visible = true
+		stages_until_boss = GameState.boss_stage_increment - (GameState.stage % GameState.boss_stage_increment)
+		boss_label.text = "Stages Until Boss: " + str(stages_until_boss)
+		
 func reset_modulation() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)
 	cross_image.modulate = Color8(255, 255, 255, 150)
@@ -85,18 +95,26 @@ func _process(delta: float) -> void:
 	
 	## Wave started but not yet cleared
 	if not GameState.level_cleared and GameState.wave_started:
-		clear_condition_label.text = "Kill " + str(GameState.clear_condition) + " enemies to proceed"
-		spawn_bar.max_value = GameState.clear_condition
-		spawn_bar.value = GameState.enemies_killed_this_stage
+		if GameState.is_boss_stage:
+			clear_condition_label.text = "Kill the boss to proceed"
+		else:
+			clear_condition_label.text = "Kill " + str(GameState.clear_condition) + " enemies to proceed"
+			spawn_bar.max_value = GameState.clear_condition
+			spawn_bar.value = GameState.enemies_killed_this_stage
 		
 		if pulse_tween and pulse_tween.is_valid():
 			pulse_tween.kill()
 			pulse_tween = null
 			clear_condition_label.modulate = Color(1, 1, 1, 1)  # Reset opacity
-	
+
 	## Wave not started and level not cleared
 	elif not GameState.level_cleared and not GameState.wave_started:
-		clear_condition_label.text = "Press " + Utils.get_action_key_name("start_wave") + " to start the wave"
+		var start_text: String
+		if GameState.is_boss_stage:
+			start_text = " to summon the boss"
+		else:
+			start_text = " to start the wave"
+		clear_condition_label.text = "Press " + Utils.get_action_key_name("start_wave") + start_text
 		
 		if not pulse_tween or not pulse_tween.is_valid():
 			pulse_tween = create_tween()
@@ -107,12 +125,12 @@ func _process(delta: float) -> void:
 	## Level cleared
 	elif GameState.level_cleared and GameState.wave_started:
 		clear_condition_label.text = "Enter the door to proceed to the shop"
-		
+
 		if pulse_tween and pulse_tween.is_valid():
 			pulse_tween.kill()
 			pulse_tween = null
 			clear_condition_label.modulate = Color(1, 1, 1, 1)  # Reset opacity
-		
+
 	var direction = GameState.door_position - GameState.player_position
 	var angle = atan2(direction.y, direction.x)
 	arrow.rotation_degrees = rad_to_deg(angle) + 180

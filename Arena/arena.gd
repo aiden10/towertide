@@ -11,6 +11,7 @@ var door_spawned = false
 var spawn_cooldown = 0
 var timer = 0
 var time_since_clear = 0
+var boss_spawned = false
 
 func _ready() -> void:
 	EventBus.arena_spawn.connect(add_to_arena)
@@ -27,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not GameState.wave_started:
 		return
-		
+
 	check_clear_condition()
 	if GameState.level_cleared:
 		time_since_clear += delta
@@ -46,6 +47,22 @@ func _process(delta: float) -> void:
 	timer -= delta
 
 func spawn_enemy(specific_enemy_scene: PackedScene = null) -> void:
+	## Handle boss stage
+	if GameState.is_boss_stage and not boss_spawned:
+		var boss_scene = Scenes.boss_scenes.pick_random()
+		var boss: Enemy = boss_scene.instantiate()
+		GameState.enemy_counts[boss.enemy_name] = GameState.enemy_counts.get(boss.enemy_name, 0) + 1
+
+		var boss_position = Utils.get_random_position_in_radius(
+			player.position, 
+			boss.spawn_radius, 
+			boss.min_spawn_dist
+		)
+		boss.position = boss_position
+		add_child(boss)
+		boss_spawned = true
+		return
+
 	var enemy_scenes = []
 	var enemy_scene
 	if not specific_enemy_scene:
@@ -83,7 +100,11 @@ func spawn_enemy(specific_enemy_scene: PackedScene = null) -> void:
 	add_child(enemy)
 
 func check_clear_condition() -> void:
-	if GameState.enemies_killed_this_stage >= GameState.clear_condition and not door_spawned:
+	if not door_spawned and (
+	(GameState.is_boss_stage and GameState.boss_dead) or 
+	(GameState.enemies_killed_this_stage >= GameState.clear_condition and 
+	not GameState.is_boss_stage)
+	):
 		EventBus.level_cleared.emit()
 		GameState.level_cleared = true
 		door_spawned = true
@@ -102,8 +123,15 @@ func start_new_level() -> void:
 	GameState.stage += 1
 	PlayerState.health = PlayerState.max_health
 	GameState.enemies_killed_this_stage = 0
-	GameState.clear_condition = GameState.stage * 100
+	GameState.clear_condition = GameState.stage * GameConstants.DEFAULT_CLEAR_CONDITION
 	GameState.enemies_spawning = 1
 	GameState.level_cleared = false
 	GameState.wave_started = false
+	GameState.enemy_counts = {}
+	GameState.boss_dead = false
+	if GameState.stage % GameState.boss_stage_increment == 0:
+		GameState.is_boss_stage = true
+	else:
+		GameState.is_boss_stage = false
+
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)

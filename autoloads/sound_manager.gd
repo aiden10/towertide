@@ -11,7 +11,7 @@ const minion1 = preload("res://resources/sounds/minion1.wav")
 const SOUNDS = {
 	"purchase": preload("res://resources/sounds/purchase.wav"),
 	"bell_toll": preload("res://resources/sounds/bell.wav"),
-	"placed_tower": preload("res://resources/sounds/placed.wav"),
+	"thump": preload("res://resources/sounds/thump.wav"),
 	"invalid": preload("res://resources/sounds/invalid.wav"),
 	"player_hit": preload("res://resources/sounds/player_hit.wav"),
 	"deflect": preload("res://resources/sounds/deflect.wav"),
@@ -21,7 +21,10 @@ const SOUNDS = {
 	"sword": preload("res://resources/sounds/sword.wav"),
 	"enter": preload("res://resources/sounds/enter.wav"),
 	"thud": preload("res://resources/sounds/thud.wav"),
-	"heal": preload("res://resources/sounds/heal.wav")
+	"heal": preload("res://resources/sounds/heal.wav"),
+	"select": preload("res://resources/sounds/select.wav"),
+	"upgrade": preload("res://resources/sounds/upgrade.wav"),
+	"sold": preload("res://resources/sounds/sold.wav")
 }
 
 const XP_SOUNDS = [xp1, xp2]
@@ -39,10 +42,10 @@ func _ready() -> void:
 		var player = AudioStreamPlayer.new()
 		add_child(player)
 		audio_players.append(player)
-		
+
 	EventBus.purchased.connect(func(): play_sound("purchase"))
 	EventBus.extra_spawn.connect(func(): play_sound("bell_toll"))
-	EventBus.tower_placed.connect(func(): play_sound("placed_tower"))
+	EventBus.tower_placed.connect(func(): play_sound("thump"))
 	EventBus.player_hit.connect(func(): play_sound("player_hit"))
 	EventBus.deflect.connect(func(): play_sound("deflect"))
 	EventBus.sword_purchased.connect(func(): play_sound("sword_purchased"))
@@ -54,6 +57,12 @@ func _ready() -> void:
 	EventBus.level_cleared.connect(func(): play_sound("thud"))
 	EventBus._wave_started.connect(func(): play_sound("bell_toll"))
 	EventBus.player_regenerated.connect(func(): play_sound("heal"))
+	EventBus._tower_upgraded.connect(func(): play_sound("upgrade", -10))
+	EventBus.tower1_selected.connect(func(): play_sound("select"))
+	EventBus.tower2_selected.connect(func(): play_sound("select"))
+	EventBus.tower3_selected.connect(func(): play_sound("select"))
+	EventBus.tower4_selected.connect(func(): play_sound("select"))
+	EventBus.tower_sold.connect(func(): play_sound("sold"))
 	
 	EventBus.xp_picked_up.connect(func(): play_random(XP_SOUNDS))
 	EventBus.gold_picked_up.connect(func(): play_random(GOLD_SOUNDS))
@@ -70,11 +79,12 @@ func play_random(sounds: Array) -> void:
 		player.stream = sounds.pick_random()
 		player.play()
 
-func play_sound(sound_name: String) -> void:
+func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
 	var player = _get_available_player()
 	if player:
 		player.process_mode = Node.PROCESS_MODE_ALWAYS
 		player.stream = SOUNDS[sound_name]
+		player.volume_db = volume_adjustment  
 		player.play()
 
 func _get_available_player() -> AudioStreamPlayer:

@@ -10,8 +10,9 @@ radius = 259.017
 radius = 13.0384
 
 [node name="Xp" type="Area2D" groups=["Pickups"]]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
+monitoring = false
 script = ExtResource("1_ijt3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,7 +25,7 @@ collision_mask = 2
 [node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_hsjqc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(3, 1, 2.5, 1)
-scale = Vector2(0.178889, 0.178889)
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(2, 1, 2.5, 1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_1ge04")

@@ -16,6 +16,7 @@ var tower: Tower
 @onready var upgrade3_button: Button = $PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer/Upgrade3Button
 @onready var upgrade3_image: TextureRect = $PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer/Upgrade3Image
 @onready var upgrade3_price: Label = $PanelContainer/VBoxContainer/Upgrade3/PriceContainer/Upgrade3Price
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var kill_text: String
 
@@ -27,6 +28,11 @@ func _ready() -> void:
 	upgrade1_button.pressed.connect(_upgrade1)
 	upgrade2_button.pressed.connect(_upgrade2)
 	upgrade3_button.pressed.connect(_upgrade3)
+	animation_player.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == "close":
+		self.visible = false
 
 func _sell_tower() -> void:
 	EventBus.unselect_pressed.emit()
@@ -37,12 +43,15 @@ func _sell_tower() -> void:
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
 		EventBus.invalid_action.emit()
+		animation_player.play("shake")
 		return
 		
 	if PlayerState.gold < tower.upgrade1_price:
 		EventBus.invalid_action.emit()
+		animation_player.play("shake")
 		return
-
+		
+	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade1_price
 	var new_tower = tower.upgrade1_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
@@ -54,12 +63,15 @@ func _upgrade1() -> void:
 func _upgrade2() -> void:
 	if upgrade2_button.text == Towers.end_of_path_name:
 		EventBus.invalid_action.emit()
+		animation_player.play("shake")
 		return
 		
 	if PlayerState.gold < tower.upgrade2_price:
 		EventBus.invalid_action.emit()
+		animation_player.play("shake")
 		return
 
+	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade2_price
 	var new_tower = tower.upgrade2_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
@@ -71,12 +83,15 @@ func _upgrade2() -> void:
 func _upgrade3() -> void:
 	if upgrade3_button.text == Towers.end_of_path_name:
 		EventBus.invalid_action.emit()
-		return
-		
-	if PlayerState.gold < tower.upgrade3_price:
-		EventBus.invalid_action.emit()
+		animation_player.play("shake")
 		return
 
+	if PlayerState.gold < tower.upgrade3_price:
+		EventBus.invalid_action.emit()
+		animation_player.play("shake")
+		return
+	
+	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade3_price
 	var new_tower = tower.upgrade3_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
@@ -91,6 +106,7 @@ func update_kills() -> void:
 
 func _show_upgrades() -> void:
 	self.visible = true
+	animation_player.play("open")
 	tower = GameState.selected_tower
 	tower_name.text = tower.tower_name
 	tower_description.text = tower.description
@@ -158,4 +174,5 @@ func _hide_upgrades() -> void:
 	if GameState.selected_tower:
 		if is_instance_valid(GameState.selected_tower):
 			GameState.selected_tower.deselect_tower()
-	self.visible = false
+	
+	animation_player.play("close")

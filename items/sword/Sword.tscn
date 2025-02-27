@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asej0"]
 size = Vector2(63.875, 20)
 
-[node name="Sword" type="Node2D" groups=["Sword"]]
+[node name="Sword" type="Node2D" groups=["FriendlyDeflectors"]]
 position = Vector2(80, 4)
 script = ExtResource("1_yjqjl")
 

@@ -9,15 +9,18 @@ radius = 142.088
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2tu"]
 
 [node name="Gold" type="Area2D" groups=["Pickups"]]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
 script = ExtResource("1_s5mvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dwn5o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1.63529, 1.98039, 1)
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1.5, 2, 1)
 position = Vector2(0, -2.98023e-07)
-scale = Vector2(0.38848, 0.4)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_mj0yo")
 
 [node name="PickupArea" type="Area2D" parent="."]
