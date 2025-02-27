@@ -13,9 +13,9 @@ func _ready() -> void:
 	item_icon.mouse_entered.connect(func(): info_container.visible = true)
 	item_icon.mouse_exited.connect(func(): info_container.visible = false)
 	info_container.visible = false
-	
+
 	$MarginContainer.visible = true
-	
+
 func populate_cell(item: Item, quantity: int) -> void:
 	if item and item.image:
 		item_icon.texture = item.image

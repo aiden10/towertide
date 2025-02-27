@@ -50,7 +50,7 @@ func _upgrade1() -> void:
 		EventBus.invalid_action.emit()
 		animation_player.play("shake")
 		return
-		
+
 	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade1_price
 	var new_tower = tower.upgrade1_scene.instantiate()

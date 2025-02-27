@@ -15,4 +15,7 @@ These enemies will also use the item that they have. Will probably make enemies 
 Bosses should counter particular kinds of builds:
     - Boss which defelects 1 in 2 bullets
     - Boss which temporarily disables pylons around it
-    
+
+Enemies that have shields around them
+Special wave types:
+    - "Swarm", only weak rushers spawn

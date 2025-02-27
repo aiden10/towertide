@@ -24,6 +24,7 @@ var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn
 var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTower.tscn")
 var slowing_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/slowing/SlowingPylonTower.tscn")
 var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
+var double_gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/DoubleGoldTower.tscn")
 
 ## Boss scenes
 var deflector_boss_scene: PackedScene = preload("res://enemies/bosses/DeflectorBoss.tscn")

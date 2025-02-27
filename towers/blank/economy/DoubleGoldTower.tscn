@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dihpxhfldd6ao"]
+
+[ext_resource type="Texture2D" uid="uid://c8dudx3hcnq0r" path="res://sprites/towers/blank/economy/gold_dispenser.png" id="1_b7aht"]
+[ext_resource type="Script" path="res://towers/blank/economy/double_gold_tower.gd" id="1_vjpxt"]
+[ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_iqm6n"]
+[ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="3_nse1j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yakdx"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xr63k"]
+radius = 79.0569
+
+[node name="DoubleGoldTower" type="Area2D" groups=["EconomyTowers", "Towers"]]
+script = ExtResource("1_vjpxt")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_yakdx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_b7aht")
+
+[node name="CoreSprite" type="Sprite2D" parent="."]
+position = Vector2(3.55271e-15, 1.19209e-07)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("2_iqm6n")
+
+[node name="RingSprite" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 1, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_nse1j")
+
+[node name="RingSprite2" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 1, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_nse1j")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_xr63k")

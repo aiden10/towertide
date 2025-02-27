@@ -24,6 +24,8 @@ func _ready() -> void:
 	if GameState.door_position != Vector2.ZERO:
 		player.global_position = GameState.door_position
 	GameState.door_position = Vector2.ZERO
+	## Auto save on stage start
+	Utils.save_game()
 
 func _process(delta: float) -> void:
 	if not GameState.wave_started:
@@ -133,5 +135,6 @@ func start_new_level() -> void:
 		GameState.is_boss_stage = true
 	else:
 		GameState.is_boss_stage = false
-
+	## Auto save after a stage is cleared
+	Utils.save_game()
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)

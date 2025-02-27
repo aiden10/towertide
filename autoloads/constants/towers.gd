@@ -58,7 +58,7 @@ const SHOOTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/ShooterSpawnerT
 const BLANK_COST: int = 10
 const BLANK_NAME: String = "Blank"
 const BLANK_DESCRIPTION: String = "Does nothing"
-var BLANK_IMAGE: Texture = load("res://sprites/player/white.png")
+var BLANK_IMAGE: Texture = load("res://sprites/towers/blank/blank.png")
 const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
 
 const GOLD_DISPENSER_NAME: String = "Gold Dispenser"
@@ -67,6 +67,13 @@ const GOLD_DISPENSER_COOLDOWN: float = 15
 const GOLD_DISPENSER_DESCRIPTION: String = "Dispenses gold"
 var GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
 const GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/GoldDispenserTower.tscn"
+
+const DOUBLE_GOLD_DISPENSER_NAME: String = "Double Gold Dispenser"
+const DOUBLE_GOLD_DISPENSER_COST: int = 15
+const DOUBLE_GOLD_DISPENSER_COOLDOWN: float = 12
+const DOUBLE_GOLD_DISPENSER_DESCRIPTION: String = "Dispenses 2 gold"
+var DOUBLE_GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
+const DOUBLE_GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/DoubleGoldTower.tscn"
 
 const PYLON_NAME: String = "Pylon"
 const PYLON_DESCRIPTION: String = "Creates an electric fence between pylons"
@@ -95,7 +102,7 @@ const CHARGER_LIFETIME: float = 5
 var shooter_minion_scene: PackedScene = load("res://towers/spawner/minions/ShooterMinion.tscn")
 const SHOOTER_NAME: String = "Shooter"
 const SHOOTER_SPEED: float = 100
-const SHOOTER_DAMAGE: float = 0.4
+const SHOOTER_DAMAGE: float = 0.5
 const SHOOTER_COOLDOWN: float = 1.5
 const SHOOTER_PROJECTILE_SPEED: float = 0.5
 const SHOOTER_WANDER_DIST: float = 300

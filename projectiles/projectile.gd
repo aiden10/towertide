@@ -92,7 +92,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if parent.is_in_group("EnemyDeflectors") and ("Player" in shooter_groups or "Towers" in shooter_groups):
 		direction *= -1
 		shooter_groups.append("Enemies")
-		shooter_groups.remove_at(shooter_groups.find("Player"))
+		if "Player" in shooter_groups:
+			shooter_groups.remove_at(shooter_groups.find("Player"))
+		if "Towers" in shooter_groups:
+			shooter_groups.remove_at(shooter_groups.find("Towers"))
 		self.modulate = Color(2, 1, 1, 0.5)
 		Utils.spawn_hit_effect(Color(255, 255, 255, 100), position, damage)
 		EventBus.deflect.emit()

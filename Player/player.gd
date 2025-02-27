@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var aim_indicator: Sprite2D = $AimIndicator
 @onready var tower_placement_indicator: Sprite2D = $TowerPlacementIndicator
+@onready var selected_tower_sprite: Sprite2D = $SelectedTowerSprite
 @onready var placement_hitbox: Area2D = $TowerPlacementIndicator/PlacementHitbox
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
@@ -10,12 +11,19 @@ extends CharacterBody2D
 @onready var regen_timer: Timer = $RegenTimer
 @onready var placement_timer: Timer = $PlacementTimer
 
+var tower_preview_size = Vector2(72, 72)  
 var push_force: float = 150.0
 var shot_timer: float = PlayerState.firerate
 var can_shoot: bool = true
 var placement_timer_up: bool = false
 var overlapping_areas: Array[Area2D] = []
 var added_items: Dictionary = {}
+var base_tower_sprites: Dictionary = {
+	1: Towers.CROSS_IMAGE,
+	2: Towers.SENTRY_IMAGE,
+	3: Towers.SPAWNER_IMAGE,
+	4: Towers.BLANK_IMAGE
+}
 
 func _ready() -> void:
 	position = GameState.player_position
@@ -42,9 +50,9 @@ func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
 	var focus_owner = get_viewport().gui_get_focus_owner()
-	if focus_owner and focus_owner is not Button:
+	if focus_owner and focus_owner is not Button and focus_owner is not TextureButton:
 		return
-		
+
 	if Input.is_action_pressed("click"):
 		if not GameState.placing_tower:
 			EventBus.clicked.emit(get_global_mouse_position())
@@ -78,7 +86,16 @@ func get_input():
 			EventBus.unselect_pressed.emit()
 		else:
 			EventBus.clicked.emit(get_global_mouse_position())
-
+			
+func update_tower_preview(tower_id: int):
+	var tower_texture = base_tower_sprites[tower_id]
+	selected_tower_sprite.texture = tower_texture
+	var tex_size = tower_texture.get_size()
+	selected_tower_sprite.scale = Vector2(
+		tower_preview_size.x / tex_size.x,
+		tower_preview_size.y / tex_size.y
+	)
+	
 func _reset_tower_placement_timer() -> void:
 	placement_timer_up = false
 	placement_timer.start()
@@ -92,6 +109,7 @@ func cancel_tower_placement() -> void:
 	GameState.tower_type = 0
 	aim_indicator.visible = true
 	tower_placement_indicator.visible = false
+	selected_tower_sprite.visible = false
 	GameState.placing_tower = false
 
 func toggle_tower_placement(tower_id: int, cost: int, select_event):
@@ -107,8 +125,10 @@ func toggle_tower_placement(tower_id: int, cost: int, select_event):
 			select_event.emit()
 			GameState.tower_type = tower_id
 			tower_placement_indicator.visible = true
+			selected_tower_sprite.visible = true
 			aim_indicator.visible = false
 			GameState.placing_tower = true
+			update_tower_preview(tower_id)
 	else:
 		EventBus.invalid_action.emit()
 
@@ -142,7 +162,8 @@ func _process(delta: float) -> void:
 
 	if GameState.placing_tower:
 		tower_placement_indicator.position = to_local(get_global_mouse_position())
-			
+		selected_tower_sprite.position = to_local(get_global_mouse_position())
+		selected_tower_sprite.rotation = -global_rotation
 		if GameState.valid_placement:
 			tower_placement_indicator.modulate = Color(0, 2, 0, 0.3)
 		else:
