@@ -9,7 +9,7 @@ const REGEN_IMAGE_PATH: String = "res://sprites/items/regen_potion.png"
 const REGEN_NAME: String = "Regeneration Potion"
 const REGEN_DESCRIPTION: String = "Regenerate faster"
 const REGEN_PRICE: int = 5
-const REGEN_COOLDOWN_DECREASE: int = 7
+const REGEN_COOLDOWN_DECREASE: int = 9
 
 const SWORD_IMAGE_PATH: String = "res://sprites/items/sword.png"
 const SWORD_NAME: String = "Sword"

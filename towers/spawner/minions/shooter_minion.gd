@@ -11,4 +11,3 @@ func _ready() -> void:
 	firerate_cooldown = Towers.SHOOTER_COOLDOWN * PlayerState.firerate
 	projectile_speed = Towers.SHOOTER_PROJECTILE_SPEED
 	bullet_scale = Towers.SHOOTER_BULLET_SCALE
-	scale *= max(0.25, log(PlayerState.bullet_size))

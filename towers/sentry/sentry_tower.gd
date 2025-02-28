@@ -17,6 +17,7 @@ func _init() -> void:
 	upgrade1_name = Towers.MACHINE_GUN_NAME
 	upgrade1_description = Towers.MACHINE_GUN_DESCRIPTION
 	upgrade1_price = Towers.MACHINE_GUN_COST
+	upgrade1_image = Towers.MACHINE_GUN_IMAGE
 	upgrade1_scene = Scenes.machine_gun_tower_scene
 
 func enemy_detected(area: Area2D) -> void:

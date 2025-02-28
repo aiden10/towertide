@@ -14,4 +14,5 @@ func spawn_saved_towers(parent: Node) -> void:
 		tower.position = tower_data.position
 		tower.kills = tower_data.kills
 		parent.add_child(tower)
-		
+	
+	clear_towers()

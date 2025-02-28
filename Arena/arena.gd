@@ -20,12 +20,12 @@ func _ready() -> void:
 	EventBus.unpause_game.connect(func(): get_tree().paused = false)
 	EventBus.arena_initialized.emit()
 	TowerManager.spawn_saved_towers(self)
-	TowerManager.active_towers.clear()
 	if GameState.door_position != Vector2.ZERO:
 		player.global_position = GameState.door_position
 	GameState.door_position = Vector2.ZERO
 	## Auto save on stage start
 	Utils.save_game()
+	TowerManager.active_towers.clear()
 
 func _process(delta: float) -> void:
 	if not GameState.wave_started:
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	if timer <= 0:
 		for i in range(GameState.enemies_spawning):
 			spawn_enemy()
-		spawn_cooldown = max(Enemies.MIN_SPAWN_TIME, randf_range(5, 10) - (GameState.stage / 2) - (GameState.enemies_spawning / 1.25))
+		spawn_cooldown = max(Enemies.MIN_SPAWN_TIME, randf_range(4, 5) - (GameState.stage / 2) - (GameState.enemies_spawning / 1.25))
 		timer = spawn_cooldown
 
 	timer -= delta
@@ -135,6 +135,5 @@ func start_new_level() -> void:
 		GameState.is_boss_stage = true
 	else:
 		GameState.is_boss_stage = false
-	## Auto save after a stage is cleared
-	Utils.save_game()
+
 	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)

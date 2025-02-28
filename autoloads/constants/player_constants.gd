@@ -2,12 +2,12 @@ extends Node
 
 ## Stats
 const DEFAULT_LEVEL: int = 1
-const DEFAULT_GOLD: int = 100
+const DEFAULT_GOLD: int = 50
 const DEFAULT_XP: int = 0
 const DEFAULT_DAMAGE: int = 10
 const DEFAULT_SPEED: float = 300
-const DEFAULT_HEALTH: int = 100
-const DEFAULT_MAX_HEALTH: int = 100
+const DEFAULT_HEALTH: int = 150
+const DEFAULT_MAX_HEALTH: int = 150
 const DEFAULT_FIRERATE: float = 0.75
 const DEFAULT_PROJECTILE_SPEED: int = 500
 const DEFAULT_KNOCKBACK: float = 100

@@ -19,7 +19,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	scale_size(damage)
 
-func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node, bullet_scale: float = 1.0) -> void:    
+func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node, bullet_scale: float = 0.5) -> void:    
 	speed = projectile_speed
 	damage = bullet_damage
 	projectile_scale = bullet_scale

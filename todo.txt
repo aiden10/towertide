@@ -1,4 +1,9 @@
+Tower upgrade images
+Tower limits
+    Numbers above each of the towers in the bottom right
 
+Add grid to background
+Fix crash that sometimes happens when buying an item 
 Rapid fire enemy
 Tower upgrades/more towers
 More items

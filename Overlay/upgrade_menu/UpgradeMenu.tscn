@@ -39,33 +39,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tna30"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="Animation" id="Animation_tmu41"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.966667),
-"transitions": PackedFloat32Array(0.258817, 0.574349),
-"update": 0,
-"values": [Vector2(2000, 279.5), Vector2(1650, 279.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.933333),
-"transitions": PackedFloat32Array(1, 0.15932),
-"update": 0,
-"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_s6jd0"]
 length = 0.001
 tracks/0/type = "value"
@@ -109,6 +82,33 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tmu41"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(0.258817, 0.574349),
+"update": 0,
+"values": [Vector2(2000, 279.5), Vector2(1650, 279.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.933333),
+"transitions": PackedFloat32Array(1, 0.15932),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_1ek2t"]
 resource_name = "shake"
 length = 0.5
@@ -139,9 +139,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -270.0
+offset_left = -20.0
 offset_top = -260.5
-offset_right = -17.0
+offset_right = 233.0
 offset_bottom = 260.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -217,6 +217,7 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade1Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Upgrade1"
 
@@ -249,6 +250,7 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade2Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Upgrade2"
 
@@ -281,6 +283,7 @@ theme_override_constants/separation = 15
 
 [node name="Upgrade3Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Upgrade3"
 

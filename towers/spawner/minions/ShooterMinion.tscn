@@ -16,6 +16,7 @@ radius = 292.0
 radius = 292.0
 
 [node name="ShooterMinion" type="CharacterBody2D" groups=["Minions"]]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_88htc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

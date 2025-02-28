@@ -18,6 +18,7 @@ func _init() -> void:
 	upgrade1_name = Towers.CARDINAL_NAME
 	upgrade1_description = Towers.CARDINAL_DESCRIPTION
 	upgrade1_price = Towers.CARDINAL_COST
+	upgrade1_image = Towers.CARDINAL_IMAGE
 	upgrade1_scene = Scenes.cardinal_tower_scene
 	
 func _process(delta: float) -> void:

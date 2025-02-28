@@ -10,10 +10,12 @@ func _ready() -> void:
 	upgrade1_name = Towers.GOLD_DISPENSER_NAME
 	upgrade1_description = Towers.GOLD_DISPENSER_DESCRIPTION
 	upgrade1_price = Towers.GOLD_DISPENSER_COST
+	upgrade1_image = Towers.GOLD_DISPENSER_IMAGE
 	upgrade1_scene = Scenes.gold_dispenser_tower_scene
 	
 	upgrade2_name = Towers.PYLON_NAME
 	upgrade2_description = Towers.PYLON_DESCRIPTION
 	upgrade2_price = Towers.PYLON_COST
+	upgrade2_image = Towers.PYLON_IMAGE
 	upgrade2_scene = Scenes.pylon_tower_scene
 	

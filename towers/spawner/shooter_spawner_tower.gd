@@ -33,6 +33,6 @@ func _process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = effective_cooldown
-		if (get_child_count() - 4) < spawn_limit:
+		if (get_child_count() - 5) < spawn_limit:
 			spawn_minions(spawn_amount, Towers.SHOOTER_MIN_WANDER)
 		

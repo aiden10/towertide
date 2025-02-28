@@ -17,5 +17,11 @@ Bosses should counter particular kinds of builds:
     - Boss which temporarily disables pylons around it
 
 Enemies that have shields around them
+
+Slot machine tower
+
+Tower limit stat
+
 Special wave types:
     - "Swarm", only weak rushers spawn
+

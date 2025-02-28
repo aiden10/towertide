@@ -16,6 +16,7 @@ func _init() -> void:
 	upgrade1_name = Towers.SHOOTER_SPAWNER_NAME
 	upgrade1_description = Towers.SHOOTER_SPAWNER_DESCRIPTION
 	upgrade1_price = Towers.SHOOTER_SPAWNER_COST
+	upgrade1_image = Towers.SHOOTER_SPAWNER_IMAGE
 	upgrade1_scene = Scenes.shooter_spawner_tower_scene
 
 func _process(delta: float) -> void:
