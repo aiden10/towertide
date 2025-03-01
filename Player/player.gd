@@ -265,8 +265,12 @@ func level_up():
 	PlayerState.level_up_condition = round(100 * (1.2 ** PlayerState.level) / 5) * 5
 	EventBus.level_up.emit()
 	
-func _on_xp_pickup():
-	PlayerState.xp += 1
+func _on_xp_pickup(xp_type: int):
+	if xp_type == 1:
+		PlayerState.xp += 1
+	elif xp_type == 2:
+		PlayerState.xp += 5
+
 	if PlayerState.xp >= PlayerState.level_up_condition:
 		level_up()
 

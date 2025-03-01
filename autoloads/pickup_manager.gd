@@ -9,7 +9,8 @@ var max_xp_pool_size = 250
 var max_item_pool_size = 25
 
 var xp_scenes = {
-	1: Scenes.xp_scene
+	1: Scenes.xp_scene,
+	2: Scenes.xp2_scene
 }
 
 func _ready() -> void:

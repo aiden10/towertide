@@ -25,6 +25,7 @@ func _init() -> void:
 	distance_threshold = Enemies.DEFLECTOR_BOSS_DISTANCE_THRESHOLD
 	enemy_name = Enemies.DEFLECTOR_BOSS_ENEMY_NAME
 	gold_drop_range = Enemies.DEFLECTOR_BOSS_GOLD_DROP_RANGE
+	xp_type = Enemies.DEFLECTOR_BOSS_XP_TYPE
 	xp_drop_range = Enemies.DEFLECTOR_BOSS_XP_DROP_RANGE
 	gold_drop_chance = Enemies.DEFLECTOR_BOSS_GOLD_DROP_CHANCE
 	gold_drop_count = Enemies.DEFLECTOR_BOSS_GOLD_DROP_COUNT

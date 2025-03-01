@@ -24,7 +24,7 @@ func on_death() -> void:
 
 func detected(area: Area2D) -> void:
 	var parent = area.get_parent()	
-	if parent.is_in_group("Enemies"):
+	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth"):
 		on_death()
 
 func physics_update(_delta: float) -> void:

@@ -54,6 +54,7 @@ EnemyProjectiles=""
 FriendlyProjectiles=""
 EnemyDeflectors=""
 FriendlyDeflectors=""
+Stealth=""
 
 [input]
 

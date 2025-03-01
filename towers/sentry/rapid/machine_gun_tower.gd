@@ -19,7 +19,7 @@ func _init() -> void:
 
 func enemy_detected(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent.is_in_group("Enemies"):
+	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth"):
 		if can_shoot:
 			shoot(parent.global_position, angle_offset)
 			current_frame = (current_frame + 1) % sprite.sprite_frames.get_frame_count("default")

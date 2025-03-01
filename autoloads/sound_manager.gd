@@ -64,7 +64,7 @@ func _ready() -> void:
 	EventBus.tower4_selected.connect(func(): play_sound("select"))
 	EventBus.tower_sold.connect(func(): play_sound("sold"))
 	
-	EventBus.xp_picked_up.connect(func(): play_random(XP_SOUNDS))
+	EventBus.xp_picked_up.connect(func(_xp_type: int): play_random(XP_SOUNDS))
 	EventBus.gold_picked_up.connect(func(): play_random(GOLD_SOUNDS))
 	EventBus.enemy_dead.connect(func(): play_random(DEATH_SOUNDS))
 	EventBus.enemy_hit.connect(func(): play_random(ENEMY_HIT_SOUNDS))

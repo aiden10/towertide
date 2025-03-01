@@ -197,7 +197,7 @@ func _update_spawn_progress(progress: float, enemies_to_spawn: int, time_scale: 
 		if enemies_to_spawn == 2:
 			spawning_label.text = "Spawning " + str(enemies_to_spawn - 1) + " extra enemy"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	gold_label.text = str(PlayerState.gold)
 	xp_label.text = str(PlayerState.xp) + " / " + str(PlayerState.level_up_condition)
 	xp_bar.max_value = PlayerState.level_up_condition

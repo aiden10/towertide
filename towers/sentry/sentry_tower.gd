@@ -10,6 +10,7 @@ func _init() -> void:
 	cost = Towers.SENTRY_COST
 	cooldown = Towers.SENTRY_COOLDOWN
 	damage_scale = Towers.SENTRY_DAMAGE_PERCENTAGE
+	bullet_speed = Towers.SENTRY_SPEED_PERCENTAGE
 	shot_timer = cooldown
 	image = Towers.SENTRY_IMAGE
 	angle_offset = 90.0
@@ -27,11 +28,11 @@ func _init() -> void:
 	upgrade2_image = Towers.SNIPER_IMAGE
 	upgrade2_scene = Scenes.sniper_tower_scene
 
-func enemy_detected(area: Area2D) -> void:
-	var parent = area.get_parent()
-	if parent.is_in_group("Enemies"):
-		if can_shoot:
-			shoot(parent.global_position, angle_offset)
+	upgrade3_name = Towers.SHOTGUN_NAME
+	upgrade3_description = Towers.SHOTGUN_DESCRIPTION
+	upgrade3_price = Towers.SHOTGUN_COST
+	upgrade3_image = Towers.SHOTGUN_IMAGE
+	upgrade3_scene = Scenes.shotgun_tower_scene
 
 func _process(delta: float) -> void:
 	shot_timer -= delta

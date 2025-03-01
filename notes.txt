@@ -4,7 +4,7 @@
             - Cannon
             - Quick sniper
         - Machine gun
-            - Gattling
+            - Gatling
         - Shotgun (Shoots like the shotgun enemy)
             - Grapeshot (Shoots in a cluster)
     - Spray: Just shoots

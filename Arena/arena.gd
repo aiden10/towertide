@@ -68,6 +68,8 @@ func spawn_enemy(specific_enemy_scene: PackedScene = null) -> void:
 	var enemy_scenes = []
 	var enemy_scene
 	if not specific_enemy_scene:
+		if GameState.stage >= 4:
+			enemy_scenes.append_array(Scenes.stage_four_enemy_scenes)
 		if GameState.stage >= 3:
 			enemy_scenes.append_array(Scenes.stage_three_enemy_scenes)
 		if GameState.stage >= 2:

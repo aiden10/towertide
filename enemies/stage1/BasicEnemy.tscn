@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4kpff"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_p373m"]
 [ext_resource type="Script" path="res://entities/enemy/enemy_states/attack_state.gd" id="3_4v1vq"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/follow_state.gd" id="4_g5fm2"]
+[ext_resource type="Script" path="res://entities/enemy/enemy_states/follow.gd" id="5_78jvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oooac"]
 
@@ -30,7 +30,7 @@ initial_state = NodePath("Follow")
 script = ExtResource("3_4v1vq")
 
 [node name="Follow" type="Node" parent="StateMachine"]
-script = ExtResource("4_g5fm2")
+script = ExtResource("5_78jvc")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 5

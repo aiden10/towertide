@@ -16,13 +16,13 @@ func exit() -> void:
 
 func detected(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent.is_in_group("Enemies"):
+	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth"):
 		minion.detected_enemy = parent
 		if minion.minion_name == Towers.CHARGER_NAME:
 			transitioned.emit(self, "follow")
 		elif minion.minion_name == Towers.SHOOTER_NAME:
 			transitioned.emit(self, "shoot")
-			
+
 func physics_update(_delta: float) -> void:
 	if minion.global_position.distance_to(destination) < 15:
 		destination = Utils.get_random_position_in_radius(tower_position, minion.wander_distance, minion.min_wander)

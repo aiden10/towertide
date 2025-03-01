@@ -5,7 +5,7 @@ var destination: Vector2
 var direction: Vector2
 var shot_timer: float = 0
 
-func shoot(player_position: Vector2, offset: int):
+func shoot(_player_position: Vector2, offset: int):
 	var aim_direction = (minion.detected_enemy.global_position - minion.global_position).normalized()
 	var angle_offset = deg_to_rad(offset)
 	var rotated_direction = aim_direction.rotated(angle_offset)
