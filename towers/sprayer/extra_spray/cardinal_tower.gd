@@ -2,6 +2,7 @@ extends Tower
 
 func _init() -> void:
 	super()
+	base_type = 1
 	tower_name = Towers.CARDINAL_NAME
 	description = Towers.CARDINAL_DESCRIPTION
 	cost = Towers.CARDINAL_COST

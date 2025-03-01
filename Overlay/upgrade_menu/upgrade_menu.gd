@@ -35,11 +35,8 @@ func _on_animation_finished(anim_name: String) -> void:
 		self.visible = false
 
 func _sell_tower() -> void:
-	EventBus.unselect_pressed.emit()
-	PlayerState.gold += int(tower.cost / 2)
-	EventBus.tower_sold.emit()
-	tower.call_deferred("queue_free")
-
+	tower.sell()
+	
 func _upgrade1() -> void:
 	if upgrade1_button.text == Towers.end_of_path_name:
 		EventBus.invalid_action.emit()

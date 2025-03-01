@@ -8,12 +8,15 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var regen_bar: TextureProgressBar = $RegenBar
+@onready var firerate_bar: TextureProgressBar = $FirerateBar
 @onready var regen_timer: Timer = $RegenTimer
 @onready var placement_timer: Timer = $PlacementTimer
 
 var tower_preview_size = Vector2(72, 72)  
 var push_force: float = 150.0
 var shot_timer: float = PlayerState.firerate
+var visual_shot_timer: float = 0.0
+var visual_firerate_max: float = 3.0  
 var can_shoot: bool = true
 var placement_timer_up: bool = false
 var overlapping_areas: Array[Area2D] = []
@@ -69,15 +72,19 @@ func get_input():
 			var new_tower: Tower
 			if GameState.tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
+				PlayerState.sprayer_limit -= 1
 				new_tower = Scenes.cross_tower_scene.instantiate()
 			elif GameState.tower_type == 2:
 				PlayerState.gold -= Towers.SENTRY_COST
+				PlayerState.sentry_limit -= 1
 				new_tower = Scenes.sentry_tower_scene.instantiate()
 			elif GameState.tower_type == 3:
 				PlayerState.gold -= Towers.SPAWNER_COST
+				PlayerState.spawner_limit -= 1
 				new_tower = Scenes.spawner_tower_scene.instantiate()
 			elif GameState.tower_type == 4:
 				PlayerState.gold -= Towers.BLANK_COST
+				PlayerState.blank_limit -= 1
 				new_tower = Scenes.blank_tower_scene.instantiate()
 			
 			new_tower.global_position = get_global_mouse_position()
@@ -145,18 +152,24 @@ func _physics_process(delta: float) -> void:
 			collider.velocity += push_direction * push_force * delta
 	move_and_slide()
 
-	if shot_timer > 0:
-		shot_timer -= delta
-	if shot_timer <= 0:
+	shot_timer += delta
+	if shot_timer >= PlayerState.firerate:
 		can_shoot = true
-		shot_timer = PlayerState.firerate
-
+		
+	# Update the visual timer at a slower pace
+	if not can_shoot:
+		visual_shot_timer = min(visual_shot_timer + delta * (visual_firerate_max / PlayerState.firerate), visual_firerate_max)
+	elif visual_shot_timer < visual_firerate_max:
+		visual_shot_timer = visual_firerate_max  # Ensure it's full when can_shoot is true
+		
 func _process(delta: float) -> void:
 	GameState.player_position = position
 	health_bar.max_value = PlayerState.max_health
 	health_bar.value = PlayerState.health
 	regen_bar.max_value = PlayerState.regen_cooldown
 	regen_bar.value = PlayerState.regen_cooldown - regen_timer.time_left
+	firerate_bar.max_value = visual_firerate_max
+	firerate_bar.value = visual_shot_timer
 
 	check_door()
 
@@ -237,6 +250,8 @@ func shoot(mouse_position: Vector2):
 		EventBus.arena_spawn.emit(bullet)
 		EventBus.player_shot.emit()
 		can_shoot = false
+		shot_timer = 0
+		visual_shot_timer = 0
 
 func take_damage(damage_taken: int):
 	EventBus.player_hit.emit()

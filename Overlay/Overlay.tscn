@@ -228,6 +228,15 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("7_f0nbu")
 expand_mode = 2
 
+[node name="CrossCount" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+theme_override_font_sizes/font_size = 32
+text = "5"
+horizontal_alignment = 1
+
 [node name="KeyLabel1" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer"]
 layout_mode = 2
 theme = ExtResource("1_84vjy")
@@ -267,6 +276,19 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture = ExtResource("6_nf5u0")
 expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 14
+
+[node name="SentryCount" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/MarginContainer"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+theme_override_font_sizes/font_size = 32
+text = "5"
+horizontal_alignment = 1
 
 [node name="KeyLabel2" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
 layout_mode = 2
@@ -308,6 +330,15 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("7_cgnsd")
 expand_mode = 1
 
+[node name="BlankCount" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 1
+
 [node name="KeyLabel4" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
 layout_mode = 2
 theme = ExtResource("1_84vjy")
@@ -348,6 +379,15 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("8_2e1x5")
 expand_mode = 1
 
+[node name="SpawnerCount" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+theme = ExtResource("1_84vjy")
+theme_override_colors/font_color = Color(1, 1, 1, 0.862745)
+theme_override_font_sizes/font_size = 32
+text = "5"
+horizontal_alignment = 1
+
 [node name="KeyLabel3" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer"]
 layout_mode = 2
 theme = ExtResource("1_84vjy")
@@ -372,8 +412,6 @@ texture = ExtResource("9_lquxq")
 
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("10_gi2n7")]
 visible = false
-offset_left = -20.0
-offset_right = 233.0
 offset_bottom = 575.5
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]

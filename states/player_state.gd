@@ -15,6 +15,10 @@ var pierce: int = PlayerConstants.DEFAULT_PIERCE
 var bullet_size: float = PlayerConstants.DEFAULT_BULLET_SIZE
 var regen: int = PlayerConstants.DEFAULT_REGEN
 var regen_cooldown: float = PlayerConstants.DEFAULT_REGEN_COOLDOWN
+var sprayer_limit: int = PlayerConstants.DEFAULT_SPRAYER_LIMIT
+var sentry_limit: int = PlayerConstants.DEFAULT_SENTRY_LIMIT
+var blank_limit: int = PlayerConstants.DEFAULT_BLANK_LIMIT
+var spawner_limit: int = PlayerConstants.DEFAULT_SPAWNER_LIMIT
 
 ## Misc
 var levels_available: int = PlayerConstants.DEFAULT_LEVELS_AVAILABLE

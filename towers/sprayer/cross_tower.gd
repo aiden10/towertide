@@ -7,6 +7,7 @@ var current_frame: int = 0
 
 func _init() -> void:
 	super()
+	base_type = 1
 	tower_name = Towers.CROSS_NAME
 	description = Towers.CROSS_DESCRIPTION
 	cost = Towers.CROSS_COST

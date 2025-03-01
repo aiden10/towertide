@@ -18,10 +18,24 @@ Bosses should counter particular kinds of builds:
 
 Enemies that have shields around them
 
-Slot machine tower
+Slot machine or gambling towers
 
 Tower limit stat
 
 Special wave types:
     - "Swarm", only weak rushers spawn
 
+Credit card item:
+Allows you to go into debt
+
+Ne Zha items:
+Fire-tipped spear which follows your mouse and hits enemies
+
+Berserker character:
+Passive: Deal more damage the less health you have
+Primary: Has two axes orbiting them which reappear over time, clicking shoots an axe
+Starts with higher damage, less health, more regen, more pierce, and slower projectile speed
+
+Archer:
+
+Primary: Click and drag to aim a "bow" which shoots a longer projectile with pierce and extra damage

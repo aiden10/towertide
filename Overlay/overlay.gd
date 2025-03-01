@@ -13,6 +13,7 @@ extends Control
 @onready var cross_name_info: Label = $CanvasLayer/Descriptions/Cross/VBoxContainer/CrossNameInfo
 @onready var cross_description_info: Label = $CanvasLayer/Descriptions/Cross/VBoxContainer/CrossDescriptionInfo
 @onready var cross_info_panel: PanelContainer = $CanvasLayer/Descriptions/Cross
+@onready var sprayer_count: Label = $CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer/CrossCount
 
 @onready var sentry_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer
 @onready var sentry_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/HBoxContainer/SentryCostLabel
@@ -21,6 +22,7 @@ extends Control
 @onready var sentry_name_info: Label = $CanvasLayer/Descriptions/Sentry/VBoxContainer/SentryNameInfo
 @onready var sentry_description_info: Label = $CanvasLayer/Descriptions/Sentry/VBoxContainer/SentryDescriptionInfo
 @onready var sentry_info_panel: PanelContainer = $CanvasLayer/Descriptions/Sentry
+@onready var sentry_count: Label = $CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/MarginContainer/SentryCount
 
 @onready var spawner_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer
 @onready var spawner_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/HBoxContainer/SpawnerCostLabel
@@ -29,6 +31,7 @@ extends Control
 @onready var spawner_name_info: Label = $CanvasLayer/Descriptions/Spawner/VBoxContainer/SpawnerNameInfo
 @onready var spawner_description_info: Label = $CanvasLayer/Descriptions/Spawner/VBoxContainer/SpawnerDescriptionInfo
 @onready var spawner_info_panel: PanelContainer = $CanvasLayer/Descriptions/Spawner
+@onready var spawner_count: Label = $CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer/SpawnerCount
 
 @onready var blank_container: PanelContainer = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer
 @onready var blank_cost_label: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/HBoxContainer/BlankCostLabel
@@ -37,6 +40,7 @@ extends Control
 @onready var blank_name_info: Label = $CanvasLayer/Descriptions/Blank/VBoxContainer/BlankNameInfo
 @onready var blank_description_info: Label = $CanvasLayer/Descriptions/Blank/VBoxContainer/BlankDescriptionInfo
 @onready var blank_info_panel: PanelContainer = $CanvasLayer/Descriptions/Blank
+@onready var blank_count: Label = $CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer/BlankCount
 
 @onready var arrow: TextureRect = $CanvasLayer/Arrow
 @onready var spawn_bar: ProgressBar = $CanvasLayer/ClearConditionContainer/VBoxContainer/SpawnBar
@@ -109,24 +113,36 @@ func _ready() -> void:
 		
 func _on_cross_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
 		accept_event()
-		
+		if PlayerState.sprayer_limit > 0:
+			EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
+		else:
+			EventBus.invalid_action.emit()
+			
 func _on_sentry_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
 		accept_event()
-
+		if PlayerState.sentry_limit > 0:
+			EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
+		else:
+			EventBus.invalid_action.emit()
+			
 func _on_spawner_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
 		accept_event()
-
+		if PlayerState.spawner_limit > 0:
+			EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
+		else:
+			EventBus.invalid_action.emit()
+			
 func _on_blank_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
 		accept_event()
-
+		if PlayerState.blank_limit > 0:
+			EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
+		else:
+			EventBus.invalid_action.emit()
+			
 func _on_cross_container_mouse_entered() -> void:
 	cross_info_panel.visible = true
 	reset_modulation()
@@ -187,6 +203,11 @@ func _process(delta: float) -> void:
 	xp_bar.max_value = PlayerState.level_up_condition
 	xp_bar.value = PlayerState.xp
 	
+	sprayer_count.text = str(PlayerState.sprayer_limit)
+	sentry_count.text = str(PlayerState.sentry_limit)
+	spawner_count.text = str(PlayerState.spawner_limit)
+	blank_count.text = str(PlayerState.blank_limit)
+	
 	## Wave started but not yet cleared
 	if not GameState.level_cleared and GameState.wave_started:
 		if GameState.is_boss_stage:
@@ -209,13 +230,13 @@ func _process(delta: float) -> void:
 		else:
 			start_text = " to start the wave"
 		clear_condition_label.text = "Press " + Utils.get_action_key_name("start_wave") + start_text
-		
+
 		if not pulse_tween or not pulse_tween.is_valid():
 			pulse_tween = create_tween()
 			pulse_tween.set_loops(-1)
 			pulse_tween.tween_property(clear_condition_label, "modulate", Color(1, 1, 1, 0), 2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 			pulse_tween.tween_property(clear_condition_label, "modulate", Color(1, 1, 1, 1), 2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	
+
 	## Level cleared
 	elif GameState.level_cleared and GameState.wave_started:
 		clear_condition_label.text = "Enter the door to proceed to the shop"

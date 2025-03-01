@@ -1,15 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx66d1earu3rb"]
+[gd_scene load_steps=14 format=3 uid="uid://bx66d1earu3rb"]
 
 [ext_resource type="Script" path="res://arena/arena.gd" id="1_5n0be"]
 [ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://player/Player.tscn" id="1_iy5w2"]
+[ext_resource type="Shader" path="res://resources/grid_shader.gdshader" id="2_5kx8n"]
+[ext_resource type="Script" path="res://arena/grid_background.gd" id="2_10i7o"]
 [ext_resource type="Script" path="res://autoloads/pickup_manager.gd" id="2_iswvx"]
+[ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_n3qgd"]
 [ext_resource type="PackedScene" uid="uid://cmnf66ocvlno0" path="res://overlay/Overlay.tscn" id="5_0u82s"]
 [ext_resource type="PackedScene" uid="uid://b5nu37o7682ap" path="res://overlay/death_screen/DeathScreen.tscn" id="5_ffmsy"]
 [ext_resource type="PackedScene" uid="uid://b2anud6ey34mu" path="res://menus/pause/PauseMenu.tscn" id="6_fq2qc"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5thi"]
+shader = ExtResource("2_5kx8n")
+shader_parameter/grid_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/line_thickness = 0.01
+shader_parameter/grid_size = 64.0
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/screen_size = Vector2(1152, 648)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mio7h"]
+panorama = ExtResource("2_n3qgd")
+
+[sub_resource type="Sky" id="Sky_rxo2y"]
+sky_material = SubResource("PanoramaSkyMaterial_mio7h")
+
 [sub_resource type="Environment" id="Environment_akft8"]
 background_mode = 3
 background_color = Color(0.0862745, 0.0823529, 0.0823529, 1)
+sky = SubResource("Sky_rxo2y")
 glow_enabled = true
 glow_intensity = 0.2
 glow_bloom = 0.5
@@ -18,6 +37,22 @@ glow_hdr_threshold = 0.5
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_5n0be")
+
+[node name="GridBackground" type="ColorRect" parent="."]
+z_index = -10
+material = SubResource("ShaderMaterial_u5thi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1250.0
+offset_top = -1250.0
+offset_right = 1250.0
+offset_bottom = 1250.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_10i7o")
 
 [node name="Background" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akft8")

@@ -29,5 +29,9 @@
 
 Different characters with have different abilities
 Random events between stages?
+I want the game's items and towers to feel like shellshock live. 
+
+Because you always have the choice of what towers to upgrade and what upgrade to pick, there shouldn't be any extremely
+powerful synergies between towers alone, only minor ones. However, strong synergies can exist between items and towers.
 
 dir -Recurse *.gd | Get-Content | Measure-Object -Line

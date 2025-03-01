@@ -2,6 +2,7 @@ extends Area2D
 
 class_name Tower
 
+var base_type: int
 var tower_name: String
 var description: String
 var cost: int
@@ -45,7 +46,25 @@ func upgrade(new_tower_scene: PackedScene) -> void:
 	var new_tower = new_tower_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower)
 	queue_free()
-	
+
+func sell() -> void:
+	EventBus.unselect_pressed.emit()
+	if cost % 2 != 0:
+		PlayerState.gold += int((cost + 1) / 2)
+	else:
+		PlayerState.gold += int(cost / 2)
+
+	if base_type == 1:
+		PlayerState.sprayer_limit += 1
+	elif base_type == 2:
+		PlayerState.sentry_limit += 1
+	elif base_type == 3:
+		PlayerState.spawner_limit += 1
+	elif base_type == 4:
+		PlayerState.blank_limit += 1
+	EventBus.tower_sold.emit()
+	call_deferred("queue_free")
+
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -73,3 +92,4 @@ func _on_tower_clicked() -> void:
 func deselect_tower() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)
 	GameState.selected_tower = null
+	EventBus.unselect_pressed.emit()

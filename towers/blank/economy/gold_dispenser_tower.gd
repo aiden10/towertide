@@ -9,6 +9,7 @@ var original_ring_position: Vector2
 
 func _init() -> void:
 	super()
+	base_type = 4
 	tower_name = Towers.GOLD_DISPENSER_NAME
 	description = Towers.GOLD_DISPENSER_DESCRIPTION
 	cost = Towers.GOLD_DISPENSER_COST

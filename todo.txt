@@ -1,11 +1,7 @@
-Tower upgrade images
-Tower limits
-    Numbers above each of the towers in the bottom right
-
-Add grid to background
-Fix crash that sometimes happens when buying an item 
-Rapid fire enemy
+Improve upgrade menu (show tower description, and add a panel you click to upgrade)
 Tower upgrades/more towers
 More items
 More enemies, bosses
+    Rapid fire enemy
 Optimization (Despawning stuff, enemy limit)
+Fix crash that sometimes happens when buying an item

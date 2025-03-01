@@ -67,6 +67,19 @@ tint_under = Color(1, 1, 1, 0)
 tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(0.294118, 0.882353, 0.054902, 1)
 
+[node name="FirerateBar" type="TextureProgressBar" parent="."]
+offset_left = -206.0
+offset_top = -209.0
+offset_right = -6.0
+offset_bottom = -9.0
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(252, 256)
+value = 100.0
+texture_progress = ExtResource("5_nvaor")
+tint_under = Color(1, 1, 1, 0)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.92549, 0.882353, 0.0705882, 1)
+
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -274.0
 offset_top = -278.0

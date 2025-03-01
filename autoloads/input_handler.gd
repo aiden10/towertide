@@ -16,11 +16,23 @@ func _unhandled_input(_event: InputEvent) -> void:
 			GameState.wave_started = true
 
 	if Input.is_action_just_pressed("place_tower1"):
-		EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
+		if PlayerState.sprayer_limit > 0:
+			EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
+		else:
+			EventBus.invalid_action.emit()
 	elif Input.is_action_just_pressed("place_tower2"):
-		EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
+		if PlayerState.sentry_limit > 0:
+			EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
+		else:
+			EventBus.invalid_action.emit()
 	elif Input.is_action_just_pressed("place_tower3"):
-		EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
+		if PlayerState.spawner_limit > 0:
+			EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
+		else:
+			EventBus.invalid_action.emit()
 	elif Input.is_action_just_pressed("place_tower4"):
-		EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
+		if PlayerState.blank_limit > 0:
+			EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
+		else:
+			EventBus.invalid_action.emit()
 	

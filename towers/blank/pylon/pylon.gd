@@ -7,6 +7,7 @@ var connections = []
 var damage: float
 
 func _init() -> void:
+	base_type = 3
 	super()
 
 func _ready() -> void:

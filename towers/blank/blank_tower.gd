@@ -1,6 +1,7 @@
 extends Tower
 
 func _ready() -> void:
+	base_type = 4
 	tower_name = Towers.BLANK_NAME
 	description = Towers.BLANK_DESCRIPTION
 	cost = Towers.BLANK_COST
