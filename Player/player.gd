@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var placement_timer: Timer = $PlacementTimer
 
 var tower_preview_size = Vector2(72, 72)  
-var push_force: float = 150.0
+var push_force: float = 150
 var shot_timer: float = PlayerState.firerate
 var visual_shot_timer: float = 0.0
 var visual_firerate_max: float = 3.0  
@@ -52,6 +52,7 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * PlayerState.speed
+			
 	var focus_owner = get_viewport().gui_get_focus_owner()
 	if focus_owner and focus_owner is not Button and focus_owner is not TextureButton:
 		return
@@ -125,7 +126,7 @@ func toggle_tower_placement(tower_id: int, cost: int, select_event):
 	EventBus.tower3_deselected.emit()
 	EventBus.tower4_deselected.emit()
 
-	if PlayerState.gold >= cost:
+	if PlayerState.gold + PlayerState.minimum_gold >= cost:
 		if GameState.tower_type == tower_id:
 			cancel_tower_placement()
 		else:
@@ -143,14 +144,12 @@ func _physics_process(delta: float) -> void:
 	get_input()
 
 	look_at(get_global_mouse_position())
+	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		
-		if collider is Enemy:
-			var push_direction = (collider.global_position - global_position).normalized()
-			collider.velocity += push_direction * push_force * delta
-	move_and_slide()
+		var push_direction = (collider.global_position - global_position).normalized()
+		collider.position += push_direction * push_force * delta
 
 	shot_timer += delta
 	if shot_timer >= PlayerState.firerate:

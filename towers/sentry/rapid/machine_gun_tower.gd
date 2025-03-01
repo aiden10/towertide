@@ -10,7 +10,9 @@ func _init() -> void:
 	description = Towers.MACHINE_GUN_DESCRIPTION
 	cost = Towers.MACHINE_GUN_COST
 	cooldown = Towers.MACHINE_GUN_COOLDOWN
+	damage_scale = Towers.MACHINE_GUN_DAMAGE_PERCENTAGE
 	shot_timer = cooldown
+	bullet_speed = Towers.MACHINE_GUN_SPEED_PERCENTAGE
 	image = Towers.MACHINE_GUN_IMAGE
 	angle_offset = 90.0
 	scene_path = Towers.MACHINE_GUN_SCENE_PATH

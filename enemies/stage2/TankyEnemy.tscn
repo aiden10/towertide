@@ -1,38 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://2g105c2j65jw"]
+[gd_scene load_steps=6 format=3 uid="uid://2g105c2j65jw"]
 
 [ext_resource type="Script" path="res://enemies/stage2/tanky_enemy.gd" id="1_3qrwe"]
-[ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="1_x4njw"]
+[ext_resource type="Texture2D" uid="uid://bllec1id8cncf" path="res://sprites/enemies/hexagon.png" id="2_n53ij"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_qka2l"]
 [ext_resource type="Script" path="res://entities/enemy/enemy_states/rush_state.gd" id="3_mdjjg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx2hr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_esxsp"]
-size = Vector2(16.6667, 24.122)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jfp1"]
 
 [node name="TankyEnemy" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(2, 2)
+motion_mode = 1
 script = ExtResource("1_3qrwe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_jx2hr")
+position = Vector2(0, 1.25)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_1jfp1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-9, 0)
-rotation = -1.07687
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_x4njw")
-
-[node name="Sprite2" type="Sprite2D" parent="."]
-position = Vector2(17, 5)
-scale = Vector2(0.1, 0.07)
-texture = ExtResource("1_x4njw")
-
-[node name="Sprite3" type="Sprite2D" parent="."]
-position = Vector2(6, -18)
-scale = Vector2(0.075, 0.1)
-texture = ExtResource("1_x4njw")
+position = Vector2(-2.98023e-08, -9.53674e-07)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_n53ij")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
 script = ExtResource("2_qka2l")
@@ -42,22 +30,19 @@ initial_state = NodePath("Rush")
 script = ExtResource("3_mdjjg")
 
 [node name="Hitbox" type="Area2D" parent="."]
-scale = Vector2(1.2, 1.2)
 collision_layer = 5
 collision_mask = 5
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-8.02691, 0.772418)
-rotation = 0.598648
-scale = Vector2(1.16667, 0.833333)
-shape = SubResource("RectangleShape2D_esxsp")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(14.9492, 5)
-rotation = 1.5708
-scale = Vector2(0.833333, 0.833333)
-shape = SubResource("RectangleShape2D_esxsp")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(5.83333, -15.8333)
-shape = SubResource("RectangleShape2D_esxsp")
+position = Vector2(0, 1.5)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_1jfp1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1.5)
+scale = Vector2(2.8, 2.8)
+shape = SubResource("CircleShape2D_1jfp1")

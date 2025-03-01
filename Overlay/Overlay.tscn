@@ -411,7 +411,6 @@ pivot_offset = Vector2(89, 56)
 texture = ExtResource("9_lquxq")
 
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("10_gi2n7")]
-visible = false
 offset_bottom = 575.5
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]

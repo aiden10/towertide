@@ -8,6 +8,9 @@ var description: String
 var cost: int
 var cooldown: float
 var shot_timer: float
+var damage_scale: float
+var bullet_scale: float = 0.5
+var bullet_speed: float = 1.0
 var kills: int
 var image: Texture
 var scene_path: String

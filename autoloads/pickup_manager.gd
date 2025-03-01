@@ -2,9 +2,11 @@ extends Node
 
 var gold_pool = []
 var xp_pool = []
+var item_pool = []
 
 var max_gold_pool_size = 250
 var max_xp_pool_size = 250
+var max_item_pool_size = 25
 
 var xp_scenes = {
 	1: Scenes.xp_scene
@@ -14,24 +16,26 @@ func _ready() -> void:
 	EventBus.level_exited.connect(clear_pools)
 
 func clear_pools() -> void:
-	for pickup in gold_pool + xp_pool:
+	for pickup in gold_pool + xp_pool + item_pool:
 		if is_instance_valid(pickup):
 			pickup.queue_free()
 		
 	gold_pool = []
 	xp_pool = []
+	item_pool = []
 	
-func spawn_item(spawn_position: Vector2) -> Pickup:
-	var item
-	item = Scenes.item_pickup_scene.instantiate()
-	## Don't add if there no available items
-	if not item.item:
-		item.queue_free()
-		return
-	call_deferred("add_child", item)
-	item.position = spawn_position
-	
-	return item
+func spawn_item(spawn_position: Vector2) -> void:
+			
+	if Items.unique_items.size() > 0:
+		if item_pool.size() >= max_item_pool_size:
+			var oldest_item = item_pool.pop_front()
+			if is_instance_valid(oldest_item):
+				oldest_item.queue_free()
+
+		var item = Scenes.item_pickup_scene.instantiate()
+		item.position = spawn_position
+		item_pool.push_back(item)
+		call_deferred("add_child", item)
 
 func spawn_gold(spawn_position: Vector2) -> void:
 	if gold_pool.size() >= max_gold_pool_size:

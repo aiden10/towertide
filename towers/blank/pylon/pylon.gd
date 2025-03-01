@@ -4,10 +4,9 @@ class_name Pylon
 @onready var connect_radius: Area2D = $ConnectRadius
 var can_hit: bool = true
 var connections = []
-var damage: float
 
 func _init() -> void:
-	base_type = 3
+	base_type = 4
 	super()
 
 func _ready() -> void:
@@ -59,7 +58,7 @@ func check_fence_collision(body: Area2D, attack_line: Line2D):
 		flicker_tween.tween_property(attack_line, "modulate", Color(1, 1, 1.5, 0.3), 0.2)
 		flicker_tween.tween_property(attack_line, "modulate", Color(1, 1, 1, 1), 0.4)
 		Utils.spawn_hit_effect(Color(0, 0.5, 2, 1), body.global_position, max(5, PlayerState.damage * Towers.PYLON_DAMAGE))
-		body.get_parent().take_damage(damage * PlayerState.damage, self)
+		body.get_parent().take_damage(damage_scale * PlayerState.damage, self)
 		can_hit = false
 
 func _exit_tree() -> void:

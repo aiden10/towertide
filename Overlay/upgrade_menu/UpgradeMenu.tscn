@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://4w1hmsky4dxm"]
+[gd_scene load_steps=15 format=3 uid="uid://4w1hmsky4dxm"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_vdpxo"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="2_678dg"]
 [ext_resource type="Script" path="res://overlay/upgrade_menu/upgrade_menu.gd" id="2_xj3u0"]
 [ext_resource type="Texture2D" uid="uid://dubu0owmc1kjs" path="res://sprites/towers/cross/f5.png" id="3_hcvc4"]
 [ext_resource type="Texture2D" uid="uid://ca4yn0y6sg2f8" path="res://sprites/x.png" id="3_o5ejc"]
+[ext_resource type="StyleBox" uid="uid://dnga32kunro1a" path="res://resources/upgrade_button.tres" id="4_1tqj6"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="4_mj6ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8jxe"]
@@ -17,27 +18,6 @@ expand_margin_left = 25.0
 expand_margin_top = 25.0
 expand_margin_right = 25.0
 expand_margin_bottom = 25.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwk5v"]
-bg_color = Color(0.392157, 0.392157, 0.392157, 0.392157)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_togqd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxpgt"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc5hb"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tna30"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Animation" id="Animation_s6jd0"]
 length = 0.001
@@ -94,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 0.966667),
 "transitions": PackedFloat32Array(0.258817, 0.574349),
 "update": 0,
-"values": [Vector2(2000, 125), Vector2(1650, 125)]
+"values": [Vector2(2000, 125), Vector2(1600, 125)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -122,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.433333),
 "transitions": PackedFloat32Array(1, 0.000667013, 0.287175, 1, 0.183011),
 "update": 0,
-"values": [Vector2(1650, 125), Vector2(1655, 125), Vector2(1646, 125), Vector2(1660, 125), Vector2(1650, 125)]
+"values": [Vector2(1600, 125), Vector2(1605, 125), Vector2(1596, 125), Vector2(1610, 125), Vector2(1600, 125)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8egmq"]
@@ -133,74 +113,92 @@ _data = {
 "shake": SubResource("Animation_1ek2t")
 }
 
-[node name="UpgradeMenu" type="MarginContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1eda"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 0.588235)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="Control" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 228.0
+offset_bottom = 521.0
+script = ExtResource("2_xj3u0")
+
+[node name="UpgradeMenu" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -260.5
-offset_right = 233.0
-offset_bottom = 260.5
+offset_left = 1672.0
+offset_top = -13.0
+offset_right = 2050.0
+offset_bottom = 572.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("1_vdpxo")
-theme_override_constants/margin_right = 75
-script = ExtResource("2_xj3u0")
+theme_override_constants/margin_right = 150
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="UpgradeMenu"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f8jxe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="TextureButton" parent="UpgradeMenu/PanelContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_o5ejc")
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="SellButton" type="Button" parent="UpgradeMenu/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lwk5v")
-
-[node name="SellButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 24
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_togqd")
-theme_override_styles/hover = SubResource("StyleBoxFlat_oxpgt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lc5hb")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tna30")
+theme_override_styles/hover = ExtResource("4_1tqj6")
+theme_override_styles/pressed = ExtResource("4_1tqj6")
+theme_override_styles/normal = ExtResource("4_1tqj6")
 text = "Sell"
 
-[node name="TowerName" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="TowerName" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Cross Tower"
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="TowerDescription" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="TowerDescription" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Description here"
 autowrap_mode = 3
 
-[node name="Kills" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Kills" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Kills: 0"
 
-[node name="TowerImage" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+[node name="TowerImage" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -208,106 +206,190 @@ size_flags_vertical = 4
 texture = ExtResource("2_678dg")
 expand_mode = 2
 
-[node name="Upgrade1" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Upgrade1" type="VBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="NextTowerContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade1"]
+[node name="NextTowerContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Upgrade1Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
+[node name="Upgrade1Button" type="Button" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Upgrade1"
 
-[node name="Upgrade1Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
+[node name="Upgrade1Image" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1/NextTowerContainer"]
 layout_mode = 2
 texture = ExtResource("3_hcvc4")
 expand_mode = 2
 
-[node name="PriceContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade1"]
+[node name="PriceContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade1/PriceContainer"]
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1/PriceContainer"]
 layout_mode = 2
 texture = ExtResource("4_mj6ee")
 expand_mode = 3
 
-[node name="Upgrade1Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade1/PriceContainer"]
+[node name="Upgrade1Price" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade1/PriceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "200"
 
-[node name="Upgrade2" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Upgrade2" type="VBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="NextTowerContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade2"]
+[node name="NextTowerContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Upgrade2Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
+[node name="Upgrade2Button" type="Button" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Upgrade2"
 
-[node name="Upgrade2Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
+[node name="Upgrade2Image" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2/NextTowerContainer"]
 layout_mode = 2
 texture = ExtResource("3_hcvc4")
 expand_mode = 2
 
-[node name="PriceContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade2"]
+[node name="PriceContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade2/PriceContainer"]
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2/PriceContainer"]
 layout_mode = 2
 texture = ExtResource("4_mj6ee")
 expand_mode = 3
 
-[node name="Upgrade2Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade2/PriceContainer"]
+[node name="Upgrade2Price" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade2/PriceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "200"
 
-[node name="Upgrade3" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Upgrade3" type="VBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="NextTowerContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade3"]
+[node name="NextTowerContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Upgrade3Button" type="Button" parent="PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
+[node name="Upgrade3Button" type="Button" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Upgrade3"
 
-[node name="Upgrade3Image" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
+[node name="Upgrade3Image" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3/NextTowerContainer"]
 layout_mode = 2
 texture = ExtResource("3_hcvc4")
 expand_mode = 2
 
-[node name="PriceContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Upgrade3"]
+[node name="PriceContainer" type="HBoxContainer" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Upgrade3/PriceContainer"]
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3/PriceContainer"]
 layout_mode = 2
 texture = ExtResource("4_mj6ee")
 expand_mode = 3
 
-[node name="Upgrade3Price" type="Label" parent="PanelContainer/VBoxContainer/Upgrade3/PriceContainer"]
+[node name="Upgrade3Price" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer/Upgrade3/PriceContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "200"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UpgradeMenu"]
 libraries = {
 "": SubResource("AnimationLibrary_8egmq")
 }
+
+[node name="Description1" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1472.0
+offset_top = 89.5
+offset_right = 1647.0
+offset_bottom = 144.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_vdpxo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Description1"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Description1/VBoxContainer"]
+custom_minimum_size = Vector2(175, 55)
+layout_mode = 2
+text = "Description1"
+autowrap_mode = 3
+
+[node name="Description2" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1472.0
+offset_top = 174.5
+offset_right = 1647.0
+offset_bottom = 229.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_vdpxo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Description2"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Description2/VBoxContainer"]
+custom_minimum_size = Vector2(175, 55)
+layout_mode = 2
+text = "Description2"
+autowrap_mode = 3
+
+[node name="Description3" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1472.0
+offset_top = 259.5
+offset_right = 1647.0
+offset_bottom = 314.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_vdpxo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Description3"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Description3/VBoxContainer"]
+custom_minimum_size = Vector2(175, 55)
+layout_mode = 2
+text = "Description3"
+autowrap_mode = 3

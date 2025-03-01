@@ -16,11 +16,13 @@ radius = 22.0
 radius = 574.727
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_8lbho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.25, 1.25)
 shape = SubResource("CircleShape2D_jwrfn")
 
 [node name="Hitbox" type="Area2D" parent="."]

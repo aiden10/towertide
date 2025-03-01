@@ -27,12 +27,22 @@ const SENTRY_DAMAGE_PERCENTAGE: float = 0.4
 var SENTRY_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
 const SENTRY_SCENE_PATH: String = "res://towers/sentry/SentryTower.tscn"
 
+const SNIPER_COST: int = 15
+const SNIPER_NAME: String = "Sniper"
+const SNIPER_DESCRIPTION: String = "Shoots fast, high damage projectiles"
+const SNIPER_COOLDOWN: float = 3
+const SNIPER_SPEED_PERCENTAGE: float = 2 
+const SNIPER_DAMAGE_PERCENTAGE: float = 2
+const SNIPER_BULLET_SCALE: float = 0.55
+var SNIPER_IMAGE: Texture = load("res://sprites/towers/sentry/sniper/sniper.png")
+const SNIPER_SCENE_PATH: String = "res://towers/sentry/sniper/SniperTower.tscn"
+
 const MACHINE_GUN_COST: int = 15
 const MACHINE_GUN_NAME: String = "Machine Gun"
 const MACHINE_GUN_DESCRIPTION: String = "Rapidly shoots detected enemies"
 const MACHINE_GUN_COOLDOWN: float = 0.4
 const MACHINE_GUN_SPEED_PERCENTAGE: float = 1.5
-const MACHINE_GUN_DAMAGE_PERCENTAGE: float = 0.15
+const MACHINE_GUN_DAMAGE_PERCENTAGE: float = 0.2
 var MACHINE_GUN_IMAGE: Texture = load("res://sprites/towers/sentry/machine_gun/f1.png")
 const MACHINE_GUN_SCENE_PATH: String = "res://towers/sentry/rapid/MachineGunTower.tscn"
 
@@ -55,7 +65,7 @@ const SHOOTER_SPAWNER_SPAWN_LIMIT: int = 5
 var SHOOTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/shooter/shooter_spawner.png")
 const SHOOTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/ShooterSpawnerTower.tscn"
 
-const BLANK_COST: int = 10
+const BLANK_COST: int = 5
 const BLANK_NAME: String = "Blank"
 const BLANK_DESCRIPTION: String = "Does nothing"
 var BLANK_IMAGE: Texture = load("res://sprites/towers/blank/blank.png")
@@ -80,7 +90,7 @@ const PYLON_DESCRIPTION: String = "Creates an electric fence between pylons"
 const PYLON_SCENE_PATH: String = "res://towers/blank/pylon/PylonTower.tscn"
 const PYLON_COST: int = 10
 const PYLON_COOLDOWN: float = 0.25
-const PYLON_DAMAGE: float = 0.1
+const PYLON_DAMAGE: float = 0.2
 var PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
 
 const SLOWING_PYLON_NAME: String = "Slowing Pylon"
@@ -88,7 +98,7 @@ const SLOWING_PYLON_DESCRIPTION: String = "Slows enemy bullets that enter this t
 const SLOWING_PYLON_SCENE_PATH: String = "res://towers/blank/pylon/slowing/SlowingPylonTower.tscn"
 const SLOWING_PYLON_COST: int = 15
 const SLOWING_PYLON_COOLDOWN: float = 0.25
-const SLOWING_PYLON_DAMAGE: float = 0.15
+const SLOWING_PYLON_DAMAGE: float = 0.25
 var SLOWING_PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
 
 var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
@@ -110,5 +120,6 @@ const SHOOTER_MIN_WANDER: float = 100
 const SHOOTER_BULLET_SCALE: float = 0.5
 
 const end_of_path_name: String = "End of path"
+const end_of_path_description: String = "No more upgrades available"
 var end_of_path_image: Texture = load("res://sprites/towers/lock.png")
 const end_of_path_cost: String = "N/A"

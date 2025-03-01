@@ -31,12 +31,13 @@ func generate_item_cards() -> void:
 			item_card.populate()
 
 func _reroll() -> void:
-	if PlayerState.gold < reroll_cost:
+	if PlayerState.gold + PlayerState.minimum_gold < reroll_cost:
 		EventBus.invalid_action.emit()
 		return
 
 	PlayerState.gold -= reroll_cost
 	EventBus.rerolled.emit()
+	reroll_cost += 1
 	generate_item_cards()
 	_update_overlay()
 

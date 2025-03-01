@@ -17,6 +17,7 @@ var item_cell_scene: PackedScene = preload("res://overlay/ItemCell.tscn")
 var cross_tower_scene: PackedScene = preload("res://towers/sprayer/CrossTower.tscn")
 var cardinal_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/CardinalTower.tscn")
 var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.tscn")
+var sniper_tower_scene: PackedScene = preload("res://towers/sentry/sniper/SniperTower.tscn")
 var machine_gun_tower_scene: PackedScene = preload("res://towers/sentry/rapid/MachineGunTower.tscn")
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")
@@ -41,6 +42,6 @@ var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.
 var shotgun_enemy_scene: PackedScene = preload("res://enemies/stage3/ShotgunEnemy.tscn")
 
 var boss_scenes: Array[PackedScene] = [deflector_boss_scene]
-var stage_one_enemy_scenes: Array[PackedScene] = [basic_shooter_scene, weak_rusher_scene]
+var stage_one_enemy_scenes: Array[PackedScene] = [weak_rusher_scene, basic_shooter_scene]
 var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene, sniper_enemy_scene]
 var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene]

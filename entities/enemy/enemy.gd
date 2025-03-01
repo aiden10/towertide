@@ -16,6 +16,7 @@ var min_spawn_dist: float
 var spawn_radius: float
 var shot_count: int = 1
 var is_boss: bool = false
+var damage_timer: float = 0.0
 
 func reset_modulation() -> void:
 	for child in get_children():

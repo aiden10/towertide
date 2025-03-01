@@ -6,13 +6,13 @@ var health: float
 var damage: float
 var speed: float
 var projectile_speed: float
-var firerate_cooldown: float
+var firerate_cooldown: float = 1.0
 var distance_threshold: int
 var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	motion_mode = MOTION_MODE_FLOATING
-		
+
 func _physics_process(delta: float) -> void:
 	if knockback_velocity != Vector2.ZERO:
 		velocity = knockback_velocity

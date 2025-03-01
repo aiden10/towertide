@@ -12,6 +12,7 @@ func _init() -> void:
 	description = Towers.CROSS_DESCRIPTION
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN
+	damage_scale = Towers.CROSS_DAMAGE_PERCENTAGE
 	shot_timer = cooldown
 	image = Towers.CROSS_IMAGE
 	scene_path = Towers.CROSS_SCENE_PATH
@@ -55,5 +56,5 @@ func shoot_at_angle(angle: float) -> void:
 	
 	# Calculate target position using angle
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * Towers.CROSS_DAMAGE_PERCENTAGE, self)
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self)
 	EventBus.arena_spawn.emit(bullet)	

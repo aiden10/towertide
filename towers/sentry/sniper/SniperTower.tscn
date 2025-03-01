@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdqqlivuuqjro"]
+
+[ext_resource type="Texture2D" uid="uid://cg0fh0h53isgy" path="res://sprites/towers/sentry/sniper/sniper.png" id="1_6pno2"]
+[ext_resource type="Script" path="res://towers/sentry/sniper/sniper_tower.gd" id="1_jpjfq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vhsg"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plr6p"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38k3p"]
+radius = 442.072
+
+[node name="SniperTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_jpjfq")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1vhsg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_6pno2")
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_plr6p")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_38k3p")
+
+[node name="AimLaser" type="Line2D" parent="."]
+visible = false
+width = 1.5
+default_color = Color(2, 2, 2, 0.294)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -52)

@@ -23,6 +23,12 @@ const MAGNET_DESCRIPTION: String = "Pulls xp and gold towards you"
 const MAGNET_PRICE: int = 5
 const MAGNET_ATTRACT_SPEED: int = 80
 
+const CREDIT_CARD_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
+const CREDIT_CARD_NAME: String = "Credit Card"
+const CREDIT_CARD_DESCRIPTION: String = "Allows you to go 50 gold into debt"
+const CREDIT_CARD_PRICE: int = 5
+const CREDIT_CARD_LIMIT: int = 50
+
 ## Shop items
 const STEROIDS_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
 const STEROIDS_NAME: String = "Steroids"
@@ -69,6 +75,8 @@ func _init() -> void:
 	unique_items[REGEN_NAME] = RegenPotion.new()
 	unique_items[SWORD_NAME] = Sword.new()
 	unique_items[MAGNET_NAME] = Magnet.new()
+	unique_items[CREDIT_CARD_NAME] = CreditCard.new()
+	
 	shop_items[STEROIDS_NAME] = Steroids.new()
 	shop_items[LIGHT_ROUNDS_NAME] = LightRounds.new()
 	shop_items[PILLS_NAME] = Pills.new()

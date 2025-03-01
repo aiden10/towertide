@@ -7,7 +7,7 @@ func _init() -> void:
 	cost = Towers.PYLON_COST
 	cooldown = Towers.PYLON_COOLDOWN
 	shot_timer = cooldown
-	damage = Towers.PYLON_DAMAGE
+	damage_scale = Towers.PYLON_DAMAGE
 	image = Towers.PYLON_IMAGE
 	scene_path = Towers.PYLON_SCENE_PATH
 	

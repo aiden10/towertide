@@ -14,9 +14,10 @@ func get_random_position_in_radius(center: Vector2, radius: float, min_distance:
 	)
 	
 func spawn_hit_effect(color: Color, position: Vector2, damage: float) -> void:
+	var adjusted_damage = min(3, damage)
 	var hit_effect = Scenes.hit_effect_scene.instantiate()
 	hit_effect.global_position = position
-	hit_effect.set_properties(color, damage)
+	hit_effect.set_properties(color, adjusted_damage)
 	EventBus.arena_spawn.emit(hit_effect)
 	
 func get_action_key_name(action_name: String) -> String:
@@ -105,6 +106,7 @@ func save_game() -> void:
 		"sentry_limit": PlayerState.sentry_limit,
 		"blank_limit": PlayerState.blank_limit,
 		"spawner_limit": PlayerState.spawner_limit,
+		"minimum_gold": PlayerState.minimum_gold,
 		
 		# Player Progression
 		"levels_available": PlayerState.levels_available,
@@ -180,6 +182,7 @@ func load_game() -> void:
 	PlayerState.sentry_limit = save_data["sentry_limit"]
 	PlayerState.blank_limit = save_data["blank_limit"]
 	PlayerState.spawner_limit = save_data["spawner_limit"]
+	PlayerState.minimum_gold = save_data["minimum_gold"]
 	
 	# Load Player Progression
 	PlayerState.levels_available = save_data["levels_available"]

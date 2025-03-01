@@ -1,4 +1,3 @@
-Improve upgrade menu (show tower description, and add a panel you click to upgrade)
 Tower upgrades/more towers
 More items
 More enemies, bosses

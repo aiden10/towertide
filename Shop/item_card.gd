@@ -12,7 +12,7 @@ func _ready() -> void:
 	purchase_button.pressed.connect(_purchase_pressed)
 
 func _purchase_pressed() -> void:
-	if PlayerState.gold >= item.price:
+	if PlayerState.gold + PlayerState.minimum_gold >= item.price:
 		PlayerState.gold -= item.price
 		PlayerState.player_items.append(item.duplicate())
 		if item.item_name in PlayerState.item_counts:

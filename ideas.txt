@@ -17,6 +17,7 @@ Bosses should counter particular kinds of builds:
     - Boss which temporarily disables pylons around it
 
 Enemies that have shields around them
+Invisible enemies which can't be targeted directly by minions or sentries
 
 Slot machine or gambling towers
 
@@ -31,11 +32,19 @@ Allows you to go into debt
 Ne Zha items:
 Fire-tipped spear which follows your mouse and hits enemies
 
-Berserker character:
+Characters:
+Berserker:
 Passive: Deal more damage the less health you have
 Primary: Has two axes orbiting them which reappear over time, clicking shoots an axe
 Starts with higher damage, less health, more regen, more pierce, and slower projectile speed
 
 Archer:
-
+Passive: Double tap a movement direction to dash
 Primary: Click and drag to aim a "bow" which shoots a longer projectile with pierce and extra damage
+
+Prodigal Son:
+Passives: 
+    - Can place a beacon down with "R" and return to that beacon by pressing "R" again
+    - Enemies drop additional gold
+Primary: Shooting costs one gold
+Starts with extra gold, extra damage, and a lower firerate

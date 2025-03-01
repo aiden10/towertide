@@ -21,6 +21,7 @@ var blank_limit: int = PlayerConstants.DEFAULT_BLANK_LIMIT
 var spawner_limit: int = PlayerConstants.DEFAULT_SPAWNER_LIMIT
 
 ## Misc
+var minimum_gold: int = 0
 var levels_available: int = PlayerConstants.DEFAULT_LEVELS_AVAILABLE
 var player_items: Array[Item] = PlayerConstants.DEFAULT_PLAYER_ITEMS.duplicate()
 var item_counts: Dictionary = PlayerConstants.DEFAULT_ITEM_COUNTS.duplicate()
