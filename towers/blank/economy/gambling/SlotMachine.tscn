@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dws5tpr2x3g7b"]
+
+[ext_resource type="Script" path="res://towers/blank/economy/gambling/slot_machine.gd" id="1_k7jq6"]
+[ext_resource type="Texture2D" uid="uid://b6env1xtiup5m" path="res://sprites/pickups/xp2.png" id="2_w38xc"]
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_jpnxl"]
+[ext_resource type="Texture2D" uid="uid://jbtged1cnlwp" path="res://sprites/towers/blank/economy/slot_machine.png" id="3_vl4ra"]
+[ext_resource type="FontFile" uid="uid://cfh5cpem6pw0p" path="res://resources/Quicksand-Light.ttf" id="4_7xtaq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4u5mk"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epvc3"]
+radius = 153.013
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw1gt"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.454902, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 15.0
+expand_margin_right = 10.0
+expand_margin_bottom = 15.0
+
+[node name="SlotMachine" type="Area2D" groups=["EconomyTowers", "Towers"]]
+script = ExtResource("1_k7jq6")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4u5mk")
+
+[node name="CoreSprite" type="Sprite2D" parent="."]
+position = Vector2(-4, 19)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("2_w38xc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_vl4ra")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_epvc3")
+
+[node name="BetContainer" type="PanelContainer" parent="."]
+offset_left = -90.0
+offset_top = -94.0
+offset_right = 110.0
+offset_bottom = -54.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kw1gt")
+
+[node name="BetLabel" type="RichTextLabel" parent="BetContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+theme = ExtResource("3_jpnxl")
+theme_override_fonts/normal_font = ExtResource("4_7xtaq")
+bbcode_enabled = true
+text = "Press E to play! (1 gold)"

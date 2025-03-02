@@ -24,7 +24,11 @@ const SOUNDS = {
 	"heal": preload("res://resources/sounds/heal.wav"),
 	"select": preload("res://resources/sounds/select.wav"),
 	"upgrade": preload("res://resources/sounds/upgrade.wav"),
-	"sold": preload("res://resources/sounds/sold.wav")
+	"sold": preload("res://resources/sounds/sold.wav"),
+	"slot_play": preload("res://resources/sounds/slot_play.wav"),
+	"slot_win": preload("res://resources/sounds/slot_win.wav"),
+	"slot_lost": preload("res://resources/sounds/slot_lose.wav"),
+	"slot_jackpot": preload("res://resources/sounds/slot_jackpot.wav")
 }
 
 const XP_SOUNDS = [xp1, xp2]
@@ -63,6 +67,10 @@ func _ready() -> void:
 	EventBus.tower3_selected.connect(func(): play_sound("select"))
 	EventBus.tower4_selected.connect(func(): play_sound("select"))
 	EventBus.tower_sold.connect(func(): play_sound("sold"))
+	EventBus._slots_start.connect(func(): play_sound("slot_play"))
+	EventBus._slots_won.connect(func(): play_sound("slot_win"))
+	EventBus._slots_lost.connect(func(): play_sound("slot_lost"))
+	EventBus._slots_jackpot.connect(func(): play_sound("slot_jackpot"))
 	
 	EventBus.xp_picked_up.connect(func(_xp_type: int): play_random(XP_SOUNDS))
 	EventBus.gold_picked_up.connect(func(): play_random(GOLD_SOUNDS))

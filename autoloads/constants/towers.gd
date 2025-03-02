@@ -95,7 +95,17 @@ const PERSON_SPAWNER_COOLDOWN: float = 2.5
 
 const PERSON_SPAWNER_SPAWN_LIMIT: int = 8
 var PERSON_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/person_spawner.png")
-const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person_spawner/PersonSpawner.tscn"
+const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person/PersonSpawner.tscn"
+
+const DRIFTER_SPAWNER_COST: int = 20
+const DRIFTER_SPAWNER_SPAWN_AMOUNT: int = 1
+const DRIFTER_SPAWNER_NAME: String = "Drifter Spawner"
+const DRIFTER_SPAWNER_DESCRIPTION: String = "Spawns aimless people with high potential"
+const DRIFTER_SPAWNER_COOLDOWN: float = 3.5
+
+const DRIFTER_SPAWNER_SPAWN_LIMIT: int = 6
+var DRIFTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/drifter_spawner.png")
+const DRIFTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/DrifterSpawner"
 
 const BLANK_COST: int = 5
 const BLANK_NAME: String = "Blank"
@@ -117,8 +127,18 @@ const GOLD_DISPENSER_DESCRIPTION: String = "Dispenses gold"
 var GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
 const GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/GoldDispenserTower.tscn"
 
+const SLOTS_NAME: String = "Slot Machine"
+const SLOTS_COST: int = 15
+const SLOTS_PLAY_COST: int = 1
+const SLOTS_COOLDOWN: float = 8
+const SLOTS_DESCRIPTION: String = "Play for a chance to win XP, gold, or an item!"
+var SLOTS_IMAGE: Texture = load("res://sprites/towers/blank/economy/slot_machine.png")
+const SLOTS_SCENE_PATH: String = "res://towers/blank/economy/gambling/SlotMachine.tscn"
+const SLOTS_OPTIONS: Array[String] = ["nothing", "1G", "1XP", "5G", "25XP", "jackpot"]
+const SLOTS_WEIGHTS: Array[float] = [2, 0.5, 1, 0.2, 0.2, 0.01]
+
 const DOUBLE_GOLD_DISPENSER_NAME: String = "Double Gold Dispenser"
-const DOUBLE_GOLD_DISPENSER_COST: int = 8
+const DOUBLE_GOLD_DISPENSER_COST: int = 15
 const DOUBLE_GOLD_DISPENSER_COOLDOWN: float = 12
 const DOUBLE_GOLD_DISPENSER_DESCRIPTION: String = "Dispenses 2 gold"
 var DOUBLE_GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
@@ -154,8 +174,17 @@ const PERSON_SPEED: float = 200
 const PERSON_DAMAGE: float = 0.2
 const PERSON_COOLDOWN: float = 3
 const PERSON_WANDER_DIST: float = 500
-const PERSON_MIN_WANDER: float = 300
+const PERSON_MIN_WANDER: float = 150
 const PERSON_LIFETIME: float = 7
+
+var drifter_minion_scene: PackedScene = load("res://towers/spawner/minions/drifter/DrifterMinion.tscn")
+const DRIFTER_NAME: String = "Drifter"
+const DRIFTER_SPEED: float = 150
+const DRIFTER_DAMAGE: float = 0.3
+const DRIFTER_COOLDOWN: float = 0.8
+const DRIFTER_PROJECTILE_SPEED: float = 0.8
+const DRIFTER_WANDER_DIST: float = 1200
+const DRIFTER_MIN_WANDER: float = 500
 
 var shooter_minion_scene: PackedScene = load("res://towers/spawner/minions/shooter/ShooterMinion.tscn")
 const SHOOTER_NAME: String = "Shooter"

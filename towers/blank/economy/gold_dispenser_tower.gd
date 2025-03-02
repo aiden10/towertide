@@ -3,7 +3,6 @@ extends Tower
 @onready var core_sprite: Sprite2D = $CoreSprite
 @onready var ring_sprite: Sprite2D = $RingSprite
 
-var gold_scene: PackedScene = Scenes.gold_scene
 var rotation_radius: float = 55
 var original_ring_position: Vector2
 
@@ -23,6 +22,12 @@ func _init() -> void:
 	upgrade1_price = Towers.DOUBLE_GOLD_DISPENSER_COST
 	upgrade1_image = Towers.DOUBLE_GOLD_DISPENSER_IMAGE
 	upgrade1_scene = Scenes.double_gold_dispenser_tower_scene
+	
+	upgrade2_name = Towers.SLOTS_NAME
+	upgrade2_description = Towers.SLOTS_DESCRIPTION
+	upgrade2_price = Towers.SLOTS_COST
+	upgrade2_image = Towers.SLOTS_IMAGE
+	upgrade2_scene = Scenes.slots_tower_scene
 	
 func _ready() -> void:
 	original_ring_position = ring_sprite.position

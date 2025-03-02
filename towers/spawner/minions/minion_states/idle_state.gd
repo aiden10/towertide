@@ -27,6 +27,11 @@ func detected(area: Area2D) -> void:
 			transitioned.emit(self, "shoot")
 		elif minion.minion_name == Towers.PERSON_NAME:
 			transitioned.emit(self, "melee")
+		elif minion.minion_name == Towers.DRIFTER_NAME:
+			if randf() > 0.5:
+				transitioned.emit(self, "shoot")
+			else:
+				transitioned.emit(self, "melee")
 
 func physics_update(_delta: float) -> void:
 	if minion.global_position.distance_to(destination) < 15:

@@ -27,13 +27,15 @@ var shotgun_tower_scene: PackedScene = preload("res://towers/sentry/shotgun/Shot
 
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")
-var person_spawner_tower_scene: PackedScene = preload("res://towers/spawner/person_spawner/PersonSpawner.tscn")
+var person_spawner_tower_scene: PackedScene = preload("res://towers/spawner/person/PersonSpawner.tscn")
+var drifter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/drifter/DrifterSpawner.tscn")
 
 var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn")
 var supporter_tower_scene: PackedScene = preload("res://towers/blank/support/SupportTower.tscn")
 var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTower.tscn")
 var slowing_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/slowing/SlowingPylonTower.tscn")
 var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
+var slots_tower_scene: PackedScene = preload("res://towers/blank/economy/gambling/SlotMachine.tscn")
 var double_gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/DoubleGoldTower.tscn")
 
 ## Boss scenes

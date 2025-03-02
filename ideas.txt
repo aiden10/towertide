@@ -17,11 +17,10 @@ Bosses should counter particular kinds of builds:
     - Boss which temporarily disables pylons around it
 
 Enemies that have shields around them
-Invisible enemies which can't be targeted directly by minions or sentries
 
-Slot machine or gambling towers
-
-Tower limit stat
+Kidnapper leads to Robber tower whose minions make enemies drop gold when picked up
+People spawner leads to barracks which spawns knights 
+Adventurer spawner, spawns a team consisting of a knight, mage, and an archer or something. Gets stronger with the amount of kills
 
 Special wave types:
     - "Swarm", only weak rushers spawn

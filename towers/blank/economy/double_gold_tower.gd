@@ -4,7 +4,6 @@ extends Tower
 @onready var ring_sprite: Sprite2D = $RingSprite
 @onready var ring_sprite2: Sprite2D = $RingSprite2
 
-var gold_scene: PackedScene = Scenes.gold_scene
 var rotation_radius: float = 55
 var original_ring_position: Vector2
 var original_ring_position2: Vector2

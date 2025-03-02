@@ -18,7 +18,7 @@ func connect_radius_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Towers") and not area.is_in_group("DetectionRadius") and parent != self:
 		parent.cooldown *= Towers.SUPPORTER_COOLDOWN_REDUCTION
-		Utils.spawn_hit_effect(Color(0.5, 2, 1, 1), parent.global_position, 8)
+		Utils.spawn_hit_effect(Color8(255, 225, 15, 255), parent.global_position, 8)
 		## Attach hand
 		var hand_sprite: Sprite2D = Sprite2D.new()
 		var hand_line: Line2D = Line2D.new()
@@ -28,7 +28,7 @@ func connect_radius_entered(area: Area2D) -> void:
 		hand_sprite.scale *= 0.75
 		hand_sprite.modulate = Color(1, 1, 1, 0.25)
 		hand_line.width = 5.0
-		hand_line.default_color = Color(0.5, 2, 1, 0.5)
+		hand_line.default_color = Color8(490, 350, 100, 128)
 		hand_line.add_point(Vector2.ZERO)
 		hand_line.add_point(parent.position - position)
 		

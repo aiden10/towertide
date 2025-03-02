@@ -3,8 +3,12 @@ extends State
 var destination: Vector2
 var direction: Vector2
 var shot_timer: float = 0
+var shot_count: int = 0
 
-func shoot(_player_position: Vector2, offset: int):
+func enter() -> void:
+	shot_count = 0
+
+func shoot(_player_position: Vector2, offset: float = 0):
 	var aim_direction = (minion.detected_enemy.global_position - minion.global_position).normalized()
 	var angle_offset = deg_to_rad(offset)
 	var rotated_direction = aim_direction.rotated(angle_offset)
@@ -16,6 +20,12 @@ func shoot(_player_position: Vector2, offset: int):
 	bullet.position = minion.global_position
 	bullet.start(minion.global_position + rotated_direction * 10, minion.projectile_speed * PlayerState.projectile_speed, minion.damage * PlayerState.damage, minion.tower, minion.bullet_scale)
 	EventBus.arena_spawn.emit(bullet)
+	shot_count += 1
+	if minion.minion_name == Towers.DRIFTER_NAME and shot_count > 3:
+		if randf() > 0.5:
+			transitioned.emit(self, "melee")
+		else:
+			transitioned.emit(self, "idle")
 
 func physics_update(_delta: float) -> void:
 	if not minion.detected_enemy:
@@ -25,7 +35,7 @@ func physics_update(_delta: float) -> void:
 	shot_timer -= _delta
 	minion.look_at(minion.detected_enemy.global_position)
 	if shot_timer <= 0:
-		shoot(minion.detected_enemy.position, 0)
+		shoot(minion.detected_enemy.position)
 		shot_timer = minion.firerate_cooldown * PlayerState.firerate
 	
 	destination = minion.detected_enemy.global_position

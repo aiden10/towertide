@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://5c5bbt3522uq"]
+
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_bwkwl"]
+[ext_resource type="Script" path="res://towers/spawner/minions/drifter/drifter_minion.gd" id="1_f44mh"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="2_2d3o5"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="2_bg70j"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/shoot_state.gd" id="4_1l0xh"]
+[ext_resource type="Texture2D" uid="uid://dwypgfcqfjw34" path="res://sprites/towers/minions/drifter/drifter.png" id="6_71tia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5krh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tn4ed"]
+radius = 86.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kodi"]
+radius = 292.0
+
+[node name="DrifterMinion" type="CharacterBody2D" groups=["Minions"]]
+script = ExtResource("1_f44mh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b5krh")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_tn4ed")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_7kodi")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_bwkwl")
+initial_state = NodePath("Idle")
+
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("2_2d3o5")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("2_bg70j")
+
+[node name="Shoot" type="Node" parent="StateMachine"]
+script = ExtResource("4_1l0xh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(4, -3)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("6_71tia")

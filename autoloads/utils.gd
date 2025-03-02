@@ -12,6 +12,19 @@ func get_random_position_in_radius(center: Vector2, radius: float, min_distance:
 		cos(random_angle) * random_radius,
 		sin(random_angle) * random_radius
 	)
+
+func weighted_random_choice(weights: Array, choices: Array):
+	assert(weights.size() == choices.size(), "Weights and choices arrays must be the same size")
+	assert(weights.size() > 0, "Arrays cannot be empty")
+	
+	var sum_of_weight = 0.0
+	for weight in weights:
+		sum_of_weight += weight
+	var rnd = randf() * sum_of_weight    
+	for i in range(weights.size()):
+		if rnd < weights[i]:
+			return choices[i]
+		rnd -= weights[i]
 	
 func spawn_hit_effect(color: Color, position: Vector2, damage: float) -> void:
 	var adjusted_damage = min(3, damage)

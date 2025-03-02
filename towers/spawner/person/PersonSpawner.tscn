@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dofaoqcp4uao8"]
 
-[ext_resource type="Script" path="res://towers/spawner/person_spawner/person_spawner.gd" id="1_c4y34"]
+[ext_resource type="Script" path="res://towers/spawner/person/person_spawner.gd" id="1_c4y34"]
 [ext_resource type="Texture2D" uid="uid://c4m70jknwuf8p" path="res://sprites/towers/spawner/person_spawner.png" id="2_61wxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26h4o"]

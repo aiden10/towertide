@@ -7,11 +7,20 @@ func enter() -> void:
 	if minion.minion_name == Towers.PERSON_NAME:
 		minion.sprite.play("attack")
 		minion.sprite.flip_h = false
+	if minion.minion_name == Towers.DRIFTER_NAME:
+		minion.speed *= 2
+
+func exit() -> void:
+	if minion.minion_name == Towers.DRIFTER_NAME:
+		minion.speed /= 2
 
 func attack():
 	if is_instance_valid(minion.detected_enemy):
 		minion.look_at(minion.detected_enemy.position)
 		minion.detected_enemy.take_damage(minion.damage * PlayerState.damage, minion.tower)
+		if minion.minion_name == Towers.DRIFTER_NAME:
+			if randf() > 0.5:
+				transitioned.emit(self, "shoot")
 
 func physics_update(_delta: float) -> void:
 	if not minion.detected_enemy:

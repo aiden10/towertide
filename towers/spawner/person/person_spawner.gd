@@ -12,6 +12,12 @@ func _init() -> void:
 	cooldown = Towers.PERSON_SPAWNER_COOLDOWN
 	scene_path = Towers.PERSON_SPAWNER_SCENE_PATH
 	spawn_limit = Towers.PERSON_SPAWNER_SPAWN_LIMIT
+	
+	upgrade1_name = Towers.DRIFTER_SPAWNER_NAME
+	upgrade1_description = Towers.DRIFTER_SPAWNER_DESCRIPTION
+	upgrade1_price = Towers.DRIFTER_SPAWNER_COST
+	upgrade1_image = Towers.DRIFTER_SPAWNER_IMAGE
+	upgrade1_scene = Scenes.drifter_spawner_tower_scene
 
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta

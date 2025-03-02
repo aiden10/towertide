@@ -62,3 +62,8 @@ signal sword_purchased
 
 signal invalid_action
 signal _item_aquired
+
+signal _slots_start
+signal _slots_lost
+signal _slots_won
+signal _slots_jackpot

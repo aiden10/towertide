@@ -29,7 +29,6 @@ func enemy_detected(area: Area2D) -> void:
 			for i in range(shot_count):
 				var offset = (i - middle_index) * angle
 				shoot(target_enemy_position, angle_offset, offset)
-
 		
 func shoot(enemy_position: Vector2, angle: float, offset: float = 0) -> void:
 	var direction = (enemy_position - position).normalized()
