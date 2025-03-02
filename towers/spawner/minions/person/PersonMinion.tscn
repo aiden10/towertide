@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=3 uid="uid://5obthsn8dowp"]
+
+[ext_resource type="Script" path="res://towers/spawner/minions/person/person_minion.gd" id="1_6f38c"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_jhm45"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_dfusk"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="3_hk6bt"]
+[ext_resource type="Texture2D" uid="uid://b7yodj1in6ha1" path="res://sprites/towers/minions/person/f1.png" id="4_640so"]
+[ext_resource type="Texture2D" uid="uid://cym7p8fd6u53b" path="res://sprites/towers/minions/person/f2.png" id="5_128ci"]
+[ext_resource type="Texture2D" uid="uid://7jetxhf10owe" path="res://sprites/towers/minions/person/a1.png" id="5_sthpk"]
+[ext_resource type="Texture2D" uid="uid://w5307l0yr5f0" path="res://sprites/towers/minions/person/a2.png" id="6_gpfq1"]
+[ext_resource type="Texture2D" uid="uid://byyggtcuh64uv" path="res://sprites/towers/minions/person/f3.png" id="6_wojuy"]
+[ext_resource type="Texture2D" uid="uid://cbdghfwmttos3" path="res://sprites/towers/minions/person/f4.png" id="7_7gr1k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bi2a2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d65xl"]
+radius = 86.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ww3h"]
+radius = 292.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1bo4"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("5_sthpk")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_gpfq1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("4_640so")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_128ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wojuy")
+}, {
+"duration": 1.6,
+"texture": ExtResource("7_7gr1k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PersonMinion" type="CharacterBody2D" groups=["Minions"]]
+script = ExtResource("1_6f38c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bi2a2")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_d65xl")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_0ww3h")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_jhm45")
+initial_state = NodePath("Idle")
+
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("3_hk6bt")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_dfusk")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(-10, -7)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_u1bo4")
+animation = &"attack"
+frame_progress = 0.754853

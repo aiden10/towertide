@@ -13,6 +13,7 @@ func _init() -> void:
 	cost = Towers.CROSS_COST
 	cooldown = Towers.CROSS_COOLDOWN
 	damage_scale = Towers.CROSS_DAMAGE_PERCENTAGE
+	bullet_scale = Towers.CROSS_BULLET_SCALE
 	shot_timer = cooldown
 	image = Towers.CROSS_IMAGE
 	scene_path = Towers.CROSS_SCENE_PATH
@@ -22,13 +23,19 @@ func _init() -> void:
 	upgrade1_price = Towers.CARDINAL_COST
 	upgrade1_image = Towers.CARDINAL_IMAGE
 	upgrade1_scene = Scenes.cardinal_tower_scene
+
+	upgrade2_name = Towers.RING_NAME
+	upgrade2_description = Towers.RING_DESCRIPTION
+	upgrade2_price = Towers.RING_COST
+	upgrade2_image = Towers.RING_IMAGE
+	upgrade2_scene = Scenes.ring_tower_scene
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate
 		shoot_pattern()
-		is_cross_pattern = !is_cross_pattern  # Toggle pattern for next shot
+		is_cross_pattern = !is_cross_pattern
 		current_frame = (current_frame + 1) % sprite.sprite_frames.get_frame_count("default")
 	
 	if current_frame != 0 and current_frame != 4:
@@ -54,7 +61,6 @@ func shoot_at_angle(angle: float) -> void:
 	GameState.player_projectiles[bullet] = 1
 	bullet.position = position
 	
-	# Calculate target position using angle
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self)
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self, bullet_scale)
 	EventBus.arena_spawn.emit(bullet)	

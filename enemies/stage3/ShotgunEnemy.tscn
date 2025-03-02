@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://enemies/stage3/shotgun_enemy.gd" id="1_02bby"]
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="1_54wk1"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_7kknk"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/attack_state.gd" id="3_67pu1"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/follow.gd" id="5_li6c4"]
+[ext_resource type="Script" path="res://enemies/enemy_states/attack_state.gd" id="3_67pu1"]
+[ext_resource type="Script" path="res://enemies/enemy_states/follow.gd" id="5_li6c4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftu3e"]
 

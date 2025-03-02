@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckbbg758c6c8u"]
+
+[ext_resource type="Script" path="res://towers/blank/support/support_tower.gd" id="1_b2jmo"]
+[ext_resource type="Texture2D" uid="uid://cbqne6gstyfvi" path="res://sprites/towers/blank/support/support.png" id="1_yeen8"]
+[ext_resource type="Texture2D" uid="uid://bff7y75k7i5vs" path="res://sprites/towers/large_outline.png" id="2_u0p7i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svjfx"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8hlg"]
+radius = 79.0569
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q784k"]
+radius = 156.208
+
+[node name="SupportTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_b2jmo")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_svjfx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_yeen8")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_a8hlg")
+
+[node name="ConnectRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="ConnectHitbox" type="CollisionShape2D" parent="ConnectRadius"]
+shape = SubResource("CircleShape2D_q784k")
+
+[node name="RadiusSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_u0p7i")

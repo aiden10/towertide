@@ -15,15 +15,22 @@ var door_scene: PackedScene = preload("res://door/Door.tscn")
 var hit_effect_scene: PackedScene = preload("res://effects/HitEffect.tscn")
 var sword_scene: PackedScene = preload("res://items/sword/Sword.tscn")
 var item_cell_scene: PackedScene = preload("res://overlay/ItemCell.tscn")
+
 var cross_tower_scene: PackedScene = preload("res://towers/sprayer/CrossTower.tscn")
 var cardinal_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/CardinalTower.tscn")
+var ring_tower_scene: PackedScene = preload("res://towers/sprayer/ring/RingTower.tscn")
+
 var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.tscn")
 var sniper_tower_scene: PackedScene = preload("res://towers/sentry/sniper/SniperTower.tscn")
 var machine_gun_tower_scene: PackedScene = preload("res://towers/sentry/rapid/MachineGunTower.tscn")
 var shotgun_tower_scene: PackedScene = preload("res://towers/sentry/shotgun/ShotgunTower.tscn")
+
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")
+var person_spawner_tower_scene: PackedScene = preload("res://towers/spawner/person_spawner/PersonSpawner.tscn")
+
 var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn")
+var supporter_tower_scene: PackedScene = preload("res://towers/blank/support/SupportTower.tscn")
 var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTower.tscn")
 var slowing_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/slowing/SlowingPylonTower.tscn")
 var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
@@ -44,10 +51,13 @@ var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.
 var shotgun_enemy_scene: PackedScene = preload("res://enemies/stage3/ShotgunEnemy.tscn")
 
 ## Stage four enemies
+
+## Stage five enemies
 var stealthy_enemy_scene: PackedScene = preload("res://enemies/stage4/StealthStraferEnemy.tscn")
 
 var boss_scenes: Array[PackedScene] = [deflector_boss_scene]
 var stage_one_enemy_scenes: Array[PackedScene] = [weak_rusher_scene, basic_shooter_scene]
-var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene, sniper_enemy_scene]
-var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene]
-var stage_four_enemy_scenes: Array[PackedScene] = [stealthy_enemy_scene]
+var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene]
+var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene, sniper_enemy_scene]
+var stage_four_enemy_scenes: Array[PackedScene] = []
+var stage_five_enemy_scenes: Array[PackedScene] = [stealthy_enemy_scene]

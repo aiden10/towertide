@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://c8mnic0qj5h8w" path="res://sprites/enemies/stealth_strafer.png" id="1_2rbif"]
 [ext_resource type="Script" path="res://enemies/stage4/stealth_strafer_enemy.gd" id="1_vxp3o"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_cdwlt"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/quick_attack_state.gd" id="3_emt8s"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/strafey_follow_state.gd" id="4_5ue7j"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/flee_state.gd" id="5_mtrgx"]
+[ext_resource type="Script" path="res://enemies/enemy_states/quick_attack_state.gd" id="3_emt8s"]
+[ext_resource type="Script" path="res://enemies/enemy_states/strafey_follow_state.gd" id="4_5ue7j"]
+[ext_resource type="Script" path="res://enemies/enemy_states/flee_state.gd" id="5_mtrgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgqck"]
 

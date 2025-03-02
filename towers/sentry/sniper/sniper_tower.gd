@@ -19,8 +19,7 @@ func _init() -> void:
 	angle_offset = 90.0
 	scene_path = Towers.SNIPER_SCENE_PATH
 
-func _process(delta: float) -> void:
-	
+func _physics_process(delta: float) -> void:
 	var effective_cooldown = cooldown * PlayerState.firerate
 	var progress = 1.0 - (shot_timer / effective_cooldown)
 	var alpha = int(progress * 255)

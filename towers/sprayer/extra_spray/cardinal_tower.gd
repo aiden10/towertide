@@ -8,11 +8,12 @@ func _init() -> void:
 	cost = Towers.CARDINAL_COST
 	cooldown = Towers.CARDINAL_COOLDOWN
 	damage_scale = Towers.CARDINAL_DAMAGE_PERCENTAGE
+	bullet_scale = Towers.CARDINAL_BULLET_SCALE
 	shot_timer = cooldown
 	image = Towers.CARDINAL_IMAGE
 	scene_path = Towers.CARDINAL_SCENE_PATH
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate
@@ -31,5 +32,5 @@ func shoot_at_angle(angle: float) -> void:
 	bullet.position = position
 	
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self)
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self, bullet_scale)
 	EventBus.arena_spawn.emit(bullet)	

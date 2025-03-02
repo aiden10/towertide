@@ -19,7 +19,7 @@ func _init() -> void:
 func _ready() -> void:
 	connect_radius.area_entered.connect(connect_radius_entered)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

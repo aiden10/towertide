@@ -20,3 +20,9 @@ func _ready() -> void:
 	upgrade2_image = Towers.PYLON_IMAGE
 	upgrade2_scene = Scenes.pylon_tower_scene
 	
+	upgrade3_name = Towers.SUPPORTER_NAME
+	upgrade3_description = Towers.SUPPORTER_DESCRIPTION
+	upgrade3_price = Towers.SUPPORTER_COST
+	upgrade3_image = Towers.SUPPORTER_IMAGE
+	upgrade3_scene = Scenes.supporter_tower_scene
+	

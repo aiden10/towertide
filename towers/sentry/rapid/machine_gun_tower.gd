@@ -25,7 +25,7 @@ func enemy_detected(area: Area2D) -> void:
 			current_frame = (current_frame + 1) % sprite.sprite_frames.get_frame_count("default")
 			sprite.frame = current_frame
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

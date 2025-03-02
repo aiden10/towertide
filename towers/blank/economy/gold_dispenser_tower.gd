@@ -16,7 +16,7 @@ func _init() -> void:
 	cooldown = Towers.GOLD_DISPENSER_COOLDOWN
 	image = Towers.GOLD_DISPENSER_IMAGE
 	scene_path = Towers.GOLD_DISPENSER_SCENE_PATH
-	shot_timer = cooldown * PlayerState.firerate
+	shot_timer = cooldown
 	
 	upgrade1_name = Towers.DOUBLE_GOLD_DISPENSER_NAME
 	upgrade1_description = Towers.DOUBLE_GOLD_DISPENSER_DESCRIPTION
@@ -27,19 +27,17 @@ func _init() -> void:
 func _ready() -> void:
 	original_ring_position = ring_sprite.position
 	
-func _process(delta: float) -> void:
-	
-	var effective_cooldown = cooldown * PlayerState.firerate
-	var progress = 1.0 - (shot_timer / effective_cooldown)
+func _physics_process(delta: float) -> void:
+	var progress = 1.0 - (shot_timer / cooldown)
 	var core_alpha = int(progress * 255)
 	core_sprite.modulate = Color8(255, 255, 255, core_alpha)
 	
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = effective_cooldown 
+		shot_timer = cooldown 
 		dispense()
 
-	var angle = Time.get_ticks_msec() / (1000.0 * (effective_cooldown / 2))
+	var angle = Time.get_ticks_msec() / (1000.0 * (cooldown / 2))
 	ring_sprite.position.x = original_ring_position.x + cos(angle) * rotation_radius
 	ring_sprite.position.y = original_ring_position.y + sin(angle) * rotation_radius
 	

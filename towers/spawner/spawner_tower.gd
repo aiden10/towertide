@@ -18,8 +18,14 @@ func _init() -> void:
 	upgrade1_price = Towers.SHOOTER_SPAWNER_COST
 	upgrade1_image = Towers.SHOOTER_SPAWNER_IMAGE
 	upgrade1_scene = Scenes.shooter_spawner_tower_scene
+	
+	upgrade2_name = Towers.PERSON_SPAWNER_NAME
+	upgrade2_description = Towers.PERSON_SPAWNER_DESCRIPTION
+	upgrade2_price = Towers.PERSON_SPAWNER_COST
+	upgrade2_image = Towers.PERSON_SPAWNER_IMAGE
+	upgrade2_scene = Scenes.person_spawner_tower_scene
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

@@ -18,7 +18,7 @@ func _init() -> void:
 	angle_offset = 90.0
 	scene_path = Towers.SHOTGUN_SCENE_PATH
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

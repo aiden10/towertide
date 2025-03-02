@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://enemies/stage1/weak_rusher.gd" id="1_0b2k8"]
 [ext_resource type="Texture2D" uid="uid://cw4u8vuiopqao" path="res://sprites/enemies/weak_rusher.png" id="1_huhyo"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_4su0n"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_states/rush_state.gd" id="3_lkecq"]
+[ext_resource type="Script" path="res://enemies/enemy_states/rush_state.gd" id="3_lkecq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgerp"]
 

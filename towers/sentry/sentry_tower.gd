@@ -34,7 +34,7 @@ func _init() -> void:
 	upgrade3_image = Towers.SHOTGUN_IMAGE
 	upgrade3_scene = Scenes.shotgun_tower_scene
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

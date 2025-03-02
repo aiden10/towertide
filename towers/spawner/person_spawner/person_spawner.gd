@@ -1,0 +1,22 @@
+extends Spawner
+
+var spawn_amount = Towers.PERSON_SPAWNER_SPAWN_AMOUNT
+
+func _init() -> void:
+	super()
+	tower_name = Towers.PERSON_SPAWNER_NAME
+	description = Towers.PERSON_SPAWNER_DESCRIPTION
+	cost = Towers.PERSON_SPAWNER_COST
+	image = Towers.PERSON_SPAWNER_IMAGE
+	minion_scene = Towers.person_minion_scene
+	cooldown = Towers.PERSON_SPAWNER_COOLDOWN
+	scene_path = Towers.PERSON_SPAWNER_SCENE_PATH
+	spawn_limit = Towers.PERSON_SPAWNER_SPAWN_LIMIT
+
+func _physics_process(delta: float) -> void:
+	shot_timer -= delta
+	if shot_timer <= 0:
+		shot_timer = cooldown * PlayerState.firerate
+		if (get_child_count() - 4) < spawn_limit:
+			spawn_minions(spawn_amount, Towers.PERSON_MIN_WANDER)
+		

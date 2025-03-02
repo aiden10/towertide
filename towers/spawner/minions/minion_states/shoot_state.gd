@@ -1,6 +1,5 @@
 extends State
 
-var minion_attack_range: Area2D
 var destination: Vector2
 var direction: Vector2
 var shot_timer: float = 0

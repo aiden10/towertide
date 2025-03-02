@@ -49,8 +49,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m0uk7"]
-radius = 79.0569
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn4mu"]
+radius = 153.013
 
 [node name="CrossTower" type="Area2D" groups=["Towers"]]
 script = ExtResource("1_qcd6w")
@@ -66,4 +66,4 @@ sprite_frames = SubResource("SpriteFrames_hsmet")
 [node name="PlacementRadius" type="Area2D" parent="."]
 
 [node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
-shape = SubResource("CircleShape2D_m0uk7")
+shape = SubResource("CircleShape2D_vn4mu")

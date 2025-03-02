@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnhbaky4c0sag"]
 
-[ext_resource type="Script" path="res://towers/spawner/minions/shooter_minion.gd" id="1_88htc"]
+[ext_resource type="Script" path="res://towers/spawner/minions/shooter/shooter_minion.gd" id="1_88htc"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="1_suenm"]
-[ext_resource type="Script" path="res://entities/minion/minion_states/idle_state.gd" id="3_5ibaw"]
-[ext_resource type="Script" path="res://entities/minion/minion_states/shoot_state.gd" id="3_uysl2"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_5ibaw"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/shoot_state.gd" id="3_uysl2"]
 [ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="4_8j6sr"]
 [ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="5_0e4xu"]
 

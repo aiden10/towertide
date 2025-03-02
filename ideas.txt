@@ -26,9 +26,6 @@ Tower limit stat
 Special wave types:
     - "Swarm", only weak rushers spawn
 
-Credit card item:
-Allows you to go into debt
-
 Ne Zha items:
 Fire-tipped spear which follows your mouse and hits enemies
 

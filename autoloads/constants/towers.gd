@@ -5,7 +5,8 @@ const CROSS_NAME: String = "Cross"
 const CROSS_DESCRIPTION: String = "Shoots bullets alternating between a cross and x pattern"
 const CROSS_COOLDOWN: float = 2.5
 const CROSS_SPEED_PERCENTAGE: float = 0.75 
-const CROSS_DAMAGE_PERCENTAGE: float = 0.5 
+const CROSS_DAMAGE_PERCENTAGE: float = 0.5
+const CROSS_BULLET_SCALE: float = 0.5
 var CROSS_IMAGE: Texture = load("res://sprites/towers/cross/f1.png")
 const CROSS_SCENE_PATH: String = "res://towers/sprayer/CrossTower.tscn"
 
@@ -14,9 +15,19 @@ const CARDINAL_NAME: String = "Cardinal"
 const CARDINAL_DESCRIPTION: String = "Shoots bullets in all cardinal directions"
 const CARDINAL_COOLDOWN: float = 2.5
 const CARDINAL_SPEED_PERCENTAGE: float = 0.75 
-const CARDINAL_DAMAGE_PERCENTAGE: float = 0.5 
+const CARDINAL_DAMAGE_PERCENTAGE: float = 0.55 
+const CARDINAL_BULLET_SCALE: float = 0.6
 var CARDINAL_IMAGE: Texture = load("res://sprites/towers/cardinal/cardinal.png")
 const CARDINAL_SCENE_PATH: String = "res://towers/sprayer/extra_spray/CardinalTower.tscn"
+
+const RING_COST: int = 10
+const RING_NAME: String = "Ring Shooter"
+const RING_DESCRIPTION: String = "Emits a ring which deals damage to enemies inside it"
+const RING_COOLDOWN: float = 0.5
+const RING_SPEED_PERCENTAGE: float = 1
+const RING_DAMAGE_PERCENTAGE: float = 0.1
+var RING_IMAGE: Texture = load("res://sprites/towers/cross/ring/ring_tower.png")
+const RING_SCENE_PATH: String = "res://towers/sprayer/ring/RingTower.tscn"
 
 const SENTRY_COST: int = 10
 const SENTRY_NAME: String = "Sentry"
@@ -76,21 +87,38 @@ const SHOOTER_SPAWNER_SPAWN_LIMIT: int = 5
 var SHOOTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/shooter/shooter_spawner.png")
 const SHOOTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/ShooterSpawnerTower.tscn"
 
+const PERSON_SPAWNER_COST: int = 10
+const PERSON_SPAWNER_SPAWN_AMOUNT: int = 1
+const PERSON_SPAWNER_NAME: String = "Person Spawner"
+const PERSON_SPAWNER_DESCRIPTION: String = "Spawns weak people with high potential"
+const PERSON_SPAWNER_COOLDOWN: float = 2.5
+
+const PERSON_SPAWNER_SPAWN_LIMIT: int = 8
+var PERSON_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/person_spawner.png")
+const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person_spawner/PersonSpawner.tscn"
+
 const BLANK_COST: int = 5
 const BLANK_NAME: String = "Blank"
 const BLANK_DESCRIPTION: String = "Does nothing"
 var BLANK_IMAGE: Texture = load("res://sprites/towers/blank/blank.png")
 const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
 
+const SUPPORTER_COST: int = 10
+const SUPPORTER_NAME: String = "Supporter"
+const SUPPORTER_DESCRIPTION: String = "Towers in range attack faster"
+const SUPPORTER_COOLDOWN_REDUCTION: float = 0.75
+var SUPPORTER_IMAGE: Texture = load("res://sprites/towers/blank/support/support.png")
+const SUPPORTER_SCENE_PATH: String = "res://towers/blank/support/SupportTower.tscn"
+
 const GOLD_DISPENSER_NAME: String = "Gold Dispenser"
 const GOLD_DISPENSER_COST: int = 10
-const GOLD_DISPENSER_COOLDOWN: float = 15
+const GOLD_DISPENSER_COOLDOWN: float = 8
 const GOLD_DISPENSER_DESCRIPTION: String = "Dispenses gold"
 var GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
 const GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/GoldDispenserTower.tscn"
 
 const DOUBLE_GOLD_DISPENSER_NAME: String = "Double Gold Dispenser"
-const DOUBLE_GOLD_DISPENSER_COST: int = 15
+const DOUBLE_GOLD_DISPENSER_COST: int = 8
 const DOUBLE_GOLD_DISPENSER_COOLDOWN: float = 12
 const DOUBLE_GOLD_DISPENSER_DESCRIPTION: String = "Dispenses 2 gold"
 var DOUBLE_GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
@@ -112,7 +140,7 @@ const SLOWING_PYLON_COOLDOWN: float = 0.25
 const SLOWING_PYLON_DAMAGE: float = 0.25
 var SLOWING_PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
 
-var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/ChargerMinion.tscn")
+var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/charger/ChargerMinion.tscn")
 const CHARGER_NAME: String = "Charger"
 const CHARGER_SPEED: float = 100
 const CHARGER_DAMAGE: float = 0.8
@@ -120,7 +148,16 @@ const CHARGER_WANDER_DIST: float = 300
 const CHARGER_MIN_WANDER: float = 50
 const CHARGER_LIFETIME: float = 5
 
-var shooter_minion_scene: PackedScene = load("res://towers/spawner/minions/ShooterMinion.tscn")
+var person_minion_scene: PackedScene = load("res://towers/spawner/minions/person/PersonMinion.tscn")
+const PERSON_NAME: String = "Person"
+const PERSON_SPEED: float = 200
+const PERSON_DAMAGE: float = 0.2
+const PERSON_COOLDOWN: float = 3
+const PERSON_WANDER_DIST: float = 500
+const PERSON_MIN_WANDER: float = 300
+const PERSON_LIFETIME: float = 7
+
+var shooter_minion_scene: PackedScene = load("res://towers/spawner/minions/shooter/ShooterMinion.tscn")
 const SHOOTER_NAME: String = "Shooter"
 const SHOOTER_SPEED: float = 100
 const SHOOTER_DAMAGE: float = 0.5
