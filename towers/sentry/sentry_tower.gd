@@ -11,6 +11,7 @@ func _init() -> void:
 	cooldown = Towers.SENTRY_COOLDOWN
 	damage_scale = Towers.SENTRY_DAMAGE_PERCENTAGE
 	bullet_speed = Towers.SENTRY_SPEED_PERCENTAGE
+	bullet_scale = Towers.SENTRY_BULLET_SCALE
 	shot_timer = cooldown
 	image = Towers.SENTRY_IMAGE
 	angle_offset = 90.0

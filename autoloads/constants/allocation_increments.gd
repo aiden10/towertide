@@ -9,3 +9,4 @@ const MAX_HEALTH_INCREMENT: int = 15
 const BULLET_SIZE_INCREMENT: float = 0.6
 const BULLET_SPEED_INCREMENT: int = 50
 const PIERCE_INCREMENT: int = 1
+const TOWER_LIMIT_INCREASE: int = 1

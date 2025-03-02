@@ -12,6 +12,7 @@ func _init() -> void:
 	xp_drop_range = Enemies.TANKY_XP_DROP_RANGE
 	gold_drop_count = Enemies.TANKY_GOLD_DROP_COUNT
 	xp_drop_count = Enemies.TANKY_XP_DROP_COUNT
+	xp_type = Enemies.TANKY_XP_TYPE
 	min_spawn_dist = Enemies.TANKY_MIN_SPAWN_DIST
 	spawn_radius = Enemies.TANKY_SPAWN_RADIUS
 	item_drop_chance = Enemies.TANKY_ITEM_DROP_CHANCE

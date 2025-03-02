@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://do3qq0xnpl8bv"]
+
+[ext_resource type="Script" path="res://towers/sprayer/barrage/double_cross_tower.gd" id="1_2yhyp"]
+[ext_resource type="Texture2D" uid="uid://dcan2keci0bwu" path="res://sprites/towers/cross/barrage/double_cross.png" id="2_il1jx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5icn"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mj64h"]
+radius = 79.0569
+
+[node name="DoubleCrossTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_2yhyp")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u5icn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(5.68434e-14, -1)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("2_il1jx")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_mj64h")

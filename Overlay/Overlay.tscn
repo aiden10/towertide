@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=21 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
 [ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
 [ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
 [ext_resource type="Script" path="res://overlay/stats_display.gd" id="15_5owfj"]
+[ext_resource type="PackedScene" uid="uid://wm0ankwkqulp" path="res://overlay/limits_upgrade/LimitUpgradeScreen.tscn" id="15_08l5w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ibja"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -754,3 +755,5 @@ custom_minimum_size = Vector2(175, 75)
 layout_mode = 2
 text = "Spawner Description"
 autowrap_mode = 3
+
+[node name="LimitUpgradeScreen" parent="CanvasLayer" instance=ExtResource("15_08l5w")]

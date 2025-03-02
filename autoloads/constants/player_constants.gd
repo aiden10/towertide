@@ -15,10 +15,10 @@ const DEFAULT_PIERCE: int = 1
 const DEFAULT_BULLET_SIZE: float = 1
 const DEFAULT_REGEN: int = 10
 const DEFAULT_REGEN_COOLDOWN: float = 15
-const DEFAULT_SPRAYER_LIMIT: int = 5
-const DEFAULT_SENTRY_LIMIT: int = 5
-const DEFAULT_BLANK_LIMIT: int = 10
-const DEFAULT_SPAWNER_LIMIT: int = 5
+const DEFAULT_SPRAYER_LIMIT: int = 1
+const DEFAULT_SENTRY_LIMIT: int = 1
+const DEFAULT_BLANK_LIMIT: int = 3
+const DEFAULT_SPAWNER_LIMIT: int = 1
 
 ## Misc
 const DEFAULT_LEVELS_AVAILABLE: int = 0

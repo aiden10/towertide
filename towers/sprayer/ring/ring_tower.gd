@@ -32,7 +32,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if parent.is_in_group("Enemies") and can_hit:
 		parent.take_damage(damage_scale * PlayerState.damage, self)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
 		shot_timer = cooldown * PlayerState.firerate

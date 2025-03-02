@@ -8,11 +8,9 @@
         - Shotgun (Shoots like the shotgun enemy)
             - Grapeshot (Shoots in a cluster)
     - Spray: Just shoots
-        - More bullets
+        - More bullets everywhere
         - Ring emission
-        - Special tree
-            - Freezing enemies that enter its radius
-            - 
+        - More bullets along a path/pattern
     - Spawners: Spawn friendly minions
         - Shooting minions
             - Same as the sentry paths
@@ -20,11 +18,8 @@
             - People
                 - Kidnapper: goes out, finds an enemy, brings it back to the tower
                 - Knight: has a sword
-        - Status effect minions
-            - Buffs
-            - Debuffs
-            - Aoe attacks
-
+        - Swarm minions
+            
     - Aura: Base tower does nothing
         - Pylon tower with electric fence
         - Economy
@@ -32,10 +27,11 @@
             - Debuffs enemies while still buffing friendly towers  
 
 Different characters with have different abilities
-Random events between stages?
-I want the game's items and towers to feel like shellshock live. 
 
-Because you always have the choice of what towers to upgrade and what upgrade to pick, there shouldn't be any extremely
-powerful synergies between towers alone, only minor ones. However, strong synergies can exist between items and towers.
+Random events between stages?
+
+How to balance randomness with the large amount of player expression? Right now players could always go with the same build/towers each game.
+- Bosses which heavily counter certain builds
+- Starting tower limits much lower and randomly incrementing one of them after each wave. Or giving the player a choice between two random tower limits
 
 dir -Recurse *.gd | Get-Content | Measure-Object -Line

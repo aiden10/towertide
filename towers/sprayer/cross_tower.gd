@@ -23,12 +23,18 @@ func _init() -> void:
 	upgrade1_price = Towers.CARDINAL_COST
 	upgrade1_image = Towers.CARDINAL_IMAGE
 	upgrade1_scene = Scenes.cardinal_tower_scene
+	
+	upgrade2_name = Towers.DOUBLE_CROSS_NAME
+	upgrade2_description = Towers.DOUBLE_CROSS_DESCRIPTION
+	upgrade2_price = Towers.DOUBLE_CROSS_COST
+	upgrade2_image = Towers.DOUBLE_CROSS_IMAGE
+	upgrade2_scene = Scenes.double_cross_tower_scene
 
-	upgrade2_name = Towers.RING_NAME
-	upgrade2_description = Towers.RING_DESCRIPTION
-	upgrade2_price = Towers.RING_COST
-	upgrade2_image = Towers.RING_IMAGE
-	upgrade2_scene = Scenes.ring_tower_scene
+	upgrade3_name = Towers.RING_NAME
+	upgrade3_description = Towers.RING_DESCRIPTION
+	upgrade3_price = Towers.RING_COST
+	upgrade3_image = Towers.RING_IMAGE
+	upgrade3_scene = Scenes.ring_tower_scene
 	
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta

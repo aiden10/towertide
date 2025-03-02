@@ -16,6 +16,7 @@ func _init() -> void:
 	xp_drop_range = Enemies.SNIPER_XP_DROP_RANGE
 	gold_drop_count = Enemies.SNIPER_GOLD_DROP_COUNT
 	xp_drop_count = Enemies.SNIPER_XP_DROP_COUNT
+	xp_type = Enemies.SNIPER_XP_TYPE
 	bullet_scale = Enemies.SNIPER_BULLET_SIZE
 	spawn_radius = Enemies.SNIPER_SPAWN_RADIUS
 	min_spawn_dist = Enemies.SNIPER_MIN_SPAWN_DIST

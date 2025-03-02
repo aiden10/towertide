@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://wm0ankwkqulp"]
+
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_cgh5q"]
+[ext_resource type="Script" path="res://overlay/limits_upgrade/limit_upgrade_screen.gd" id="1_ij043"]
+[ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="2_r07id"]
+[ext_resource type="Texture2D" uid="uid://b5exvuf2l1wdc" path="res://sprites/towers/spawner/spawner_icon.png" id="3_pphse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhm0t"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 35.0
+expand_margin_bottom = 50.0
+
+[node name="LimitUpgradeScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ij043")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -300.5
+offset_right = 325.0
+offset_bottom = 300.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_cgh5q")
+theme_override_font_sizes/font_size = 64
+text = "Upgrade Tower Limits"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_cgh5q")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhm0t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="TowerImage" type="TextureRect" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+texture = ExtResource("2_r07id")
+expand_mode = 3
+
+[node name="TowerName" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Sprayer Limit"
+
+[node name="LimitIncrease" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Limit +1"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Select"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="TowerImage" type="TextureRect" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+texture = ExtResource("3_pphse")
+expand_mode = 3
+
+[node name="TowerName" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Spawner Limit"
+
+[node name="LimitIncrease" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Limit +1"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Select"

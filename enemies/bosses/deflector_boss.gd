@@ -43,7 +43,8 @@ func _on_area_entered(area: Area2D) -> void:
 		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
 		parent.take_damage(damage)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	health_bar.value = health
 	var angle = Time.get_ticks_msec() / 1000.0
 	
@@ -56,7 +57,6 @@ func _process(delta: float) -> void:
 	shield2.rotation = angle + PI
 	
 func telegraph_charge():
-	# Visual effect to warn player of incoming charge
 	var flash_tween = create_tween()
 	flash_tween.tween_property($Sprite, "modulate", Color(2, 0.5, 0.5, 1), 0.2)
 	flash_tween.tween_property($Sprite, "modulate", Color(1, 1, 1, 1), 0.2)

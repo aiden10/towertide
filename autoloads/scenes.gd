@@ -18,6 +18,7 @@ var item_cell_scene: PackedScene = preload("res://overlay/ItemCell.tscn")
 
 var cross_tower_scene: PackedScene = preload("res://towers/sprayer/CrossTower.tscn")
 var cardinal_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/CardinalTower.tscn")
+var double_cross_tower_scene: PackedScene = preload("res://towers/sprayer/barrage/DoubleCrossTower.tscn")
 var ring_tower_scene: PackedScene = preload("res://towers/sprayer/ring/RingTower.tscn")
 
 var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.tscn")
@@ -47,12 +48,13 @@ var weak_rusher_scene: PackedScene = preload("res://enemies/stage1/WeakRusher.ts
 
 ## Stage two enemies
 var tanky_enemy_scene: PackedScene = preload("res://enemies/stage2/TankyEnemy.tscn")
-var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.tscn")
 
 ## Stage three enemies
 var shotgun_enemy_scene: PackedScene = preload("res://enemies/stage3/ShotgunEnemy.tscn")
+var shielded_rusher_scene: PackedScene = preload("res://enemies/stage3/ShieldedRusher.tscn")
 
 ## Stage four enemies
+var sniper_enemy_scene: PackedScene = preload("res://enemies/stage2/SniperEnemy.tscn")
 
 ## Stage five enemies
 var stealthy_enemy_scene: PackedScene = preload("res://enemies/stage4/StealthStraferEnemy.tscn")
@@ -60,6 +62,6 @@ var stealthy_enemy_scene: PackedScene = preload("res://enemies/stage4/StealthStr
 var boss_scenes: Array[PackedScene] = [deflector_boss_scene]
 var stage_one_enemy_scenes: Array[PackedScene] = [weak_rusher_scene, basic_shooter_scene]
 var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene]
-var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene, sniper_enemy_scene]
-var stage_four_enemy_scenes: Array[PackedScene] = []
+var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene, shielded_rusher_scene]
+var stage_four_enemy_scenes: Array[PackedScene] = [sniper_enemy_scene]
 var stage_five_enemy_scenes: Array[PackedScene] = [stealthy_enemy_scene]

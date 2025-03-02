@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://0ur1n6frealw"]
+
+[ext_resource type="Script" path="res://enemies/stage3/shielded_rusher.gd" id="1_k6x2d"]
+[ext_resource type="Texture2D" uid="uid://cw4u8vuiopqao" path="res://sprites/enemies/weak_rusher.png" id="1_v8h55"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_72fo2"]
+[ext_resource type="Script" path="res://enemies/enemy_states/rush_state.gd" id="3_cv2fk"]
+[ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="4_jgci7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5mkj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wiik"]
+radius = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkhse"]
+size = Vector2(63.875, 20)
+
+[node name="ShieldedRusher" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_k6x2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_e5mkj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_v8h55")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
+script = ExtResource("2_72fo2")
+initial_state = NodePath("Rush")
+
+[node name="Rush" type="Node" parent="StateMachine"]
+script = ExtResource("3_cv2fk")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8wiik")
+
+[node name="Shield1" type="Node2D" parent="." groups=["EnemyDeflectors"]]
+scale = Vector2(0.35, 0.35)
+
+[node name="ShieldArea" type="Area2D" parent="Shield1"]
+rotation = 1.5708
+scale = Vector2(2.4, 0.7)
+collision_layer = 4
+collision_mask = 4
+
+[node name="ShieldHitbox" type="CollisionShape2D" parent="Shield1/ShieldArea"]
+shape = SubResource("RectangleShape2D_hkhse")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield1"]
+rotation = 1.5708
+scale = Vector2(0.40625, 0.40625)
+texture = ExtResource("4_jgci7")

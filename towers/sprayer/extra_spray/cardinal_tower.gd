@@ -32,5 +32,5 @@ func shoot_at_angle(angle: float) -> void:
 	bullet.position = position
 	
 	var target_position = position + Vector2.RIGHT.rotated(angle) * 100
-	bullet.start(target_position, PlayerState.projectile_speed * Towers.CROSS_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self, bullet_scale)
+	bullet.start(target_position, PlayerState.projectile_speed * Towers.CARDINAL_SPEED_PERCENTAGE, PlayerState.damage * damage_scale, self, bullet_scale)
 	EventBus.arena_spawn.emit(bullet)	

@@ -2,5 +2,7 @@ Tower upgrades/more towers
 More items
 More enemies, bosses
     Rapid fire enemy
-Optimization (Despawning stuff, enemy limit)
+Optimization
+    Move as much outside of process functions as possible
+    Use a pool for enemies, pickups, and projectiles
 Fix crash that sometimes happens when buying an item
