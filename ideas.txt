@@ -1,9 +1,4 @@
 
-Bomb item:
-Instead of bullets, you now place bombs where you click
-Bombs auto detonate after a second (represented by a circle closing in)
-If you click on the bomb as the circle closes it does more damage and knockback
-
 Knight minions which have swords
 Hollow knight spawner
     When you upgrade to this tower, you can select an item to give to all the knights it spawns (knights will always have one sword) 
@@ -17,17 +12,18 @@ Bosses should counter particular kinds of builds:
     - Boss which temporarily disables pylons around it
     - Boss which brings enemies killed around it back to life once
 
-Enemies that have shields around them
+Items:
+    - Increase tower firerate while you stand next to it
+    - Shooting towers temporarily buffs them
+    -
 
-Kidnapper leads to Robber tower whose minions make enemies drop gold when picked up
 People spawner leads to barracks which spawns knights 
 Adventurer spawner, spawns a team consisting of a knight, mage, and an archer or something. Gets stronger with the amount of kills
 
 Special wave types:
     - "Swarm", only weak rushers spawn
 
-Ne Zha items:
-Fire-tipped spear which follows your mouse and hits enemies
+Stronger towers that are only active while the player is next to them
 
 Characters:
 Berserker:

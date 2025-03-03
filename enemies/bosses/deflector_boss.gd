@@ -7,6 +7,8 @@ extends Enemy
 var rotation_radius: float = 300
 var original_shield_position1: Vector2
 var original_shield_position2: Vector2
+var attack_timer: float = 0
+var can_attack: bool = false
 
 func _ready() -> void:
 	original_shield_position1 = shield1.position
@@ -40,11 +42,16 @@ func _init() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Player"):
-		Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
-		parent.take_damage(damage)
-
+		if can_attack:
+			Utils.spawn_hit_effect(Color(255, 0, 0, 50), position, damage)
+			parent.take_damage(damage)
+			can_attack = false
+			
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	attack_timer += delta
+	if attack_timer >= 0.5:
+		can_attack = true
 	health_bar.value = health
 	var angle = Time.get_ticks_msec() / 1000.0
 	

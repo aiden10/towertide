@@ -36,6 +36,7 @@ scale = Vector2(2.365, 2.365)
 texture = ExtResource("3_0ige6")
 
 [node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
 shape = SubResource("CircleShape2D_m3icm")

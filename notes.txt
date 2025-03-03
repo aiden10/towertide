@@ -1,8 +1,9 @@
 4 base kinds of towers:
     - Sentry: Aims, then shoots
         - Sniper
-            - Cannon
+            - Cannon: Press e to fire, press r to rotate
             - Quick sniper
+            - Marker: Does little damage but applies a mark to enemies which makes them take double damage
         - Machine gun
             - Gatling
         - Shotgun (Shoots like the shotgun enemy)
@@ -19,19 +20,22 @@
                 - Kidnapper: goes out, finds an enemy, brings it back to the tower
                 - Knight: has a sword
         - Swarm minions
-            
+            - Swarm minions that follow the player
+
     - Aura: Base tower does nothing
         - Pylon tower with electric fence
         - Economy
         - Buffs towers in range
             - Debuffs enemies while still buffing friendly towers  
+            - Buffs friendly bullets when they exit this tower's range (more damage, faster)
 
 Different characters with have different abilities
 
 Random events between stages?
 
-How to balance randomness with the large amount of player expression? Right now players could always go with the same build/towers each game.
-- Bosses which heavily counter certain builds
-- Starting tower limits much lower and randomly incrementing one of them after each wave. Or giving the player a choice between two random tower limits
+What if enemies only spawn to the right of you?
+
+Blending the player + items + towers together in a meaningful way
+How to make items synergize with towers and with other items?
 
 dir -Recurse *.gd | Get-Content | Measure-Object -Line

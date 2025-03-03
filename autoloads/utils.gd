@@ -1,5 +1,7 @@
 extends Node
 
+var damage_label_font: Font = load("res://resources/VastShadow-Regular.ttf")
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_game()
@@ -32,7 +34,37 @@ func spawn_hit_effect(color: Color, position: Vector2, damage: float) -> void:
 	hit_effect.global_position = position
 	hit_effect.set_properties(color, adjusted_damage)
 	EventBus.arena_spawn.emit(hit_effect)
+
+func spawn_damage_text(location: Vector2, damage_taken: int) -> void:
+	var damage_label = Label.new()
+	damage_label.text = str(int(damage_taken))
+	damage_label.position = Vector2(randf_range(-20, 20), -30)
+	damage_label.z_index = 100
+	damage_label.add_theme_font_override("font", damage_label_font)
+	damage_label.custom_minimum_size = Vector2(40, 20)
 	
+	if damage_taken < 5:
+		damage_label.modulate = Color(1, 1, 1) # White for small damage
+	elif damage_taken < 10:
+		damage_label.modulate = Color(1, 0.3, 0.3) # Red for medium damage
+	elif damage_taken < 16:
+		damage_label.modulate = Color(1, 0.65, 0.2) # Orange for high damage
+	else:
+		damage_label.modulate = Color(1, 1, 0.3) # Yellow for very high damage
+	
+	var scale_factor = max(1.0, log(damage_taken) * 0.5)
+	damage_label.scale = Vector2(scale_factor, scale_factor)
+
+	EventBus.arena_spawn.emit(damage_label)
+	damage_label.global_position = location
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(damage_label, "global_position:y", location.y - 40, 0.6)
+	tween.tween_property(damage_label, "modulate:a", 0.0, 0.6)
+	tween.tween_property(damage_label, "scale", damage_label.scale * 1.5, 0.2)
+	tween.chain().tween_callback(damage_label.queue_free)
+
 func get_action_key_name(action_name: String) -> String:
 	var events = InputMap.action_get_events(action_name)
 	

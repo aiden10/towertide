@@ -26,11 +26,12 @@ func reset_modulation() -> void:
 func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector2 = Vector2.ZERO) -> void:
 	EventBus.enemy_hit.emit()
 	health -= damage_taken
+	Utils.spawn_damage_text(global_position, damage_taken)
 	for child in get_children():
 		if child is Sprite2D:
-			var tween = create_tween()
-			tween.tween_property(child, "modulate", Color8(255, 255, 255, 100), 0.1)
-			tween.tween_callback(reset_modulation)
+			var sprite_tween = create_tween()
+			sprite_tween.tween_property(child, "modulate", Color8(510, 510, 510, 200), 0.1)
+			sprite_tween.tween_callback(reset_modulation)
 
 	if health <= 0:
 		if not died:

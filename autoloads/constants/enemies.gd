@@ -1,5 +1,7 @@
 extends Node
 
+var damage_label_font: Font = load("res://resources/Quicksand-Light.ttf")
+
 const MIN_SPAWN_TIME = 1
 
 const BASIC_SHOOTER_HEALTH = 35
@@ -21,7 +23,7 @@ const BASIC_SHOOTER_ITEM_DROP_COUNT = 1
 const BASIC_SHOOTER_MIN_SPAWN_DIST = 650
 const BASIC_SHOOTER_SPAWN_RADIUS = 850
 
-const WEAK_RUSHER_HEALTH = 15
+const WEAK_RUSHER_HEALTH = 12
 const WEAK_RUSHER_DAMAGE = 10
 const WEAK_RUSHER_MIN_SPEED = 75
 const WEAK_RUSHER_MAX_SPEED = 100

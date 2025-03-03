@@ -64,6 +64,7 @@ scale = Vector2(0.202918, 0.202918)
 sprite_frames = SubResource("SpriteFrames_hsmet")
 
 [node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
 shape = SubResource("CircleShape2D_vn4mu")

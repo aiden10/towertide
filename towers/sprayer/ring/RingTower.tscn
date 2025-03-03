@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7wef6atbsxo0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7wef6atbsxo0"]
 
 [ext_resource type="Script" path="res://towers/sprayer/ring/ring_tower.gd" id="1_q0ce3"]
 [ext_resource type="Texture2D" uid="uid://uagxrwg36pbl" path="res://sprites/towers/cross/ring/ring_tower.png" id="2_8whjf"]
-[ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="3_l23dv"]
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="4_ppy85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bcn6y"]
@@ -28,7 +27,6 @@ texture = ExtResource("2_8whjf")
 modulate = Color(1, 1.5, 2, 1)
 position = Vector2(2.11758e-22, -1)
 scale = Vector2(0.31, 0.31)
-texture = ExtResource("3_l23dv")
 
 [node name="Ring" type="Sprite2D" parent="."]
 modulate = Color(1, 1.5, 2, 1)
@@ -36,13 +34,14 @@ position = Vector2(0, -1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ppy85")
 
-[node name="Area2D" type="Area2D" parent="Ring"]
+[node name="Area2D" type="Area2D" parent="Ring" groups=["DetectionRadius"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ring/Area2D"]
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_hjf3x")
 
 [node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
 shape = SubResource("CircleShape2D_euvvl")

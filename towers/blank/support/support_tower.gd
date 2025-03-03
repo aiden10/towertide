@@ -17,6 +17,8 @@ func _ready() -> void:
 func connect_radius_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Towers") and not area.is_in_group("DetectionRadius") and parent != self:
+		if parent.tower_name == Towers.SUPPORTER_NAME:
+			return
 		parent.cooldown *= Towers.SUPPORTER_COOLDOWN_REDUCTION
 		Utils.spawn_hit_effect(Color8(255, 225, 15, 255), parent.global_position, 8)
 		## Attach hand

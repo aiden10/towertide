@@ -33,6 +33,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_puon2")
 
 [node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
 shape = SubResource("CircleShape2D_sljjs")
