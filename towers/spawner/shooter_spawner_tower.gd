@@ -28,7 +28,7 @@ func _ready() -> void:
 	pulse_tween.parallel().tween_property(core_sprite, "modulate", Color(1, 1, 1, 0.5), 5)
 
 func _process(delta: float) -> void:
-	var effective_cooldown = cooldown * PlayerState.firerate
+	var effective_cooldown = cooldown
 
 	shot_timer -= delta
 	if shot_timer <= 0:

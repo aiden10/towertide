@@ -21,7 +21,7 @@ size = Vector2(63.875, 20)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g1m"]
 bg_color = Color(0.745829, 0.1422, 0.140524, 1)
 
-[node name="DeflectorBoss" type="CharacterBody2D" groups=["Enemies"]]
+[node name="DeflectorBoss" type="CharacterBody2D" groups=["Bosses", "Enemies"]]
 script = ExtResource("1_5r11w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

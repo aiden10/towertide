@@ -30,6 +30,7 @@ var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTowe
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")
 var person_spawner_tower_scene: PackedScene = preload("res://towers/spawner/person/PersonSpawner.tscn")
 var drifter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/drifter/DrifterSpawner.tscn")
+var kidnapper_spawner_tower_scene: PackedScene = preload("res://towers/spawner/drifter/kidnapper/KidnapperSpawner.tscn")
 
 var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn")
 var supporter_tower_scene: PackedScene = preload("res://towers/blank/support/SupportTower.tscn")
@@ -62,6 +63,7 @@ var stealthy_enemy_scene: PackedScene = preload("res://enemies/stage4/StealthStr
 var boss_scenes: Array[PackedScene] = [deflector_boss_scene]
 var stage_one_enemy_scenes: Array[PackedScene] = [weak_rusher_scene, basic_shooter_scene]
 var stage_two_enemy_scenes: Array[PackedScene] = [tanky_enemy_scene]
-var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene, shielded_rusher_scene]
-var stage_four_enemy_scenes: Array[PackedScene] = [sniper_enemy_scene]
+var stage_three_enemy_scenes: Array[PackedScene] = [shotgun_enemy_scene]
+var stage_four_enemy_scenes: Array[PackedScene] = [shielded_rusher_scene]
 var stage_five_enemy_scenes: Array[PackedScene] = [stealthy_enemy_scene]
+var stage_six_enemy_scenes: Array[PackedScene] = [sniper_enemy_scene]

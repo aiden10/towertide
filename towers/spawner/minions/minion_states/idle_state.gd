@@ -19,9 +19,9 @@ func exit() -> void:
 
 func detected(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth"):
+	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth") and not parent.is_in_group("Bosses"):
 		minion.detected_enemy = parent
-		if minion.minion_name == Towers.CHARGER_NAME:
+		if minion.minion_name == Towers.CHARGER_NAME or minion.minion_name == Towers.KIDNAPPER_NAME:
 			transitioned.emit(self, "follow")
 		elif minion.minion_name == Towers.SHOOTER_NAME:
 			transitioned.emit(self, "shoot")
@@ -32,6 +32,7 @@ func detected(area: Area2D) -> void:
 				transitioned.emit(self, "shoot")
 			else:
 				transitioned.emit(self, "melee")
+		return
 
 func physics_update(_delta: float) -> void:
 	if minion.global_position.distance_to(destination) < 15:
@@ -45,3 +46,15 @@ func physics_update(_delta: float) -> void:
 			minion.sprite.flip_h = false
 		elif direction.x < 0:
 			minion.sprite.flip_h = true
+	
+	## For the kidnapper, constantly check the detection radius, not only on enter
+	if minion.minion_name == Towers.KIDNAPPER_NAME and minion.global_position.distance_to(tower_position) > 50:
+		var detected_enemies = []
+		for area in minion_detection_range.get_overlapping_areas():
+			var parent = area.get_parent()
+			if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth") and not parent.is_in_group("Bosses"):
+				detected_enemies.append(parent)
+		if detected_enemies.size() > 0:
+			minion.detected_enemy = detected_enemies.pick_random()
+			transitioned.emit(self, "follow")
+			

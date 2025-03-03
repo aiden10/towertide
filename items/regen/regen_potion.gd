@@ -11,7 +11,7 @@ func _init() -> void:
 
 func on_aquire() -> void:
 	EventBus._item_aquired.emit()
-	PlayerState.regen_cooldown -= Items.REGEN_COOLDOWN_DECREASE
+	PlayerState.regen_cooldown *= Items.REGEN_COOLDOWN_DECREASE
 
 func use(_delta: float) -> void:
 	pass

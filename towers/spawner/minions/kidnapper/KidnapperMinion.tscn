@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8ly8ggydjqf6"]
+
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_4oydl"]
+[ext_resource type="Script" path="res://towers/spawner/minions/kidnapper/kidnapper_minion.gd" id="1_dlvkl"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="3_gc4nh"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_pu38c"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/return_state.gd" id="4_sxmyd"]
+[ext_resource type="Texture2D" uid="uid://bsasnrcnryulj" path="res://sprites/towers/minions/kidnapper/kidnapper.png" id="5_m4ybm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_il4mk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wyu6"]
+radius = 86.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcejk"]
+radius = 292.0
+
+[node name="KidnapperMinion" type="CharacterBody2D" groups=["Minions"]]
+script = ExtResource("1_dlvkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_il4mk")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_6wyu6")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_jcejk")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_4oydl")
+initial_state = NodePath("Idle")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("3_gc4nh")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_pu38c")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("4_sxmyd")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(4, -3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_m4ybm")

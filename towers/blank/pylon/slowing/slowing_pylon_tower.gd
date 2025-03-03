@@ -21,7 +21,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown * PlayerState.firerate
+		shot_timer = cooldown
 		can_hit = true
 	for connection in connections:
 		var overlaps = connection["hitbox"].get_overlapping_areas()

@@ -24,7 +24,7 @@ func physics_update(delta: float):
 		enemy.velocity = Vector2.ZERO
 		
 		# Randomly choose between different attack patterns
-		var attack_choice = randi() % 4
+		var attack_choice = randi_range(0, 3)
 		match attack_choice:
 			0: transitioned.emit(self, "spiral")
 			1: transitioned.emit(self, "burst")
@@ -34,7 +34,6 @@ func physics_update(delta: float):
 
 func decide_strafe_direction() -> void:
 	strafe_timer = strafe_duration
-	# Perpendicular to player direction for strafing
 	var player_dir = (GameState.player_position - enemy.global_position).normalized()
 	strafe_direction = player_dir.rotated(PI/2 if randf() > 0.5 else -PI/2)
 	speed_modifier = randf_range(0.8, 1.2) # Randomize speed

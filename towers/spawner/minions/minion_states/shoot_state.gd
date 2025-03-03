@@ -36,7 +36,7 @@ func physics_update(_delta: float) -> void:
 	minion.look_at(minion.detected_enemy.global_position)
 	if shot_timer <= 0:
 		shoot(minion.detected_enemy.position)
-		shot_timer = minion.firerate_cooldown * PlayerState.firerate
+		shot_timer = minion.firerate_cooldown
 	
 	destination = minion.detected_enemy.global_position
 	direction = destination - minion.global_position

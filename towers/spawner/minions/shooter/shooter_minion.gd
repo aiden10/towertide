@@ -8,6 +8,6 @@ func _ready() -> void:
 	speed = Towers.SHOOTER_SPEED
 	min_wander = Towers.SHOOTER_MIN_WANDER
 	wander_distance = Towers.SHOOTER_WANDER_DIST
-	firerate_cooldown = Towers.SHOOTER_COOLDOWN * PlayerState.firerate
+	firerate_cooldown = Towers.SHOOTER_COOLDOWN
 	projectile_speed = Towers.SHOOTER_PROJECTILE_SPEED
 	bullet_scale = Towers.SHOOTER_BULLET_SCALE

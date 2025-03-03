@@ -4,6 +4,7 @@ var shot_timer: float = 0
 var optimal_range: float = 40.0
 
 func enter() -> void:
+	shot_timer = 0  
 	if minion.minion_name == Towers.PERSON_NAME:
 		minion.sprite.play("attack")
 		minion.sprite.flip_h = false
@@ -35,11 +36,11 @@ func physics_update(_delta: float) -> void:
 	if distance_to_enemy > minion.min_wander:
 		transitioned.emit(self, "idle")
 		return
-	
+		
 	if shot_timer <= 0 and distance_to_enemy < 50:
 		attack()
-		shot_timer = minion.firerate_cooldown * PlayerState.firerate
-		
+		shot_timer = minion.firerate_cooldown
+
 	if distance_to_enemy < optimal_range - 10:
 		minion.velocity = -direction.normalized() * minion.speed
 	elif distance_to_enemy > optimal_range + 10:

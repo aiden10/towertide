@@ -16,6 +16,7 @@ func _init() -> void:
 	bullet_scale = Enemies.STEALTHY_BULLET_SIZE
 	spawn_radius = Enemies.STEALTHY_SPAWN_RADIUS
 	min_spawn_dist = Enemies.STEALTHY_MIN_SPAWN_DIST
+	gold_drop_chance = Enemies.STEALTHY_GOLD_DROP_CHANCE
 	item_drop_chance = Enemies.STEALTHY_ITEM_DROP_CHANCE
 	item_drop_count = Enemies.STEALTHY_ITEM_DROP_COUNT
 	shot_count = Enemies.STEALTHY_SHOT_AMOUNT

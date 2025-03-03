@@ -42,5 +42,5 @@ func physics_update(delta: float):
 			
 	# Exit state if player is too far
 	var distance_to_player = enemy.global_position.distance_to(GameState.player_position)
-	if distance_to_player > enemy.distance_threshold / 2 and !is_charging:
+	if distance_to_player > enemy.distance_threshold and !is_charging:
 		transitioned.emit(self, "follow")

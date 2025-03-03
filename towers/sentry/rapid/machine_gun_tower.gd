@@ -28,7 +28,7 @@ func enemy_detected(area: Area2D) -> void:
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown * PlayerState.firerate
+		shot_timer = cooldown
 		can_shoot = true
 	for area in attack_radius.get_overlapping_areas():
 		enemy_detected(area)

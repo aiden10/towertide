@@ -18,7 +18,7 @@ func _init() -> void:
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown * PlayerState.firerate
+		shot_timer = cooldown
 		shoot_pattern()
 
 func shoot_pattern() -> void:

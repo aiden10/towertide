@@ -20,7 +20,7 @@ func _init() -> void:
 	scene_path = Towers.SNIPER_SCENE_PATH
 
 func _physics_process(delta: float) -> void:
-	var effective_cooldown = cooldown * PlayerState.firerate
+	var effective_cooldown = cooldown
 	var progress = 1.0 - (shot_timer / effective_cooldown)
 	var alpha = int(progress * 255)
 	aim_laser.modulate = Color8(255, 255, 255, alpha)

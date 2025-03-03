@@ -35,7 +35,7 @@ func _on_area_entered(area: Area2D) -> void:
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown * PlayerState.firerate
+		shot_timer = cooldown
 		can_hit = true
 
 	for area in ring_hitbox.get_overlapping_areas():

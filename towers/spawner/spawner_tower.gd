@@ -28,7 +28,7 @@ func _init() -> void:
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:
-		shot_timer = cooldown * PlayerState.firerate
+		shot_timer = cooldown
 		if (get_child_count() - 4) < spawn_limit:
 			spawn_minions(spawn_amount, Towers.CHARGER_MIN_WANDER)
 		

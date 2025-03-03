@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm1t0f0yrudbw"]
+
+[ext_resource type="Script" path="res://towers/spawner/drifter/kidnapper/kidnapper_spawner.gd" id="1_so6re"]
+[ext_resource type="Texture2D" uid="uid://cw78f4pbpelvg" path="res://sprites/towers/spawner/kidnapper_spawner.png" id="2_c4qqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6fth"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3yps"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v78h0"]
+radius = 456.01
+
+[node name="KidnapperSpawner" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_so6re")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_q6fth")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_c4qqq")
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_k3yps")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_v78h0")

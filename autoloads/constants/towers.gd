@@ -71,10 +71,10 @@ const MACHINE_GUN_SCENE_PATH: String = "res://towers/sentry/rapid/MachineGunTowe
 const SHOTGUN_COST: int = 15
 const SHOTGUN_NAME: String = "Shotgun"
 const SHOTGUN_DESCRIPTION: String = "Shoots 3 slower, but stronger bullets"
-const SHOTGUN_COOLDOWN: float = 3
-const SHOTGUN_SPEED_PERCENTAGE: float = 0.5
+const SHOTGUN_COOLDOWN: float = 2
+const SHOTGUN_SPEED_PERCENTAGE: float = 0.75
 const SHOTGUN_DAMAGE_PERCENTAGE: float = 1.5
-const SHOTGUN_BULLET_SCALE: float = 0.6
+const SHOTGUN_BULLET_SCALE: float = 0.55
 const SHOTGUN_SHOT_COUNT: int = 3
 var SHOTGUN_IMAGE: Texture = load("res://sprites/towers/sentry/shotgun/shotgun_tower.png")
 const SHOTGUN_SCENE_PATH: String = "res://towers/sentry/shotgun/ShotgunTower.tscn"
@@ -111,12 +111,22 @@ const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person/PersonSpa
 const DRIFTER_SPAWNER_COST: int = 20
 const DRIFTER_SPAWNER_SPAWN_AMOUNT: int = 1
 const DRIFTER_SPAWNER_NAME: String = "Drifter Spawner"
-const DRIFTER_SPAWNER_DESCRIPTION: String = "Spawns aimless people with high potential"
+const DRIFTER_SPAWNER_DESCRIPTION: String = "Spawns wandering minions which stab and shoot"
 const DRIFTER_SPAWNER_COOLDOWN: float = 3.5
 
 const DRIFTER_SPAWNER_SPAWN_LIMIT: int = 6
 var DRIFTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/drifter_spawner.png")
 const DRIFTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/DrifterSpawner"
+
+const KIDNAPPER_SPAWNER_COST: int = 25
+const KIDNAPPER_SPAWNER_SPAWN_AMOUNT: int = 1
+const KIDNAPPER_SPAWNER_NAME: String = "Kidnapper Spawner"
+const KIDNAPPER_SPAWNER_DESCRIPTION: String = "Spawns minions that kidnap enemies and return them to this tower"
+const KIDNAPPER_SPAWNER_COOLDOWN: float = 3.5
+
+const KIDNAPPER_SPAWNER_SPAWN_LIMIT: int = 5
+var KIDNAPPER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/kidnapper_spawner.png")
+const KIDNAPPER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/kidnapper/KidnapperSpawner.tscn"
 
 const BLANK_COST: int = 5
 const BLANK_NAME: String = "Blank"
@@ -196,6 +206,14 @@ const DRIFTER_COOLDOWN: float = 0.8
 const DRIFTER_PROJECTILE_SPEED: float = 0.8
 const DRIFTER_WANDER_DIST: float = 1200
 const DRIFTER_MIN_WANDER: float = 500
+
+var kidnapper_minion_scene: PackedScene = load("res://towers/spawner/minions/kidnapper/KidnapperMinion.tscn")
+const KIDNAPPER_NAME: String = "Kidnapper"
+const KIDNAPPER_SPEED: float = 150
+const KIDNAPPER_DAMAGE: float = 0.1
+const KIDNAPPER_COOLDOWN: float = 2
+const KIDNAPPER_WANDER_DIST: float = 400
+const KIDNAPPER_MIN_WANDER: float = 100
 
 var shooter_minion_scene: PackedScene = load("res://towers/spawner/minions/shooter/ShooterMinion.tscn")
 const SHOOTER_NAME: String = "Shooter"
