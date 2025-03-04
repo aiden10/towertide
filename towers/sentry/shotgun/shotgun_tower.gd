@@ -17,6 +17,12 @@ func _init() -> void:
 	image = Towers.SHOTGUN_IMAGE
 	angle_offset = 90.0
 	scene_path = Towers.SHOTGUN_SCENE_PATH
+	
+	upgrade1_name = Towers.GRAPESHOT_NAME
+	upgrade1_description = Towers.GRAPESHOT_DESCRIPTION
+	upgrade1_price = Towers.GRAPESHOT_COST
+	upgrade1_image = Towers.GRAPESHOT_IMAGE
+	upgrade1_scene = Scenes.grapeshot_tower_scene
 
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta

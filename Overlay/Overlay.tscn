@@ -130,28 +130,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Spawning x extra enemies"
 
-[node name="ItemsContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -410.0
-offset_right = 250.0
-offset_bottom = 440.0
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-script = ExtResource("6_bwdxj")
-
-[node name="ScrollBox" type="ScrollContainer" parent="CanvasLayer/ItemsContainer"]
-clip_contents = false
-custom_minimum_size = Vector2(200, 800)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ItemsContainer/ScrollBox"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_constants/separation = 30
-
 [node name="XPContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -443,196 +421,224 @@ grow_vertical = 2
 theme = ExtResource("1_84vjy")
 script = ExtResource("15_5owfj")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatsDisplay"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StatsDisplay"]
+layout_mode = 2
+
+[node name="ItemsContainer" type="MarginContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("6_bwdxj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/ItemsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/ItemsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Items"
+horizontal_alignment = 3
+
+[node name="ScrollBox" type="ScrollContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/ItemsContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/ItemsContainer/VBoxContainer/ScrollBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gxe6u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="LevelLabel" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level 0"
 horizontal_alignment = 1
 
-[node name="Damage" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="Damage" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="DamageIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+[node name="DamageIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Damage"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Damage"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Damage"
 
-[node name="DamageQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Damage"]
+[node name="DamageQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Damage"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="Regen" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="Regen" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="RegenIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+[node name="RegenIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Regen"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Regen"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Regeneration"
 
-[node name="RegenQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Regen"]
+[node name="RegenQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Regen"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="Speed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="SpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+[node name="SpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Speed"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Speed"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Speed"
 
-[node name="SpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Speed"]
+[node name="SpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Speed"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="Knockback" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="Knockback" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="KnockbackIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+[node name="KnockbackIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Knockback"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Knockback"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Knockback"
 
-[node name="KnockbackQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
+[node name="KnockbackQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Knockback"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="ATKSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="ATKSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="ATKSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+[node name="ATKSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Firerate"
 
-[node name="ATKSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
+[node name="ATKSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="MaxHP" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="MaxHP" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="MaxHPIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+[node name="MaxHPIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/MaxHP"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/MaxHP"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Max Health"
 
-[node name="MaxHPQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
+[node name="MaxHPQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/MaxHP"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="BulletSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="BulletSpeed" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="BulletSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+[node name="BulletSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Bullet Speed"
 
-[node name="BulletSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
+[node name="BulletSpeedQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="BulletSize" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="BulletSize" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="BulletSizeIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+[node name="BulletSizeIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSize"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSize"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Bullet Size"
 
-[node name="BulletSizeQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
+[node name="BulletSizeQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSize"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="Pierce" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer"]
+[node name="Pierce" type="HBoxContainer" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PierceIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+[node name="PierceIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Pierce"]
 layout_mode = 2
 texture = ExtResource("2_adl4l")
 expand_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+[node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Pierce"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Pierce"
 
-[node name="PierceQuantity" type="Label" parent="CanvasLayer/StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
+[node name="PierceQuantity" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Pierce"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"

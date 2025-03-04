@@ -27,9 +27,14 @@ func enemy_detected(area: Area2D) -> void:
 			var angle: float = 30
 			var middle_index = shot_count / 2
 			for i in range(shot_count):
-				var offset = (i - middle_index) * angle
-				shoot(target_enemy_position, angle_offset, offset)
-		
+				if tower_name != Towers.GRAPESHOT_NAME:
+					var offset = (i - middle_index) * angle
+					shoot(target_enemy_position, angle_offset, offset)
+				else:
+					var random_offset: float = randf_range(1, 20)
+					shoot(target_enemy_position, angle_offset, random_offset)
+					await get_tree().create_timer(0.01).timeout
+
 func shoot(enemy_position: Vector2, angle: float, offset: float = 0) -> void:
 	var direction = (enemy_position - position).normalized()
 	var shot_angle_offset = deg_to_rad(offset)

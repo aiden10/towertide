@@ -1,12 +1,12 @@
 extends Node
 
 const DAMAGE_INCREMENT: int = 3
-const REGEN_INCREMENT: int = 3
-const SPEED_INCREMENT: int = 20
-const KNOCKBACK_INCREMENT: int = 75
+const REGEN_INCREMENT: int = 5
+const SPEED_INCREMENT: int = 35
+const KNOCKBACK_INCREMENT: int = 125
 const FIRERATE_INCREMENT: float = 0.15
-const MAX_HEALTH_INCREMENT: int = 15
-const BULLET_SIZE_INCREMENT: float = 0.6
-const BULLET_SPEED_INCREMENT: int = 50
+const MAX_HEALTH_INCREMENT: int = 25
+const BULLET_SIZE_INCREMENT: float = 0.75
+const BULLET_SPEED_INCREMENT: int = 75
 const PIERCE_INCREMENT: int = 1
 const TOWER_LIMIT_INCREASE: int = 1

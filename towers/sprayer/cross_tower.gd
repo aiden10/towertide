@@ -11,6 +11,7 @@ func _init() -> void:
 	tower_name = Towers.CROSS_NAME
 	description = Towers.CROSS_DESCRIPTION
 	cost = Towers.CROSS_COST
+	value = cost
 	cooldown = Towers.CROSS_COOLDOWN
 	damage_scale = Towers.CROSS_DAMAGE_PERCENTAGE
 	bullet_scale = Towers.CROSS_BULLET_SCALE

@@ -8,6 +8,7 @@ func _init() -> void:
 	tower_name = Towers.SENTRY_NAME
 	description = Towers.SENTRY_DESCRIPTION
 	cost = Towers.SENTRY_COST
+	value = cost
 	cooldown = Towers.SENTRY_COOLDOWN
 	damage_scale = Towers.SENTRY_DAMAGE_PERCENTAGE
 	bullet_speed = Towers.SENTRY_SPEED_PERCENTAGE

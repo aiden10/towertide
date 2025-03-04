@@ -26,3 +26,6 @@ func _ready() -> void:
 	upgrade3_image = Towers.SUPPORTER_IMAGE
 	upgrade3_scene = Scenes.supporter_tower_scene
 	
+func _init() -> void:
+	super()
+	value = cost

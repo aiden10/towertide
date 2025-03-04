@@ -1,5 +1,5 @@
 extends MarginContainer
-@onready var items_container: VBoxContainer = $ScrollBox/VBoxContainer
+@onready var items_container: VBoxContainer = $VBoxContainer/ScrollBox/VBoxContainer
 
 func _ready() -> void:
 	EventBus._item_aquired.connect(update_overlay)

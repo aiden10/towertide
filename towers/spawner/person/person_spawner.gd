@@ -18,6 +18,12 @@ func _init() -> void:
 	upgrade1_price = Towers.DRIFTER_SPAWNER_COST
 	upgrade1_image = Towers.DRIFTER_SPAWNER_IMAGE
 	upgrade1_scene = Scenes.drifter_spawner_tower_scene
+	
+	upgrade2_name = Towers.KIDNAPPER_SPAWNER_NAME
+	upgrade2_description = Towers.KIDNAPPER_SPAWNER_DESCRIPTION
+	upgrade2_price = Towers.KIDNAPPER_SPAWNER_COST
+	upgrade2_image = Towers.KIDNAPPER_SPAWNER_IMAGE
+	upgrade2_scene = Scenes.kidnapper_spawner_tower_scene
 
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta

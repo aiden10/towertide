@@ -6,6 +6,7 @@ var base_type: int
 var tower_name: String
 var description: String
 var cost: int
+var value: int
 var cooldown: float
 var shot_timer: float
 var damage_scale: float
@@ -52,10 +53,10 @@ func upgrade(new_tower_scene: PackedScene) -> void:
 
 func sell() -> void:
 	EventBus.unselect_pressed.emit()
-	if cost % 2 != 0:
-		PlayerState.gold += int((cost + 1) / 2)
+	if value % 2 != 0:
+		PlayerState.gold += int((value + 1) / 2)
 	else:
-		PlayerState.gold += int(cost / 2)
+		PlayerState.gold += int(value / 2)
 
 	if base_type == 1:
 		PlayerState.sprayer_limit += 1

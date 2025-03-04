@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://xac7n5130umj"]
+
+[ext_resource type="Script" path="res://towers/sprayer/extra_spray/super_sprayer/super_sprayer.gd" id="1_vp611"]
+[ext_resource type="Texture2D" uid="uid://dosteuk32wl1v" path="res://sprites/towers/cardinal/super_sprayer.png" id="2_8kkpp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwk3s"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ben4"]
+radius = 79.0569
+
+[node name="SuperSprayer" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_vp611")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gwk3s")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(5.68434e-14, -1)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("2_8kkpp")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_7ben4")

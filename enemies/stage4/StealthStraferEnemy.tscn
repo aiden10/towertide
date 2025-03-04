@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy7gktbwotyj1"]
+[gd_scene load_steps=10 format=3 uid="uid://cy7gktbwotyj1"]
 
 [ext_resource type="Texture2D" uid="uid://c8mnic0qj5h8w" path="res://sprites/enemies/stealth_strafer.png" id="1_2rbif"]
 [ext_resource type="Script" path="res://enemies/stage4/stealth_strafer_enemy.gd" id="1_vxp3o"]
 [ext_resource type="Script" path="res://entities/state_machine.gd" id="2_cdwlt"]
 [ext_resource type="Script" path="res://enemies/enemy_states/quick_attack_state.gd" id="3_emt8s"]
+[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="3_l2r5f"]
 [ext_resource type="Script" path="res://enemies/enemy_states/strafey_follow_state.gd" id="4_5ue7j"]
 [ext_resource type="Script" path="res://enemies/enemy_states/flee_state.gd" id="5_mtrgx"]
 
@@ -12,7 +13,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeopj"]
 
 [node name="StealthStraferEnemy" type="CharacterBody2D" groups=["Enemies", "Stealth"]]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_vxp3o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,6 +24,11 @@ shape = SubResource("RectangleShape2D_xgqck")
 position = Vector2(0, 9.53674e-07)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2rbif")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("3_l2r5f")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state") groups=["Enemies"]]
 script = ExtResource("2_cdwlt")

@@ -19,11 +19,11 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	scale_size(damage)
 
-func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node, bullet_scale: float = 0.5) -> void:    
+func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, origin: Node, bullet_scale: float = 0.5, extra_pierce: int = 0) -> void:    
 	speed = projectile_speed
 	damage = bullet_damage
 	projectile_scale = bullet_scale
-	
+	pierce += extra_pierce
 	shooter_id = origin.get_instance_id()
 	shooter_groups = origin.get_groups()
 	
@@ -37,7 +37,7 @@ func start(mouse_position: Vector2, projectile_speed: int, bullet_damage: int, o
 	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
 	
 	if "Enemies" not in shooter_groups:
-		pierce = PlayerState.pierce
+		pierce += PlayerState.pierce
 
 func get_shooter() -> Node:
 	return instance_from_id(shooter_id) if shooter_id else null

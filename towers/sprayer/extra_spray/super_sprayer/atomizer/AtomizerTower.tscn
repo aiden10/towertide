@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnbw4g1sxxhil"]
+
+[ext_resource type="Script" path="res://towers/sprayer/extra_spray/super_sprayer/atomizer/atomizer_tower.gd" id="1_7ci4w"]
+[ext_resource type="Texture2D" uid="uid://dueu0aemscrjq" path="res://sprites/towers/cardinal/atomizer.png" id="2_xpu60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2ech"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_waf4l"]
+radius = 79.0569
+
+[node name="AtomizerTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_7ci4w")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v2ech")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(5.68434e-14, -1)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("2_xpu60")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_waf4l")

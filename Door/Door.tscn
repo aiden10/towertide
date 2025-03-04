@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://l2perbaghgnm"]
+[gd_scene load_steps=8 format=3 uid="uid://l2perbaghgnm"]
 
 [ext_resource type="Script" path="res://door/door.gd" id="1_1p08v"]
 [ext_resource type="Texture2D" uid="uid://c6lgtaxffd3rb" path="res://sprites/arena/door.png" id="1_ci44r"]
+[ext_resource type="Texture2D" uid="uid://bff7y75k7i5vs" path="res://sprites/towers/large_outline.png" id="3_feage"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_ux131"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkuqs"]
@@ -23,6 +24,8 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxprn"]
+
 [node name="Door" type="Area2D"]
 script = ExtResource("1_1p08v")
 
@@ -32,8 +35,14 @@ position = Vector2(1.125, -1.90735e-06)
 scale = Vector2(0.203441, 0.249364)
 texture = ExtResource("1_ci44r")
 
+[node name="Ring" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.368627, 0.0392157)
+position = Vector2(1.125, -1.90735e-06)
+scale = Vector2(0.644, 0.644)
+texture = ExtResource("3_feage")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.605503, 0.786698)
+scale = Vector2(0.85, 1.104)
 shape = SubResource("RectangleShape2D_pkuqs")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -50,3 +59,9 @@ modulate = Color(1, 1, 1, 0.5)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Press E to enter"
+
+[node name="PushBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushBox"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_vxprn")

@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpjt8pf122tdl"]
+
+[ext_resource type="Script" path="res://towers/sentry/sniper/cannon/cannon_tower.gd" id="1_yp5ik"]
+[ext_resource type="Texture2D" uid="uid://cdfmtuemvk2dq" path="res://sprites/towers/sentry/sniper/cannon/cannon.png" id="2_c46q0"]
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_6bc26"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmfmv"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e38p7"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqki1"]
+radius = 442.072
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5407"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.454902, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 15.0
+expand_margin_right = 10.0
+expand_margin_bottom = 15.0
+
+[node name="CannonTower" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_yp5ik")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mmfmv")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_c46q0")
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_e38p7")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+position = Vector2(4, 2)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_iqki1")
+
+[node name="FireProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.784314, 0, 1)
+top_level = true
+custom_minimum_size = Vector2(200, 25)
+offset_right = 500.0
+offset_bottom = 50.0
+scale = Vector2(0.15, 0.15)
+value = 50.0
+show_percentage = false
+
+[node name="ShootContainer" type="PanelContainer" parent="."]
+top_level = true
+offset_right = 192.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5407")
+
+[node name="ShootLabel" type="Label" parent="ShootContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_6bc26")
+text = "Press E to fire, R to rotate"
+
+[node name="Barrel" type="Marker2D" parent="."]
+position = Vector2(0, -50)

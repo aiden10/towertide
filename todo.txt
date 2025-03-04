@@ -1,7 +1,11 @@
+Give towers base damage that scales
+At least 10 unique items
+At least all 2nd upgrade paths complete
+One other boss
+
 Tower upgrades/more towers
 More items
 More enemies, bosses
-    Rapid fire enemy
 Optimization
     Move as much outside of process functions as possible
     Use a pool for enemies, pickups, and projectiles

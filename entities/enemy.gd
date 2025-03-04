@@ -30,7 +30,7 @@ func take_damage(damage_taken: float, shooter: Node, knockback_direction: Vector
 	for child in get_children():
 		if child is Sprite2D:
 			var sprite_tween = create_tween()
-			sprite_tween.tween_property(child, "modulate", Color8(510, 510, 510, 200), 0.1)
+			sprite_tween.tween_property(child, "modulate", Color8(255, 255, 255, 80), 0.1)
 			sprite_tween.tween_callback(reset_modulation)
 
 	if health <= 0:

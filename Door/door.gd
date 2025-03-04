@@ -2,11 +2,14 @@ extends Area2D
 
 @onready var enter_container: PanelContainer = $PanelContainer
 @onready var enter_label: Label = $PanelContainer/EnterLabel
+@onready var pushbox: Area2D = $PushBox
 var can_enter: bool = false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
+	pushbox.area_entered.connect(_pushbox_entered)
+	
 	GameState.door_position = global_position
 	enter_container.modulate = Color(1, 1, 1, 0)
 	enter_label.text = "Press " + Utils.get_action_key_name("enter") + " to enter" 
@@ -14,6 +17,12 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("enter") and can_enter:
 		door_entered()
+
+func _pushbox_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent.is_in_group("Enemies"):
+		var push_direction = (parent.global_position - global_position).normalized()
+		parent.velocity += push_direction * 500
 
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()

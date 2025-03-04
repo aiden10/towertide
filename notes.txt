@@ -38,4 +38,6 @@ What if enemies only spawn to the right of you?
 Blending the player + items + towers together in a meaningful way
 How to make items synergize with towers and with other items?
 
+Subtracting and normalizing positions gets you the direction away or towards one of them
+
 dir -Recurse *.gd | Get-Content | Measure-Object -Line

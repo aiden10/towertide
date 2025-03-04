@@ -1,15 +1,15 @@
 extends MarginContainer
 
-@onready var level_label: Label = $PanelContainer/VBoxContainer/LevelLabel
-@onready var damage_quantity: Label = $PanelContainer/VBoxContainer/Damage/DamageQuantity
-@onready var regen_quantity: Label = $PanelContainer/VBoxContainer/Regen/RegenQuantity
-@onready var speed_quantity: Label = $PanelContainer/VBoxContainer/Speed/SpeedQuantity
-@onready var knockback_quantity: Label = $PanelContainer/VBoxContainer/Knockback/KnockbackQuantity
-@onready var atk_speed_quantity: Label = $PanelContainer/VBoxContainer/ATKSpeed/ATKSpeedQuantity
-@onready var max_hp_quantity: Label = $PanelContainer/VBoxContainer/MaxHP/MaxHPQuantity
-@onready var bullet_size_quantity: Label = $PanelContainer/VBoxContainer/BulletSize/BulletSizeQuantity
-@onready var bullet_speed_quantity: Label = $PanelContainer/VBoxContainer/BulletSpeed/BulletSpeedQuantity
-@onready var pierce_quantity: Label = $PanelContainer/VBoxContainer/Pierce/PierceQuantity
+@onready var level_label: Label = $HBoxContainer/PanelContainer/VBoxContainer/LevelLabel
+@onready var damage_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/Damage/DamageQuantity
+@onready var regen_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/Regen/RegenQuantity
+@onready var speed_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/Speed/SpeedQuantity
+@onready var knockback_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/Knockback/KnockbackQuantity
+@onready var atk_speed_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed/ATKSpeedQuantity
+@onready var max_hp_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/MaxHP/MaxHPQuantity
+@onready var bullet_size_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/BulletSize/BulletSizeQuantity
+@onready var bullet_speed_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed/BulletSpeedQuantity
+@onready var pierce_quantity: Label = $HBoxContainer/PanelContainer/VBoxContainer/Pierce/PierceQuantity
 
 func show_stats() -> void:
 	self.visible = true

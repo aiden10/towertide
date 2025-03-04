@@ -3,7 +3,7 @@ extends Node
 @onready var player: CharacterBody2D = $Player
 
 ## Every x seconds after clearing the stage, an extra enemy will spawn each time
-@export var extra_spawn_time_scale: float = 30
+@export var extra_spawn_time_scale: float = 20
 
 var minimum_door_spawn_distance: int = 100
 var door_spawn_radius: int = 250
@@ -41,8 +41,8 @@ func _process(delta: float) -> void:
 			time_since_clear = 0
 
 	if timer <= 0:
-		for i in range(GameState.enemies_spawning):
-			spawn_enemy()
+		#for i in range(GameState.enemies_spawning):
+		spawn_enemy()
 		spawn_cooldown = max(Enemies.MIN_SPAWN_TIME, randf_range(4, 5) - (GameState.stage / 2) - (GameState.enemies_spawning / 1.25))
 		timer = spawn_cooldown
 
@@ -105,6 +105,8 @@ func spawn_enemy(specific_enemy_scene: PackedScene = null) -> void:
 		enemy.min_spawn_dist
 	)
 	enemy.position = enemy_position
+	enemy.health *= ((float(GameState.enemies_spawning - 1) / 10) + 1) 
+	enemy.health += (GameState.stage * 2)
 	add_child(enemy)
 
 func check_clear_condition() -> void:

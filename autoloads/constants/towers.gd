@@ -15,10 +15,40 @@ const CARDINAL_NAME: String = "Cardinal"
 const CARDINAL_DESCRIPTION: String = "Shoots bullets in all cardinal directions"
 const CARDINAL_COOLDOWN: float = 2
 const CARDINAL_SPEED_PERCENTAGE: float = 0.75 
-const CARDINAL_DAMAGE_PERCENTAGE: float = 0.55 
-const CARDINAL_BULLET_SCALE: float = 0.7
+const CARDINAL_DAMAGE_PERCENTAGE: float = 0.75 
+const CARDINAL_BULLET_SCALE: float = 0.75
 var CARDINAL_IMAGE: Texture = load("res://sprites/towers/cardinal/cardinal.png")
 const CARDINAL_SCENE_PATH: String = "res://towers/sprayer/extra_spray/CardinalTower.tscn"
+
+const SUPER_SPRAYER_COST: int = 15
+const SUPER_SPRAYER_NAME: String = "Super Sprayer"
+const SUPER_SPRAYER_DESCRIPTION: String = "Shoots 4 additional bullets"
+const SUPER_SPRAYER_COOLDOWN: float = 1.5
+const SUPER_SPRAYER_SPEED_PERCENTAGE: float = 0.75 
+const SUPER_SPRAYER_DAMAGE_PERCENTAGE: float = 0.75 
+const SUPER_SPRAYER_BULLET_SCALE: float = 0.75
+var SUPER_SPRAYER_IMAGE: Texture = load("res://sprites/towers/cardinal/super_sprayer.png")
+const SUPER_SPRAYER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/SuperSprayer.tscn"
+
+const ATOMIZER_COST: int = 30
+const ATOMIZER_NAME: String = "Atomizer"
+const ATOMIZER_DESCRIPTION: String = "Rapidly fires bullets everywhere"
+const ATOMIZER_COOLDOWN: float = 0.5
+const ATOMIZER_SPEED_PERCENTAGE: float = 0.75 
+const ATOMIZER_DAMAGE_PERCENTAGE: float = 0.25
+const ATOMIZER_BULLET_SCALE: float = 0.35
+var ATOMIZER_IMAGE: Texture = load("res://sprites/towers/cardinal/atomizer.png")
+const ATOMIZER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/SuperSprayer.tscn"
+
+const CLOUD_COST: int = 15
+const CLOUD_NAME: String = "Bullet Cloud"
+const CLOUD_DESCRIPTION: String = "Rains bullets on enemies"
+const CLOUD_COOLDOWN: float = 0.15
+const CLOUD_SPEED_PERCENTAGE: float = 0.25 
+const CLOUD_DAMAGE_PERCENTAGE: float = 0.2 
+const CLOUD_BULLET_SCALE: float = 0.45
+var CLOUD_IMAGE: Texture = load("res://sprites/towers/cardinal/cloud.png")
+const CLOUD_SCENE_PATH: String = "res://towers/sprayer/extra_spray/cloud/CloudTower.tscn"
 
 const RING_NAME: String = "Ring Shooter"
 const RING_COST: int = 10
@@ -33,9 +63,9 @@ const DOUBLE_CROSS_NAME: String = "Double Cross"
 const DOUBLE_CROSS_COST: int = 10
 const DOUBLE_CROSS_DESCRIPTION: String = "Shoots 2 bullets in a cross pattern"
 const DOUBLE_CROSS_COOLDOWN: float = 2
-const DOUBLE_CROSS_BULLET_SCALE: float = 0.7
+const DOUBLE_CROSS_BULLET_SCALE: float = 0.75
 const DOUBLE_CROSS_SPEED_PERCENTAGE: float = 0.75
-const DOUBLE_CROSS_DAMAGE_PERCENTAGE: float = 0.55
+const DOUBLE_CROSS_DAMAGE_PERCENTAGE: float = 0.75
 var DOUBLE_CROSS_IMAGE: Texture = load("res://sprites/towers/cross/barrage/double_cross.png")
 const DOUBLE_CROSS_SCENE_PATH: String = "res://towers/sprayer/barrage/DoubleCrossTower.tscn"
 
@@ -59,6 +89,17 @@ const SNIPER_BULLET_SCALE: float = 0.55
 var SNIPER_IMAGE: Texture = load("res://sprites/towers/sentry/sniper/sniper.png")
 const SNIPER_SCENE_PATH: String = "res://towers/sentry/sniper/SniperTower.tscn"
 
+const CANNON_COST: int = 25
+const CANNON_NAME: String = "Cannon"
+const CANNON_DESCRIPTION: String = "Aimable tower which shoots massive bullets that deal massive damage"
+const CANNON_COOLDOWN: float = 5
+const CANNON_SPEED_PERCENTAGE: float = 350
+const CANNON_DAMAGE_PERCENTAGE: float = 4.5
+const CANNON_BULLET_SCALE: float = 1.15
+const CANNON_EXTRA_PIERCE: float = 5
+var CANNON_IMAGE: Texture = load("res://sprites/towers/sentry/sniper/cannon/cannon.png")
+const CANNON_SCENE_PATH: String = "res://towers/sentry/sniper/cannon/CannonTower.tscn"
+
 const MACHINE_GUN_COST: int = 15
 const MACHINE_GUN_NAME: String = "Machine Gun"
 const MACHINE_GUN_DESCRIPTION: String = "Rapidly shoots detected enemies"
@@ -78,6 +119,17 @@ const SHOTGUN_BULLET_SCALE: float = 0.55
 const SHOTGUN_SHOT_COUNT: int = 3
 var SHOTGUN_IMAGE: Texture = load("res://sprites/towers/sentry/shotgun/shotgun_tower.png")
 const SHOTGUN_SCENE_PATH: String = "res://towers/sentry/shotgun/ShotgunTower.tscn"
+
+const GRAPESHOT_COST: int = 25
+const GRAPESHOT_NAME: String = "Grapeshot"
+const GRAPESHOT_DESCRIPTION: String = "Shoots a large cluster of bullets"
+const GRAPESHOT_COOLDOWN: float = 2.75
+const GRAPESHOT_SPEED_PERCENTAGE: float = 0.75
+const GRAPESHOT_DAMAGE_PERCENTAGE: float = 0.65
+const GRAPESHOT_BULLET_SCALE: float = 0.45
+const GRAPESHOT_SHOT_COUNT: int = 8
+var GRAPESHOT_IMAGE: Texture = load("res://sprites/towers/sentry/shotgun/grapeshot/grapeshot.png")
+const GRAPESHOT_SCENE_PATH: String = "res://towers/sentry/shotgun/grapeshot/GrapeshotTower.tscn"
 
 const SPAWNER_COST: int = 15
 const SPAWNER_SPAWN_AMOUNT: int = 2
@@ -124,7 +176,7 @@ const KIDNAPPER_SPAWNER_NAME: String = "Kidnapper Spawner"
 const KIDNAPPER_SPAWNER_DESCRIPTION: String = "Spawns minions that kidnap enemies and return them to this tower"
 const KIDNAPPER_SPAWNER_COOLDOWN: float = 3.5
 
-const KIDNAPPER_SPAWNER_SPAWN_LIMIT: int = 5
+const KIDNAPPER_SPAWNER_SPAWN_LIMIT: int = 3
 var KIDNAPPER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/kidnapper_spawner.png")
 const KIDNAPPER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/kidnapper/KidnapperSpawner.tscn"
 
@@ -137,7 +189,7 @@ const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
 const SUPPORTER_COST: int = 10
 const SUPPORTER_NAME: String = "Supporter"
 const SUPPORTER_DESCRIPTION: String = "Towers in range attack faster"
-const SUPPORTER_COOLDOWN_REDUCTION: float = 0.75
+const SUPPORTER_COOLDOWN_REDUCTION: float = 0.8
 var SUPPORTER_IMAGE: Texture = load("res://sprites/towers/blank/support/support.png")
 const SUPPORTER_SCENE_PATH: String = "res://towers/blank/support/SupportTower.tscn"
 
@@ -168,17 +220,17 @@ const DOUBLE_GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/Dou
 const PYLON_NAME: String = "Pylon"
 const PYLON_DESCRIPTION: String = "Creates an electric fence between pylons"
 const PYLON_SCENE_PATH: String = "res://towers/blank/pylon/PylonTower.tscn"
-const PYLON_COST: int = 10
+const PYLON_COST: int = 5
 const PYLON_COOLDOWN: float = 0.25
-const PYLON_DAMAGE: float = 0.2
+const PYLON_DAMAGE: float = 0.33
 var PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
 
 const SLOWING_PYLON_NAME: String = "Slowing Pylon"
 const SLOWING_PYLON_DESCRIPTION: String = "Slows enemy bullets that enter this tower's area"
 const SLOWING_PYLON_SCENE_PATH: String = "res://towers/blank/pylon/slowing/SlowingPylonTower.tscn"
-const SLOWING_PYLON_COST: int = 15
+const SLOWING_PYLON_COST: int = 10
 const SLOWING_PYLON_COOLDOWN: float = 0.25
-const SLOWING_PYLON_DAMAGE: float = 0.25
+const SLOWING_PYLON_DAMAGE: float = 0.4
 var SLOWING_PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
 
 var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/charger/ChargerMinion.tscn")
@@ -201,9 +253,9 @@ const PERSON_LIFETIME: float = 7
 var drifter_minion_scene: PackedScene = load("res://towers/spawner/minions/drifter/DrifterMinion.tscn")
 const DRIFTER_NAME: String = "Drifter"
 const DRIFTER_SPEED: float = 150
-const DRIFTER_DAMAGE: float = 0.3
-const DRIFTER_COOLDOWN: float = 0.8
-const DRIFTER_PROJECTILE_SPEED: float = 0.8
+const DRIFTER_DAMAGE: float = 0.75
+const DRIFTER_COOLDOWN: float = 0.65
+const DRIFTER_PROJECTILE_SPEED: float = 1
 const DRIFTER_WANDER_DIST: float = 1200
 const DRIFTER_MIN_WANDER: float = 500
 

@@ -18,6 +18,12 @@ func _init() -> void:
 	image = Towers.SNIPER_IMAGE
 	angle_offset = 90.0
 	scene_path = Towers.SNIPER_SCENE_PATH
+	
+	upgrade1_name = Towers.CANNON_NAME
+	upgrade1_description = Towers.CANNON_DESCRIPTION
+	upgrade1_price = Towers.CANNON_COST
+	upgrade1_image = Towers.CANNON_IMAGE
+	upgrade1_scene = Scenes.cannon_tower_scene
 
 func _physics_process(delta: float) -> void:
 	var effective_cooldown = cooldown

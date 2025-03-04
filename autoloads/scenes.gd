@@ -18,13 +18,18 @@ var item_cell_scene: PackedScene = preload("res://overlay/ItemCell.tscn")
 
 var cross_tower_scene: PackedScene = preload("res://towers/sprayer/CrossTower.tscn")
 var cardinal_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/CardinalTower.tscn")
+var cloud_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/cloud/CloudTower.tscn")
+var super_sprayer_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/super_sprayer/SuperSprayer.tscn")
+var atomizer_tower_scene: PackedScene = preload("res://towers/sprayer/extra_spray/super_sprayer/atomizer/AtomizerTower.tscn")
 var double_cross_tower_scene: PackedScene = preload("res://towers/sprayer/barrage/DoubleCrossTower.tscn")
 var ring_tower_scene: PackedScene = preload("res://towers/sprayer/ring/RingTower.tscn")
 
 var sentry_tower_scene: PackedScene = preload("res://towers/sentry/SentryTower.tscn")
 var sniper_tower_scene: PackedScene = preload("res://towers/sentry/sniper/SniperTower.tscn")
+var cannon_tower_scene: PackedScene = preload("res://towers/sentry/sniper/cannon/CannonTower.tscn")
 var machine_gun_tower_scene: PackedScene = preload("res://towers/sentry/rapid/MachineGunTower.tscn")
 var shotgun_tower_scene: PackedScene = preload("res://towers/sentry/shotgun/ShotgunTower.tscn")
+var grapeshot_tower_scene: PackedScene = preload("res://towers/sentry/shotgun/grapeshot/GrapeshotTower.tscn")
 
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")

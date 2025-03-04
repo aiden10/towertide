@@ -66,6 +66,7 @@ func _upgrade1() -> void:
 	var new_tower = tower.upgrade1_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
 	new_tower.position = tower.global_position
+	new_tower.value += tower.value
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()
@@ -86,6 +87,7 @@ func _upgrade2() -> void:
 	var new_tower = tower.upgrade2_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
 	new_tower.position = tower.global_position
+	new_tower.value += tower.value
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()
@@ -106,6 +108,7 @@ func _upgrade3() -> void:
 	var new_tower = tower.upgrade3_scene.instantiate()
 	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
 	new_tower.position = tower.global_position
+	new_tower.value += tower.value
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()

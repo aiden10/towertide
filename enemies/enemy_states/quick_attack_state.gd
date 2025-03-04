@@ -15,12 +15,17 @@ func update(delta: float):
 	if firerate > 0:
 		firerate -= delta
 
-	if firerate <= 0:
+	if firerate <= 0: 
 		firerate = enemy.firerate_cooldown
 		var shot_count = enemy.shot_count
+		var angle_step = 30
+		var middle_index = shot_count / 2
 		for i in range(shot_count):
-			shoot(GameState.player_position, 0)
+			var offset = (i - middle_index) * angle_step
+			shoot(GameState.player_position, offset)
+			await get_tree().create_timer(0.1).timeout
 		can_shoot = false
+		
 		var chance = randf()
 		if chance > 0.5:
 			transitioned.emit(self, "flee")

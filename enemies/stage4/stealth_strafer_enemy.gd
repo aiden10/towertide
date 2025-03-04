@@ -21,6 +21,13 @@ func _init() -> void:
 	item_drop_count = Enemies.STEALTHY_ITEM_DROP_COUNT
 	shot_count = Enemies.STEALTHY_SHOT_AMOUNT
 
+func _ready() -> void:
+	var pulse_tween = create_tween()
+	pulse_tween.parallel()
+	pulse_tween.tween_property($Sprite, "modulate:a", 0, 1)
+	pulse_tween.tween_property($Sprite, "modulate:a", 1, 1)
+	pulse_tween.set_loops(-1)
+
 func _process(delta: float) -> void:
 	look_at(GameState.player_position)
 	
