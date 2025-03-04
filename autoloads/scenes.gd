@@ -34,6 +34,7 @@ var grapeshot_tower_scene: PackedScene = preload("res://towers/sentry/shotgun/gr
 var spawner_tower_scene: PackedScene = preload("res://towers/spawner/SpawnerTower.tscn")
 var shooter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/ShooterSpawnerTower.tscn")
 var person_spawner_tower_scene: PackedScene = preload("res://towers/spawner/person/PersonSpawner.tscn")
+var bug_spawner_tower_scene: PackedScene = preload("res://towers/spawner/swarm/SwarmSpawner.tscn")
 var drifter_spawner_tower_scene: PackedScene = preload("res://towers/spawner/drifter/DrifterSpawner.tscn")
 var kidnapper_spawner_tower_scene: PackedScene = preload("res://towers/spawner/drifter/kidnapper/KidnapperSpawner.tscn")
 

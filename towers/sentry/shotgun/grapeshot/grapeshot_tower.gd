@@ -8,6 +8,7 @@ func _init() -> void:
 	tower_name = Towers.GRAPESHOT_NAME
 	description = Towers.GRAPESHOT_DESCRIPTION
 	cost = Towers.GRAPESHOT_COST
+	value = cost
 	cooldown = Towers.GRAPESHOT_COOLDOWN
 	damage_scale = Towers.GRAPESHOT_DAMAGE_PERCENTAGE
 	shot_count = Towers.GRAPESHOT_SHOT_COUNT

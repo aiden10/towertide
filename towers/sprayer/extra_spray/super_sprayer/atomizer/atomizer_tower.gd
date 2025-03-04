@@ -6,6 +6,7 @@ func _init() -> void:
 	tower_name = Towers.ATOMIZER_NAME
 	description = Towers.ATOMIZER_DESCRIPTION
 	cost = Towers.ATOMIZER_COST
+	value = cost
 	cooldown = Towers.ATOMIZER_COOLDOWN
 	damage_scale = Towers.ATOMIZER_DAMAGE_PERCENTAGE
 	bullet_scale = Towers.ATOMIZER_BULLET_SCALE

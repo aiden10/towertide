@@ -6,6 +6,7 @@ func _init() -> void:
 	tower_name = Towers.SUPER_SPRAYER_NAME
 	description = Towers.SUPER_SPRAYER_DESCRIPTION
 	cost = Towers.SUPER_SPRAYER_COST
+	value = cost
 	cooldown = Towers.SUPER_SPRAYER_COOLDOWN
 	damage_scale = Towers.SUPER_SPRAYER_DAMAGE_PERCENTAGE
 	bullet_scale = Towers.SUPER_SPRAYER_BULLET_SCALE

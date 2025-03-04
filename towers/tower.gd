@@ -51,6 +51,9 @@ func upgrade(new_tower_scene: PackedScene) -> void:
 	EventBus.arena_spawn.emit(new_tower)
 	queue_free()
 
+func add_value(previous_value: int) -> void:
+	value += previous_value
+
 func sell() -> void:
 	EventBus.unselect_pressed.emit()
 	if value % 2 != 0:

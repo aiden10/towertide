@@ -7,6 +7,7 @@ func _init() -> void:
 	tower_name = Towers.KIDNAPPER_SPAWNER_NAME
 	description = Towers.KIDNAPPER_SPAWNER_DESCRIPTION
 	cost = Towers.KIDNAPPER_SPAWNER_COST
+	value = cost
 	image = Towers.KIDNAPPER_SPAWNER_IMAGE
 	minion_scene = Towers.kidnapper_minion_scene
 	cooldown = Towers.KIDNAPPER_SPAWNER_COOLDOWN

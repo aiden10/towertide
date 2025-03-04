@@ -7,7 +7,7 @@ func _ready() -> void:
 	cost = Towers.BLANK_COST
 	image = Towers.BLANK_IMAGE
 	scene_path = Towers.BLANK_SCENE_PATH
-	
+	value = cost
 	upgrade1_name = Towers.GOLD_DISPENSER_NAME
 	upgrade1_description = Towers.GOLD_DISPENSER_DESCRIPTION
 	upgrade1_price = Towers.GOLD_DISPENSER_COST

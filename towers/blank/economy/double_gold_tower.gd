@@ -14,6 +14,7 @@ func _init() -> void:
 	tower_name = Towers.DOUBLE_GOLD_DISPENSER_NAME
 	description = Towers.DOUBLE_GOLD_DISPENSER_DESCRIPTION
 	cost = Towers.DOUBLE_GOLD_DISPENSER_COST
+	value = cost
 	cooldown = Towers.DOUBLE_GOLD_DISPENSER_COOLDOWN
 	image = Towers.DOUBLE_GOLD_DISPENSER_IMAGE
 	scene_path = Towers.DOUBLE_GOLD_DISPENSER_SCENE_PATH

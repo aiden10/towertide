@@ -21,7 +21,7 @@ func detected(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth") and not parent.is_in_group("Bosses"):
 		minion.detected_enemy = parent
-		if minion.minion_name == Towers.CHARGER_NAME or minion.minion_name == Towers.KIDNAPPER_NAME:
+		if minion.minion_name in [Towers.CHARGER_NAME, Towers.KIDNAPPER_NAME, Towers.BUG_NAME]:
 			transitioned.emit(self, "follow")
 		elif minion.minion_name == Towers.SHOOTER_NAME:
 			transitioned.emit(self, "shoot")

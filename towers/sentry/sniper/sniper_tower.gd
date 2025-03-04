@@ -10,6 +10,7 @@ func _init() -> void:
 	tower_name = Towers.SNIPER_NAME
 	description = Towers.SNIPER_DESCRIPTION
 	cost = Towers.SNIPER_COST
+	value = cost
 	cooldown = Towers.SNIPER_COOLDOWN
 	damage_scale = Towers.SNIPER_DAMAGE_PERCENTAGE
 	shot_timer = cooldown

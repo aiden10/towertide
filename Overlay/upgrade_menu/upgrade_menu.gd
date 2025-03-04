@@ -64,9 +64,9 @@ func _upgrade1() -> void:
 	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade1_price
 	var new_tower = tower.upgrade1_scene.instantiate()
-	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	EventBus.arena_spawn.emit(new_tower)
 	new_tower.position = tower.global_position
-	new_tower.value += tower.value
+	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()
@@ -85,9 +85,9 @@ func _upgrade2() -> void:
 	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade2_price
 	var new_tower = tower.upgrade2_scene.instantiate()
-	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	EventBus.arena_spawn.emit(new_tower)
 	new_tower.position = tower.global_position
-	new_tower.value += tower.value
+	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()
@@ -106,9 +106,9 @@ func _upgrade3() -> void:
 	EventBus._tower_upgraded.emit()
 	PlayerState.gold -= tower.upgrade3_price
 	var new_tower = tower.upgrade3_scene.instantiate()
-	EventBus.arena_spawn.emit(new_tower) ## Adds new tower to the arena scene
+	EventBus.arena_spawn.emit(new_tower)
 	new_tower.position = tower.global_position
-	new_tower.value += tower.value
+	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
 	tower.queue_free()
 	_show_upgrades()

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2w3qmxcq7odp"]
+
+[ext_resource type="Script" path="res://towers/blank/pylon/chain/chain_pylon.gd" id="1_1wcv6"]
+[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="1_mjrki"]
+[ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="2_in8rf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yssjs"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j55tu"]
+radius = 156.208
+
+[node name="ChainPylon" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_1wcv6")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yssjs")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.222292, 0.222292)
+texture = ExtResource("1_mjrki")
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_j55tu")
+
+[node name="ConnectRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 5
+collision_mask = 5
+
+[node name="ConnectHitbox" type="CollisionShape2D" parent="ConnectRadius"]
+shape = SubResource("CircleShape2D_j55tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 3, 0.008)
+position = Vector2(-1.49999, 1.49999)
+scale = Vector2(2.365, 2.365)
+texture = ExtResource("2_in8rf")

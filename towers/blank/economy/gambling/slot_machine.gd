@@ -11,6 +11,7 @@ func _init() -> void:
 	tower_name = Towers.SLOTS_NAME
 	description = Towers.SLOTS_DESCRIPTION
 	cost = Towers.SLOTS_COST
+	value = cost
 	cooldown = Towers.SLOTS_COOLDOWN
 	image = Towers.SLOTS_IMAGE
 	scene_path = Towers.SLOTS_SCENE_PATH

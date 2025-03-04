@@ -5,6 +5,7 @@ func _init() -> void:
 	tower_name = Towers.PYLON_NAME
 	description = Towers.PYLON_DESCRIPTION
 	cost = Towers.PYLON_COST
+	value = cost
 	cooldown = Towers.PYLON_COOLDOWN
 	shot_timer = cooldown
 	damage_scale = Towers.PYLON_DAMAGE

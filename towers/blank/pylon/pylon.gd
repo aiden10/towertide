@@ -18,15 +18,13 @@ func is_connected_to(pylon) -> bool:
 			return true
 	return false
 
-func connect_radius_entered(area: Area2D) -> void:
-	var parent = area.get_parent()
-	if parent.is_in_group("Pylons") and not is_connected_to(parent):
+func create_line(location: Vector2) -> void:
 		var attack_line = Line2D.new()
 		attack_line.width = 2.0
 		attack_line.default_color = Color(0.5, 0.8, 1.0, 0.8)
 		
 		attack_line.add_point(Vector2.ZERO)
-		attack_line.add_point(parent.position - position)
+		attack_line.add_point(location - position)
 		add_child(attack_line)
 
 		var fence_hitbox = Area2D.new()
@@ -34,23 +32,26 @@ func connect_radius_entered(area: Area2D) -> void:
 		fence_hitbox.collision_mask = 1
 		
 		var shape = CapsuleShape2D.new()
-		var distance = position.distance_to(parent.position)
+		var distance = position.distance_to(location)
 		shape.height = distance
 		shape.radius = 5
 		
 		var collision = CollisionShape2D.new()
 		collision.shape = shape
-		collision.rotation = position.angle_to_point(parent.position) + PI/2
-		collision.position = (parent.position - position) / 2
+		collision.rotation = position.angle_to_point(location) + PI/2
+		collision.position = (location - position) / 2
 		
 		fence_hitbox.add_child(collision)
 		call_deferred("add_child", fence_hitbox)
-
 		connections.append({
-			"pylon": parent,
 			"line": attack_line,
 			"hitbox": fence_hitbox
 		})
+
+func connect_radius_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent.is_in_group("Pylons") and not is_connected_to(parent):
+		create_line(parent.position)
 
 func check_fence_collision(body: Area2D, attack_line: Line2D):
 	if can_hit and body.get_parent().is_in_group("Enemies"):

@@ -10,6 +10,7 @@ func _init() -> void:
 	tower_name = Towers.RING_NAME
 	description = Towers.RING_DESCRIPTION
 	cost = Towers.RING_COST
+	value = cost
 	cooldown = Towers.RING_COOLDOWN
 	damage_scale = Towers.RING_DAMAGE_PERCENTAGE
 	shot_timer = cooldown

@@ -26,6 +26,12 @@ func _init() -> void:
 	upgrade2_image = Towers.PERSON_SPAWNER_IMAGE
 	upgrade2_scene = Scenes.person_spawner_tower_scene
 
+	upgrade3_name = Towers.BUG_SPAWNER_NAME
+	upgrade3_description = Towers.BUG_SPAWNER_DESCRIPTION
+	upgrade3_price = Towers.BUG_SPAWNER_COST
+	upgrade3_image = Towers.BUG_SPAWNER_IMAGE
+	upgrade3_scene = Scenes.bug_spawner_tower_scene
+
 func _physics_process(delta: float) -> void:
 	shot_timer -= delta
 	if shot_timer <= 0:

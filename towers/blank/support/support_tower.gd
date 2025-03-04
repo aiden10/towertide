@@ -8,6 +8,7 @@ func _init() -> void:
 	tower_name = Towers.SUPPORTER_NAME
 	description = Towers.SUPPORTER_DESCRIPTION
 	cost = Towers.SUPPORTER_COST
+	value = cost
 	image = Towers.SUPPORTER_IMAGE
 	scene_path = Towers.SUPPORTER_SCENE_PATH
 

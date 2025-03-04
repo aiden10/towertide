@@ -36,7 +36,7 @@ func detected(area: Area2D) -> void:
 		
 	var parent = area.get_parent()	
 	if parent.is_in_group("Enemies") and not parent.is_in_group("Stealth"):
-		if minion.minion_name == Towers.CHARGER_NAME:
+		if minion.minion_name in [Towers.CHARGER_NAME, Towers.BUG_NAME]:
 			on_death()
 		elif minion.minion_name == Towers.KIDNAPPER_NAME:
 			if parent == minion.detected_enemy:

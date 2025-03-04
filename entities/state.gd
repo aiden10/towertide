@@ -20,7 +20,7 @@ func physics_update(_delta: float) -> void:
 
 func setup_minion(minion_node: Minion) -> void:
 	minion = minion_node
-	
+
 func get_detection_range() -> Area2D:
 	return minion.get_node("DetectionRange")
 

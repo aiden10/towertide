@@ -160,6 +160,16 @@ const PERSON_SPAWNER_SPAWN_LIMIT: int = 8
 var PERSON_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/person_spawner.png")
 const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person/PersonSpawner.tscn"
 
+const BUG_SPAWNER_COST: int = 15
+const BUG_SPAWNER_SPAWN_AMOUNT: int = 5
+const BUG_SPAWNER_NAME: String = "Insect Spawner"
+const BUG_SPAWNER_DESCRIPTION: String = "Spawns many weak bugs"
+const BUG_SPAWNER_COOLDOWN: float = 1
+
+const BUG_SPAWNER_SPAWN_LIMIT: int = 20
+var BUG_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/bug_spawner.png")
+const BUG_SPAWNER_SCENE_PATH: String = "res://towers/spawner/swarm/SwarmSpawner.tscn"
+
 const DRIFTER_SPAWNER_COST: int = 20
 const DRIFTER_SPAWNER_SPAWN_AMOUNT: int = 1
 const DRIFTER_SPAWNER_NAME: String = "Drifter Spawner"
@@ -240,6 +250,14 @@ const CHARGER_DAMAGE: float = 0.8
 const CHARGER_WANDER_DIST: float = 300
 const CHARGER_MIN_WANDER: float = 50
 const CHARGER_LIFETIME: float = 5
+
+var bug_minion_scene: PackedScene = load("res://towers/spawner/minions/bug/BugMinion.tscn")
+const BUG_NAME: String = "Bug"
+const BUG_SPEED: float = 300
+const BUG_DAMAGE: float = 0.2
+const BUG_WANDER_DIST: float = 175
+const BUG_MIN_WANDER: float = 30
+const BUG_LIFETIME: float = 6.5
 
 var person_minion_scene: PackedScene = load("res://towers/spawner/minions/person/PersonMinion.tscn")
 const PERSON_NAME: String = "Person"

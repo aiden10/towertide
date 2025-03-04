@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2h30tjxfabun"]
+
+[ext_resource type="Script" path="res://towers/spawner/swarm/swarm_spawner.gd" id="1_3ghl6"]
+[ext_resource type="Texture2D" uid="uid://d2cyjm86tefvr" path="res://sprites/towers/spawner/bug_spawner.png" id="2_le6b2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7g5b7"]
+radius = 51.0098
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dpo5"]
+radius = 153.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnkur"]
+radius = 456.01
+
+[node name="SwarmSpawner" type="Area2D" groups=["Towers"]]
+script = ExtResource("1_3ghl6")
+
+[node name="SelectHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7g5b7")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("2_le6b2")
+offset = Vector2(0.142365, -20.4339)
+
+[node name="PlacementRadius" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="PlacementHitbox" type="CollisionShape2D" parent="PlacementRadius"]
+shape = SubResource("CircleShape2D_1dpo5")
+
+[node name="AttackRadius" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_tnkur")

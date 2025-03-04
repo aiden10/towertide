@@ -9,6 +9,7 @@ func _init() -> void:
 	tower_name = Towers.MACHINE_GUN_NAME
 	description = Towers.MACHINE_GUN_DESCRIPTION
 	cost = Towers.MACHINE_GUN_COST
+	value = cost
 	cooldown = Towers.MACHINE_GUN_COOLDOWN
 	damage_scale = Towers.MACHINE_GUN_DAMAGE_PERCENTAGE
 	shot_timer = cooldown

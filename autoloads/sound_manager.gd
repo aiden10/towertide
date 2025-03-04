@@ -39,6 +39,7 @@ const ENEMY_HIT_SOUNDS = [hit]
 const MINION_SOUNDS = [minion1]
 
 var audio_players: Array[AudioStreamPlayer] = []
+var sound_level: float = 100.0
 const POOL_SIZE = 16
 
 func _ready() -> void:

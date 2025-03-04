@@ -9,6 +9,12 @@ func _ready() -> void:
 	continue_button.pressed.connect(continue_game)
 	new_game_button.pressed.connect(start_game)
 	save_exists = FileAccess.file_exists("res://save/save.json")
+	var tween = create_tween()
+	tween.set_loops(-1)
+	tween.tween_property($MarginContainer/VBoxContainer/Label, "position:y", 25, 1.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property($MarginContainer/VBoxContainer/Label, "position:y", -5, 2.2)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	if not save_exists:
 		continue_button.pressed.disconnect(continue_game)
 		continue_button.modulate = Color(1, 1, 1, 0.25)

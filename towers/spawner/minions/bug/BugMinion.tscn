@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://brvdcs7nvc2gf"]
+
+[ext_resource type="Script" path="res://towers/spawner/minions/bug/bug_minion.gd" id="1_2m3af"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_s1sw8"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="2_xkbdo"]
+[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_l7xc4"]
+[ext_resource type="Texture2D" uid="uid://bao1hi4w2n82l" path="res://sprites/towers/minions/swarm/bug.png" id="4_ykhnd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhqmj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7bwp"]
+radius = 28.2843
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi8jv"]
+radius = 292.0
+
+[node name="BugMinion" type="CharacterBody2D" groups=["Minions"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_2m3af")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dhqmj")
+
+[node name="AttackRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_j7bwp")
+
+[node name="DetectionRange" type="Area2D" parent="." groups=["DetectionRadius"]]
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_wi8jv")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_s1sw8")
+initial_state = NodePath("Idle")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("2_xkbdo")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_l7xc4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ykhnd")

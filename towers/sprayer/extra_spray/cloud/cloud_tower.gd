@@ -6,6 +6,7 @@ func _init() -> void:
 	tower_name = Towers.CLOUD_NAME
 	description = Towers.CLOUD_DESCRIPTION
 	cost = Towers.CLOUD_COST
+	value = cost
 	cooldown = Towers.CLOUD_COOLDOWN
 	damage_scale = Towers.CLOUD_DAMAGE_PERCENTAGE
 	bullet_scale = Towers.CLOUD_BULLET_SCALE

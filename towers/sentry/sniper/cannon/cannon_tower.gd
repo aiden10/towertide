@@ -11,6 +11,7 @@ func _init() -> void:
 	tower_name = Towers.CANNON_NAME
 	description = Towers.CANNON_DESCRIPTION
 	cost = Towers.CANNON_COST
+	value = cost
 	cooldown = Towers.CANNON_COOLDOWN
 	damage_scale = Towers.CANNON_DAMAGE_PERCENTAGE
 	shot_timer = cooldown
