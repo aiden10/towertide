@@ -14,11 +14,11 @@ func _ready() -> void:
 
 func is_connected_to(pylon) -> bool:
 	for connection in connections:
-		if connection.pylon == pylon:
+		if connection["parent"] == pylon:
 			return true
 	return false
 
-func create_line(location: Vector2) -> void:
+func create_line(location: Vector2, parent: Node2D) -> void:
 		var attack_line = Line2D.new()
 		attack_line.width = 2.0
 		attack_line.default_color = Color(0.5, 0.8, 1.0, 0.8)
@@ -44,6 +44,7 @@ func create_line(location: Vector2) -> void:
 		fence_hitbox.add_child(collision)
 		call_deferred("add_child", fence_hitbox)
 		connections.append({
+			"parent": parent,
 			"line": attack_line,
 			"hitbox": fence_hitbox
 		})
@@ -51,7 +52,7 @@ func create_line(location: Vector2) -> void:
 func connect_radius_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent.is_in_group("Pylons") and not is_connected_to(parent):
-		create_line(parent.position)
+		create_line(parent.position, parent)
 
 func check_fence_collision(body: Area2D, attack_line: Line2D):
 	if can_hit and body.get_parent().is_in_group("Enemies"):
@@ -66,7 +67,7 @@ func _exit_tree() -> void:
 	for pylon_tower in get_tree().get_nodes_in_group("Pylons"):
 		for i in range(pylon_tower.connections.size() - 1, 0, -1):
 			var connection = pylon_tower.connections[i]
-			if connection["pylon"] == self:
+			if connection["parent"] == self:
 				if connection["line"]:
 					connection["line"].queue_free()
 				if connection["hitbox"]:

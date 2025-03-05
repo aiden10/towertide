@@ -15,7 +15,14 @@ func _init() -> void:
 	upgrade1_name = Towers.SLOWING_PYLON_NAME
 	upgrade1_description = Towers.SLOWING_PYLON_DESCRIPTION
 	upgrade1_price = Towers.SLOWING_PYLON_COST
+	upgrade1_image = Towers.PYLON_IMAGE
 	upgrade1_scene = Scenes.slowing_pylon_tower_scene
+
+	upgrade2_name = Towers.CHAIN_PYLON_NAME
+	upgrade2_description = Towers.CHAIN_PYLON_DESCRIPTION
+	upgrade2_price = Towers.CHAIN_PYLON_COST
+	upgrade2_image = Towers.PYLON_IMAGE
+	upgrade2_scene = Scenes.chain_pylon_tower_scene
 
 func _ready() -> void:
 	connect_radius.area_entered.connect(connect_radius_entered)

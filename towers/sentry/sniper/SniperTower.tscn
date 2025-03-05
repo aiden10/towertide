@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdqqlivuuqjro"]
 
 [ext_resource type="Texture2D" uid="uid://cg0fh0h53isgy" path="res://sprites/towers/sentry/sniper/sniper.png" id="1_6pno2"]
-[ext_resource type="Script" path="res://towers/sentry/sniper/sniper_tower.gd" id="1_jpjfq"]
+[ext_resource type="Script" uid="uid://ceto4xye0oe0d" path="res://towers/sentry/sniper/sniper_tower.gd" id="1_jpjfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vhsg"]
 radius = 42.0

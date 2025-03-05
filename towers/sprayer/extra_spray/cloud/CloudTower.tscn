@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3hwikjqvp107"]
 
-[ext_resource type="Script" path="res://towers/sprayer/extra_spray/cloud/cloud_tower.gd" id="1_ucugb"]
+[ext_resource type="Script" uid="uid://dauthuqaajvyd" path="res://towers/sprayer/extra_spray/cloud/cloud_tower.gd" id="1_ucugb"]
 [ext_resource type="Texture2D" uid="uid://bepnlvfcsq6ko" path="res://sprites/towers/cardinal/cloud.png" id="2_7x72i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnbow"]

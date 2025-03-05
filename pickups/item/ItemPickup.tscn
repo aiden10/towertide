@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xl88hvrqixpm"]
 
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="1_ffqaa"]
-[ext_resource type="Script" path="res://pickups/item/item_pickup.gd" id="1_niui7"]
+[ext_resource type="Script" uid="uid://dbs7c24pv3ak7" path="res://pickups/item/item_pickup.gd" id="1_niui7"]
 [ext_resource type="Texture2D" uid="uid://r2jk2n87hsle" path="res://sprites/items/sword.png" id="2_n3srn"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_sy56y"]
 

@@ -109,9 +109,13 @@ func reset_states() -> void:
 	PlayerState.regen = PlayerConstants.DEFAULT_REGEN
 	PlayerState.regen_cooldown = PlayerConstants.DEFAULT_REGEN_COOLDOWN
 	PlayerState.sprayer_limit = PlayerConstants.DEFAULT_SPRAYER_LIMIT
+	PlayerState.sprayer_count = 0
 	PlayerState.sentry_limit = PlayerConstants.DEFAULT_SENTRY_LIMIT
+	PlayerState.sentry_count = 0
 	PlayerState.blank_limit = PlayerConstants.DEFAULT_BLANK_LIMIT
+	PlayerState.blank_count = 0
 	PlayerState.spawner_limit = PlayerConstants.DEFAULT_SPAWNER_LIMIT
+	PlayerState.spawner_count = 0
 	
 	PlayerState.levels_available = PlayerConstants.DEFAULT_LEVELS_AVAILABLE
 	PlayerState.player_items.clear()
@@ -152,6 +156,10 @@ func save_game() -> void:
 		"blank_limit": PlayerState.blank_limit,
 		"spawner_limit": PlayerState.spawner_limit,
 		"minimum_gold": PlayerState.minimum_gold,
+		"sprayer_count": PlayerState.sprayer_count,
+		"sentry_count": PlayerState.sentry_count,
+		"blank_count": PlayerState.blank_count,
+		"spawner_count": PlayerState.spawner_count,
 		
 		# Player Progression
 		"levels_available": PlayerState.levels_available,
@@ -227,6 +235,10 @@ func load_game() -> void:
 	PlayerState.sentry_limit = save_data["sentry_limit"]
 	PlayerState.blank_limit = save_data["blank_limit"]
 	PlayerState.spawner_limit = save_data["spawner_limit"]
+	PlayerState.sprayer_count = save_data["sprayer_count"]
+	PlayerState.sentry_count = save_data["sentry_count"]
+	PlayerState.spawner_count = save_data["spawner_count"]
+	PlayerState.blank_count = save_data["blank_count"]
 	PlayerState.minimum_gold = save_data["minimum_gold"]
 	
 	# Load Player Progression

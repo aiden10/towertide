@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bpjt8pf122tdl"]
 
-[ext_resource type="Script" path="res://towers/sentry/sniper/cannon/cannon_tower.gd" id="1_yp5ik"]
+[ext_resource type="Script" uid="uid://c7y3mrdne4r6b" path="res://towers/sentry/sniper/cannon/cannon_tower.gd" id="1_yp5ik"]
 [ext_resource type="Texture2D" uid="uid://cdfmtuemvk2dq" path="res://sprites/towers/sentry/sniper/cannon/cannon.png" id="2_c46q0"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_6bc26"]
 

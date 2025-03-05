@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnbw4g1sxxhil"]
 
-[ext_resource type="Script" path="res://towers/sprayer/extra_spray/super_sprayer/atomizer/atomizer_tower.gd" id="1_7ci4w"]
+[ext_resource type="Script" uid="uid://drphnvvw5uwjy" path="res://towers/sprayer/extra_spray/super_sprayer/atomizer/atomizer_tower.gd" id="1_7ci4w"]
 [ext_resource type="Texture2D" uid="uid://dueu0aemscrjq" path="res://sprites/towers/cardinal/atomizer.png" id="2_xpu60"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2ech"]

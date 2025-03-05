@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b47ecsxv768kj"]
 
-[ext_resource type="Script" path="res://towers/blank/pylon/slowing/slowing_pylon_tower.gd" id="1_6ugtb"]
-[ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="1_kmu6c"]
+[ext_resource type="Script" uid="uid://4gqse36a7ukl" path="res://towers/blank/pylon/slowing/slowing_pylon_tower.gd" id="1_6ugtb"]
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="2_1r22k"]
+[ext_resource type="Texture2D" uid="uid://sm3abqaiveta" path="res://sprites/towers/blank/pylon/pylon.png" id="2_6www6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7eod1"]
 radius = 42.0
@@ -17,8 +17,8 @@ script = ExtResource("1_6ugtb")
 shape = SubResource("CircleShape2D_7eod1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.222292, 0.222292)
-texture = ExtResource("1_kmu6c")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6www6")
 
 [node name="PlacementRadius" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)

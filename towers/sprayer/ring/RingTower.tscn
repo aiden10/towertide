@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7wef6atbsxo0"]
 
-[ext_resource type="Script" path="res://towers/sprayer/ring/ring_tower.gd" id="1_q0ce3"]
+[ext_resource type="Script" uid="uid://bopqjcf8mm4h0" path="res://towers/sprayer/ring/ring_tower.gd" id="1_q0ce3"]
 [ext_resource type="Texture2D" uid="uid://uagxrwg36pbl" path="res://sprites/towers/cross/ring/ring_tower.png" id="2_8whjf"]
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="4_ppy85"]
 

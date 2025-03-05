@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3t2i58ws7on"]
 
 [ext_resource type="Texture2D" uid="uid://lvnhbw6j4hij" path="res://sprites/towers/cardinal/cardinal.png" id="1_4b6ej"]
-[ext_resource type="Script" path="res://towers/sprayer/extra_spray/cardinal_tower.gd" id="1_30mov"]
+[ext_resource type="Script" uid="uid://bfx4msquo8rwg" path="res://towers/sprayer/extra_spray/cardinal_tower.gd" id="1_30mov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kk6st"]
 radius = 42.0

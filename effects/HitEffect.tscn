@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccymbfdd0ysxx"]
 
-[ext_resource type="Script" path="res://effects/hit_effect.gd" id="1_66cvp"]
+[ext_resource type="Script" uid="uid://d0y2w4d4aquf0" path="res://effects/hit_effect.gd" id="1_66cvp"]
 [ext_resource type="Material" uid="uid://cgywvp3okcs3y" path="res://effects/HitProcess.tres" id="2_2mi7r"]
 
 [node name="HitEffect" type="Node2D"]

@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player: CharacterBody2D = $Player
+@onready var transition_rect: ColorRect = $TransitionRect
 
 ## Every x seconds after clearing the stage, an extra enemy will spawn each time
 @export var extra_spawn_time_scale: float = 20
@@ -14,6 +15,9 @@ var time_since_clear = 0
 var boss_spawned = false
 
 func _ready() -> void:
+	transition_rect.visible = true
+	var transition_tween = create_tween()
+	transition_tween.tween_property(transition_rect, "modulate:a", 0, 2.5)
 	EventBus.arena_spawn.connect(add_to_arena)
 	EventBus.level_exited.connect(start_new_level)
 	EventBus.pause_game.connect(func(): get_tree().paused = true)
@@ -28,6 +32,7 @@ func _ready() -> void:
 	TowerManager.active_towers.clear()
 
 func _process(delta: float) -> void:
+	transition_rect.position = Vector2(GameState.player_position.x - 960, GameState.player_position.y - 540) 
 	if not GameState.wave_started:
 		return
 
@@ -144,4 +149,4 @@ func start_new_level() -> void:
 	else:
 		GameState.is_boss_stage = false
 
-	get_tree().call_deferred("change_scene_to_packed", Scenes.shop_scene)
+	SceneManager.load_arena()

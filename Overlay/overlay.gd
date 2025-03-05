@@ -114,7 +114,7 @@ func _ready() -> void:
 func _on_cross_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
-		if PlayerState.sprayer_limit > 0:
+		if PlayerState.sprayer_count < PlayerState.sprayer_limit:
 			EventBus.toggle_tower_selection.emit(1, Towers.CROSS_COST, EventBus.tower1_selected)
 		else:
 			EventBus.invalid_action.emit()
@@ -122,7 +122,7 @@ func _on_cross_container_gui_input(event: InputEvent) -> void:
 func _on_sentry_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
-		if PlayerState.sentry_limit > 0:
+		if PlayerState.sentry_count < PlayerState.sentry_limit:
 			EventBus.toggle_tower_selection.emit(2, Towers.SENTRY_COST, EventBus.tower2_selected)
 		else:
 			EventBus.invalid_action.emit()
@@ -130,7 +130,7 @@ func _on_sentry_container_gui_input(event: InputEvent) -> void:
 func _on_spawner_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
-		if PlayerState.spawner_limit > 0:
+		if PlayerState.spawner_count < PlayerState.spawner_limit:
 			EventBus.toggle_tower_selection.emit(3, Towers.SPAWNER_COST, EventBus.tower3_selected)
 		else:
 			EventBus.invalid_action.emit()
@@ -138,7 +138,7 @@ func _on_spawner_container_gui_input(event: InputEvent) -> void:
 func _on_blank_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
-		if PlayerState.blank_limit > 0:
+		if PlayerState.blank_count < PlayerState.blank_limit:
 			EventBus.toggle_tower_selection.emit(4, Towers.BLANK_COST, EventBus.tower4_selected)
 		else:
 			EventBus.invalid_action.emit()
@@ -201,10 +201,10 @@ func _process(_delta: float) -> void:
 	xp_bar.max_value = PlayerState.level_up_condition
 	xp_bar.value = PlayerState.xp
 	
-	sprayer_count.text = str(PlayerState.sprayer_limit)
-	sentry_count.text = str(PlayerState.sentry_limit)
-	spawner_count.text = str(PlayerState.spawner_limit)
-	blank_count.text = str(PlayerState.blank_limit)
+	sprayer_count.text = str(PlayerState.sprayer_count) + "/" + str(PlayerState.sprayer_limit)
+	sentry_count.text = str(PlayerState.sentry_count) + "/" + str(PlayerState.sentry_limit)
+	spawner_count.text = str(PlayerState.spawner_count) + "/" + str(PlayerState.spawner_limit)
+	blank_count.text = str(PlayerState.blank_count) + "/" + str(PlayerState.blank_limit)
 	
 	## Wave started but not yet cleared
 	if not GameState.level_cleared and GameState.wave_started:
@@ -237,7 +237,7 @@ func _process(_delta: float) -> void:
 
 	## Level cleared
 	elif GameState.level_cleared and GameState.wave_started:
-		clear_condition_label.text = "Enter the door to proceed to the shop"
+		clear_condition_label.text = "Enter the door to proceed to the next stage"
 
 		if pulse_tween and pulse_tween.is_valid():
 			pulse_tween.kill()

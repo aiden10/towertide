@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bx66d1earu3rb"]
 
-[ext_resource type="Script" path="res://arena/arena.gd" id="1_5n0be"]
+[ext_resource type="Script" uid="uid://5daikp8g3jos" path="res://arena/arena.gd" id="1_5n0be"]
 [ext_resource type="PackedScene" uid="uid://dqfbffxeidvhr" path="res://player/Player.tscn" id="1_iy5w2"]
-[ext_resource type="Shader" path="res://resources/grid_shader.gdshader" id="2_5kx8n"]
-[ext_resource type="Script" path="res://arena/grid_background.gd" id="2_10i7o"]
-[ext_resource type="Script" path="res://autoloads/pickup_manager.gd" id="2_iswvx"]
+[ext_resource type="Shader" uid="uid://lmefax2c5i1p" path="res://resources/grid_shader.gdshader" id="2_5kx8n"]
+[ext_resource type="Script" uid="uid://dcgkfq2pm3n0b" path="res://arena/grid_background.gd" id="2_10i7o"]
+[ext_resource type="Script" uid="uid://djdgbay6aqp4q" path="res://autoloads/pickup_manager.gd" id="2_iswvx"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_n3qgd"]
 [ext_resource type="PackedScene" uid="uid://cmnf66ocvlno0" path="res://overlay/Overlay.tscn" id="5_0u82s"]
 [ext_resource type="PackedScene" uid="uid://b5nu37o7682ap" path="res://overlay/death_screen/DeathScreen.tscn" id="5_ffmsy"]
@@ -37,6 +37,23 @@ glow_hdr_threshold = 0.5
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_5n0be")
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GridBackground" type="ColorRect" parent="."]
 z_index = -10

@@ -17,13 +17,13 @@ const SWORD_DESCRIPTION: String = "Deflect enemy bullets and deal melee damage"
 const SWORD_PRICE: int = 5
 const SWORD_DAMAGE: float = 5
 
-const MAGNET_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
+const MAGNET_IMAGE_PATH: String = "res://sprites/items/magnet.png"
 const MAGNET_NAME: String = "Magnet"
 const MAGNET_DESCRIPTION: String = "Pulls xp and gold towards you"
 const MAGNET_PRICE: int = 5
 const MAGNET_ATTRACT_SPEED: int = 80
 
-const CREDIT_CARD_IMAGE_PATH: String = "res://sprites/items/shop_items/shop_item_template.png"
+const CREDIT_CARD_IMAGE_PATH: String = "res://sprites/items/credit_card.png"
 const CREDIT_CARD_NAME: String = "Credit Card"
 const CREDIT_CARD_DESCRIPTION: String = "Allows you to go 50 gold into debt"
 const CREDIT_CARD_PRICE: int = 5

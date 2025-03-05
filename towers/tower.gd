@@ -62,13 +62,13 @@ func sell() -> void:
 		PlayerState.gold += int(value / 2)
 
 	if base_type == 1:
-		PlayerState.sprayer_limit += 1
+		PlayerState.sprayer_count -= 1
 	elif base_type == 2:
-		PlayerState.sentry_limit += 1
+		PlayerState.sentry_count -= 1
 	elif base_type == 3:
-		PlayerState.spawner_limit += 1
+		PlayerState.spawner_count -= 1
 	elif base_type == 4:
-		PlayerState.blank_limit += 1
+		PlayerState.blank_count -= 1
 	EventBus.tower_sold.emit()
 	call_deferred("queue_free")
 
@@ -94,9 +94,12 @@ func _on_tower_clicked() -> void:
 
 	GameState.selected_tower = self
 	EventBus.tower_selected.emit()
-	$Sprite.modulate = Color8(255, 500, 255, 100)
+	turn_green()
 
 func deselect_tower() -> void:
 	$Sprite.modulate = Color8(255, 255, 255, 255)
 	GameState.selected_tower = null
 	EventBus.unselect_pressed.emit()
+
+func turn_green() -> void:
+	$Sprite.modulate = Color8(255, 500, 255, 100)

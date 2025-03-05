@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_vdpxo"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="2_678dg"]
-[ext_resource type="Script" path="res://overlay/upgrade_menu/upgrade_menu.gd" id="2_xj3u0"]
+[ext_resource type="Script" uid="uid://dq8ntq5f70iwr" path="res://overlay/upgrade_menu/upgrade_menu.gd" id="2_xj3u0"]
 [ext_resource type="Texture2D" uid="uid://dubu0owmc1kjs" path="res://sprites/towers/cross/f5.png" id="3_hcvc4"]
 [ext_resource type="Texture2D" uid="uid://ca4yn0y6sg2f8" path="res://sprites/overlay/x.png" id="3_o5ejc"]
 [ext_resource type="StyleBox" uid="uid://dnga32kunro1a" path="res://resources/upgrade_button.tres" id="4_1tqj6"]
@@ -107,10 +107,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8egmq"]
 _data = {
-"RESET": SubResource("Animation_s6jd0"),
-"close": SubResource("Animation_5u2ve"),
-"open": SubResource("Animation_tmu41"),
-"shake": SubResource("Animation_1ek2t")
+&"RESET": SubResource("Animation_s6jd0"),
+&"close": SubResource("Animation_5u2ve"),
+&"open": SubResource("Animation_tmu41"),
+&"shake": SubResource("Animation_1ek2t")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1eda"]

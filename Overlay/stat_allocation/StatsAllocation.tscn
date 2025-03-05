@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv8le20yq355c"]
+[gd_scene load_steps=15 format=3 uid="uid://dv8le20yq355c"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_0si0m"]
-[ext_resource type="Script" path="res://overlay/stat_allocation/stats_allocation.gd" id="2_55o8y"]
+[ext_resource type="Script" uid="uid://cpvipr6y85gpb" path="res://overlay/stat_allocation/stats_allocation.gd" id="2_55o8y"]
 [ext_resource type="Texture2D" uid="uid://c4mkmhs8fqxpb" path="res://sprites/overlay/button.png" id="2_r7akf"]
+[ext_resource type="Texture2D" uid="uid://dau5bh2n41vd8" path="res://sprites/overlay/damage.png" id="4_8lhli"]
 [ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/overlay/heart.png" id="4_n2cel"]
+[ext_resource type="Texture2D" uid="uid://3i6cydbglyvp" path="res://sprites/overlay/speed.png" id="6_g8ulj"]
+[ext_resource type="Texture2D" uid="uid://dprcuqf6cpuhm" path="res://sprites/overlay/knockback.png" id="7_llm18"]
+[ext_resource type="Texture2D" uid="uid://di74rlej4mccr" path="res://sprites/overlay/firerate.png" id="8_7h2a8"]
+[ext_resource type="Texture2D" uid="uid://brby5gbpipoex" path="res://sprites/overlay/maxhp.png" id="9_xopex"]
+[ext_resource type="Texture2D" uid="uid://dniesadq3a5dc" path="res://sprites/overlay/bullet_speed.png" id="10_2g8ev"]
+[ext_resource type="Texture2D" uid="uid://dakuprodnpvyt" path="res://sprites/overlay/size.png" id="11_5yvfu"]
+[ext_resource type="Texture2D" uid="uid://cduwglb80lsin" path="res://sprites/overlay/pierce.png" id="12_fn45d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfco8"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0980392)
@@ -289,7 +297,7 @@ theme_override_constants/separation = 15
 
 [node name="DamageIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Damage"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("4_8lhli")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Damage"]
@@ -329,7 +337,7 @@ theme_override_constants/separation = 15
 
 [node name="SpeedIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Speed"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("6_g8ulj")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Speed"]
@@ -349,7 +357,7 @@ theme_override_constants/separation = 15
 
 [node name="KnockbackIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("7_llm18")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Knockback"]
@@ -369,7 +377,7 @@ theme_override_constants/separation = 15
 
 [node name="ATKSpeedIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("8_7h2a8")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/ATKSpeed"]
@@ -389,7 +397,7 @@ theme_override_constants/separation = 15
 
 [node name="MaxHPIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("9_xopex")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/MaxHP"]
@@ -409,7 +417,7 @@ theme_override_constants/separation = 15
 
 [node name="BulletSpeedIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("10_2g8ev")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSpeed"]
@@ -429,7 +437,7 @@ theme_override_constants/separation = 15
 
 [node name="BulletSizeIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("11_5yvfu")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/BulletSize"]
@@ -449,7 +457,7 @@ theme_override_constants/separation = 15
 
 [node name="PierceIcon" type="TextureRect" parent="StatsDisplay/PanelContainer/VBoxContainer/Pierce"]
 layout_mode = 2
-texture = ExtResource("4_n2cel")
+texture = ExtResource("12_fn45d")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="StatsDisplay/PanelContainer/VBoxContainer/Pierce"]

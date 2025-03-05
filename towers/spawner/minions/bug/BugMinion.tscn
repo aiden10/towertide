@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://brvdcs7nvc2gf"]
 
-[ext_resource type="Script" path="res://towers/spawner/minions/bug/bug_minion.gd" id="1_2m3af"]
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_s1sw8"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="2_xkbdo"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_l7xc4"]
+[ext_resource type="Script" uid="uid://6qrxyu8byill" path="res://towers/spawner/minions/bug/bug_minion.gd" id="1_2m3af"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="1_s1sw8"]
+[ext_resource type="Script" uid="uid://it7dunwf4tl1" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="2_xkbdo"]
+[ext_resource type="Script" uid="uid://clcygrdg1qtjb" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_l7xc4"]
 [ext_resource type="Texture2D" uid="uid://bao1hi4w2n82l" path="res://sprites/towers/minions/swarm/bug.png" id="4_ykhnd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhqmj"]

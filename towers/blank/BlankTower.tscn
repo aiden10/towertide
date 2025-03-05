@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlliwg7hxe7l"]
 
-[ext_resource type="Script" path="res://towers/blank/blank_tower.gd" id="1_lou8c"]
+[ext_resource type="Script" uid="uid://c8rwncfrxfx76" path="res://towers/blank/blank_tower.gd" id="1_lou8c"]
 [ext_resource type="Texture2D" uid="uid://dwwvgb5wmus22" path="res://sprites/player/player.png" id="2_i3fyu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6a161"]

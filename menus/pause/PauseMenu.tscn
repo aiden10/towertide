@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2anud6ey34mu"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_blc51"]
-[ext_resource type="Script" path="res://menus/pause/pause_menu.gd" id="2_jb73q"]
+[ext_resource type="Script" uid="uid://bxpx4m460qrsw" path="res://menus/pause/pause_menu.gd" id="2_jb73q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_644di"]
 bg_color = Color(0.129558, 0.129559, 0.129558, 0.392157)
@@ -59,3 +59,23 @@ text = "Resume"
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Exit "
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 450
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeBar" type="HSlider" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+value = 100.0

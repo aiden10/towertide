@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0ww8ht02jwn8"]
 
 [ext_resource type="Texture2D" uid="uid://coebofe0kgav3" path="res://sprites/towers/spawner/spawner.png" id="1_0e3kq"]
-[ext_resource type="Script" path="res://towers/spawner/spawner_tower.gd" id="1_6f68t"]
+[ext_resource type="Script" uid="uid://dx1vcqj6j0skx" path="res://towers/spawner/spawner_tower.gd" id="1_6f68t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exgs7"]
 radius = 42.0

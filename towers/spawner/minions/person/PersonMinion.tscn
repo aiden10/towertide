@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://5obthsn8dowp"]
 
-[ext_resource type="Script" path="res://towers/spawner/minions/person/person_minion.gd" id="1_6f38c"]
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_jhm45"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_dfusk"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="3_hk6bt"]
+[ext_resource type="Script" uid="uid://dey38dmnjdp5s" path="res://towers/spawner/minions/person/person_minion.gd" id="1_6f38c"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="1_jhm45"]
+[ext_resource type="Script" uid="uid://clcygrdg1qtjb" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="3_dfusk"]
+[ext_resource type="Script" uid="uid://c7jks254ggh76" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="3_hk6bt"]
 [ext_resource type="Texture2D" uid="uid://b7yodj1in6ha1" path="res://sprites/towers/minions/person/f1.png" id="4_640so"]
 [ext_resource type="Texture2D" uid="uid://cym7p8fd6u53b" path="res://sprites/towers/minions/person/f2.png" id="5_128ci"]
 [ext_resource type="Texture2D" uid="uid://7jetxhf10owe" path="res://sprites/towers/minions/person/a1.png" id="5_sthpk"]

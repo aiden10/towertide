@@ -1,7 +1,7 @@
 extends Node
 
 const CROSS_COST: int = 5
-const CROSS_NAME: String = "Cross"
+const CROSS_NAME: String = "Sprayer"
 const CROSS_DESCRIPTION: String = "Shoots bullets alternating between a cross and x pattern"
 const CROSS_COOLDOWN: float = 2.5
 const CROSS_SPEED_PERCENTAGE: float = 0.75 
@@ -38,7 +38,7 @@ const ATOMIZER_SPEED_PERCENTAGE: float = 0.75
 const ATOMIZER_DAMAGE_PERCENTAGE: float = 0.25
 const ATOMIZER_BULLET_SCALE: float = 0.35
 var ATOMIZER_IMAGE: Texture = load("res://sprites/towers/cardinal/atomizer.png")
-const ATOMIZER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/SuperSprayer.tscn"
+const ATOMIZER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/atomizer/AtomizerTower.tscn"
 
 const CLOUD_COST: int = 15
 const CLOUD_NAME: String = "Bullet Cloud"
@@ -138,6 +138,7 @@ const SPAWNER_DESCRIPTION: String = "Automatically spawns minions"
 const SPAWNER_COOLDOWN: float = 2.5
 const SPAWNER_SPAWN_LIMIT: int = 3
 var SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/spawner.png")
+
 const SPAWNER_SCENE_PATH: String = "res://towers/spawner/SpawnerTower.tscn"
 
 const SHOOTER_SPAWNER_COST: int = 15
@@ -192,7 +193,7 @@ const KIDNAPPER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/kidna
 
 const BLANK_COST: int = 5
 const BLANK_NAME: String = "Blank"
-const BLANK_DESCRIPTION: String = "Does nothing"
+const BLANK_DESCRIPTION: String = "Does nothing until upgraded"
 var BLANK_IMAGE: Texture = load("res://sprites/towers/blank/blank.png")
 const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
 
@@ -233,7 +234,7 @@ const PYLON_SCENE_PATH: String = "res://towers/blank/pylon/PylonTower.tscn"
 const PYLON_COST: int = 5
 const PYLON_COOLDOWN: float = 0.25
 const PYLON_DAMAGE: float = 0.33
-var PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
+var PYLON_IMAGE: Texture = load("res://sprites/towers/blank/pylon/pylon.png")
 
 const SLOWING_PYLON_NAME: String = "Slowing Pylon"
 const SLOWING_PYLON_DESCRIPTION: String = "Slows enemy bullets that enter this tower's area"
@@ -241,7 +242,15 @@ const SLOWING_PYLON_SCENE_PATH: String = "res://towers/blank/pylon/slowing/Slowi
 const SLOWING_PYLON_COST: int = 10
 const SLOWING_PYLON_COOLDOWN: float = 0.25
 const SLOWING_PYLON_DAMAGE: float = 0.4
-var SLOWING_PYLON_IMAGE: Texture = load("res://sprites/player/white.png")
+var SLOWING_PYLON_IMAGE: Texture = load("res://sprites/towers/blank/pylon/pylon.png")
+
+const CHAIN_PYLON_NAME: String = "Chain Pylon"
+const CHAIN_PYLON_DESCRIPTION: String = "Creates electric lines between enemies in this tower's range"
+const CHAIN_PYLON_SCENE_PATH: String = "res://towers/blank/pylon/chain/ChainPylon.tscn"
+const CHAIN_PYLON_COST: int = 10
+const CHAIN_PYLON_COOLDOWN: float = 0.25
+const CHAIN_PYLON_DAMAGE: float = 0.4
+var CHAIN_PYLON_IMAGE: Texture = load("res://sprites/towers/blank/pylon/pylon.png")
 
 var charger_minion_scene: PackedScene = load("res://towers/spawner/minions/charger/ChargerMinion.tscn")
 const CHARGER_NAME: String = "Charger"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5nu37o7682ap"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_3o7l8"]
-[ext_resource type="Script" path="res://overlay/death_screen/death_screen.gd" id="1_g2fx0"]
+[ext_resource type="Script" uid="uid://bblv6e77y2cy1" path="res://overlay/death_screen/death_screen.gd" id="1_g2fx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6e61"]
 bg_color = Color(0.129558, 0.129559, 0.129558, 0.392157)
@@ -17,7 +17,6 @@ grow_vertical = 2
 script = ExtResource("1_g2fx0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
@@ -49,6 +48,13 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="StageLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Survived Until Stage: 5"
+horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

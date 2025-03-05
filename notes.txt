@@ -24,6 +24,7 @@
 
     - Aura: Base tower does nothing
         - Pylon tower with electric fence
+            - Pylon with a shield that goes around it
         - Economy
         - Buffs towers in range
             - Debuffs enemies while still buffing friendly towers  

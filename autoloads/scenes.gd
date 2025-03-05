@@ -42,6 +42,7 @@ var blank_tower_scene: PackedScene = preload("res://towers/blank/BlankTower.tscn
 var supporter_tower_scene: PackedScene = preload("res://towers/blank/support/SupportTower.tscn")
 var pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/PylonTower.tscn")
 var slowing_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/slowing/SlowingPylonTower.tscn")
+var chain_pylon_tower_scene: PackedScene = preload("res://towers/blank/pylon/chain/ChainPylon.tscn")
 var gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/GoldDispenserTower.tscn")
 var slots_tower_scene: PackedScene = preload("res://towers/blank/economy/gambling/SlotMachine.tscn")
 var double_gold_dispenser_tower_scene: PackedScene = preload("res://towers/blank/economy/DoubleGoldTower.tscn")

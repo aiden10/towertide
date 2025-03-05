@@ -26,12 +26,12 @@ func _ready() -> void:
 	shoot_container.modulate = Color(1, 1, 1, 0)
 	shoot_container.position = Vector2(-85, -125) + global_position
 	fire_progress.position = Vector2(-40, 75) + global_position
-	shoot_label.text = "Press " + Utils.get_action_key_name("enter") + " to fire, " + Utils.get_action_key_name("rotate") + " to face mouse"
+	shoot_label.text = "Press " + Utils.get_action_key_name("fire") + " to fire, " + Utils.get_action_key_name("rotate") + " to face mouse"
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("enter"):
+	if Input.is_action_just_pressed("fire"):
 		if not can_shoot:
 			EventBus.invalid_action.emit()
 		else:

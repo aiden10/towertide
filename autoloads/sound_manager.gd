@@ -28,7 +28,8 @@ const SOUNDS = {
 	"slot_play": preload("res://resources/sounds/slot_play.wav"),
 	"slot_win": preload("res://resources/sounds/slot_win.wav"),
 	"slot_lost": preload("res://resources/sounds/slot_lose.wav"),
-	"slot_jackpot": preload("res://resources/sounds/slot_jackpot.wav")
+	"slot_jackpot": preload("res://resources/sounds/slot_jackpot.wav"),
+	"button_press": preload("res://resources/sounds/button_press.wav")
 }
 
 const XP_SOUNDS = [xp1, xp2]
@@ -61,8 +62,8 @@ func _ready() -> void:
 	EventBus.level_exited.connect(func(): play_sound("enter"))
 	EventBus.level_cleared.connect(func(): play_sound("thud"))
 	EventBus._wave_started.connect(func(): play_sound("bell_toll"))
-	EventBus.player_regenerated.connect(func(): play_sound("heal"))
-	EventBus._tower_upgraded.connect(func(): play_sound("upgrade", -10))
+	EventBus.player_regenerated.connect(func(): play_sound("heal", -25))
+	EventBus._tower_upgraded.connect(func(): play_sound("upgrade", -35))
 	EventBus.tower1_selected.connect(func(): play_sound("select"))
 	EventBus.tower2_selected.connect(func(): play_sound("select"))
 	EventBus.tower3_selected.connect(func(): play_sound("select"))
@@ -72,6 +73,7 @@ func _ready() -> void:
 	EventBus._slots_won.connect(func(): play_sound("slot_win"))
 	EventBus._slots_lost.connect(func(): play_sound("slot_lost"))
 	EventBus._slots_jackpot.connect(func(): play_sound("slot_jackpot"))
+	EventBus._button_pressed.connect(func(): play_sound("button_press"))
 	
 	EventBus.xp_picked_up.connect(func(_xp_type: int): play_random(XP_SOUNDS))
 	EventBus.gold_picked_up.connect(func(): play_random(GOLD_SOUNDS))
@@ -80,12 +82,24 @@ func _ready() -> void:
 	EventBus.player_shot.connect(func(): play_random(SHOOT_SOUNDS))
 	EventBus.enemy_shot.connect(func(): play_random(SHOOT_SOUNDS))
 	EventBus.tower_shot.connect(func(): play_random(SHOOT_SOUNDS))
-	EventBus.minion_spawned.connect(func(): play_random(MINION_SOUNDS))
+	EventBus.minion_spawned.connect(func(): play_random(MINION_SOUNDS, -10))
 	
-func play_random(sounds: Array) -> void:
+func set_master_volume() -> void:
+	var normalized_volume = _get_normalized_volume(sound_level)
+	for player in audio_players:
+		player.volume_db = normalized_volume
+
+func _get_normalized_volume(slider_value: float) -> float:
+	var normalized = slider_value / 100.0
+	var curved_volume = pow(normalized, 2)  # Quadratic curve    
+	var volume_db = linear_to_db(curved_volume)
+	return min(volume_db, 0.0)
+
+func play_random(sounds: Array, volume_adjustment: float = 0.0) -> void:
 	var player = _get_available_player()
 	if player:
 		player.stream = sounds.pick_random()
+		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
 		player.play()
 
 func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
@@ -93,7 +107,7 @@ func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
 	if player:
 		player.process_mode = Node.PROCESS_MODE_ALWAYS
 		player.stream = SOUNDS[sound_name]
-		player.volume_db = volume_adjustment  
+		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
 		player.play()
 
 func _get_available_player() -> AudioStreamPlayer:

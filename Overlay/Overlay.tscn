@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmnf66ocvlno0"]
+[gd_scene load_steps=29 format=3 uid="uid://cmnf66ocvlno0"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_84vjy"]
-[ext_resource type="Script" path="res://overlay/overlay.gd" id="1_r8lhj"]
+[ext_resource type="Script" uid="uid://b7hwae2axqdxt" path="res://overlay/overlay.gd" id="1_r8lhj"]
 [ext_resource type="Texture2D" uid="uid://cydof6j3pclmi" path="res://sprites/overlay/heart.png" id="2_adl4l"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="3_84jj3"]
-[ext_resource type="Script" path="res://overlay/items_container.gd" id="6_bwdxj"]
+[ext_resource type="Script" uid="uid://c8qb1xkiivksq" path="res://overlay/items_container.gd" id="6_bwdxj"]
 [ext_resource type="Texture2D" uid="uid://ykkysmfqi48i" path="res://sprites/towers/sentry/sentry_icon.png" id="6_nf5u0"]
 [ext_resource type="Texture2D" uid="uid://bsrka1xiqcegi" path="res://sprites/towers/blank/blank.png" id="7_cgnsd"]
 [ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="7_f0nbu"]
@@ -12,9 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://dv8le20yq355c" path="res://overlay/stat_allocation/StatsAllocation.tscn" id="8_idaox"]
 [ext_resource type="Texture2D" uid="uid://5jyf0xi3t30s" path="res://sprites/overlay/arrow.png" id="9_lquxq"]
 [ext_resource type="PackedScene" uid="uid://4w1hmsky4dxm" path="res://overlay/upgrade_menu/UpgradeMenu.tscn" id="10_gi2n7"]
-[ext_resource type="Script" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
-[ext_resource type="Script" path="res://overlay/stats_display.gd" id="15_5owfj"]
+[ext_resource type="Script" uid="uid://dw7635w4fageh" path="res://overlay/paused_overlay.gd" id="12_h6ufc"]
+[ext_resource type="Texture2D" uid="uid://dau5bh2n41vd8" path="res://sprites/overlay/damage.png" id="14_xgtvt"]
+[ext_resource type="Script" uid="uid://chd3s81t0jqja" path="res://overlay/stats_display.gd" id="15_5owfj"]
 [ext_resource type="PackedScene" uid="uid://wm0ankwkqulp" path="res://overlay/limits_upgrade/LimitUpgradeScreen.tscn" id="15_08l5w"]
+[ext_resource type="Texture2D" uid="uid://3i6cydbglyvp" path="res://sprites/overlay/speed.png" id="16_u0wgu"]
+[ext_resource type="Texture2D" uid="uid://dprcuqf6cpuhm" path="res://sprites/overlay/knockback.png" id="17_2d78p"]
+[ext_resource type="Texture2D" uid="uid://di74rlej4mccr" path="res://sprites/overlay/firerate.png" id="18_is0dj"]
+[ext_resource type="Texture2D" uid="uid://brby5gbpipoex" path="res://sprites/overlay/maxhp.png" id="19_88h2j"]
+[ext_resource type="Texture2D" uid="uid://dniesadq3a5dc" path="res://sprites/overlay/bullet_speed.png" id="20_bh35c"]
+[ext_resource type="Texture2D" uid="uid://dakuprodnpvyt" path="res://sprites/overlay/size.png" id="21_507l3"]
+[ext_resource type="Texture2D" uid="uid://cduwglb80lsin" path="res://sprites/overlay/pierce.png" id="22_pjlk2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ibja"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -211,9 +219,11 @@ expand_mode = 2
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
 theme = ExtResource("1_84vjy")
-theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
-theme_override_font_sizes/font_size = 32
-text = "5"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0/5"
 horizontal_alignment = 1
 
 [node name="KeyLabel1" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer"]
@@ -258,15 +268,16 @@ expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 14
 
 [node name="SentryCount" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer/MarginContainer"]
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
 theme = ExtResource("1_84vjy")
-theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
-theme_override_font_sizes/font_size = 32
-text = "5"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0/5"
 horizontal_alignment = 1
 
 [node name="KeyLabel2" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
@@ -313,9 +324,11 @@ expand_mode = 1
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
 theme = ExtResource("1_84vjy")
-theme_override_colors/font_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
-theme_override_font_sizes/font_size = 32
-text = "10"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0/5"
 horizontal_alignment = 1
 
 [node name="KeyLabel4" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
@@ -362,9 +375,11 @@ expand_mode = 1
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
 theme = ExtResource("1_84vjy")
-theme_override_colors/font_color = Color(1, 1, 1, 0.862745)
-theme_override_font_sizes/font_size = 32
-text = "5"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0/5"
 horizontal_alignment = 1
 
 [node name="KeyLabel3" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer"]
@@ -469,7 +484,7 @@ theme_override_constants/separation = 15
 
 [node name="DamageIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Damage"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("14_xgtvt")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Damage"]
@@ -509,7 +524,7 @@ theme_override_constants/separation = 15
 
 [node name="SpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Speed"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("16_u0wgu")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Speed"]
@@ -529,7 +544,7 @@ theme_override_constants/separation = 15
 
 [node name="KnockbackIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Knockback"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("17_2d78p")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Knockback"]
@@ -549,7 +564,7 @@ theme_override_constants/separation = 15
 
 [node name="ATKSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("18_is0dj")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/ATKSpeed"]
@@ -569,7 +584,7 @@ theme_override_constants/separation = 15
 
 [node name="MaxHPIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/MaxHP"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("19_88h2j")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/MaxHP"]
@@ -589,7 +604,7 @@ theme_override_constants/separation = 15
 
 [node name="BulletSpeedIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("20_bh35c")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSpeed"]
@@ -609,7 +624,7 @@ theme_override_constants/separation = 15
 
 [node name="BulletSizeIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSize"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("21_507l3")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/BulletSize"]
@@ -629,7 +644,7 @@ theme_override_constants/separation = 15
 
 [node name="PierceIcon" type="TextureRect" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Pierce"]
 layout_mode = 2
-texture = ExtResource("2_adl4l")
+texture = ExtResource("22_pjlk2")
 expand_mode = 3
 
 [node name="Label1" type="Label" parent="CanvasLayer/StatsDisplay/HBoxContainer/PanelContainer/VBoxContainer/Pierce"]
@@ -685,7 +700,7 @@ layout_mode = 2
 [node name="CrossNameInfo" type="Label" parent="CanvasLayer/Descriptions/Cross/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Cross"
+text = "Sprayer"
 
 [node name="CrossDescriptionInfo" type="Label" parent="CanvasLayer/Descriptions/Cross/VBoxContainer"]
 custom_minimum_size = Vector2(175, 75)

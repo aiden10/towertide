@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://5c5bbt3522uq"]
 
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="1_bwkwl"]
-[ext_resource type="Script" path="res://towers/spawner/minions/drifter/drifter_minion.gd" id="1_f44mh"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="2_2d3o5"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="2_bg70j"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/shoot_state.gd" id="4_1l0xh"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="1_bwkwl"]
+[ext_resource type="Script" uid="uid://gh2yytl6d0bc" path="res://towers/spawner/minions/drifter/drifter_minion.gd" id="1_f44mh"]
+[ext_resource type="Script" uid="uid://c7jks254ggh76" path="res://towers/spawner/minions/minion_states/melee_state.gd" id="2_2d3o5"]
+[ext_resource type="Script" uid="uid://clcygrdg1qtjb" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="2_bg70j"]
+[ext_resource type="Script" uid="uid://cwmd251ekbjpm" path="res://towers/spawner/minions/minion_states/shoot_state.gd" id="4_1l0xh"]
 [ext_resource type="Texture2D" uid="uid://dwypgfcqfjw34" path="res://sprites/towers/minions/drifter/drifter.png" id="6_71tia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5krh"]

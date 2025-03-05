@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6gwwlkacm32t"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_60rax"]
-[ext_resource type="Script" path="res://overlay/item_cell.gd" id="1_xhk8d"]
-[ext_resource type="Texture2D" uid="uid://df2ri8o2uxrq8" path="res://sprites/items/regen_potion.png" id="2_12pwy"]
+[ext_resource type="Script" uid="uid://c1q3wowlhsny0" path="res://overlay/item_cell.gd" id="1_xhk8d"]
+[ext_resource type="Texture2D" uid="uid://c8tkem5ugxdmo" path="res://sprites/items/regen_potion.png" id="2_12pwy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fery8"]
 bg_color = Color(1, 1, 1, 0.0196078)
@@ -47,6 +47,7 @@ texture = ExtResource("2_12pwy")
 expand_mode = 5
 
 [node name="QuantityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "4"
 

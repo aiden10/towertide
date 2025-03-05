@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhydb57jtk11n"]
 
-[ext_resource type="Script" path="res://projectiles/projectile.gd" id="1_koi3p"]
+[ext_resource type="Script" uid="uid://13lfp7cvl8tp" path="res://projectiles/projectile.gd" id="1_koi3p"]
 [ext_resource type="Texture2D" uid="uid://ckpbb8r7fbs7h" path="res://sprites/enemies/red_circle.png" id="2_d5dov"]
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="3_kasye"]
 

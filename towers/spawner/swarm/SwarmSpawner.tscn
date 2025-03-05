@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2h30tjxfabun"]
 
-[ext_resource type="Script" path="res://towers/spawner/swarm/swarm_spawner.gd" id="1_3ghl6"]
+[ext_resource type="Script" uid="uid://d0w8mvdt3ktyj" path="res://towers/spawner/swarm/swarm_spawner.gd" id="1_3ghl6"]
 [ext_resource type="Texture2D" uid="uid://d2cyjm86tefvr" path="res://sprites/towers/spawner/bug_spawner.png" id="2_le6b2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7g5b7"]

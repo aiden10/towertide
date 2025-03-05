@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xac7n5130umj"]
 
-[ext_resource type="Script" path="res://towers/sprayer/extra_spray/super_sprayer/super_sprayer.gd" id="1_vp611"]
+[ext_resource type="Script" uid="uid://da4k4aqkhwdjn" path="res://towers/sprayer/extra_spray/super_sprayer/super_sprayer.gd" id="1_vp611"]
 [ext_resource type="Texture2D" uid="uid://dosteuk32wl1v" path="res://sprites/towers/cardinal/super_sprayer.png" id="2_8kkpp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwk3s"]

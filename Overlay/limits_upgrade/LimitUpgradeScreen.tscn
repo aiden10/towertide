@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://wm0ankwkqulp"]
 
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="1_cgh5q"]
-[ext_resource type="Script" path="res://overlay/limits_upgrade/limit_upgrade_screen.gd" id="1_ij043"]
-[ext_resource type="Texture2D" uid="uid://dy3wa6verao8k" path="res://sprites/towers/cross/f1.png" id="2_r07id"]
-[ext_resource type="Texture2D" uid="uid://b5exvuf2l1wdc" path="res://sprites/towers/spawner/spawner_icon.png" id="3_pphse"]
+[ext_resource type="Script" uid="uid://3bwo4wiod1cj" path="res://overlay/limits_upgrade/limit_upgrade_screen.gd" id="1_ij043"]
+[ext_resource type="Texture2D" uid="uid://bvkruyngpevq7" path="res://sprites/overlay/towers/sprayer_icon.png" id="3_617jo"]
+[ext_resource type="Texture2D" uid="uid://b4p7q3dw78h50" path="res://sprites/overlay/towers/spawner_icon.png" id="4_603q4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhm0t"]
-bg_color = Color(0.227451, 0.227451, 0.227451, 0.392157)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.196078)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 expand_margin_left = 35.0
 expand_margin_top = 50.0
 expand_margin_right = 35.0
@@ -46,7 +46,7 @@ theme_override_constants/separation = 100
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_cgh5q")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 54
 text = "Upgrade Tower Limits"
 horizontal_alignment = 1
 
@@ -57,22 +57,26 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mhm0t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_constants/separation = 35
 
 [node name="TowerImage" type="TextureRect" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 250)
+visible = false
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("2_r07id")
-expand_mode = 3
+texture = ExtResource("3_617jo")
+expand_mode = 4
 
 [node name="TowerName" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
-text = "Sprayer Limit"
+text = "Blank Limit"
 horizontal_alignment = 1
 
 [node name="LimitIncrease" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
@@ -87,19 +91,23 @@ theme_override_font_sizes/font_size = 32
 text = "Select"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 35
 
 [node name="TowerImage" type="TextureRect" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(100, 250)
+visible = false
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("3_pphse")
-expand_mode = 3
+texture = ExtResource("4_603q4")
+expand_mode = 4
 
 [node name="TowerName" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "Spawner Limit"
+horizontal_alignment = 1
 
 [node name="LimitIncrease" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2

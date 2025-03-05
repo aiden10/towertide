@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://l2perbaghgnm"]
 
-[ext_resource type="Script" path="res://door/door.gd" id="1_1p08v"]
+[ext_resource type="Script" uid="uid://cd3dxa7gk41ff" path="res://door/door.gd" id="1_1p08v"]
 [ext_resource type="Texture2D" uid="uid://c6lgtaxffd3rb" path="res://sprites/arena/door.png" id="1_ci44r"]
 [ext_resource type="Texture2D" uid="uid://bff7y75k7i5vs" path="res://sprites/towers/large_outline.png" id="3_feage"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_ux131"]

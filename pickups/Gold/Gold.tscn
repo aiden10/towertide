@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://vi24dnj3jij5"]
 
-[ext_resource type="Script" path="res://pickups/gold/gold.gd" id="1_s5mvx"]
+[ext_resource type="Script" uid="uid://d1xuf146hqtvn" path="res://pickups/gold/gold.gd" id="1_s5mvx"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="2_mj0yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwn5o"]

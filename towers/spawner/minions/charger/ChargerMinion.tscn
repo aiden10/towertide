@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://bj7686p2lc663"]
 
-[ext_resource type="Script" path="res://towers/spawner/minions/charger/charger_minion.gd" id="1_qr6fo"]
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_25j0x"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="3_tg1uj"]
-[ext_resource type="Script" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="4_076l5"]
+[ext_resource type="Script" uid="uid://balygsjlnhy0t" path="res://towers/spawner/minions/charger/charger_minion.gd" id="1_qr6fo"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="2_25j0x"]
+[ext_resource type="Script" uid="uid://it7dunwf4tl1" path="res://towers/spawner/minions/minion_states/follow_state.gd" id="3_tg1uj"]
+[ext_resource type="Script" uid="uid://clcygrdg1qtjb" path="res://towers/spawner/minions/minion_states/idle_state.gd" id="4_076l5"]
 [ext_resource type="Texture2D" uid="uid://b0vp382hft5ma" path="res://sprites/towers/minions/charger/1.png" id="5_cwms2"]
 [ext_resource type="Texture2D" uid="uid://x7llecigcmit" path="res://sprites/towers/minions/charger/2.png" id="6_yqmav"]
 [ext_resource type="Texture2D" uid="uid://ty0vfk27r6va" path="res://sprites/towers/minions/charger/3.png" id="7_mq5lf"]

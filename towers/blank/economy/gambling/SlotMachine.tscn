@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dws5tpr2x3g7b"]
 
-[ext_resource type="Script" path="res://towers/blank/economy/gambling/slot_machine.gd" id="1_k7jq6"]
+[ext_resource type="Script" uid="uid://fb8qicsd02my" path="res://towers/blank/economy/gambling/slot_machine.gd" id="1_k7jq6"]
 [ext_resource type="Texture2D" uid="uid://b6env1xtiup5m" path="res://sprites/pickups/xp2.png" id="2_w38xc"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="3_jpnxl"]
 [ext_resource type="Texture2D" uid="uid://jbtged1cnlwp" path="res://sprites/towers/blank/economy/slot_machine.png" id="3_vl4ra"]

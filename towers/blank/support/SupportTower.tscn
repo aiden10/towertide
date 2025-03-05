@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckbbg758c6c8u"]
 
-[ext_resource type="Script" path="res://towers/blank/support/support_tower.gd" id="1_b2jmo"]
+[ext_resource type="Script" uid="uid://cgxl1jgen6lot" path="res://towers/blank/support/support_tower.gd" id="1_b2jmo"]
 [ext_resource type="Texture2D" uid="uid://cbqne6gstyfvi" path="res://sprites/towers/blank/support/support.png" id="1_yeen8"]
 [ext_resource type="Texture2D" uid="uid://bff7y75k7i5vs" path="res://sprites/towers/large_outline.png" id="2_u0p7i"]
 

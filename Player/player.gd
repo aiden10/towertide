@@ -73,19 +73,19 @@ func get_input():
 			var new_tower: Tower
 			if GameState.tower_type == 1:
 				PlayerState.gold -= Towers.CROSS_COST
-				PlayerState.sprayer_limit -= 1
+				PlayerState.sprayer_count += 1
 				new_tower = Scenes.cross_tower_scene.instantiate()
 			elif GameState.tower_type == 2:
 				PlayerState.gold -= Towers.SENTRY_COST
-				PlayerState.sentry_limit -= 1
+				PlayerState.sentry_count += 1
 				new_tower = Scenes.sentry_tower_scene.instantiate()
 			elif GameState.tower_type == 3:
 				PlayerState.gold -= Towers.SPAWNER_COST
-				PlayerState.spawner_limit -= 1
+				PlayerState.spawner_count += 1
 				new_tower = Scenes.spawner_tower_scene.instantiate()
 			elif GameState.tower_type == 4:
 				PlayerState.gold -= Towers.BLANK_COST
-				PlayerState.blank_limit -= 1
+				PlayerState.blank_count += 1
 				new_tower = Scenes.blank_tower_scene.instantiate()
 			
 			new_tower.global_position = get_global_mouse_position()
@@ -262,7 +262,7 @@ func level_up():
 	PlayerState.level += 1
 	PlayerState.levels_available += 1
 	PlayerState.xp = 0
-	PlayerState.level_up_condition = round(50 * (1.2 ** PlayerState.level) / 5) * 5
+	PlayerState.level_up_condition = round(50 * (1.3 ** PlayerState.level) / 5) * 5
 	EventBus.level_up.emit()
 	
 func _on_xp_pickup(xp_type: int):

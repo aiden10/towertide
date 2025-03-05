@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4mpw7p42iika"]
 
-[ext_resource type="Script" path="res://towers/sentry/sentry_tower.gd" id="1_686p5"]
+[ext_resource type="Script" uid="uid://b1cxfcrghvgx6" path="res://towers/sentry/sentry_tower.gd" id="1_686p5"]
 [ext_resource type="Texture2D" uid="uid://14y0pys87b3l" path="res://sprites/towers/sentry/sentry.png" id="2_ytsb8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8ijh"]

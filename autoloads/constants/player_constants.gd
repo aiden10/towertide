@@ -2,7 +2,7 @@ extends Node
 
 ## Stats
 const DEFAULT_LEVEL: int = 1
-const DEFAULT_GOLD: int = 100
+const DEFAULT_GOLD: int = 0
 const DEFAULT_XP: int = 0
 const DEFAULT_DAMAGE: int = 10
 const DEFAULT_SPEED: float = 300
@@ -24,5 +24,5 @@ const DEFAULT_SPAWNER_LIMIT: int = 1
 const DEFAULT_LEVELS_AVAILABLE: int = 0
 const DEFAULT_PLAYER_ITEMS: Array[Item] = []
 const DEFAULT_ITEM_COUNTS: Dictionary = {}
-const DEFAULT_LEVEL_UP_CONDITION: int = 100
+const DEFAULT_LEVEL_UP_CONDITION: int = 50
 const DEFAULT_ENEMIES_KILLED: int = 0

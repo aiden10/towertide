@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://btrqmaw8i0w6b"]
 
-[ext_resource type="Script" path="res://towers/spawner/drifter/drifter_spawner.gd" id="1_gwi1t"]
+[ext_resource type="Script" uid="uid://0h8643mg5kdj" path="res://towers/spawner/drifter/drifter_spawner.gd" id="1_gwi1t"]
 [ext_resource type="Texture2D" uid="uid://1trk526lvntq" path="res://sprites/towers/spawner/drifter_spawner.png" id="2_gyy23"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf6xu"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bg3kspnnh0wiw"]
 
-[ext_resource type="Script" path="res://towers/blank/economy/gold_dispenser_tower.gd" id="1_qigi6"]
+[ext_resource type="Script" uid="uid://bh7gdcrvst35a" path="res://towers/blank/economy/gold_dispenser_tower.gd" id="1_qigi6"]
 [ext_resource type="Texture2D" uid="uid://c8dudx3hcnq0r" path="res://sprites/towers/blank/economy/gold_dispenser.png" id="2_uklhp"]
 [ext_resource type="Texture2D" uid="uid://bcdrfgq3elr05" path="res://sprites/overlay/gold.png" id="3_4l3f8"]
 [ext_resource type="Texture2D" uid="uid://drdxxh440gt62" path="res://sprites/player/health_circle.png" id="4_puon2"]

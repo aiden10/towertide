@@ -68,6 +68,7 @@ func _upgrade1() -> void:
 	new_tower.position = tower.global_position
 	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
+	new_tower.turn_green()
 	tower.queue_free()
 	_show_upgrades()
 
@@ -89,6 +90,7 @@ func _upgrade2() -> void:
 	new_tower.position = tower.global_position
 	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
+	new_tower.turn_green()
 	tower.queue_free()
 	_show_upgrades()
 	
@@ -110,6 +112,7 @@ func _upgrade3() -> void:
 	new_tower.position = tower.global_position
 	new_tower.add_value(tower.value)
 	GameState.selected_tower = new_tower
+	new_tower.turn_green()
 	tower.queue_free()
 	_show_upgrades()
 

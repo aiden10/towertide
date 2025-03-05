@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://dp3c0ctmykxmb"]
 
-[ext_resource type="Script" path="res://enemies/bosses/deflector_boss.gd" id="1_5r11w"]
+[ext_resource type="Script" uid="uid://b4ybtqruj0qnj" path="res://enemies/bosses/deflector_boss.gd" id="1_5r11w"]
 [ext_resource type="Texture2D" uid="uid://6cqwjw36pqwr" path="res://sprites/enemies/red.png" id="2_4jtba"]
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="3_21f6b"]
-[ext_resource type="Script" path="res://enemies/bosses/deflector_states/attack_state.gd" id="4_0enwr"]
-[ext_resource type="Script" path="res://enemies/bosses/deflector_states/follow_state.gd" id="4_3gy1h"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="3_21f6b"]
+[ext_resource type="Script" uid="uid://c8cpvuoadur72" path="res://enemies/bosses/deflector_states/attack_state.gd" id="4_0enwr"]
+[ext_resource type="Script" uid="uid://dl1vn36ysooab" path="res://enemies/bosses/deflector_states/follow_state.gd" id="4_3gy1h"]
 [ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="6_asweh"]
-[ext_resource type="Script" path="res://enemies/bosses/deflector_states/spiral_attack_state.gd" id="6_ut4yt"]
-[ext_resource type="Script" path="res://enemies/bosses/deflector_states/burst_attack_state.gd" id="7_epni4"]
+[ext_resource type="Script" uid="uid://k46jbdb3bnyi" path="res://enemies/bosses/deflector_states/spiral_attack_state.gd" id="6_ut4yt"]
+[ext_resource type="Script" uid="uid://bglxhkdw26mgx" path="res://enemies/bosses/deflector_states/burst_attack_state.gd" id="7_epni4"]
 [ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="7_nnxx1"]
-[ext_resource type="Script" path="res://enemies/bosses/deflector_states/shield_charge_state.gd" id="8_vmv7g"]
+[ext_resource type="Script" uid="uid://bnft3uir68mvd" path="res://enemies/bosses/deflector_states/shield_charge_state.gd" id="8_vmv7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2or07"]
 

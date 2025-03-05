@@ -19,6 +19,10 @@ var sprayer_limit: int = PlayerConstants.DEFAULT_SPRAYER_LIMIT
 var sentry_limit: int = PlayerConstants.DEFAULT_SENTRY_LIMIT
 var blank_limit: int = PlayerConstants.DEFAULT_BLANK_LIMIT
 var spawner_limit: int = PlayerConstants.DEFAULT_SPAWNER_LIMIT
+var sprayer_count: int = 0
+var sentry_count: int = 0
+var spawner_count: int = 0
+var blank_count: int = 0
 
 ## Misc
 var minimum_gold: int = 0

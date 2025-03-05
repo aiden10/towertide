@@ -17,6 +17,7 @@ signal arena_spawn(child)
 
 signal purchased
 signal rerolled
+signal _button_pressed
 
 signal level_up
 

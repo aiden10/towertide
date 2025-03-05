@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://0ur1n6frealw"]
 
-[ext_resource type="Script" path="res://enemies/stage3/shielded_rusher.gd" id="1_k6x2d"]
+[ext_resource type="Script" uid="uid://bnpd7mjvvsr2l" path="res://enemies/stage3/shielded_rusher.gd" id="1_k6x2d"]
 [ext_resource type="Texture2D" uid="uid://cw4u8vuiopqao" path="res://sprites/enemies/weak_rusher.png" id="1_v8h55"]
-[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_72fo2"]
-[ext_resource type="Script" path="res://enemies/enemy_states/rush_state.gd" id="3_cv2fk"]
+[ext_resource type="Script" uid="uid://8x6gdkhn5r06" path="res://entities/state_machine.gd" id="2_72fo2"]
+[ext_resource type="Script" uid="uid://qydcrncp3jks" path="res://enemies/enemy_states/rush_state.gd" id="3_cv2fk"]
 [ext_resource type="Texture2D" uid="uid://oba3ymr6hu6f" path="res://sprites/player/aim_line.png" id="4_jgci7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5mkj"]
