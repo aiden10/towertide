@@ -23,11 +23,13 @@ func _ready() -> void:
 		continue_button.modulate = Color(1, 1, 1, 0.25)
 
 func update_volume(_value_changed: bool) -> void:
+	EventBus._button_pressed.emit()
 	SoundManager.sound_level = volume_slider.value
 	SoundManager.set_master_volume()
 	
 func start_game() -> void:
 	EventBus._button_pressed.emit()
+	Utils.spawn_hit_effect(Color(1, 1, 1, 1), position, 10)
 	SceneManager.load_arena()
 
 func continue_game() -> void:

@@ -38,6 +38,7 @@ func upgrade1() -> void:
 		"Spawner":
 			PlayerState.spawner_limit += AllocationIncrements.TOWER_LIMIT_INCREASE
 	visible = false
+	GameState.allocate_menu_up = false
 	EventBus.unpause_game.emit()
 
 func upgrade2() -> void:
@@ -51,6 +52,7 @@ func upgrade2() -> void:
 		"Spawner":
 			PlayerState.spawner_limit += AllocationIncrements.TOWER_LIMIT_INCREASE
 	visible = false
+	GameState.allocate_menu_up = false
 	EventBus.unpause_game.emit()
 
 func update_options() -> void:
@@ -69,4 +71,5 @@ func update_options() -> void:
 	limit_increase2.text = "Limit +" + str(AllocationIncrements.TOWER_LIMIT_INCREASE)
 
 	visible = true
+	GameState.allocate_menu_up = true
 	EventBus.pause_game.emit()

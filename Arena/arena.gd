@@ -30,6 +30,7 @@ func _ready() -> void:
 	## Auto save on stage start
 	Utils.save_game()
 	TowerManager.active_towers.clear()
+	Utils.spawn_hit_effect(Color(1, 1, 1, 1), Vector2.ZERO, 1)
 
 func _process(delta: float) -> void:
 	transition_rect.position = Vector2(GameState.player_position.x - 960, GameState.player_position.y - 540) 

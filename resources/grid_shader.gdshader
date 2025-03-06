@@ -11,16 +11,16 @@ void fragment() {
     // Calculate world position based on screen position and camera position
     vec2 screen_pos = SCREEN_UV * screen_size;
     vec2 world_pos = screen_pos + camera_position - (screen_size / 2.0);
-    
+
     // Create grid coordinates based on world position
     vec2 grid_coords = world_pos / grid_size;
-    
+
     // Generate grid
     vec2 frac_coords = fract(grid_coords);
-    vec2 grid_lines = step(1.0 - line_thickness, frac_coords) + 
+    vec2 grid_lines = step(1.0 - line_thickness, frac_coords) +
                       step(frac_coords, vec2(line_thickness));
     float is_grid = min(1.0, grid_lines.x + grid_lines.y);
-    
+
     // Mix background and grid colors
     COLOR = mix(background_color, grid_color, is_grid);
 }

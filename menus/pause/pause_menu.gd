@@ -13,6 +13,7 @@ func _ready() -> void:
 	volume_slider.value = SoundManager.sound_level
 
 func update_volume(_value_changed: bool) -> void:
+	EventBus._button_pressed.emit()
 	SoundManager.sound_level = volume_slider.value
 	SoundManager.set_master_volume()
 

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca4yn0y6sg2f8"
-path.s3tc="res://.godot/imported/x.png-71c7f41194863e8d94e70ac4a49542dd.s3tc.ctex"
+path="res://.godot/imported/x.png-71c7f41194863e8d94e70ac4a49542dd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://sprites/overlay/x.png"
-dest_files=["res://.godot/imported/x.png-71c7f41194863e8d94e70ac4a49542dd.s3tc.ctex"]
+dest_files=["res://.godot/imported/x.png-71c7f41194863e8d94e70ac4a49542dd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

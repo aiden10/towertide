@@ -120,12 +120,12 @@ theme_override_constants/separation = 5
 [node name="StageLabel" type="Label" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Stage"
+text = "Stage..."
 
 [node name="ClearConditionLabel" type="Label" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Placeholder"
+text = "Loading..."
 
 [node name="SpawnBar" type="ProgressBar" parent="CanvasLayer/ClearConditionContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 1)
@@ -205,13 +205,13 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 
 [node name="CrossImage" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("7_f0nbu")
 expand_mode = 2
 
@@ -223,7 +223,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "0/5"
+text = "0/2"
 horizontal_alignment = 1
 
 [node name="KeyLabel1" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/CrossContainer"]
@@ -256,13 +256,13 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 
 [node name="SentryImage" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("6_nf5u0")
 expand_mode = 2
 
@@ -277,7 +277,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "0/5"
+text = "0/1"
 horizontal_alignment = 1
 
 [node name="KeyLabel2" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SentryContainer"]
@@ -310,13 +310,13 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 
 [node name="BlankImage" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/BlankContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("7_cgnsd")
 expand_mode = 1
 
@@ -361,13 +361,13 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ibja")
 
 [node name="SpawnerImage" type="TextureRect" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("8_2e1x5")
 expand_mode = 1
 
@@ -379,7 +379,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "0/5"
+text = "0/1"
 horizontal_alignment = 1
 
 [node name="KeyLabel3" type="Label" parent="CanvasLayer/TowersContainer/HBoxContainer/SpawnerContainer"]

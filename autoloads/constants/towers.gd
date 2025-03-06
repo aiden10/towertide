@@ -10,7 +10,7 @@ const CROSS_BULLET_SCALE: float = 0.6
 var CROSS_IMAGE: Texture = load("res://sprites/towers/cross/f1.png")
 const CROSS_SCENE_PATH: String = "res://towers/sprayer/CrossTower.tscn"
 
-const CARDINAL_COST: int = 10
+const CARDINAL_COST: int = 15
 const CARDINAL_NAME: String = "Cardinal"
 const CARDINAL_DESCRIPTION: String = "Shoots bullets in all cardinal directions"
 const CARDINAL_COOLDOWN: float = 2
@@ -20,7 +20,7 @@ const CARDINAL_BULLET_SCALE: float = 0.75
 var CARDINAL_IMAGE: Texture = load("res://sprites/towers/cardinal/cardinal.png")
 const CARDINAL_SCENE_PATH: String = "res://towers/sprayer/extra_spray/CardinalTower.tscn"
 
-const SUPER_SPRAYER_COST: int = 15
+const SUPER_SPRAYER_COST: int = 25
 const SUPER_SPRAYER_NAME: String = "Super Sprayer"
 const SUPER_SPRAYER_DESCRIPTION: String = "Shoots 4 additional bullets"
 const SUPER_SPRAYER_COOLDOWN: float = 1.5
@@ -30,7 +30,7 @@ const SUPER_SPRAYER_BULLET_SCALE: float = 0.75
 var SUPER_SPRAYER_IMAGE: Texture = load("res://sprites/towers/cardinal/super_sprayer.png")
 const SUPER_SPRAYER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/SuperSprayer.tscn"
 
-const ATOMIZER_COST: int = 30
+const ATOMIZER_COST: int = 80
 const ATOMIZER_NAME: String = "Atomizer"
 const ATOMIZER_DESCRIPTION: String = "Rapidly fires bullets everywhere"
 const ATOMIZER_COOLDOWN: float = 0.5
@@ -40,7 +40,7 @@ const ATOMIZER_BULLET_SCALE: float = 0.35
 var ATOMIZER_IMAGE: Texture = load("res://sprites/towers/cardinal/atomizer.png")
 const ATOMIZER_SCENE_PATH: String = "res://towers/sprayer/extra_spray/super_sprayer/atomizer/AtomizerTower.tscn"
 
-const CLOUD_COST: int = 15
+const CLOUD_COST: int = 25
 const CLOUD_NAME: String = "Bullet Cloud"
 const CLOUD_DESCRIPTION: String = "Rains bullets on enemies"
 const CLOUD_COOLDOWN: float = 0.15
@@ -51,7 +51,7 @@ var CLOUD_IMAGE: Texture = load("res://sprites/towers/cardinal/cloud.png")
 const CLOUD_SCENE_PATH: String = "res://towers/sprayer/extra_spray/cloud/CloudTower.tscn"
 
 const RING_NAME: String = "Ring Shooter"
-const RING_COST: int = 10
+const RING_COST: int = 15
 const RING_DESCRIPTION: String = "Emits a ring which deals damage to enemies inside it"
 const RING_COOLDOWN: float = 0.5
 const RING_SPEED_PERCENTAGE: float = 1
@@ -60,7 +60,7 @@ var RING_IMAGE: Texture = load("res://sprites/towers/cross/ring/ring_tower.png")
 const RING_SCENE_PATH: String = "res://towers/sprayer/ring/RingTower.tscn"
 
 const DOUBLE_CROSS_NAME: String = "Double Cross"
-const DOUBLE_CROSS_COST: int = 10
+const DOUBLE_CROSS_COST: int = 15
 const DOUBLE_CROSS_DESCRIPTION: String = "Shoots 2 bullets in a cross pattern"
 const DOUBLE_CROSS_COOLDOWN: float = 2
 const DOUBLE_CROSS_BULLET_SCALE: float = 0.75
@@ -79,7 +79,7 @@ const SENTRY_DAMAGE_PERCENTAGE: float = 0.4
 var SENTRY_IMAGE: Texture = load("res://sprites/towers/sentry/sentry.png")
 const SENTRY_SCENE_PATH: String = "res://towers/sentry/SentryTower.tscn"
 
-const SNIPER_COST: int = 15
+const SNIPER_COST: int = 25
 const SNIPER_NAME: String = "Sniper"
 const SNIPER_DESCRIPTION: String = "Shoots fast, high damage projectiles"
 const SNIPER_COOLDOWN: float = 3
@@ -89,7 +89,7 @@ const SNIPER_BULLET_SCALE: float = 0.55
 var SNIPER_IMAGE: Texture = load("res://sprites/towers/sentry/sniper/sniper.png")
 const SNIPER_SCENE_PATH: String = "res://towers/sentry/sniper/SniperTower.tscn"
 
-const CANNON_COST: int = 25
+const CANNON_COST: int = 50
 const CANNON_NAME: String = "Cannon"
 const CANNON_DESCRIPTION: String = "Aimable tower which shoots massive bullets that deal massive damage"
 const CANNON_COOLDOWN: float = 5
@@ -100,7 +100,7 @@ const CANNON_EXTRA_PIERCE: float = 5
 var CANNON_IMAGE: Texture = load("res://sprites/towers/sentry/sniper/cannon/cannon.png")
 const CANNON_SCENE_PATH: String = "res://towers/sentry/sniper/cannon/CannonTower.tscn"
 
-const MACHINE_GUN_COST: int = 15
+const MACHINE_GUN_COST: int = 25
 const MACHINE_GUN_NAME: String = "Machine Gun"
 const MACHINE_GUN_DESCRIPTION: String = "Rapidly shoots detected enemies"
 const MACHINE_GUN_COOLDOWN: float = 0.4
@@ -109,7 +109,7 @@ const MACHINE_GUN_DAMAGE_PERCENTAGE: float = 0.2
 var MACHINE_GUN_IMAGE: Texture = load("res://sprites/towers/sentry/machine_gun/f1.png")
 const MACHINE_GUN_SCENE_PATH: String = "res://towers/sentry/rapid/MachineGunTower.tscn"
 
-const SHOTGUN_COST: int = 15
+const SHOTGUN_COST: int = 25
 const SHOTGUN_NAME: String = "Shotgun"
 const SHOTGUN_DESCRIPTION: String = "Shoots 3 slower, but stronger bullets"
 const SHOTGUN_COOLDOWN: float = 2
@@ -120,7 +120,7 @@ const SHOTGUN_SHOT_COUNT: int = 3
 var SHOTGUN_IMAGE: Texture = load("res://sprites/towers/sentry/shotgun/shotgun_tower.png")
 const SHOTGUN_SCENE_PATH: String = "res://towers/sentry/shotgun/ShotgunTower.tscn"
 
-const GRAPESHOT_COST: int = 25
+const GRAPESHOT_COST: int = 50
 const GRAPESHOT_NAME: String = "Grapeshot"
 const GRAPESHOT_DESCRIPTION: String = "Shoots a large cluster of bullets"
 const GRAPESHOT_COOLDOWN: float = 2.75
@@ -141,7 +141,7 @@ var SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/spawner.png")
 
 const SPAWNER_SCENE_PATH: String = "res://towers/spawner/SpawnerTower.tscn"
 
-const SHOOTER_SPAWNER_COST: int = 15
+const SHOOTER_SPAWNER_COST: int = 25
 const SHOOTER_SPAWNER_SPAWN_AMOUNT: int = 1
 const SHOOTER_SPAWNER_NAME: String = "Shooter Spawner"
 const SHOOTER_SPAWNER_DESCRIPTION: String = "Spawns minions that shoot enemies"
@@ -151,7 +151,7 @@ const SHOOTER_SPAWNER_SPAWN_LIMIT: int = 5
 var SHOOTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/shooter/shooter_spawner.png")
 const SHOOTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/ShooterSpawnerTower.tscn"
 
-const PERSON_SPAWNER_COST: int = 10
+const PERSON_SPAWNER_COST: int = 25
 const PERSON_SPAWNER_SPAWN_AMOUNT: int = 1
 const PERSON_SPAWNER_NAME: String = "Person Spawner"
 const PERSON_SPAWNER_DESCRIPTION: String = "Spawns weak people with high potential"
@@ -161,7 +161,7 @@ const PERSON_SPAWNER_SPAWN_LIMIT: int = 8
 var PERSON_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/person_spawner.png")
 const PERSON_SPAWNER_SCENE_PATH: String = "res://towers/spawner/person/PersonSpawner.tscn"
 
-const BUG_SPAWNER_COST: int = 15
+const BUG_SPAWNER_COST: int = 25
 const BUG_SPAWNER_SPAWN_AMOUNT: int = 5
 const BUG_SPAWNER_NAME: String = "Insect Spawner"
 const BUG_SPAWNER_DESCRIPTION: String = "Spawns many weak bugs"
@@ -171,7 +171,7 @@ const BUG_SPAWNER_SPAWN_LIMIT: int = 20
 var BUG_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/bug_spawner.png")
 const BUG_SPAWNER_SCENE_PATH: String = "res://towers/spawner/swarm/SwarmSpawner.tscn"
 
-const DRIFTER_SPAWNER_COST: int = 20
+const DRIFTER_SPAWNER_COST: int = 50
 const DRIFTER_SPAWNER_SPAWN_AMOUNT: int = 1
 const DRIFTER_SPAWNER_NAME: String = "Drifter Spawner"
 const DRIFTER_SPAWNER_DESCRIPTION: String = "Spawns wandering minions which stab and shoot"
@@ -181,7 +181,7 @@ const DRIFTER_SPAWNER_SPAWN_LIMIT: int = 6
 var DRIFTER_SPAWNER_IMAGE: Texture = load("res://sprites/towers/spawner/drifter_spawner.png")
 const DRIFTER_SPAWNER_SCENE_PATH: String = "res://towers/spawner/drifter/DrifterSpawner"
 
-const KIDNAPPER_SPAWNER_COST: int = 25
+const KIDNAPPER_SPAWNER_COST: int = 50
 const KIDNAPPER_SPAWNER_SPAWN_AMOUNT: int = 1
 const KIDNAPPER_SPAWNER_NAME: String = "Kidnapper Spawner"
 const KIDNAPPER_SPAWNER_DESCRIPTION: String = "Spawns minions that kidnap enemies and return them to this tower"
@@ -197,7 +197,7 @@ const BLANK_DESCRIPTION: String = "Does nothing until upgraded"
 var BLANK_IMAGE: Texture = load("res://sprites/towers/blank/blank.png")
 const BLANK_SCENE_PATH: String = "res://towers/blank/BlankTower.tscn"
 
-const SUPPORTER_COST: int = 10
+const SUPPORTER_COST: int = 25
 const SUPPORTER_NAME: String = "Supporter"
 const SUPPORTER_DESCRIPTION: String = "Towers in range attack faster"
 const SUPPORTER_COOLDOWN_REDUCTION: float = 0.8
@@ -205,14 +205,14 @@ var SUPPORTER_IMAGE: Texture = load("res://sprites/towers/blank/support/support.
 const SUPPORTER_SCENE_PATH: String = "res://towers/blank/support/SupportTower.tscn"
 
 const GOLD_DISPENSER_NAME: String = "Gold Dispenser"
-const GOLD_DISPENSER_COST: int = 10
+const GOLD_DISPENSER_COST: int = 25
 const GOLD_DISPENSER_COOLDOWN: float = 8
 const GOLD_DISPENSER_DESCRIPTION: String = "Dispenses gold"
 var GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
 const GOLD_DISPENSER_SCENE_PATH: String = "res://towers/blank/economy/GoldDispenserTower.tscn"
 
 const SLOTS_NAME: String = "Slot Machine"
-const SLOTS_COST: int = 15
+const SLOTS_COST: int = 25
 const SLOTS_PLAY_COST: int = 1
 const SLOTS_COOLDOWN: float = 8
 const SLOTS_DESCRIPTION: String = "Play for a chance to win XP, gold, or an item!"
@@ -222,7 +222,7 @@ const SLOTS_OPTIONS: Array[String] = ["nothing", "1G", "1XP", "5G", "25XP", "jac
 const SLOTS_WEIGHTS: Array[float] = [2, 0.5, 1, 0.2, 0.2, 0.01]
 
 const DOUBLE_GOLD_DISPENSER_NAME: String = "Double Gold Dispenser"
-const DOUBLE_GOLD_DISPENSER_COST: int = 15
+const DOUBLE_GOLD_DISPENSER_COST: int = 30
 const DOUBLE_GOLD_DISPENSER_COOLDOWN: float = 12
 const DOUBLE_GOLD_DISPENSER_DESCRIPTION: String = "Dispenses 2 gold"
 var DOUBLE_GOLD_DISPENSER_IMAGE: Texture = load("res://sprites/towers/blank/economy/gold_dispenser.png")
