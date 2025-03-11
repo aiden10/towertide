@@ -27,21 +27,99 @@ var tower: Tower
 
 var kill_text: String
 
+# Viewport percentage variables
+var description_offset_x := 0.05
+var description_offset_y := -0.05
+var reference_width := 800
+var reference_height := 450
+var min_scale := 0.75
+
 func _ready() -> void:
 	EventBus.tower_selected.connect(_show_upgrades)
 	EventBus.unselect_pressed.connect(_hide_upgrades)
 	close_button.pressed.connect(_hide_upgrades)
 	sell_button.pressed.connect(_sell_tower)
+	
+	# Setup description visibility and position calculations using viewport percentages
 	upgrade1_button.pressed.connect(_upgrade1)
-	upgrade1_button.mouse_entered.connect(func(): description1.visible = true)
+	upgrade1_button.mouse_entered.connect(func(): 
+		description1.visible = true
+		_position_description(description1, upgrade1_button)
+	)
 	upgrade1_button.mouse_exited.connect(func(): description1.visible = false)
+	
 	upgrade2_button.pressed.connect(_upgrade2)
-	upgrade2_button.mouse_entered.connect(func(): description2.visible = true)
+	upgrade2_button.mouse_entered.connect(func(): 
+		description2.visible = true
+		_position_description(description2, upgrade2_button)
+	)
 	upgrade2_button.mouse_exited.connect(func(): description2.visible = false)
+	
 	upgrade3_button.pressed.connect(_upgrade3)
-	upgrade3_button.mouse_entered.connect(func(): description3.visible = true)
+	upgrade3_button.mouse_entered.connect(func(): 
+		description3.visible = true
+		_position_description(description3, upgrade3_button)
+	)
 	upgrade3_button.mouse_exited.connect(func(): description3.visible = false)
+	
 	animation_player.animation_finished.connect(_on_animation_finished)
+	
+	# Connect to viewport size changed signal to update positions
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
+	
+	# Setup description panels
+	_setup_description_panels()
+
+# Function to position description based on viewport percentages
+func _position_description(description_panel: PanelContainer, button: Button) -> void:
+	var viewport_size = get_viewport_rect().size
+	var button_global_pos = button.global_position
+	
+	# Calculate position based on viewport percentages and button position
+	description_panel.global_position = Vector2(
+		button_global_pos.x + viewport_size.x * description_offset_x,
+		button_global_pos.y + viewport_size.y * description_offset_y
+	)
+
+# Setup description panels with correct properties
+func _setup_description_panels() -> void:
+	for panel in [description1, description2, description3]:
+		# Ensure panels don't affect layout
+		panel.mouse_filter = MOUSE_FILTER_IGNORE
+		panel.visible = false
+		
+		# Make sure they're on top
+		panel.z_index = 100
+
+# Handle viewport size changes
+func _on_viewport_size_changed() -> void:
+	# Update positions if descriptions are visible
+	if description1.visible:
+		_position_description(description1, upgrade1_button)
+	if description2.visible:
+		_position_description(description2, upgrade2_button)
+	if description3.visible:
+		_position_description(description3, upgrade3_button)
+	
+	_adjust_menu_for_resolution()
+	
+func _adjust_menu_for_resolution() -> void:
+	var viewport_size = get_viewport_rect().size / 2
+	var reference_width = 800
+	var reference_height = 450
+	
+	# Calculate scale factors based on viewport vs reference size
+	var scale_x = min(viewport_size.x / reference_width, 1.0)
+	var scale_y = min(viewport_size.y / reference_height, 1.0)
+	
+	# Use the smaller scale factor to maintain aspect ratio
+	var scale_factor = min(scale_x, scale_y)
+	
+	# Ensure minimum scale isn't too small
+	scale_factor = max(scale_factor, 0.5)
+	
+	# Apply scale to the upgrade menu
+	$UpgradeMenu.scale = Vector2(scale_factor, scale_factor)
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "close":

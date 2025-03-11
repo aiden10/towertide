@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0tuo3ue68h0a"]
+
+[ext_resource type="Script" uid="uid://cixtqwxnw1hfn" path="res://menus/main/credits.gd" id="1_3xq7n"]
+[ext_resource type="Theme" uid="uid://c6j20s0418q2g" path="res://resources/main_theme.tres" id="2_k0ujf"]
+[ext_resource type="Texture2D" uid="uid://ca4yn0y6sg2f8" path="res://sprites/overlay/x.png" id="3_xdb0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xq7n"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xq7n")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xq7n")
+
+[node name="CreditsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -337.5
+offset_right = 125.0
+offset_bottom = 337.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme = ExtResource("2_k0ujf")
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreditsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Sounds Used"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="CreditsContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_xdb0d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label2" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cartoon Pop (Clean) by unfa -- https://freesound.org/s/245645/ -- License: Creative Commons 0"
+
+[node name="Label3" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Door Handle Wood Clack.aif by RutgerMuller -- https://freesound.org/s/104019/ -- License: Creative Commons 0"
+
+[node name="Label4" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cash Register by kiddpark -- https://freesound.org/s/201159/ -- License: Attribution 4.0"
+
+[node name="Label5" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "two-ting-drop.wav by gadzooks -- https://freesound.org/s/342721/ -- License: Attribution 4.0"
+
+[node name="Label6" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Old Church Bell.wav by dsp9000 -- https://freesound.org/s/76405/ -- License: Creative Commons 0"
+
+[node name="Label7" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heavy Thud.wav by arithni -- https://freesound.org/s/83631/ -- License: Sampling+"
+
+[node name="Label8" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "wipe2.wav by Sclolex -- https://freesound.org/s/179779/ -- License: Creative Commons 0"
+
+[node name="Label9" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sword Slice by TheBuilder15 -- https://freesound.org/s/344131/ -- License: Attribution 4.0"
+
+[node name="Label10" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Woop Sound by Octodisk -- https://freesound.org/s/243621/ -- License: Creative Commons 0"
+
+[node name="Label11" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "beeps-231.wav by Greencouch -- https://freesound.org/s/124902/ -- License: Attribution 3.0"
+
+[node name="Label12" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "The Chime.wav by zeuss -- https://freesound.org/s/22267/ -- License: Sampling+"
+
+[node name="Label13" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Poof/Puff by JustInvoke -- https://freesound.org/s/446124/ -- License: Attribution 4.0"
+
+[node name="Label14" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "toy_cannon_shot.wav by ReadeOnly -- https://freesound.org/s/186950/ -- License: Creative Commons 0"
+
+[node name="Label15" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "click 1 d.wav by TicTacShutUp -- https://freesound.org/s/406/ -- License: Attribution 4.0"
+
+[node name="Label16" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Metal Ping1.aif by timgormly -- https://freesound.org/s/170964/ -- License: Attribution 4.0"
+
+[node name="Label17" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Coin_Drop_10 by Valenspire -- https://freesound.org/s/699505/ -- License: Creative Commons 0"
+
+[node name="Label18" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chime 0013.wav by radian -- https://freesound.org/s/62988/ -- License: Attribution 3.0"
+
+[node name="Label19" type="Label" parent="CreditsContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chime-Weak.flac by drooler -- https://freesound.org/s/660861/ -- License: Creative Commons 0"

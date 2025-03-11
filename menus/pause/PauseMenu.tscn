@@ -49,6 +49,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Paused "
+horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -60,22 +61,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Exit "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
+[node name="FullscreenButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 450
+theme_override_font_sizes/font_size = 48
+text = "Toggle Fullscreen"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="VolumeBar" type="HSlider" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="VolumeBar" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 6
 value = 100.0

@@ -2,13 +2,15 @@ extends Control
 
 @onready var resume_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/ResumeButton
 @onready var exit_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/ExitButton
+@onready var fullscreen_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/FullscreenButton
 @onready var canvas: CanvasLayer = $CanvasLayer
-@onready var volume_slider: HSlider = $CanvasLayer/MarginContainer/MarginContainer/VBoxContainer/VolumeBar
+@onready var volume_slider: HSlider = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/VolumeBar
 
 func _ready() -> void:
 	canvas.visible = false
 	resume_button.pressed.connect(resume)
 	exit_button.pressed.connect(exit)
+	fullscreen_button.pressed.connect(Utils.toggle_fullscreen)
 	volume_slider.drag_ended.connect(update_volume)
 	volume_slider.value = SoundManager.sound_level
 

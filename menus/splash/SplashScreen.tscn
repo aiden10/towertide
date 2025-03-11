@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vluh1qye2kx"]
+
+[ext_resource type="Script" uid="uid://dubhsngug75w6" path="res://menus/splash/splash_screen.gd" id="1_b3jnr"]
+[ext_resource type="VideoStream" uid="uid://bbi8lol3fri4o" path="res://resources/ag_intro.ogv" id="2_sfunj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3jnr"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b3jnr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b3jnr")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -216.0
+offset_right = 324.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_sfunj")
+volume_db = 1.0
+autoplay = true
+
+[node name="AGButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2

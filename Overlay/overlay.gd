@@ -52,7 +52,7 @@ extends Control
 var pulse_tween: Tween = null
 var stages_until_boss: int
 
-func _ready() -> void:	
+func _ready() -> void:
 	EventBus.tower1_selected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 50))
 	EventBus.tower1_deselected.connect(func(): reset_modulation(); cross_image.modulate = Color8(255, 255, 255, 150))
 	EventBus.tower2_selected.connect(func(): reset_modulation(); sentry_image.modulate = Color8(255, 255, 255, 50))
@@ -110,7 +110,7 @@ func _ready() -> void:
 		boss_label.visible = true
 		stages_until_boss = GameState.boss_stage_increment - (GameState.stage % GameState.boss_stage_increment)
 		boss_label.text = "Stages Until Boss: " + str(stages_until_boss)
-		
+
 func _on_cross_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
@@ -144,7 +144,9 @@ func _on_blank_container_gui_input(event: InputEvent) -> void:
 			EventBus.invalid_action.emit()
 			
 func _on_cross_container_mouse_entered() -> void:
+	var x_offset: float = get_viewport_rect().size.x / 15
 	cross_info_panel.visible = true
+	cross_info_panel.global_position = Vector2(cross_image.global_position.x - x_offset, cross_image.global_position.y)
 	reset_modulation()
 	cross_image.modulate = Color8(255, 255, 255, 50)
 	
@@ -154,7 +156,9 @@ func _on_cross_container_mouse_exited() -> void:
 	cross_image.modulate = Color8(255, 255, 255, 150)
 
 func _on_sentry_container_mouse_entered() -> void:
+	var x_offset: float = get_viewport_rect().size.x / 15
 	sentry_info_panel.visible = true
+	sentry_info_panel.global_position = Vector2(sentry_image.global_position.x - x_offset, sentry_image.global_position.y)
 	reset_modulation()
 	sentry_image.modulate = Color8(255, 255, 255, 50)
 	
@@ -164,7 +168,9 @@ func _on_sentry_container_mouse_exited() -> void:
 	sentry_image.modulate = Color8(255, 255, 255, 150)
 
 func _on_spawner_container_mouse_entered() -> void:
+	var x_offset: float = get_viewport_rect().size.x / 15
 	spawner_info_panel.visible = true
+	spawner_info_panel.global_position = Vector2(spawner_image.global_position.x - x_offset, spawner_image.global_position.y)
 	reset_modulation()
 	spawner_image.modulate = Color8(255, 255, 255, 50)
 	
@@ -174,7 +180,9 @@ func _on_spawner_container_mouse_exited() -> void:
 	spawner_image.modulate = Color8(255, 255, 255, 150)
 
 func _on_blank_container_mouse_entered() -> void:
+	var x_offset: float = get_viewport_rect().size.x / 15
 	blank_info_panel.visible = true
+	blank_info_panel.global_position = Vector2(blank_image.global_position.x - x_offset, blank_image.global_position.y)
 	reset_modulation()
 	blank_image.modulate = Color8(255, 255, 255, 50)
 	

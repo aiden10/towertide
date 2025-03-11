@@ -2,6 +2,12 @@ extends Node
 
 var damage_label_font: Font = load("res://resources/VastShadow-Regular.ttf")
 
+func toggle_fullscreen() -> void:
+	var mode := DisplayServer.window_get_mode()
+	var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+	get_window().content_scale_factor = 1.0 if is_window else 0.6
+	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_game()

@@ -74,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 0.966667),
 "transitions": PackedFloat32Array(0.258817, 0.574349),
 "update": 0,
-"values": [Vector2(2000, 125), Vector2(1600, 125)]
+"values": [Vector2(-100, 200), Vector2(85, 200)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.433333),
 "transitions": PackedFloat32Array(1, 0.000667013, 0.287175, 1, 0.183011),
 "update": 0,
-"values": [Vector2(1600, 125), Vector2(1605, 125), Vector2(1596, 125), Vector2(1610, 125), Vector2(1600, 125)]
+"values": [Vector2(85, 200), Vector2(90, 200), Vector2(80, 200), Vector2(93, 200), Vector2(85, 200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8egmq"]
@@ -189,7 +189,7 @@ autowrap_mode = 3
 [node name="TowerDescription" type="Label" parent="UpgradeMenu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 text = "Description here"
 autowrap_mode = 3
 
@@ -218,6 +218,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 text = "Upgrade1"
 
@@ -252,6 +253,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 text = "Upgrade2"
 
@@ -286,6 +288,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 text = "Upgrade3"
 
@@ -310,7 +313,7 @@ text = "200"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UpgradeMenu"]
 libraries = {
-"": SubResource("AnimationLibrary_8egmq")
+&"": SubResource("AnimationLibrary_8egmq")
 }
 
 [node name="Description1" type="PanelContainer" parent="."]
@@ -333,6 +336,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Description1"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Description" type="Label" parent="Description1/VBoxContainer"]
 custom_minimum_size = Vector2(175, 55)
@@ -360,6 +364,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Description2"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Description" type="Label" parent="Description2/VBoxContainer"]
 custom_minimum_size = Vector2(175, 55)
@@ -387,6 +392,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_w1eda")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Description3"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Description" type="Label" parent="Description3/VBoxContainer"]
 custom_minimum_size = Vector2(175, 55)
